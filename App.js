@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import signin from './screens/login.js';
 import TabNavigation from './components/TabNavigation.js'
 
-
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
