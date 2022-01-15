@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './screens/HomeScreen.js';
-import Explore from './screens/Explore.js';
-import MakeAppointment from './screens/HomeScreen.js';
-import Appointments from './screens/Appointments.js';
-import Settings from './screens/Settings.js';
+
+import HomeScreen from '../screens/HomeScreen.js';
+import Explore from '../screens/Explore.js';
+import MakeAppointment from '../screens/HomeScreen.js';
+import Appointments from '../screens/Appointments.js';
+import Settings from '../screens/Settings.js';
 
 const Tab = createBottomTabNavigator();
 
