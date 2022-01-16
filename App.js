@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import signin from './screens/login.js';
-import TabNavigation from './components/TabNavigation.js'
+import TabNavigation from './components/MaterialBottomNav.js'
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
+    
     <NavigationContainer>
       <TabNavigation/>
     </NavigationContainer>
