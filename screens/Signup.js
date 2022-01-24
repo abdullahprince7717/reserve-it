@@ -1,12 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View,Text,TextInput,Button, ScrollView, Image, SafeAreaView, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, {useState} from 'react'
+import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
+import {auth} from  '../firebase/FirebaseConfig.js'
+import {createUserWithEmailAndPassword } from "firebase/auth";
+import signIn from './Login.js'
+
 
 
 
 
 const signUp = ({navigation}) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const signUp = () => {
+
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((credentials) => {
+
+      userCredentials = credentials;
+      console.log(userCredentials);
+
+    })
+    .catch((error) => {
+      console.log("Error Message :" + error.message);
+
+      console.log("Error Message :" + error.code);
+    })
+  }
 
   return (
       <>
@@ -25,8 +46,9 @@ const signUp = ({navigation}) => {
               />
               <TextInput
 	              placeholder="Email"
+                value={email}
                 placeholderTextColor= {"#fff"}
-                secureTextEntry = {true} 
+                onChangeText ={text=>setEmail(text)}
                 style={styles.textInput}
               />
               <TextInput
@@ -36,6 +58,9 @@ const signUp = ({navigation}) => {
               />
               <TextInput
 	              placeholder="Password"
+                value={password}
+                secureTextEntry = {true}
+                onChangeText ={text=>setPassword(text)}
                 placeholderTextColor= {"#fff"}
                 style={styles.textInput}
               />
@@ -46,15 +71,15 @@ const signUp = ({navigation}) => {
               />
             </View>
 
-            <TouchableOpacity style = {styles.button} >
-              <Text>Sign In </Text>
+            <TouchableOpacity style = {styles.button} onPress = {signUp} >
+              <Text>Sign Up </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style = {styles.fbButton} >
               <Text style = {styles.fbText}>Continue with Facebook </Text>
             </TouchableOpacity>
 
-            <Text style = {styles.text}> Already an account?
+            <Text style = {styles.text}> Already have an account?
             <TouchableOpacity >
               <Text style = {{color: '#4267B2',fontSize: 17 }}>SignIn</Text> 
             </TouchableOpacity>
@@ -107,7 +132,7 @@ const styles = StyleSheet.create({
     
     
   },
-   heading: {
+  heading: {
     display: 'flex',
     marginTop: 30,
     marginLeft: 20,

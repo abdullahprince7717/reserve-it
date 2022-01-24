@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {StyleSheet,View,ScrollView,Image,Text } from "react-native";
+import {StyleSheet,View,Image,Text } from "react-native";
 
 function HorizontalScrollView(props){    
 return(
     
-    <View style = {{height: 160, marginTop:90}}>
+    <View style = {{height: 150, marginTop:90, zIndex: -9999, }}>
 
             <View style = {{height: 160, width:120, marginLeft: 7 }} >
                 <View style = {{flex:2}}>

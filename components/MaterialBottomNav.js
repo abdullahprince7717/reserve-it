@@ -5,7 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import HomeScreen from '../screens/HomeScreen.js';
 import Explore from '../screens/Explore.js';
-import MakeAppointment from '../screens/MakeAppointment.js';
+// import MakeAppointment from '../screens/MakeAppointment.js';
 import Appointments from '../screens/Appointments.js';
 import Settings from '../screens/Settings.js';
 
@@ -15,10 +15,10 @@ function TabNavigation(props) {
     return (
         <Tab.Navigator
             initialRouteName="Home"
-            activeColor="#f0edf6"
-            inactiveColor="#3e2465"
+            activeColor="red"
+            inactiveColor="#000"
             barStyle={{ 
-                backgroundColor: '#694fad',
+                backgroundColor: '#fff',
                 position: 'absolute',
                 bottom: 10,
                 left: 10,
@@ -26,9 +26,12 @@ function TabNavigation(props) {
                 height: 55,
                 elevation: 0,
                 borderRadius: 20,
+                borderColor: '#000',
+                borderWidth:1,
                 overflow: 'hidden',
                 borderTopLeftRadius: 20,
-                borderTopRightRadius: 20, }}
+                borderTopRightRadius: 20,
+            }}
         >
 
 
@@ -55,7 +58,7 @@ function TabNavigation(props) {
             />
 
 
-            <Tab.Screen name="makeAppointment" 
+            {/* <Tab.Screen name="makeAppointment" 
             component={MakeAppointment} 
             options={{
                 tabBarLabel: 'Make',
@@ -63,7 +66,7 @@ function TabNavigation(props) {
                     <MaterialCommunityIcons name="plus-circle-outline" color={color} size={26}  />
                 ), 
             }}
-            />
+            /> */}
 
 
             <Tab.Screen name="Appointments" 

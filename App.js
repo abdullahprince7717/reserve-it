@@ -1,12 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import signin from './screens/login.js';
-import TabNavigation from './components/MaterialBottomNav.js'
+import TabNavigation  from './components/MaterialBottomNav.js'
+
+// import signUp from './screens/Signup.js'
+// import explore from './screens/Explore.js'
+import homeScreen from './screens/HomeScreen.js'
+
 
 export default function App() {
   const Stack = createNativeStackNavigator();
+
   return (
     
     <NavigationContainer>
@@ -17,7 +21,7 @@ export default function App() {
 
     // <NavigationContainer>
     //   <Stack.Navigator>
-    //     <Stack.Screen name="Signin" component={signin} options = {{headerShown :false}}/>
+    //     <Stack.Screen name="Explore" component={homeScreen} options = {{headerShown :false}}/>
     //   </Stack.Navigator>
     // </NavigationContainer>
 

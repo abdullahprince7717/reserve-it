@@ -1,13 +1,14 @@
 import {Text, View,StyleSheet,ScrollView } from "react-native";
 import HorizontalScrollView  from '../components/home/HorizontalScrollView'
-import SearchBar from '../components/home/SearchBar.js' 
+import SearchBar from '../components/home/SearchBar.js'
+import TabNavigation  from '../components/MaterialBottomNav.js'
 
 function homeScreen() {
     return (
         <View style = {styles.View}>
             <SearchBar />
             
-            <View style ={{height: 250, marginTop: 20, backgroundColor: 'grey'}}>
+            <View style ={{height: 230, marginTop: 20, backgroundColor: 'white', borderColor: 'black', borderWidth:1}}>
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
@@ -20,6 +21,8 @@ function homeScreen() {
                 </ScrollView>
 
             </View>
+
+            {/* <TabNavigation/> */}
 
         </View>
     );
