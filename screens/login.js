@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View,Text,TextInput,Button, ScrollView, Image, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View,Text,TextInput,Button, ScrollView, Image, StatusBar, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -64,12 +64,12 @@ export default signIn
 
 const styles = StyleSheet.create({
   mainView: {
-    marginTop: 30,
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },
 
   upView: {

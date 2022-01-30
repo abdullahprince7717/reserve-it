@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
 import {auth} from  '../firebase/FirebaseConfig.js'
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import signIn from './Login.js'
@@ -104,12 +104,12 @@ export default signUp
 
 const styles = StyleSheet.create({
   mainView: {
-    marginTop: 30,
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },
 
   upView: {

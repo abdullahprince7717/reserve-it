@@ -1,11 +1,10 @@
 import * as React from 'react';
-import {TextInput,View,Text,StyleSheet, SafeAreaView} from "react-native";
+import {TextInput,View,Text,StyleSheet} from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 function SearchBar(){
 
     return(
-        <SafeAreaView style={{flex:1}}>
         <View style = {{flex:1 }}>
             <View style = {{height: 70, backgroundColor: 'white',  zIndex: 1000, elevation: (Platform.OS === 'android') ? 50 : 0  }}>
                 <View style={{flexDirection: 'row', padding: 10,paddingTop: 20,backgroundColor: 'white',
@@ -18,16 +17,12 @@ function SearchBar(){
                 />
                 </View>
             </View>
-
-            </View>
-        </SafeAreaView>
+        </View>
     )
-    
-    
 }
 
 export default SearchBar;
 
 const styles = StyleSheet.create({
-    
+
     });

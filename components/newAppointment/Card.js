@@ -17,8 +17,6 @@ return (
 );
 };
 const deviceWidth = Math.round(Dimensions.get('window').width);
-const offset = 40;
-const radius = 20;
 const styles = StyleSheet.create({
 container: {
     width: deviceWidth - 20,
@@ -26,10 +24,10 @@ container: {
     marginTop: 25,
 },
 cardContainer: {
-    width: deviceWidth - offset,
-    backgroundColor: '#D5D8DC',
+    width: deviceWidth - 40,
+    backgroundColor: '#00adf5',
     height: 200,
-    borderRadius: radius,
+    borderRadius: 20,
     shadowColor: '#000',
     shadowOffset: {
         width: 5,
@@ -41,9 +39,9 @@ cardContainer: {
 },
 imageStyle: {
     height: 130,
-    width: deviceWidth - offset,
-    borderTopLeftRadius: radius,
-    borderTopRightRadius: radius,
+    width: deviceWidth - 40,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     opacity: 0.9,
     alignContent: 'center',
     alignSelf: 'center',

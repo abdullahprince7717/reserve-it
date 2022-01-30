@@ -1,4 +1,4 @@
-import {View,StyleSheet,SafeAreaView } from "react-native";
+import {View,StyleSheet,SafeAreaView,StatusBar } from "react-native";
 import{ Text, Caption, Title, TouchableRipple} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icons from 'react-native-vector-icons/MaterialIcons'
@@ -173,7 +173,7 @@ export default settings;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 40
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     userInfoSection: {
       paddingHorizontal: 20,
