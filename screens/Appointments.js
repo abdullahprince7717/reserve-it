@@ -18,10 +18,10 @@ function appointments() {
     const loadItems = (day) => {
         setTimeout(() => {
             for (let i = 0; i < 15; i++) {
-                // const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-                const time = moment().format("h:mm:ss a");
-                // const strTime = timeToString(time);
-                const strTime = time;
+                const time = day.timestamp + i * 24 * 60 * 60 * 1000;
+                // const time = moment().format("h:mm:ss a");
+                const strTime = timeToString(time);
+                // const strTime = time;
                 if (!items[strTime]) {
                     items[strTime] = [];
                     const numItems = 3;

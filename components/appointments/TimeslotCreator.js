@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {useState} from 'react';
+import { View, StyleSheet, Text, Dimensions,TouchableOpacity  } from 'react-native';
 
 import { slotCreator } from "react-native-slot-creator";
 
@@ -11,12 +12,26 @@ function TimeSlot(props){
     console.log("requiredArray",requiredArray)
 
     list = () => {
+
+        // const [rippleColor, setRippleColor] = useState("");
+        // const [rippleOverflow, setRippleOverflow] = useState();
+
+
         return requiredArray.map((data,index,array) => {
             return (
-                <View style={{margin: 10}}>
-                    <Text>{index + 1}</Text>
-                    <Text>{array[index]}</Text>
-                </View>
+                <TouchableOpacity>
+                    
+                    <View style={styles.timeSlot}>
+                        {/* <Text>{index + 1}</Text> */}
+
+                            <Text>{array[index]}</Text>
+
+                    </View>
+                
+
+                </TouchableOpacity>
+                    
+                // </TouchableNativeFeedback>
             );
         });
     };
@@ -26,30 +41,51 @@ function TimeSlot(props){
         
         {list()}
         
-        {/* <View style={styles.timeSlot}>
-            <Text>
-
-            </Text>
-        </View> */}
     </View>
     )
 }
 
 export default TimeSlot;
 
+const deviceWidth = Math.round(Dimensions.get('window').width);
+
 const styles = StyleSheet.create({
 
     container: {
-        height: 70,
-        width: 100,
+        
+        display: 'flex',
+        flexDirection: 'row',
+        height: 300,
+        width: deviceWidth - 25,
+        backgroundColor:'grey',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly',
+        borderRadius: 20,
+        borderWidth: 2,
+        marginTop: 20,
+        borderColor: "#000"
+        
         
     },
 
     timeSlot: {
+        height: 50,
+        width: 90,
         borderWidth:1,
         borderRadius: 20,
-        borderColor: "blue"
+        borderColor: "#fff",
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin:10,
+        
+
     },
+
+    // touchable: {
+    //     height: 50,
+    //     width: 90,
+    //     flex:1
+    // }
 
 })
 
