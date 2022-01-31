@@ -1,5 +1,7 @@
-import { View,StyleSheet,StatusBar } from "react-native";
+import { View,Text,StyleSheet,StatusBar } from "react-native";
 import BusinessCard from  '../components/newAppointment/Card.js'
+// import TimeSlot from  './components/appointments/TimeSlotCreator.js'
+
 // import timeSlotPicker from 'react-native-timeslot-picker'
 
 import { slotCreator } from "react-native-slot-creator";
@@ -18,6 +20,18 @@ function explore() {
         // To get the Array of slots between given time interval without breakTime 
         let requiredArray = slotCreator.createSlot("08:00","15:00","40","","",true)
         console.warn("requiredArray",requiredArray)
+        console.log("requiredArray",requiredArray)
+
+        const list = () => {
+            return requiredArray.map((data,index,array) => {
+                return (
+                    <View style={{margin: 10}}>
+                        <Text>{index + 1}</Text>
+                        <Text>{array[index]}</Text>
+                    </View>
+                );
+            });
+        };
         
 
     return (
@@ -27,6 +41,16 @@ function explore() {
 
             {/* <timeSlotPicker/> */}
 
+            {/* <TimeSlot 
+                startTime = "08:00"
+                endTime = "14:00"
+                slotDuration = "40"
+                breakStartTime = ""
+                breakEndTime = ""
+                is12HoursFormat = {true}
+            /> */}
+
+            {list()}
 
         </View>
     );
