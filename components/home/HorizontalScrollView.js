@@ -13,7 +13,7 @@ return(
                 </View>
 
                 <View style = {{flex:1, paddingTop: 10,  alignItems: 'center',   }}>
-                    <Text style={{color: 'white'}}>{props.name}</Text>
+                    <Text style={{color: 'black'}}>{props.name}</Text>
                 </View>
 
             </View>

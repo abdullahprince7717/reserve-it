@@ -5300,6 +5300,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
+"react-native-beautiful-horizontal-list@^0.1.2":
+  "integrity" "sha512-0UcBYv7XCxMgaX93ENk4Sd3fpolXIgjK6bF2d4Ia5Ir3ae8c9IR65zZfaG64SdaN0jjHe06n6LaeL4oFwXml8w=="
+  "resolved" "https://registry.npmjs.org/react-native-beautiful-horizontal-list/-/react-native-beautiful-horizontal-list-0.1.2.tgz"
+  "version" "0.1.2"
+
 "react-native-calendars@^1.1276.0":
   "integrity" "sha512-+/zK6rlKIhRlNu/VgcG/XiDfteDYWrv0MnxVb6BKpyuTMTgVTfdE+/LJZtMoPXE15zYGcrCwEArVGQvAwJOgKA=="
   "resolved" "https://registry.npmjs.org/react-native-calendars/-/react-native-calendars-1.1276.0.tgz"

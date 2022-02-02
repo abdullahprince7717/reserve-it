@@ -39,6 +39,7 @@ function appointments() {
         newItems[key] = items[key];
     });
     setItems(newItems);
+    console.log(day)
     }, 1000);
 };
 

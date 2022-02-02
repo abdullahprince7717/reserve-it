@@ -2,7 +2,10 @@ import {Text, View,StyleSheet,ScrollView,StatusBar } from "react-native";
 import HorizontalScrollView  from '../components/home/HorizontalScrollView'
 import SearchBar from '../components/home/SearchBar.js'
 // import SearchBar from "react-native-dynamic-search-bar";
-import TabNavigation  from '../components/MaterialBottomNav.js'
+// import TabNavigation  from '../components/MaterialBottomNav.js'
+
+// import BeautifulHorizontalList from "react-native-beautiful-horizontal-list";
+
 
 function homeScreen() {
     return (

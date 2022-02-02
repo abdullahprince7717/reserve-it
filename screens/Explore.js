@@ -1,47 +1,60 @@
-import { View,Text,StyleSheet,StatusBar } from "react-native";
-import BusinessCard from  '../components/newAppointment/Card.js'
-import TimeSlot from  '../components/appointments/TimeslotCreator.js'
+import React, { useState } from 'react'
+import { View,Text,StyleSheet,StatusBar,Dimensions, } from "react-native";
+import BusinessCard from  '../components/newAppointment/Card.js';
+import { Calendar} from 'react-native-calendars';
+import TimeSlot from  '../components/appointments/TimeSlotCreator.js';
+import moment from 'moment';
 
 // import timeSlotPicker from 'react-native-timeslot-picker'
 
-import { slotCreator } from "react-native-slot-creator";
 
 
 function explore() {
 
-        // slotCreator.createSlot(startTime, endTime, slotDuration, breakStartTime, breakEndTime, is12HoursFormat)
-    
-        // To get the Array of slots between given time interval with breakTime and 12 Hrs format
+    let now = new Date();
+    var currentDate = moment(now).format('YYYY-MM-DD');
 
-        // let requiredArray = slotCreator.createSlot("08:00","10:00","20","09:00","09:30",true)
-        // console.warn("requiredArray",requiredArray)
-
-
-        // To get the Array of slots between given time interval without breakTime 
-        // let requiredArray = slotCreator.createSlot("08:00","15:00","40","","",true)
-        // console.warn("requiredArray",requiredArray)
-        // console.log("requiredArray",requiredArray)
-
-        // const list = () => {
-        //     return requiredArray.map((data,index,array) => {
-        //         return (
-        //             <View style={{margin: 10}}>
-        //                 <Text>{index + 1}</Text>
-        //                 <Text>{array[index]}</Text>
-        //             </View>
-        //         );
-        //     });
-        // };
-        
+    const [selectedDate,setSelectedDate] = useState(currentDate)
 
     return (
         <View style = {styles.view}>
-            <BusinessCard title =" abba dabba jabba" image = {require('../assets/logo.png')}
-            description = "ajhdvukvadaikdv ajhdvd"/>
+            {/* <BusinessCard title =" abba dabba jabba" image = {require('../assets/logo.png')}
+            description = "ajhdvukvadaikdv ajhdvd"/> */}
 
             {/* <timeSlotPicker/> */}
 
-            <TimeSlot 
+            <Calendar
+                style={styles.Calendar}
+                onDayPress={(day) =>  setSelectedDate(day.dateString)}
+                markedDates={{
+                    [selectedDate]: {
+                        selected: true,
+                        disableTouchEvent: true,
+                        selectedColor: '#F1EFFE',
+                        selectedTextColor: '#7954FA',
+                    },
+                }}
+                minDate={currentDate}
+                theme={{
+                    backgroundColor: "#ffffff",
+                    calendarBackground: "#ffffff",
+                    todayTextColor: "#57B9BB",
+                    dayTextColor: "#222222",
+                    textDisabledColor: "#d9e1e8",
+                    monthTextColor: "#57B9BB",
+                    arrowColor: "#57B9BB",
+                    textDayFontWeight: "300",
+                    textMonthFontWeight: "bold",
+                    textDayHeaderFontWeight: "500",
+                    textDayFontSize: 16,
+                    textMonthFontSize: 18,
+                    selectedDayBackgroundColor: "#57B9BB",
+                    selectedDayTextColor: "white",
+                }}
+            />
+
+
+            <TimeSlot
                 startTime = "08:00"
                 endTime = "14:10"
                 slotDuration = "40"
@@ -58,6 +71,8 @@ function explore() {
 
 export default explore;
 
+const deviceWidth = Math.round(Dimensions.get('window').width);
+
 const styles = StyleSheet.create({
 
     view: {
@@ -66,5 +81,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
+    Calendar: {
+
+        width: deviceWidth-25,
+        paddingBottom: 10,
+        borderRadius: 20,
+        // height: 300, 
+        // width: "90%",
+        // justifyContent: "center" 
+
+    }
     
 })
