@@ -65,9 +65,36 @@ function explore() {
                 breakStartTime = ""
                 breakEndTime = ""
                 is12HoursFormat = {true}
+
+            />
+            
+            <View style= {{borderWidth:0.5,width:deviceWidth,marginBottom:10}}
             />
 
+            
+
+            <View style = {styles.servicesList}>
+                <Text style = {{fontSize: 20, marginTop: 0,fontWeight:'bold', marginLeft:20,  }}> 
+                    Service Name                                                
+                </Text>
+                <Text style = {{ fontSize: 20, marginTop: 0,fontWeight:'normal', marginLeft:170,marginRight:20 }}>
+                        5000 Pkr
+                </Text>
+            </View>
+            <View style = {styles.servicesList}>
+                <Text style = {{ fontSize: 16, marginTop: 0,fontWeight:'normal', marginLeft:290,marginRight:10, }}>
+                        10:00 - 10:30
+                </Text>
+            </View>
+
+            <View style= {{borderWidth:0.5,width:deviceWidth,marginTop:10}}
+            
+            />
+
+
             {/* {list()} */}
+
+
 
         </View>
     );
@@ -85,17 +112,29 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     Calendar: {
 
         width: deviceWidth-25,
         paddingBottom: 10,
+        marginBottom: 10,
         borderRadius: 20,
+        marginTop: 10,
         // height: 300, 
         // width: "90%",
         // justifyContent: "center" 
 
-    }
+    },
+    servicesList: {
+        // backgroundColor: '#fff',
+        justifyContent: "flex-start",
+        flexDirection: 'row',
+        width: deviceWidth,
+        marginTop: 0,
+        height: 25,
+
+    },
+
     
 })
