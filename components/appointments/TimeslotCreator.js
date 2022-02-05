@@ -1,34 +1,47 @@
 import * as React from 'react';
 import {useState} from 'react';
-import { View, StyleSheet, Text, Dimensions,TouchableOpacity,ScrollView  } from 'react-native';
+import { View, StyleSheet, Text, Dimensions,TouchableOpacity,ScrollView,Pressable } from 'react-native';
 
 import { slotCreator } from "react-native-slot-creator";
 
 function TimeSlot(props){
-    // slotCreator.createSlot(startTime, endTime, slotDuration, breakStartTime, breakEndTime, is12HoursFormat)
-    
+
+    // slotCreator.createSlot(startTime, endTime, slotDuration, breakStartTime, breakEndTime, is12HoursFormat)    
         // To get the Array of slots between given time interval with breakTime and 12 Hrs format
         // let requiredArray = slotCreator.createSlot("08:00","10:00","20","09:00","09:30",true)
-        // console.warn("requiredArray",requiredArray)
     // let requiredArray = slotCreator.createSlot("08:00","15:00","40","","",true)
-    
+
     let requiredArray = slotCreator.createSlot(props.startTime,props.endTime,props.slotDuration,props.breakTimeStart,props.breakTimeStart,props.is12HoursFormat)
-    console.warn("requiredArray",requiredArray)
-    console.log("requiredArray",requiredArray)
+    // console.warn("requiredArray",requiredArray)
+   
+
+    const [selectedSlot,setSelectedSlot] = useState([])
+    const [isPressed,setIsPressed] = useState(false)
 
     list = () => {
         return requiredArray.map((data,index,array) => {
             return (
+                    <TouchableOpacity
+                        style={styles.timeSlot}
+                        onPress = {() => {
+                            setSelectedSlot(array[index])
 
-                <TouchableOpacity>
-                    <View style={styles.timeSlot}>
+                            console.log("Selected Slot is ",selectedSlot)
+                            console.log("A R R A Y ",array[index])
+                            
+                        }}
+                    >
                         {/* <Text>{index + 1}</Text> */}
-
                             <Text>{array[index]}</Text>
+                    </TouchableOpacity>
 
-                    </View>
-                </TouchableOpacity>
-                    
+
+
+
+                    // setTimeout(() => {
+                    //     console.log("Selected Slot is ",selectedSlot)
+                    //     console.log("A R R A Y  ",array[index])
+                    // }, 2000);
             );
         });
     };
@@ -59,15 +72,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         // width: deviceWidth,
-        backgroundColor:'pink',
+        // backgroundColor:"#fff",
         // flexWrap: 'wrap',
         // justifyContent: 'space-evenly',
         // borderRadius: 20,
-        borderWidth: 1,
-        borderColor:'grey',
+        borderWidth: 0.5,
+        // borderColor:'grey',
         marginTop: 10,
         // borderColor: "#000"
-        
         
     },
 
@@ -80,15 +92,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         margin:10,
+        backgroundColor: '#fff',
         
 
     },
 
-    // touchable: {
-    //     height: 50,
-    //     width: 90,
-    //     flex:1
-    // }
+    onPressStyle: {
+        backgroundColor: '#fff',
+    }
 
 })
 

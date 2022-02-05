@@ -25,13 +25,17 @@ function explore() {
 
             <Calendar
                 style={styles.Calendar}
-                onDayPress={(day) =>  setSelectedDate(day.dateString)}
+                onDayPress={(day) =>  {
+                    setSelectedDate(day.dateString)
+                    console.log("Selected Date",day.dateString)
+                    console.log("current Date",currentDate)
+                }}
                 markedDates={{
                     [selectedDate]: {
                         selected: true,
                         disableTouchEvent: true,
-                        selectedColor: '#F1EFFE',
-                        selectedTextColor: '#7954FA',
+                        selectedColor: '#57B9BB',
+                        selectedTextColor: '#000',
                     },
                 }}
                 minDate={currentDate}
@@ -67,6 +71,8 @@ function explore() {
 
         </View>
     );
+
+    
 }
 
 export default explore;
