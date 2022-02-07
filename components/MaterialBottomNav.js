@@ -27,7 +27,7 @@ function TabNavigation(props) {
                 elevation: 0,
                 borderRadius: 20,
                 borderColor: '#000',
-                borderWidth:1,
+                // borderWidth:1,
                 overflow: 'hidden',
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20,

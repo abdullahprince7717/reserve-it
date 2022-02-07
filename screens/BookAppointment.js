@@ -60,6 +60,24 @@ function explore() {
 
             {/* {list()} */}
 
+            <View style = {styles.servicesList}>
+                <Text style = {{fontSize: 20, marginTop: 0,fontWeight:'bold', marginLeft:20,  }}> 
+                    Service Name                                                
+                </Text>
+                <Text style = {{ fontSize: 20, marginTop: 0,fontWeight:'normal', marginLeft:170,marginRight:20 }}>
+                        5000 Pkr
+                </Text>
+            </View>
+            <View style = {styles.servicesList}>
+                <Text style = {{ fontSize: 16, marginTop: 0,fontWeight:'normal', marginLeft:290,marginRight:10, }}>
+                        10:00 - 10:30
+                </Text>
+            </View>
+
+            <View style= {{borderWidth:0.5,width:deviceWidth,marginTop:10}}
+            
+            />
+
         </View>
     );
 
@@ -87,6 +105,15 @@ const styles = StyleSheet.create({
         // width: "90%",
         // justifyContent: "center" 
 
-    }
+    },
+    servicesList: {
+        // backgroundColor: '#fff',
+        justifyContent: "flex-start",
+        flexDirection: 'row',
+        width: deviceWidth,
+        marginTop: 0,
+        height: 25,
+
+    },
     
 })

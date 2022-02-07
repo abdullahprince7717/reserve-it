@@ -1,4 +1,4 @@
-import {Text, View,StyleSheet,ScrollView,StatusBar } from "react-native";
+import {Text, View,StyleSheet,ScrollView,StatusBar,Dimensions } from "react-native";
 import HorizontalScrollView  from '../components/home/HorizontalScrollView'
 import SearchBar from '../components/home/SearchBar.js'
 // import SearchBar from "react-native-dynamic-search-bar";
@@ -9,9 +9,13 @@ import SearchBar from '../components/home/SearchBar.js'
 
 function homeScreen() {
     return (
-        <View style = {styles.view}>
-            <SearchBar />
-            <View style ={{height: 230, marginTop: 20, backgroundColor: 'white', borderColor: 'black', borderWidth:1}}>
+        <View style = {styles.container}>
+            
+            <View style = {styles.searchBar}>
+                <SearchBar />
+            </View>
+
+            <View style ={styles.scrollView}>
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
@@ -23,6 +27,10 @@ function homeScreen() {
 
                 </ScrollView>
 
+                <View style = {styles.listView}>
+                    <Text>List of popular businesses</Text>
+                </View>
+
             </View>
 
             {/* <TabNavigation/> */}
@@ -33,12 +41,32 @@ function homeScreen() {
 
 export default homeScreen;
 
+const deviceWidth = Math.round(Dimensions.get('window').width);
+
 const styles = StyleSheet.create({
 
-    view: {
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
+    container: {
+        display: 'flex',
+        height:'100%',
+        justifyContent: 'center',
+        alignItems: 'center',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-    }
+    },
+    searchBar:{
+        width: deviceWidth-30,
+        marginBottom: 10,
+        marginTop: 10,
+    },
+    scrollView: {
+        flex:1, 
+        backgroundColor: 'white', 
+        borderColor: 'black', 
+        borderWidth:0.3
+    },
+    listView: {
+        flex:150,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F39DFF',
+    },
 })
