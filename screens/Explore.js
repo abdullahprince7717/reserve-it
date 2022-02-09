@@ -59,7 +59,7 @@ function explore({navigation}) {
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        navigation.navigate('Maps')
+                        navigation.navigate('Map')
                     }}
                     color = '#fff'
                 />

@@ -48,7 +48,7 @@ import TabNavigation from '../components/MaterialBottomNav.js';
 function MyStack() {
     return (
         <Stack.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Home"
         screenOptions={{
             headerTintColor: 'white',
             headerStyle: { backgroundColor: 'tomato' },
@@ -60,12 +60,32 @@ function MyStack() {
             component={TabNavigation}
         />
         <Stack.Screen
-            name="Profile"
-            component={MapScreen}
+            name="Explore"
+            component={Explore}
+        />
+        <Stack.Screen
+            name="Appointments"
+            component={Appointments}
+        />
+        <Stack.Screen
+            name="Booking"
+            component={Booking}
         />
         <Stack.Screen
             name="Settings"
             component={Settings}
+        />
+        <Stack.Screen
+            name="Login"
+            component={Login}
+        />
+        <Stack.Screen
+            name="Signup"
+            component={Signup}
+        />
+        <Stack.Screen
+            name="MapScreen"
+            component={MapScreen}
         />
         </Stack.Navigator>
     );
