@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View,Text,TextInput,Button, ScrollView, Image, StatusBar, TouchableOpacity } from 'react-native';
+import { StyleSheet, View,Text,TextInput,Button, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -19,12 +19,12 @@ const signIn = ({navigation}) => {
 
             <View style = {styles.form}>
               <TextInput
-	              placeholder="Email"
+                placeholder="Email"
                 placeholderTextColor= {"#fff"}
                 style={styles.textInput}
               />
               <TextInput
-	              placeholder="Password"
+                placeholder="Password"
                 placeholderTextColor= {"#fff"}
                 secureTextEntry = {true} 
                 style={styles.textInput}
@@ -46,11 +46,11 @@ const signIn = ({navigation}) => {
             </Text>
 
     
-	            {/* style={styles.facebookBtn}>
-              	<FontAwesome name='facebook' size={20} color='#fff' />
+              {/* style={styles.facebookBtn}>
+                <FontAwesome name='facebook' size={20} color='#fff' />
                 <Text style={}>
                   Login With Facebook 
-	            </Text> */}
+	              </Text> */}
             
 
           </View>

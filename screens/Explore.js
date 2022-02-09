@@ -3,8 +3,10 @@ import { View,Text,StyleSheet,StatusBar,Dimensions,TextInput } from "react-nativ
 import BusinessCard from  '../components/newAppointment/Card.js';
 import SearchBar from '../components/home/SearchBar.js'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { FAB } from 'react-native-paper';
+// import Map from './MapScreen.js';
 
-function explore() {
+function explore({navigation}) {
 
     const [text, onChangeText] = useState("Useless Text");
 
@@ -14,7 +16,7 @@ function explore() {
                 <View style = {styles.searchBar}>
                     <SearchBar />
                     <GooglePlacesAutocomplete
-                        placeholder='Search'
+                        placeholder='Location'
 
                         onPress={(data, details = null) => {
                             // 'details' is provided when fetchDetails = true
@@ -49,6 +51,18 @@ function explore() {
             <View style = {styles.listView}>
                 <BusinessCard title =" abba dabba jabba" image = {require('../assets/logo.png')}
                 description = "ajhdvukvadaikdv ajhdvd"/>
+
+                <FAB
+                    style={styles.fab}
+                    label = "Maps"
+                    large
+                    icon="map-marker-outline"
+                    onPress={() => {
+                        console.log('Pressed')
+                        navigation.navigate('Maps')
+                    }}
+                    color = '#fff'
+                />
             </View>
 
             
@@ -92,6 +106,15 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         justifyContent: 'flex-start',
         backgroundColor: '#F39DFF',
+    },
+    fab: {
+        position: 'absolute',
+        margin: 10,
+        right: 15,
+        bottom: 75,
+        elevation: 1,
+        backgroundColor: '#000',
+        // borderRadius: 80,
     },
 
     

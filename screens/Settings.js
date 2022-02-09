@@ -52,70 +52,82 @@ function settings(props) {
             <View style={{borderBottomColor: 'grey',borderBottomWidth: 0.5}}/>
 
             <View style={styles.menuWrapper}>
-            <TouchableRipple > 
-                <View style = {styles.menuItem}>
-                    <Icon 
-                        name = "heart-outline"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Your Favourites</Text>
-                </View>
-            </TouchableRipple>
+                <TouchableRipple 
+                    onPress = {() => console.log('pressed')}
+                > 
+                    <View style = {styles.menuItem}>
+                        <Icon 
+                            name = "heart-outline"
+                            size = {25}
+                            />
+                        <Text style={styles.menuItemText}>Your Favourites</Text>
+                    </View>
+                </TouchableRipple>
 
 
-            <TouchableRipple >
-                <View style = {styles.menuItem}>
-                    <Icon 
-                        name = "credit-card"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Payment</Text>
-                </View>
-            </TouchableRipple>
+                <TouchableRipple 
+                    onPress = {() => console.log('pressed')}
+                >
+                    <View style = {styles.menuItem}>
+                        <Icon 
+                            name = "credit-card"
+                            size = {25}
+                            />
+                        <Text style={styles.menuItemText}>Payment</Text>
+                    </View>
+                </TouchableRipple>
 
 
-            <TouchableRipple >
-                <View style = {styles.menuItem}>
-                    <Icon 
-                        name = "share-outline"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Share with your friends</Text>
-                </View>
-            </TouchableRipple>
+                <TouchableRipple
+                    onPress = {() => console.log('pressed')}
+                >
+                    <View style = {styles.menuItem}>
+                        <Icon 
+                            name = "share-outline"
+                            size = {25}
+                            />
+                        <Text style={styles.menuItemText}>Share with your friends</Text>
+                    </View>
+                </TouchableRipple>
 
 
-            <TouchableRipple >
-                <View style = {styles.menuItem}>
-                    <Icons
-                        name = "rate-review"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Reviews</Text>
-                </View>
-            </TouchableRipple>
+                <TouchableRipple
+                    onPress = {() => console.log('pressed')}
+                >
+                    <View style = {styles.menuItem}>
+                        <Icons
+                            name = "rate-review"
+                            size = {25}
+                            />
+                        <Text style={styles.menuItemText}>Reviews</Text>
+                    </View>
+                </TouchableRipple>
 
 
-            <TouchableRipple >
-                <View style = {styles.menuItem}>
-                    <Icons 
-                        name = "feedback"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Feedback</Text>
-                </View>
-            </TouchableRipple>
+                <TouchableRipple 
+                onPress = {() => console.log('pressed')}
+                >
+                    <View style = {styles.menuItem}>
+                        <Icons 
+                            name = "feedback"
+                            size = {25}
+                            />
+                        <Text style={styles.menuItemText}>Feedback</Text>
+                    </View>
+                </TouchableRipple>
 
 
-            <TouchableRipple >
-                <View style = {styles.menuItem}>
-                    <Icons 
-                        name = "logout"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Logout</Text>
-                </View>
-            </TouchableRipple>
+                <TouchableRipple 
+                onPress = {() => console.log('pressed')}
+                >
+                    <View style = {styles.menuItem}>
+                        <Icons 
+                            name = "logout"
+                            size = {25}
+                            />
+                        <Text style={styles.menuItemText}>Logout</Text>
+                    </View>
+                </TouchableRipple>
 
             </View>
             

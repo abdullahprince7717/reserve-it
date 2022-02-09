@@ -1,6 +1,7 @@
-import {Text, View,StyleSheet,ScrollView,StatusBar,Dimensions } from "react-native";
+import {Text, View,StyleSheet,ScrollView,StatusBar,Dimensions,Image } from "react-native";
 import HorizontalScrollView  from '../components/home/HorizontalScrollView'
 import SearchBar from '../components/home/SearchBar.js'
+import logo from '../assets/logo.png';
 // import SearchBar from "react-native-dynamic-search-bar";
 // import TabNavigation  from '../components/MaterialBottomNav.js'
 
@@ -10,9 +11,10 @@ import SearchBar from '../components/home/SearchBar.js'
 function homeScreen() {
     return (
         <View style = {styles.container}>
-            
             <View style = {styles.searchBar}>
-                <SearchBar />
+
+                <Image style ={{height:'110%' }}  source={require('../assets/homeLogo.png')} />
+
             </View>
 
             <View style ={styles.scrollView}>
@@ -53,9 +55,13 @@ const styles = StyleSheet.create({
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     searchBar:{
-        width: deviceWidth-30,
-        marginBottom: 10,
-        marginTop: 10,
+        width: deviceWidth,
+        flex:0.1,
+        paddingTop:10,
+        paddingBottom:10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#000',
     },
     scrollView: {
         flex:1, 
