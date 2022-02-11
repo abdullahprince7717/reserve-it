@@ -11,9 +11,9 @@ import logo from '../assets/logo.png';
 function homeScreen() {
     return (
         <View style = {styles.container}>
-            <View style = {styles.searchBar}>
+            <View style = {styles.logo}>
 
-                <Image style ={{height:'110%' }}  source={require('../assets/homeLogo.png')} />
+                <Image style ={{height:'120%' }}  source={require('../assets/homeLogo.png')} />
 
             </View>
 
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
         height:'100%',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
-    searchBar:{
+    logo:{
         width: deviceWidth,
         flex:0.1,
         paddingTop:10,

@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: deviceWidth,
         height: deviceHeight,
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     Calendar: {
         width: deviceWidth,

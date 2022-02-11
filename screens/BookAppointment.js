@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View,StyleSheet,StatusBar,Dimensions, } from "react-native";
+import { View,StyleSheet,StatusBar,Dimensions,Text,TouchableOpacity,Button } from "react-native";
 import { Calendar} from 'react-native-calendars';
 import TimeSlot from  '../components/appointments/TimeSlotCreator.js';
 import moment from 'moment';
@@ -11,9 +11,11 @@ function explore() {
     var currentDate = moment(now).format('YYYY-MM-DD');
 
     const [selectedDate,setSelectedDate] = useState(currentDate)
+    const [value, setValue] = useState("");
 
     return (
         <View style = {styles.view}>
+
             <Calendar
                 style={styles.Calendar}
                 onDayPress={(day) =>  {
@@ -58,7 +60,7 @@ function explore() {
                 is12HoursFormat = {true}
             />
 
-            {/* {list()} */}
+            <View style= {{borderWidth:0.2,width:deviceWidth,marginTop:10,marginBottom:10}}/>
 
             <View style = {styles.servicesList}>
                 <Text style = {{fontSize: 20, marginTop: 0,fontWeight:'bold', marginLeft:20,  }}> 
@@ -74,10 +76,13 @@ function explore() {
                 </Text>
             </View>
 
-            <View style= {{borderWidth:0.5,width:deviceWidth,marginTop:10}}
-            
-            />
+            <View style= {{borderWidth:0.2,width:deviceWidth,marginTop:10}}/>
 
+            <View style = {styles.buttonContainer}>
+                <TouchableOpacity style = {styles.Button}>
+                    <Text>Book</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 
@@ -94,12 +99,12 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     Calendar: {
 
         width: deviceWidth-25,
-        paddingBottom: 10,
+        paddingBottom: 5,
         borderRadius: 20,
         // height: 300, 
         // width: "90%",
@@ -113,6 +118,26 @@ const styles = StyleSheet.create({
         width: deviceWidth,
         marginTop: 0,
         height: 25,
+
+    },
+    buttonContainer:{
+        width:deviceWidth-40, 
+        marginBottom: 20,
+        flexDirection:'column',
+        // backgroundColor:'#000',
+        alignItems: 'flex-end',
+        justifyContent:'flex-end',
+        marginTop: 20,
+        flexWrap:'wrap',
+    },
+    Button: {
+        backgroundColor: '#57B9BB',
+        width: deviceWidth-40,
+        height: 40,
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',        
 
     },
     

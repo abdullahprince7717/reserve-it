@@ -50,9 +50,9 @@ function MyStack() {
         <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-            headerTintColor: 'white',
-            headerStyle: { backgroundColor: 'tomato' },
-            headerShown: false,
+            headerTintColor: 'black',
+            headerStyle: { backgroundColor: 'white' },
+            // headerShown: false,
         }}
         >
         <Stack.Screen
@@ -84,7 +84,7 @@ function MyStack() {
             component={Signup}
         />
         <Stack.Screen
-            name="MapScreen"
+            name="Map"
             component={MapScreen}
         />
         </Stack.Navigator>

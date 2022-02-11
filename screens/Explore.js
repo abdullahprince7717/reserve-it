@@ -4,11 +4,11 @@ import BusinessCard from  '../components/newAppointment/Card.js';
 import SearchBar from '../components/home/SearchBar.js'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { FAB } from 'react-native-paper';
-// import Map from './MapScreen.js';
+// import ButtonToggleGroup from 'react-native-button-toggle-group';
 
 function explore({navigation}) {
 
-    const [text, onChangeText] = useState("Useless Text");
+    const [value, setValue] = useState("");
 
     return (
         <View style = {styles.container}>
@@ -59,13 +59,11 @@ function explore({navigation}) {
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        navigation.navigate('Map')
+                        navigation.navigate('Booking')
                     }}
                     color = '#fff'
                 />
             </View>
-
-            
         </View>
     );
 
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         height: '100%',
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     searchView: {
         flex:0.5,
