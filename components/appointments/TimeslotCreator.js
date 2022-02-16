@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {useState} from 'react';
-import { View, StyleSheet, Text, Dimensions,TouchableOpacity,ScrollView } from 'react-native';
+import {useState,useEffect} from 'react';
+import { View, StyleSheet, Text, Dimensions,TouchableOpacity,ScrollView, } from 'react-native';
 
 import { slotCreator } from "react-native-slot-creator";
 
@@ -16,6 +16,12 @@ function TimeSlot(props){
 
     const [selectedSlot,setSelectedSlot] = useState([])
     const [indexCheck,setIndexCheck] = useState("0")
+
+
+
+    useEffect(() => {
+        console.log("Selected Slot is ",selectedSlot)}, [selectedSlot]
+    );
 
     const list = () => {
         return requiredArray.map((data,index,array) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View,Text,StyleSheet,StatusBar,Dimensions,TextInput } from "react-native";
-import BusinessCard from  '../components/newAppointment/Card.js';
+import { View,StyleSheet,Dimensions,TouchableWithoutFeedback } from "react-native";
+import BusinessCard from  '../components/explore/Card.js';
 import SearchBar from '../components/home/SearchBar.js'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { FAB } from 'react-native-paper';
@@ -33,7 +33,7 @@ function explore({navigation}) {
                             },
                             textInput: {
                                 height: 50,
-                                color: '#5d5d5d',
+                                color: '#000',
                                 fontSize: 17,
                                 marginBottom: 10,
                                 marginTop: 10,
@@ -49,8 +49,21 @@ function explore({navigation}) {
             </View>
             
             <View style = {styles.listView}>
-                <BusinessCard title =" abba dabba jabba" image = {require('../assets/logo.png')}
-                description = "ajhdvukvadaikdv ajhdvd"/>
+
+                
+                <TouchableWithoutFeedback
+                    onPress ={() => {
+                        console.log('Pressed')
+                        navigation.navigate('BusinessProfile')
+                    }}
+                >
+                <View>
+                    <BusinessCard/>
+                </View>    
+                    
+
+                </TouchableWithoutFeedback>
+                
 
                 <FAB
                     style={styles.fab}
@@ -59,7 +72,7 @@ function explore({navigation}) {
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        navigation.navigate('Booking')
+                        navigation.navigate('Map')
                     }}
                     color = '#fff'
                 />
@@ -85,7 +98,7 @@ const styles = StyleSheet.create({
         // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     searchView: {
-        flex:0.5,
+        flex:0.55,
         width: deviceWidth,
         alignItems:'center',
         paddingBottom: 10,

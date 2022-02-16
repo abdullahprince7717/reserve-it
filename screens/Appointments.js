@@ -29,7 +29,7 @@ function appointments() {
                     for (let j = 0; j < numItems; j++) {
                         items[strTime].push({
                         name: 'Item for ' + strTime + ' #' + j,
-                        height: Math.max(50, Math.floor(Math.random() * 150)),
+                        height: 10,
                         });
                     }
                 }

@@ -31,6 +31,8 @@
     "react-native-elements": "^3.4.2",
     "react-native-flash-message": "^0.2.0",
     "react-native-google-places-autocomplete": "^2.4.1",
+    "react-native-image-slider-banner": "^1.0.2",
+    "react-native-image-slider-box": "^1.1.17",
     "react-native-maps": "0.29.4",
     "react-native-paper": "^4.11.2",
     "react-native-safe-area-context": "3.3.2",
