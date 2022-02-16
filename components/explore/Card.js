@@ -30,7 +30,16 @@ const styles = StyleSheet.create  ({
         height: 260,
         width: deviceWidth-30,
         marginTop:10,
-        borderRadius:10
+        borderRadius:10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 6,
+        },
+        shadowOpacity: 0.39,
+        shadowRadius: 8.30,
+
+        elevation: 13,
 
     },
 });

@@ -47,7 +47,7 @@ const BusinessProfile = (props) => {
                             price = "2999"
                             onPress ={ () => {
                                 console.log('Pressed')
-                                props.navigation.navigate('TestingAppointments')       //just for testing
+                                props.navigation.navigate('Testing')       //just for testing
                             }}
                         />
                         <ServiceCard

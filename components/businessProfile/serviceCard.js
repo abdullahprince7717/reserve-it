@@ -5,34 +5,33 @@ import React from 'react';
 // function serviceCard  (props,{navigation})  {
 function serviceCard  (props)  {
     return (
-        <View style={{borderRadius: 10}}>
-            <View style={styles.services}>
-                <View style={styles.service}>
-                    <View style = {styles.listView}> 
-                        <Text style={{margin:7,fontSize:18,width:'55%'}}>
-                            {props.name}                                       {props.serviceName}
-                        </Text>
-                        <Text style={{margin:7,fontSize:17,width:'12%'}}>
-                            ${props.price}
-                        </Text>
-                    
-                        <View style = {styles.buttonView}>
-                            <Button 
-                                mode="contained" 
-                                // onPress={() => {
-                                //     console.log('Pressed')
-                                //     navigation.navigate('Booking')
-                                // }}
-                                onPress= {props.onPress}
-                                style = {styles.button}
-                            >
-                                Book
-                            </Button>
-                        </View>
+        <View style={styles.services}>
+            <View style={styles.service}>
+                <View style = {styles.listView}> 
+                    <Text style={{margin:7,fontSize:18,width:'55%'}}>
+                        {props.name}                                       {props.serviceName}
+                    </Text>
+                    <Text style={{margin:7,fontSize:17,width:'12%'}}>
+                        ${props.price}
+                    </Text>
+                
+                    <View style = {styles.buttonView}>
+                        <Button 
+                            mode="contained" 
+                            // onPress={() => {
+                            //     console.log('Pressed')
+                            //     navigation.navigate('Booking')
+                            // }}
+                            onPress= {props.onPress}
+                            style = {styles.button}
+                        >
+                            Book
+                        </Button>
                     </View>
                 </View>
             </View>
         </View>
+
     );
 };
 
@@ -42,6 +41,7 @@ styles = StyleSheet.create({
 
     services:{
         borderRadius: 30,
+        
     },
     service: {
         flexDirection: 'column',
@@ -54,6 +54,7 @@ styles = StyleSheet.create({
         flexWrap: 'wrap',
         marginBottom: 20,
         borderRadius: 30,
+        
         
 
     },

@@ -14,6 +14,7 @@ import Settings from '../screens/Settings.js';
 import MapScreen from '../screens/MapScreen.js';
 import TabNavigation from '../components/MaterialBottomNav.js';
 import BusinessProfile from '../screens/BusinessProfile.js';
+import Testing from '../screens/AppointmentCard.js';
 // import serviceCard from '../components/businessProfile/serviceCard.js';
 
 // const screens = {
@@ -92,10 +93,15 @@ function MyStack() {
             name="BusinessProfile"
             component={BusinessProfile}
         />
+        <Stack.Screen
+            name="Testing"
+            component={Testing}
+        />
         {/* <Stack.Screen
             name="serviceCard"
             component={serviceCard}
         /> */}
+
         </Stack.Navigator>
     );
 }
