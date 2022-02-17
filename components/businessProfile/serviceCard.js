@@ -3,7 +3,7 @@ import {Button } from 'react-native-paper';
 import React from 'react';
 
 // function serviceCard  (props,{navigation})  {
-function serviceCard  (props)  {
+function ServiceCard  (props)  {
     return (
         <View style={styles.services}>
             <View style={styles.service}>
@@ -18,10 +18,6 @@ function serviceCard  (props)  {
                     <View style = {styles.buttonView}>
                         <Button 
                             mode="contained" 
-                            // onPress={() => {
-                            //     console.log('Pressed')
-                            //     navigation.navigate('Booking')
-                            // }}
                             onPress= {props.onPress}
                             style = {styles.button}
                         >
@@ -35,7 +31,7 @@ function serviceCard  (props)  {
     );
 };
 
-export default serviceCard;
+export default ServiceCard;
 const deviceWidth = Math.round(Dimensions.get('window').width);
 styles = StyleSheet.create({
 
@@ -45,7 +41,7 @@ styles = StyleSheet.create({
     },
     service: {
         flexDirection: 'column',
-        backgroundColor: 'blue',
+        backgroundColor: 'white',
         width: deviceWidth-25,
         justifyContent: 'center',
         alignItems: 'center',
@@ -61,16 +57,18 @@ styles = StyleSheet.create({
 
     listView: {
         flexDirection: 'row',
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         flex:3,
+        
         
     },
     buttonView: {
         flexDirection: 'row',
-        backgroundColor: 'green',
+        backgroundColor: 'white',
         flex:2,
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
     button: {
         backgroundColor: '#F39DFF',
@@ -78,6 +76,7 @@ styles = StyleSheet.create({
         height: '55%',
         alignItems: 'center',
         justifyContent: 'center',
+        
         
     },
 

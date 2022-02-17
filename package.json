@@ -10,7 +10,11 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@mdi/font": "^6.5.95",
+    "@mui/material": "^5.4.2",
+    "@mui/styled-engine-sc": "^5.4.2",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-firebase/auth": "^14.2.2",
     "@react-navigation/bottom-tabs": "^6.0.9",
@@ -34,15 +38,18 @@
     "react-native-image-slider-banner": "^1.0.2",
     "react-native-image-slider-box": "^1.1.17",
     "react-native-maps": "0.29.4",
+    "react-native-pager-view": "5.4.9",
     "react-native-paper": "^4.11.2",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-slot-creator": "^1.0.1",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-tab-view": "^3.1.1",
     "react-native-timeslot-picker": "^1.0.0",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1",
-    "react-navigation-stack": "^2.10.4"
+    "react-navigation-stack": "^2.10.4",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

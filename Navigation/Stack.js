@@ -14,8 +14,9 @@ import Settings from '../screens/Settings.js';
 import MapScreen from '../screens/MapScreen.js';
 import TabNavigation from '../components/MaterialBottomNav.js';
 import BusinessProfile from '../screens/BusinessProfile.js';
-import Testing from '../screens/AppointmentCard.js';
-// import serviceCard from '../components/businessProfile/serviceCard.js';
+import BookingConfirm from '../screens/BookingConfirm.js';
+// import Testing from '../screens/AppointmentCard.js';
+// import ServiceCard from '../components/businessProfile/ServiceCard.js';
 
 // const screens = {
 
@@ -94,9 +95,13 @@ function MyStack() {
             component={BusinessProfile}
         />
         <Stack.Screen
+            name="BookingConfirm"
+            component={BookingConfirm}
+        />
+        {/* <Stack.Screen
             name="Testing"
             component={Testing}
-        />
+        /> */}
         {/* <Stack.Screen
             name="serviceCard"
             component={serviceCard}
