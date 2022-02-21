@@ -5,7 +5,7 @@ import TimeSlot from  '../components/appointments/TimeSlotCreator.js';
 import moment from 'moment';
 
 
-function explore() {
+function explore({navigation}) {
 
     let now = new Date();
     var currentDate = moment(now).format('YYYY-MM-DD');
@@ -63,7 +63,7 @@ function explore() {
             <View style= {{borderWidth:0.2,width:deviceWidth,marginTop:10,marginBottom:10}}/>
 
             <View style = {styles.servicesList}>
-                <Text style = {{fontSize: 20, marginTop: 0,fontWeight:'bold', marginLeft:20,  }}> 
+                <Text style = {{fontSize: 20, marginTop: 0,fontWeight:'bold', marginLeft:20,}}> 
                     Service Name                                                
                 </Text>
                 <Text style = {{ fontSize: 20, marginTop: 0,fontWeight:'normal', marginLeft:170,marginRight:20 }}>
@@ -79,7 +79,12 @@ function explore() {
             <View style= {{borderWidth:0.2,width:deviceWidth,marginTop:10}}/>
 
             <View style = {styles.buttonContainer}>
-                <TouchableOpacity style = {styles.Button}>
+                <TouchableOpacity 
+                style = {styles.Button}
+                onPress = {() =>{
+                    navigation.navigate('BookingConfirm')
+                }}
+                >
                     <Text>Book</Text>
                 </TouchableOpacity>
             </View>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View,StyleSheet,Dimensions,TouchableWithoutFeedback } from "react-native";
+import { View,StyleSheet,Dimensions,TouchableWithoutFeedback,ScrollView } from "react-native";
 import BusinessCard from  '../components/explore/Card.js';
 import SearchBar from '../components/home/SearchBar.js'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -50,17 +50,27 @@ function explore({navigation}) {
             
             <View style = {styles.listView}>
 
-                
                 <TouchableWithoutFeedback
                     onPress ={() => {
                         console.log('Pressed')
                         navigation.navigate('BusinessProfile')
                     }}
                 >
-                <View>
-                    <BusinessCard/>
-                </View>    
+                <ScrollView>    
+                    <View>
                     
+                        <BusinessCard/>
+                    
+                        <BusinessCard/>
+                    
+                        <BusinessCard/>
+                    
+                        <BusinessCard/>
+                    
+                        <BusinessCard/>
+                    
+                    </View>    
+                </ScrollView>    
 
                 </TouchableWithoutFeedback>
                 
@@ -116,7 +126,6 @@ const styles = StyleSheet.create({
         width: deviceWidth,
         flexDirection:'column',
         justifyContent: 'flex-start',
-        backgroundColor: '#F39DFF',
     },
     fab: {
         position: 'absolute',

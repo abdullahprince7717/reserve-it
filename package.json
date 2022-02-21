@@ -44,6 +44,7 @@
     "react-native-screens": "~3.10.1",
     "react-native-slot-creator": "^1.0.1",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-star-rating-widget": "^1.2.0",
     "react-native-tab-view": "^3.1.1",
     "react-native-timeslot-picker": "^1.0.0",
     "react-native-vector-icons": "^9.0.0",

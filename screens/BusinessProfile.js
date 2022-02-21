@@ -1,9 +1,10 @@
-import React from 'react';
-import { View, Text,StyleSheet,Dimensions,ScrollView,useWindowDimensions } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text,StyleSheet,Dimensions,ScrollView,useWindowDimensions,TouchableOpacity, } from 'react-native';
 import { ImageSlider } from "react-native-image-slider-banner";
-import { Caption,Title,Divider,Button} from 'react-native-paper';
+import { Caption,Title,Divider,TouchableRipple,Paragraph,ProgressBar, Colors} from 'react-native-paper';
 import { TabView, SceneMap } from 'react-native-tab-view';
-import { AntDesign } from "@expo/vector-icons/"
+import { AntDesign,Ionicons } from "@expo/vector-icons/"
+import StarRating from 'react-native-star-rating-widget';
 
 import ServiceCard from  '../components/businessProfile/ServiceCard.js';
 
@@ -11,14 +12,16 @@ const BusinessProfile = (props) => {
 
     const layout = useWindowDimensions();
 
-    const [index, setIndex] = React.useState(0);
+    const [index, setIndex] = useState(0);
 
+    const [rating, setRating] = useState(5);
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff',margin:10, }}>
             <ScrollView>
                 <ServiceCard
                     name = "Haircut"
                     price = "2999"
+                    time = "1 hr"
                     onPress ={ () => {
                         console.log('Pressed')
                         props.navigation.navigate('Booking')
@@ -26,49 +29,184 @@ const BusinessProfile = (props) => {
                 />
                 <ServiceCard
                     name = "Haircut"
-                    price = "2999"
+                    price = "1999"
+                    time = "40 mins"
+
                     onPress ={ () => {
                         console.log('Pressed')
-                        props.navigation.navigate('BookingConfirm')       //just for testing
+                        props.navigation.navigate('Booking')       //just for testing
                     }}
                 />
                 <ServiceCard
                     name = "Haircut"
-                    price = "2999"
+                    price = "1999"
+                    time = "40 mins"
+
+                    onPress ={ () => {
+                        console.log('Pressed')
+                        props.navigation.navigate('Booking')       //just for testing
+                    }}
                 />
                 <ServiceCard
                     name = "Haircut"
-                    price = "2999"
+                    price = "1999"
+                    time = "40 mins"
+
+                    onPress ={ () => {
+                        console.log('Pressed')
+                        props.navigation.navigate('Booking')       //just for testing
+                    }}
                 />
                 <ServiceCard
                     name = "Haircut"
-                    price = "2999"
+                    price = "1999"
+                    time = "40 mins"
+
+                    onPress ={ () => {
+                        console.log('Pressed')
+                        props.navigation.navigate('Booking')       //just for testing
+                    }}
                 />
                 <ServiceCard
                     name = "Haircut"
-                    price = "2999"
+                    price = "1999"
+                    time = "40 mins"
+
+                    onPress ={ () => {
+                        console.log('Pressed')
+                        props.navigation.navigate('Booking')       //just for testing
+                    }}
                 />
-                <ServiceCard
-                    name = "Haircut"
-                    price = "299"
-                />
+                
+                
             </ScrollView>    
         </View>
     );
     
     const SecondRoute = () => (
-        <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
+        <View style={{ flex: 1, }} >
+            <View style = {{flexDirection: 'row', backgroundColor:'white',height:130,borderRadius:20,borderWidth:0.4,justifyContent:'center',alignItems:'center',margin:20, flexWrap:'wrap'}}>
+
+                <View style = {{flexDirection: 'column',height : '90%',width : '46%',justifyContent:'center',
+                                alignItems:'center',}}>
+
+                <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                        <Text style = {{marginRight: 0,fontSize: 30}}>
+                            5.0 
+                        </Text>
+                        <Text style = {{marginTop: 10,fontSize: 20}}>
+                            /5 
+                        </Text>
+                </View>
+                    <StarRating
+                        rating={rating}
+                        onChange={setRating}
+                        maxStars = {5}
+                        starSize = {20}
+                        color = "orange"
+                        style  = {{margin:5}}
+                        
+                    />
+                    <Text style = {{marginTop: 10,fontSize: 10}}>
+                        Based on 25 reviews
+                    </Text>
+                </View>
+
+                <View style = {{flexDirection: 'column',margin: 5, width : 0.4, height : '90%', backgroundColor: 'grey'}}/>
+
+                <View style = {{flexDirection: 'column',height : '90%',width : '47%',justifyContent:'center',alignItems:'center',}}>
+                    
+                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                        <Text style = {{marginRight: 5}}>
+                            5 <Ionicons color="orange" name="star" size={16} />
+                        </Text>
+
+                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={1} color='orange' />
+                        
+                        <Text style = {{marginLeft: 5}}>
+                            5 
+                        </Text> 
+                    </View>
+
+                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                        <Text style = {{marginRight: 5}}>
+                            4 <Ionicons color="orange" name="star" size={16} />
+                        </Text>
+
+                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.25} color='orange' />
+                        
+                        <Text style = {{marginLeft: 5}}>
+                            1 
+                        </Text> 
+                        
+                    </View>
+
+                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                        <Text style = {{marginRight: 5}}>
+                            3 <Ionicons color="orange" name="star" size={16} />
+                        </Text>
+
+                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.9} color='orange' />
+                        
+                        <Text style = {{marginLeft: 5}}>
+                            9 
+                        </Text> 
+                        
+                    </View>
+
+                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                        <Text style = {{marginRight: 5}}>
+                            2 <Ionicons color="orange" name="star" size={16} />
+                        </Text>
+
+                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.8} color='orange' />
+                        
+                        <Text style = {{marginLeft: 5}}>
+                            8 
+                        </Text> 
+                        
+                    </View>
+
+                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                        <Text style = {{marginRight: 5}}>
+                            1 <Ionicons color="orange" name="star" size={16} />
+                        </Text>
+
+                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.5} color='orange' />
+                        
+                        <Text style = {{marginLeft: 5}}>
+                            5 
+                        </Text> 
+                        
+                    </View>
+                        
+                    
+                </View>
+            </View>
+
+        </View>
     );
     
     const ThirdRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff',alignItems: 'center',}} >
             <ScrollView>
                 <View style={styles.details}>
+
+                    <Text style={{ color:'black',fontSize: 17, fontWeight:'bold'}}>
+                        ABOUT US
+                    </Text>
+
+                    <Paragraph style={{ color:'black',fontSize: 15, marginTop:10}}>
+                        lorem ipsum dolor sit amet,
+                    </Paragraph>
+
+                    <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:10,}} />
+
                     <Text style={{ color:'black',fontSize: 17, fontWeight:'bold'}}>
                         CONTACT AND BUSINESS HOURS
                     </Text>
 
-                    <Divider style = {{height:2,color:'#000',marginTop:10,marginBottom:10,}} />
+                    <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:10,}} />
 
                     <View style = {{flexDirection:'row'}}>   
                         <AntDesign color="black" name="mobile1" size={20} />
@@ -77,7 +215,7 @@ const BusinessProfile = (props) => {
                         </Text>
                     </View>    
 
-                    <Divider style = {{height:2,color:'#000',marginTop:10,marginBottom:15,}} />
+                    <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:15,}} />
 
                     <View style = {{flexDirection:'row',justifyContent: 'space-between',marginLeft:20,marginRight:20,marginBottom:15,}} >
                         <Text style = {{}}>
@@ -134,6 +272,58 @@ const BusinessProfile = (props) => {
                             CLOSED
                         </Text>
                     </View>
+
+                    <Text style={{ color:'black',fontSize: 17, fontWeight:'bold'}}>
+                        Social Media and Share
+                    </Text>
+
+                    <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:10,}} />
+
+                    <View style ={{flexDirection:'row', justifyContent:'space-evenly', width:360,marginTop : 20,marginBottom : 20}}>
+                        
+                        <TouchableOpacity>
+                            <AntDesign color="red" name="instagram" size={40} />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                            <AntDesign color="green" name="sharealt" size={40} />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                            <AntDesign color="blue" name="facebook-square" size={40} />
+                        </TouchableOpacity>
+
+                    </View>
+
+                    <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:10,}} />
+                    
+                    <TouchableRipple
+                        onPress = { ()=> {
+                                console.log("jhasdk,")
+                        }}
+                    >
+                        <Text style={{ color:'grey',fontSize: 20, fontWeight:'bold',marginLeft: 10,marginTop: 10,marginBottom: 10 }}>
+                            Payment and Cancellation Policy
+                        </Text>
+                    </TouchableRipple>
+                    
+                    <TouchableRipple
+                        onPress = { ()=> {
+                                console.log("jhasdk,")
+                        }}
+                    >
+                        <Text style={{ color:'grey',fontSize: 20, fontWeight:'bold',marginLeft: 10,marginTop: 10,marginBottom: 10 }}>
+                            Report
+                        </Text>
+                    </TouchableRipple>
+
+                    
+
+                    <Text style={{ color:'white',fontSize: 20, fontWeight:'bold',marginLeft: 15,marginTop: 10 }}>
+                        EXTRAA TEXT
+                    </Text>
+                    {/* <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:10,}} /> */}
+
                 </View>
             </ScrollView>
         </View>
@@ -198,25 +388,7 @@ const BusinessProfile = (props) => {
                         Address of business                        {/* {props.address} */}
                     </Caption>
                 </View>
-                <Divider style = {{height:2,color:'#000',marginBottom:10}} />
 
-                {/* <ServiceCard
-                    name = "Haircut"
-                    price = "2999"
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('Booking')
-                }}
-                />
-                <ServiceCard
-                    name = "Haircut"
-                    price = "2999"
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('Testing')       //just for testing
-                    }}
-                /> */}
-                
             </View>
             <TabView
                 navigationState={{ index, routes }}
@@ -236,7 +408,7 @@ styles = StyleSheet.create({
 
     container: {
         
-        flex:2,
+        flex:1,
         // backgroundColor: 'grey',
     },
     services:{
@@ -282,8 +454,8 @@ styles = StyleSheet.create({
         flex:0.45,
     },
     details:{
+        flex:1,
         width:deviceWidth-30,
-        height:500,
         backgroundColor: '#fff',
         marginTop: 30,
         // justifyContent: 'center',

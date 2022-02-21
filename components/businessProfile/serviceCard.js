@@ -1,83 +1,97 @@
-import { View, Text,StyleSheet,Dimensions } from 'react-native';
-import {Button } from 'react-native-paper';
+import { View, Text,StyleSheet,Dimensions, } from 'react-native';
+import {Divider,Button} from 'react-native-paper';
 import React from 'react';
 
-// function serviceCard  (props,{navigation})  {
-function ServiceCard  (props)  {
-    return (
-        <View style={styles.services}>
-            <View style={styles.service}>
-                <View style = {styles.listView}> 
-                    <Text style={{margin:7,fontSize:18,width:'55%'}}>
-                        {props.name}                                       {props.serviceName}
+const ServiceCard = (props) => {
+    return (    
+        <View style = {styles.container}>
+            <View style = {styles.leftColumn}>
+                <View style={{ height: '65%', width :'95%',backgroundColor:'white',flexDirection:'row', justifyContent:'space-between'}}>
+
+                    <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
+                        {props.name}
                     </Text>
-                    <Text style={{margin:7,fontSize:17,width:'12%'}}>
-                        ${props.price}
-                    </Text>
-                
-                    <View style = {styles.buttonView}>
-                        <Button 
-                            mode="contained" 
-                            onPress= {props.onPress}
-                            style = {styles.button}
-                        >
-                            Book
-                        </Button>
+
+                    <View>
+                        <Text style={{color:'black', fontSize:18, fontWeight:'200',}}>
+                            {props.price} Pkr
+                        </Text>
+
+                        <Text style={{color:'grey', fontSize:15, fontWeight:'100',}}>
+                            {props.time}
+                        </Text>
+
                     </View>
+                    
+                    
                 </View>
             </View>
-        </View>
 
+            <Divider style = {{height:'100%',color:'#000',width:'0.5%'}} />
+            
+            <View style={styles.rightColumn}>
+                <View style={{ height: '85%', width :'90%',backgroundColor:'white',
+                    flexDirection:'column',justifyContent: 'center',alignItems: 'center',
+                }}>
+
+            {/* <Button
+                title="Press button"
+
+                style = {{borderRadius:20}} 
+            /> */}
+
+                <Button 
+                mode="contained" 
+                onPress={props.onPress}>
+                    Book
+                </Button>
+
+                </View>
+            </View>
+        </View>   
     );
 };
 
 export default ServiceCard;
 const deviceWidth = Math.round(Dimensions.get('window').width);
-styles = StyleSheet.create({
-
-    services:{
-        borderRadius: 30,
-        
-    },
-    service: {
-        flexDirection: 'column',
+const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexDirection:'row',
+        flexWrap:'wrap',
+        height: 70,
+        width: deviceWidth-40,
+        margin:10,
+        borderRadius: 10,
         backgroundColor: 'white',
-        width: deviceWidth-25,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        
+        elevation: 3,
         justifyContent: 'center',
         alignItems: 'center',
-        // marginRight: 20,
-        height:80,
-        flexWrap: 'wrap',
-        marginBottom: 20,
-        borderRadius: 30,
-        
-        
-
     },
-
-    listView: {
-        flexDirection: 'row',
-        backgroundColor: 'white',
-        flex:3,
-        
-        
-    },
-    buttonView: {
-        flexDirection: 'row',
-        backgroundColor: 'white',
-        flex:2,
+    leftColumn: {
+        flex: 2.5,
+        height: '100%',
+        // backgroundColor: 'blue',
+        justifyContent: 'center', 
         alignItems: 'center',
-        justifyContent: 'center',
-        
+        borderBottomLeftRadius: 20,
+        borderTopLeftRadius: 20, 
     },
-    button: {
-        backgroundColor: '#F39DFF',
-        width:'85%',
-        height: '55%',
+    rightColumn: {
+        flex: 1,
+        height: '100%',
+        // backgroundColor: 'green',
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'center',
-        
-        
+        borderBottomRightRadius: 20,
+        borderTopRightRadius: 20,
     },
-
-});
+})

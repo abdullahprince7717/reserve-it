@@ -118,7 +118,7 @@ function settings(props) {
 
 
                 <TouchableRipple 
-                onPress = {() => console.log('pressed')}
+                    onPress = {() => console.log('pressed')}
                 >
                     <View style = {styles.menuItem}>
                         <Icons 
@@ -130,51 +130,6 @@ function settings(props) {
                 </TouchableRipple>
 
             </View>
-            
-            {/* <View style={styles.menuWrapper}>
-                <View style = {styles.menuItem}>
-                    <Icon 
-                        name = "heart-outline"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Your Favourites</Text>
-                </View>
-                <View style = {styles.menuItem}>
-                    <Icon 
-                        name = "credit-card"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Payment</Text>
-                </View>
-                <View style = {styles.menuItem}>
-                    <Icon 
-                        name = "share-outline"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Share with your friends</Text>
-                </View>
-                <View style = {styles.menuItem}>
-                    <Icons
-                        name = "rate-review"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Reviews</Text>
-                </View>
-                <View style = {styles.menuItem}>
-                    <Icons 
-                        name = "feedback"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Feedback</Text>
-                </View>
-                <View style = {styles.menuItem}>
-                    <Icons 
-                        name = "logout"
-                        size = {25}
-                        />
-                    <Text style={styles.menuItemText}>Logout</Text>
-                </View>
-            </View> */}
 
         </SafeAreaView>
     );

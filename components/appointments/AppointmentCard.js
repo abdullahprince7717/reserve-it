@@ -1,20 +1,24 @@
-import { View, Text,StyleSheet,Dimensions } from 'react-native';
+import { View, Text,StyleSheet,Dimensions,TouchableWithoutFeedback } from 'react-native';
 import {Divider} from 'react-native-paper';
 import React from 'react';
 
 const AppointmentCard = (props) => {
     return (
+                <TouchableWithoutFeedback
+                    onPress ={props.onPress}
+                >
+                
         <View style = {styles.container}>
             <View style = {styles.leftColumn}>
-                <View style={{ height: '75%', width :'85%',backgroundColor:'white',flexDirection:'column',}}>
+                <View style={{ height: '65%', width :'85%',backgroundColor:'white',flexDirection:'column',}}>
                     <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
-                        Service Title
+                        {props.title}
                     </Text>
                     <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :20}}>
-                        Business Name
+                        {props.businessName}
                     </Text>
-                    <Text style={{color:'black', fontSize:16, fontWeight:'100', marginTop :2}}>
-                        Address
+                    <Text style={{color:'black', fontSize:14, fontWeight:'100', marginTop :4}}>
+                        {props.address}
                     </Text>
                 </View>
             </View>
@@ -26,16 +30,17 @@ const AppointmentCard = (props) => {
                 flexDirection:'column',justifyContent: 'center',alignItems: 'center',
                 }}>
 
-                    <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
-                        day and date
+                    <Text style={{color:'black', fontSize:19, fontWeight:'bold',}}>
+                        {props.date}
                     </Text>
-                    <Text style={{color:'black', fontSize:19, fontWeight:'200',margin:10}}>
-                        Time
+                    <Text style={{color:'black', fontSize:17, fontWeight:'200',margin:10}}>
+                        {props.time}
                     </Text>
 
                 </View>
             </View>
         </View>
+    </TouchableWithoutFeedback>    
     );
 };
 

@@ -15,38 +15,6 @@ import MapScreen from '../screens/MapScreen.js';
 import TabNavigation from '../components/MaterialBottomNav.js';
 import BusinessProfile from '../screens/BusinessProfile.js';
 import BookingConfirm from '../screens/BookingConfirm.js';
-// import Testing from '../screens/AppointmentCard.js';
-// import ServiceCard from '../components/businessProfile/ServiceCard.js';
-
-// const screens = {
-
-
-    // Home: {
-    //     screen: TabNavigation,
-    // },
-    // Appointments: {
-    //     screen: Appointments,
-    // },
-    // Booking: {
-    //     screen: Booking,
-    // },
-    // Explore: {
-    //     screen: Explore,
-    // },
-    // Login: {
-    //     screen: Login,
-    // },
-    // Signup: {
-    //     screen: Signup,
-    // },
-    // Settings: {
-    //     screen: Settings,
-    // },
-    // Maps: {
-    //     screen: MapScreen,
-    // },
-
-// }
 
 function MyStack() {
     return (
