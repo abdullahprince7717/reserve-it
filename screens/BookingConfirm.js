@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Button } from 'react-native';
+import { StyleSheet, Text, View,Button,StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons/"
 import React from 'react';
 
@@ -33,5 +33,6 @@ const styles = StyleSheet.create({
         alignItems:"center",
         backgroundColor:"#57B9BB",
         flexDirection: 'column',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
 });

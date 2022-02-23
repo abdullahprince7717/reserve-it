@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
         height:'100%',
         justifyContent: 'center',
         alignItems: 'center',
-        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        paddingBottom : 70,
     },
     logo:{
         width: deviceWidth,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View,StyleSheet,Dimensions,TouchableWithoutFeedback,ScrollView } from "react-native";
+import { View,StyleSheet,Dimensions,TouchableWithoutFeedback,ScrollView,StatusBar } from "react-native";
 import BusinessCard from  '../components/explore/Card.js';
 import SearchBar from '../components/home/SearchBar.js'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -49,30 +49,46 @@ function explore({navigation}) {
             </View>
             
             <View style = {styles.listView}>
-
-                <TouchableWithoutFeedback
-                    onPress ={() => {
-                        console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
-                    }}
-                >
-                <ScrollView>    
+            <ScrollView>
+                
                     <View>
                     
-                        <BusinessCard/>
+                        <BusinessCard
+                            onPress =  {() => {
+                                console.log('Pressed')
+                                navigation.navigate('BusinessProfile')
+                            }}
+                        />
+                        <BusinessCard
+                            onPress =  {() => {
+                                console.log('Pressed')
+                                navigation.navigate('BusinessProfile')
+                            }}
+                        />
+                        <BusinessCard
+                            onPress =  {() => {
+                                console.log('Pressed')
+                                navigation.navigate('BusinessProfile')
+                            }}
+                        />
+                        <BusinessCard
+                            onPress =  {() => {
+                                console.log('Pressed')
+                                navigation.navigate('BusinessProfile')
+                            }}
+                        />
+                        <BusinessCard
+                            onPress =  {() => {
+                                console.log('Pressed')
+                                navigation.navigate('BusinessProfile')
+                            }}
+                        />
                     
-                        <BusinessCard/>
-                    
-                        <BusinessCard/>
-                    
-                        <BusinessCard/>
-                    
-                        <BusinessCard/>
+                        
                     
                     </View>    
                 </ScrollView>    
 
-                </TouchableWithoutFeedback>
                 
 
                 <FAB
@@ -105,7 +121,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         height: '100%',
-        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        paddingBottom : 70,
     },
     searchView: {
         flex:0.55,

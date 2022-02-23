@@ -19,20 +19,27 @@ import BookingConfirm from '../screens/BookingConfirm.js';
 function MyStack() {
     return (
         <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Signup"
         screenOptions={{
-            headerTintColor: 'black',
-            headerStyle: { backgroundColor: 'white' },
+            headerTintColor: 'white',
+            headerStyle: { backgroundColor: '#57B9BB' },
             // headerShown: false,
         }}
         >
         <Stack.Screen
+            name="Signup"
+            component={Signup}
+            options={{headerShown: false}}
+        />
+        <Stack.Screen
             name="Home"
             component={TabNavigation}
+            options={{headerShown: false}}
         />
         <Stack.Screen
             name="Explore"
             component={Explore}
+            
         />
         <Stack.Screen
             name="Appointments"
@@ -49,10 +56,7 @@ function MyStack() {
         <Stack.Screen
             name="Login"
             component={Login}
-        />
-        <Stack.Screen
-            name="Signup"
-            component={Signup}
+            options={{headerShown: false}}
         />
         <Stack.Screen
             name="Map"

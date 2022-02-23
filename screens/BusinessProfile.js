@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { View, Text,StyleSheet,Dimensions,ScrollView,useWindowDimensions,TouchableOpacity, } from 'react-native';
 import { ImageSlider } from "react-native-image-slider-banner";
-import { Caption,Title,Divider,TouchableRipple,Paragraph,ProgressBar, Colors} from 'react-native-paper';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { Caption,Title,Divider,TouchableRipple,Paragraph,ProgressBar,Subheading } from 'react-native-paper';
+import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
 import { AntDesign,Ionicons } from "@expo/vector-icons/"
 import StarRating from 'react-native-star-rating-widget';
-
+import moment from 'moment';
 import ServiceCard from  '../components/businessProfile/ServiceCard.js';
 
 const BusinessProfile = (props) => {
@@ -13,8 +13,12 @@ const BusinessProfile = (props) => {
     const layout = useWindowDimensions();
 
     const [index, setIndex] = useState(0);
-
     const [rating, setRating] = useState(5);
+
+    const time = moment().format('MMMM Do YYYY');
+
+
+
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff',margin:10, }}>
             <ScrollView>
@@ -84,20 +88,124 @@ const BusinessProfile = (props) => {
     );
     
     const SecondRoute = () => (
-        <View style={{ flex: 1, }} >
-            <View style = {{flexDirection: 'row', backgroundColor:'white',height:130,borderRadius:20,borderWidth:0.4,justifyContent:'center',alignItems:'center',margin:20, flexWrap:'wrap'}}>
+       
+        <ScrollView>    
+            <View style={{ flex: 1,alignItems:'center' }} >
+            
+                {/* START of Overall rating card */}
 
-                <View style = {{flexDirection: 'column',height : '90%',width : '46%',justifyContent:'center',
-                                alignItems:'center',}}>
+                <View style = {{flexDirection: 'row', backgroundColor:'white',height:130,borderRadius:20,borderWidth:0.4,justifyContent:'center',alignItems:'center',margin:20, flexWrap:'wrap'}}>
 
-                <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
-                        <Text style = {{marginRight: 0,fontSize: 30}}>
-                            5.0 
+                    <View style = {{flexDirection: 'column',height : '90%',width : '46%',justifyContent:'center',
+                                    alignItems:'center',}}>
+
+                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                            <Text style = {{marginRight: 0,fontSize: 30}}>
+                                5.0 
+                            </Text>
+                            <Text style = {{marginTop: 10,fontSize: 20}}>
+                                /5 
+                            </Text>
+                    </View>
+                        <StarRating
+                            rating={rating}
+                            onChange={setRating}
+                            maxStars = {5}
+                            starSize = {20}
+                            color = "orange"
+                            style  = {{margin:5}}
+
+                        />
+                        <Text style = {{marginTop: 10,fontSize: 10}}>
+                            Based on 25 reviews
                         </Text>
-                        <Text style = {{marginTop: 10,fontSize: 20}}>
-                            /5 
+                    </View>
+
+                    <View style = {{flexDirection: 'column',margin: 5, width : 0.4, height : '90%', backgroundColor: 'grey'}}/>
+
+                    <View style = {{flexDirection: 'column',height : '90%',width : '50%',justifyContent:'center',alignItems:'center',}}>
+                        <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                            <Text style = {{marginRight: 5}}>
+                                5 <Ionicons color="orange" name="star" size={16} />
+                            </Text>
+
+                            <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={1} color='orange' />
+
+                            <Text style = {{marginLeft: 5}}>
+                                5 
+                            </Text> 
+                        </View>
+
+                        <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                            <Text style = {{marginRight: 5}}>
+                                4 <Ionicons color="orange" name="star" size={16} />
+                            </Text>
+
+                            <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.25} color='orange' />
+
+                            <Text style = {{marginLeft: 5}}>
+                                1 
+                            </Text> 
+
+                        </View>
+
+                        <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                            <Text style = {{marginRight: 5}}>
+                                3 <Ionicons color="orange" name="star" size={16} />
+                            </Text>
+
+                            <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.9} color='orange' />
+
+                            <Text style = {{marginLeft: 5}}>
+                                9 
+                            </Text> 
+
+                        </View>
+
+                        <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                            <Text style = {{marginRight: 5}}>
+                                2 <Ionicons color="orange" name="star" size={16} />
+                            </Text>
+
+                            <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.8} color='orange' />
+
+                            <Text style = {{marginLeft: 5}}>
+                                8 
+                            </Text> 
+
+                        </View>
+
+                        <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
+                            <Text style = {{marginRight: 5}}>
+                                1 <Ionicons color="orange" name="star" size={16} />
+                            </Text>
+
+                            <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.5} color='orange' />
+
+                            <Text style = {{marginLeft: 5}}>
+                                5 
+                            </Text> 
+
+                        </View>
+                    </View>
+                </View>      
+
+                {/* END of Overall rating card */}
+
+            
+                <View style = {{width: '90%', flex:1, flexDirection :'column', borderRadius: 5}}>
+                    <View style ={{flexDirection :'row', justifyContent: 'space-between',
+                                alignItems: 'center',
+                    }}>
+                        <Text style ={{marginLeft: 10, fontSize : 19, fontWeight: 'bold',}}>
+                            Abdullah Ali
                         </Text>
-                </View>
+                        <Text style ={{marginRight: 10}}>
+                            {time}
+                        </Text>
+                    </View>
+
+    
                     <StarRating
                         rating={rating}
                         onChange={setRating}
@@ -105,86 +213,112 @@ const BusinessProfile = (props) => {
                         starSize = {20}
                         color = "orange"
                         style  = {{margin:5}}
-                        
                     />
-                    <Text style = {{marginTop: 10,fontSize: 10}}>
-                        Based on 25 reviews
-                    </Text>
+                    
+                    <Subheading style ={{marginLeft: 10}}>
+                        Service name
+                    </Subheading>
+                    
+                    <Caption style ={{ marginLeft: 15,}} >
+                        By Business Name
+                    </Caption>
+                                        
+                    <Paragraph style ={{marginLeft: 10, backgroundColor: 'white', borderRadius: 10,paddingLeft : 5}} >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec eget ex vitae nunc tincidunt egestas.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec eget ex vitae nunc tincidunt egestas.
+                    </Paragraph>
+
                 </View>
 
-                <View style = {{flexDirection: 'column',margin: 5, width : 0.4, height : '90%', backgroundColor: 'grey'}}/>
+                <Divider style = {{height:2, width : '75%', color:'#000',marginTop:15,marginBottom:20,}} />
 
-                <View style = {{flexDirection: 'column',height : '90%',width : '47%',justifyContent:'center',alignItems:'center',}}>
+                <View style = {{width: '90%', flex:1, flexDirection :'column', borderRadius: 5}}>
+                    <View style ={{flexDirection :'row', justifyContent: 'space-between',
+                                alignItems: 'center',
+                    }}>
+                        <Text style ={{marginLeft: 10, fontSize : 19, fontWeight: 'bold',}}>
+                            Abdullah Ali
+                        </Text>
+                        <Text style ={{marginRight: 10}}>
+                            {time}
+                        </Text>
+                    </View>
+
+    
+                    <StarRating
+                        rating={rating}
+                        onChange={setRating}
+                        maxStars = {5}
+                        starSize = {20}
+                        color = "orange"
+                        style  = {{margin:5}}
+                    />
                     
-                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
-                        <Text style = {{marginRight: 5}}>
-                            5 <Ionicons color="orange" name="star" size={16} />
-                        </Text>
-
-                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={1} color='orange' />
-                        
-                        <Text style = {{marginLeft: 5}}>
-                            5 
-                        </Text> 
-                    </View>
-
-                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
-                        <Text style = {{marginRight: 5}}>
-                            4 <Ionicons color="orange" name="star" size={16} />
-                        </Text>
-
-                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.25} color='orange' />
-                        
-                        <Text style = {{marginLeft: 5}}>
-                            1 
-                        </Text> 
-                        
-                    </View>
-
-                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
-                        <Text style = {{marginRight: 5}}>
-                            3 <Ionicons color="orange" name="star" size={16} />
-                        </Text>
-
-                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.9} color='orange' />
-                        
-                        <Text style = {{marginLeft: 5}}>
-                            9 
-                        </Text> 
-                        
-                    </View>
-
-                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
-                        <Text style = {{marginRight: 5}}>
-                            2 <Ionicons color="orange" name="star" size={16} />
-                        </Text>
-
-                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.8} color='orange' />
-                        
-                        <Text style = {{marginLeft: 5}}>
-                            8 
-                        </Text> 
-                        
-                    </View>
-
-                    <View style = {{flexDirection:'row',margin : 3,alignItems: 'center',}}>
-                        <Text style = {{marginRight: 5}}>
-                            1 <Ionicons color="orange" name="star" size={16} />
-                        </Text>
-
-                        <ProgressBar style={{height: 5, width:115,backgroundColor: 'grey'}} progress={0.5} color='orange' />
-                        
-                        <Text style = {{marginLeft: 5}}>
-                            5 
-                        </Text> 
-                        
-                    </View>
-                        
+                    <Subheading style ={{marginLeft: 10}}>
+                        Service name
+                    </Subheading>
                     
+                    <Caption style ={{ marginLeft: 15,}} >
+                        By Business Name
+                    </Caption>
+                                        
+                    <Paragraph style ={{marginLeft: 10, backgroundColor: 'white', borderRadius: 10,paddingLeft : 5}} >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec eget ex vitae nunc tincidunt egestas.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec eget ex vitae nunc tincidunt egestas.
+                    </Paragraph>
+
                 </View>
+
+                <Divider style = {{height:2, width : '75%', color:'#000',marginTop:15,marginBottom:20,}} />
+
+                <View style = {{width: '90%', flex:1, flexDirection :'column', borderRadius: 5}}>
+                    <View style ={{flexDirection :'row', justifyContent: 'space-between',
+                                alignItems: 'center',
+                    }}>
+                        <Text style ={{marginLeft: 10, fontSize : 19, fontWeight: 'bold',}}>
+                            Abdullah Ali
+                        </Text>
+                        <Text style ={{marginRight: 10}}>
+                            {time}
+                        </Text>
+                    </View>
+
+    
+                    <StarRating
+                        rating={rating}
+                        onChange={setRating}
+                        maxStars = {5}
+                        starSize = {20}
+                        color = "orange"
+                        style  = {{margin:5}}
+                    />
+                    
+                    <Subheading style ={{marginLeft: 10}}>
+                        Service name
+                    </Subheading>
+                    
+                    <Caption style ={{ marginLeft: 15,}} >
+                        By Business Name
+                    </Caption>
+                                        
+                    <Paragraph style ={{marginLeft: 10, backgroundColor: 'white', borderRadius: 10,paddingLeft : 5}} >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec eget ex vitae nunc tincidunt egestas.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec eget ex vitae nunc tincidunt egestas.
+                    </Paragraph>
+
+                </View>
+
+                <Divider style = {{height:2, width : '75%', color:'#000',marginTop:15,marginBottom:20,}} />
+                
             </View>
+        </ScrollView>    
 
-        </View>
     );
     
     const ThirdRoute = () => (
@@ -334,6 +468,14 @@ const BusinessProfile = (props) => {
         second: SecondRoute,
         third: ThirdRoute,
     });
+
+    const renderTabBar = props => (
+        <TabBar
+            {...props}
+            indicatorStyle={{ backgroundColor: '#fff' }}
+            style={{ backgroundColor: '#57B9BB', }}
+        />
+    );
     
     const [routes] = React.useState([
         { key: 'first', title: 'Services' },
@@ -344,7 +486,7 @@ const BusinessProfile = (props) => {
     // const renderScene = ({ route }) => {
     //     switch (route.key) {
     //         case 'first':
-    //             return <FirstRoute foo={props} />;
+    //             return <FirstRoute prop={props} />;
     //         case 'second':
     //             return <SecondRoute />;
     //         default:
@@ -395,6 +537,7 @@ const BusinessProfile = (props) => {
                 renderScene={renderScene}
                 onIndexChange={setIndex}
                 initialLayout={{ width: layout.width }}
+                renderTabBar={renderTabBar}
             />
         </View>     
     );
@@ -443,7 +586,7 @@ styles = StyleSheet.create({
         justifyContent: 'center',
     },
     button: {
-        backgroundColor: '#F39DFF',
+        backgroundColor: '#57B9BB',
         width:'85%',
         height: '55%',
         alignItems: 'center',

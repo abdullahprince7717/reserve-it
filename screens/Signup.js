@@ -65,13 +65,17 @@ const signUp = ({navigation}) => {
                 style={styles.textInput}
               />
               <TextInput
-	              placeholder="Confirm Password"
+                placeholder="Confirm Password"
                 placeholderTextColor= {"#fff"}
                 style={styles.textInput}
               />
             </View>
 
-            <TouchableOpacity style = {styles.button} onPress = {signUp} >
+            <TouchableOpacity style = {styles.button} 
+              onPress ={ () => {
+                console.log('Pressed')
+                navigation.navigate('Login')    
+            }} >
               <Text>Sign Up </Text>
             </TouchableOpacity>
 

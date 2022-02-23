@@ -34,15 +34,12 @@ const ServiceCard = (props) => {
                     flexDirection:'column',justifyContent: 'center',alignItems: 'center',
                 }}>
 
-            {/* <Button
-                title="Press button"
-
-                style = {{borderRadius:20}} 
-            /> */}
-
                 <Button 
                 mode="contained" 
-                onPress={props.onPress}>
+                onPress={props.onPress}
+                style ={{ backgroundColor: '#57B9BB' }}
+                >
+
                     Book
                 </Button>
 

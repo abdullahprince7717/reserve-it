@@ -31,7 +31,13 @@ const signIn = ({navigation}) => {
               />
             </View>
 
-            <TouchableOpacity style = {styles.button} >
+            <TouchableOpacity 
+              style = {styles.button}
+              onPress ={ () => {
+                console.log('Pressed')
+                navigation.navigate('Home')    
+            }}
+              >
               <Text>Sign In </Text>
             </TouchableOpacity>
 
@@ -40,7 +46,12 @@ const signIn = ({navigation}) => {
             </TouchableOpacity>
 
             <Text style = {styles.text}> Don't have an account?
-            <TouchableOpacity >
+            <TouchableOpacity 
+              onPress ={ () => {
+                console.log('Pressed')
+                navigation.navigate('Signup')       //just for testing
+            }}
+            >
               <Text style = {{color: '#4267B2',fontSize: 17 }}> SignUp</Text> 
             </TouchableOpacity>
             </Text>
@@ -86,11 +97,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    
-    
-    
   },
-   heading: {
+  heading: {
     display: 'flex',
     marginTop: 30,
     marginLeft: 20,
@@ -101,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000'
   },
 
-   form: {
+  form: {
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -110,9 +118,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginBottom: 50
     
-   },
+  },
 
-   textInput:{  
+  textInput:{  
     width: '90%',
     borderWidth:1,
     borderColor: '#fff',
@@ -122,9 +130,9 @@ const styles = StyleSheet.create({
     marginTop:20,
     color : '#fff'
 
-   },
+  },
 
-   button: {
+  button: {
     display: 'flex',
     width: '90%',
     backgroundColor: '#fff',

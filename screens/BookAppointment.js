@@ -14,10 +14,10 @@ function explore({navigation}) {
     const [value, setValue] = useState("");
 
     return (
-        <View style = {styles.view}>
+        <View style = {styles.container}>
 
             <Calendar
-                style={styles.Calendar}
+                style={styles.calendar}
                 onDayPress={(day) =>  {
                     setSelectedDate(day.dateString)
                     console.log("Selected Date",day.dateString)
@@ -80,7 +80,7 @@ function explore({navigation}) {
 
             <View style = {styles.buttonContainer}>
                 <TouchableOpacity 
-                style = {styles.Button}
+                style = {styles.button}
                 onPress = {() =>{
                     navigation.navigate('BookingConfirm')
                 }}
@@ -100,13 +100,13 @@ const deviceWidth = Math.round(Dimensions.get('window').width);
 
 const styles = StyleSheet.create({
 
-    view: {
+    container: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
-    Calendar: {
+    calendar: {
 
         width: deviceWidth-25,
         paddingBottom: 5,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         flexWrap:'wrap',
     },
-    Button: {
+    button: {
         backgroundColor: '#57B9BB',
         width: deviceWidth-40,
         height: 40,
