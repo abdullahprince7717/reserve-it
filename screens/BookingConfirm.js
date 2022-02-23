@@ -2,7 +2,7 @@ import { StyleSheet, Text, View,Button,StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons/"
 import React from 'react';
 
-const BookingConfirm = (props,{navigation}) => {
+const BookingConfirm = (props) => {
     return (
         <View style = {styles.container}>
             <Text style = {{fontSize:30, fontWeight:'bold', color :'#fff',margin: 20}}>

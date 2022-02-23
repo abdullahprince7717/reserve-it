@@ -83,9 +83,7 @@ function explore({navigation}) {
                                 navigation.navigate('BusinessProfile')
                             }}
                         />
-                    
-                        
-                    
+
                     </View>    
                 </ScrollView>    
 
@@ -148,7 +146,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         margin: 10,
         right: 15,
-        bottom: 75,
+        bottom: 20,
         elevation: 1,
         backgroundColor: '#000',
         // borderRadius: 80,

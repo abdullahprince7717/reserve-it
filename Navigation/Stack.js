@@ -15,6 +15,7 @@ import MapScreen from '../screens/MapScreen.js';
 import TabNavigation from '../components/MaterialBottomNav.js';
 import BusinessProfile from '../screens/BusinessProfile.js';
 import BookingConfirm from '../screens/BookingConfirm.js';
+import EditProfile from '../screens/EditProfile.js';
 
 function MyStack() {
     return (
@@ -69,6 +70,10 @@ function MyStack() {
         <Stack.Screen
             name="BookingConfirm"
             component={BookingConfirm}
+        />
+        <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
         />
         {/* <Stack.Screen
             name="Testing"

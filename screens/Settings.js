@@ -1,20 +1,33 @@
-import {View,StyleSheet,SafeAreaView,StatusBar } from "react-native";
-import{ Text, Caption, Title, TouchableRipple} from 'react-native-paper'
+import {View,StyleSheet,SafeAreaView,StatusBar,TouchableOpacity } from "react-native";
+import{ Text, Caption, Title, TouchableRipple,} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icons from 'react-native-vector-icons/MaterialIcons'
+import { FontAwesome } from "@expo/vector-icons/"
 
 function settings(props) {
     return (
         <SafeAreaView style = {styles.container}>
             <View style = {styles.userInfoSection}>
-                <View>
+                <View style  ={{flexDirection : 'row', justifyContent : 'space-between'}}>
                     <Title style = {styles.title}>
                         Abdullah Ali
                     </Title>
-                    <Caption style = {styles.caption}>
-                        Username
-                    </Caption>
+
+                    <TouchableOpacity  
+                    onPress ={ () => {
+                        console.log('Pressed')
+                        props.navigation.navigate('EditProfile')        
+                    }}>
+                        <FontAwesome color="black" name="edit" size={27} />
+
+                    </TouchableOpacity>
+                    
                 </View>
+
+                <Caption style = {styles.caption}>
+                    Username
+                </Caption>
+                
                 <View style = {styles.userInfoSection}>
                     <View style = {styles.row}>
                         <Icon 
