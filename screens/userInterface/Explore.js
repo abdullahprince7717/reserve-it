@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { View,StyleSheet,Dimensions,TouchableWithoutFeedback,ScrollView,StatusBar } from "react-native";
-import BusinessCard from  '../components/explore/Card.js';
-import SearchBar from '../components/home/SearchBar.js'
+import { View,StyleSheet,Dimensions,ScrollView,StatusBar,Text } from "react-native";
+import BusinessCard from  '../../components/explore/Card.js';
+import SearchBar from '../../components/home/SearchBar.js'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { FAB } from 'react-native-paper';
 // import ButtonToggleGroup from 'react-native-button-toggle-group';
@@ -24,12 +24,12 @@ function explore({navigation}) {
                             console.log(data, details);
                         }}
                         query={{
-                            key: 'YOUR API KEY',
+                            key: 'AIzaSyB3UIxXjy4PIW6ikhu5zTorpmgE_rN2hDk',
                             language: 'en',
                         }}
                         styles={{
                             textInputContainer: {
-                                backgroundColor: 'grey',
+                                backgroundColor: 'black',
                             },
                             textInput: {
                                 height: 50,
@@ -49,10 +49,14 @@ function explore({navigation}) {
             </View>
             
             <View style = {styles.listView}>
-            <ScrollView>
-                
-                    <View>
+            
+                <ScrollView>
                     
+                    <Text style ={{fontSize: 22, margin: 10, fontWeight: 'bold'}}>
+                        Current Appointments
+                    </Text>
+
+                    <View>    
                         <BusinessCard
                             onPress =  {() => {
                                 console.log('Pressed')

@@ -1,5 +1,5 @@
 import { View,StyleSheet,Dimensions,TouchableOpacity,StatusBar,Text,ScrollView } from "react-native";
-import Card from  '../components/appointments/AppointmentCard.js';
+import Card from  '../../components/appointments/AppointmentCard.js';
 
 
 

@@ -1,7 +1,7 @@
 import {Text, View,StyleSheet,ScrollView,StatusBar,Dimensions,Image } from "react-native";
-import HorizontalScrollView  from '../components/home/HorizontalScrollView'
-import SearchBar from '../components/home/SearchBar.js'
-import logo from '../assets/logo.png';
+import HorizontalScrollView  from '../../components/home/HorizontalScrollView'
+import SearchBar from '../../components/home/SearchBar.js'
+import logo from '../../assets/logo.png';
 // import SearchBar from "react-native-dynamic-search-bar";
 // import TabNavigation  from '../components/MaterialBottomNav.js'
 
@@ -13,7 +13,7 @@ function homeScreen() {
         <View style = {styles.container}>
             <View style = {styles.logo}>
 
-                <Image style ={{height:'120%' }}  source={require('../assets/homeLogo.png')} />
+                <Image style ={{height:'140%' }}  source={require('../../assets/homeLogo.png')} />
 
             </View>
 
@@ -22,21 +22,26 @@ function homeScreen() {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                 >
-                    <HorizontalScrollView image = {require('../assets/logo.png')} name = 'doctor'  />
-                    <HorizontalScrollView image = {require('../assets/logo.png')} name = 'doctor'  />
-                    <HorizontalScrollView image = {require('../assets/logo.png')} name = 'doctor'  />
-                    <HorizontalScrollView image = {require('../assets/logo.png')} name = 'doctor'  />
+                    <HorizontalScrollView image = {require('../../assets/doc-logo.jpg')} name = 'Doctor'  />
+                    <HorizontalScrollView image = {require('../../assets/salon-logo.jpg')} name = 'Salon'  />
+                    <HorizontalScrollView image = {require('../../assets/plate-logo.jpg')} name = 'Restaurant'  />
+                    <HorizontalScrollView image = {require('../../assets/logo.png')} name = 'Movie'  />
 
                 </ScrollView>
-
-                <View style = {styles.listView}>
-                    <Text>List of popular businesses</Text>
-                </View>
-
             </View>
 
-            {/* <TabNavigation/> */}
+        
+            <View style = {styles.listView}>
+                <ScrollView>
 
+                    <View>
+                        <Text style = {{fontSize: 30,color: 'black',}}>List of popular businesses</Text>
+                    </View>
+                        
+                    
+                </ScrollView>
+            </View>
+            
         </View>
     );
 }
@@ -54,26 +59,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         paddingBottom : 70,
+        // backgroundColor: '#000',
     },
     logo:{
         width: deviceWidth,
-        flex:0.1,
-        paddingTop:10,
+        flex:0.65,
+        paddingTop:15,
         paddingBottom:10,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000',
     },
     scrollView: {
-        flex:1, 
-        backgroundColor: 'white', 
+        flex:2, 
+        backgroundColor: '#000', 
         borderColor: 'black', 
         borderWidth:0.3
     },
     listView: {
-        flex:150,
+        flex:5.5,
+        width: deviceWidth-5,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F39DFF',
+        // backgroundColor: '#fff',
     },
 })

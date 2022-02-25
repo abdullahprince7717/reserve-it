@@ -3,11 +3,11 @@ import {StyleSheet } from "react-native";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import HomeScreen from '../screens/HomeScreen.js';
-import Explore from '../screens/Explore.js';
-// import MakeAppointment from '../screens/MakeAppointment.js';
-import Appointments from '../screens/Appointments.js';
-import Settings from '../screens/Settings.js';
+import HomeScreen from '../screens/userInterface/HomeScreen.js';
+import Explore from '../screens/userInterface/Explore.js';
+// import MakeAppointment from '../screens/userInterface/MakeAppointment.js';
+import Appointments from '../screens/userInterface/Appointments.js';
+import Settings from '../screens/userInterface/Settings.js';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -20,17 +20,17 @@ function TabNavigation(props) {
             barStyle={{ 
                 backgroundColor: '#fff',
                 position: 'absolute',
-                bottom: 10,
-                left: 10,
-                right: 10,
+                // bottom: 10,
+                // left: 10,
+                // right: 10,
                 height: 55,
-                elevation: 0,
-                borderRadius: 20,
+                elevation: 1,
+                // borderRadius: 20,
                 borderColor: 'grey',
                 borderWidth:0.5,
                 overflow: 'hidden',
-                borderTopLeftRadius: 20,
-                borderTopRightRadius: 20,
+                // borderTopLeftRadius: 20,
+                // borderTopRightRadius: 20,
             }}
         >
 

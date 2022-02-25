@@ -1,8 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View,Text,TextInput,Button, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
 
 
 
@@ -12,7 +9,7 @@ const signIn = ({navigation}) => {
       <>
       <View style={styles.mainView}>
           <View style={styles.upView}>
-            <Image style ={{resizeMode: 'contain', height: '70%' }}  source={require('../assets/logo.png')} /> 
+            <Image style ={{resizeMode: 'contain', height: '70%' }}  source={require('../../assets/logo.png')} /> 
           </View>
           <View style={styles.downView}>
             <Text style = {styles.heading}> Sign In </Text>

@@ -32,7 +32,7 @@ function settings(props) {
                     <View style = {styles.row}>
                         <Icon 
                             name = "map-marker-radius"
-                            color= '#77777777'
+                            color= '#57B9BB'
                             size = {20}
                         />
                         <Text style = {{marginLeft: 5}} >
@@ -42,7 +42,7 @@ function settings(props) {
                     <View style = {styles.row}>
                         <Icon 
                             name = "phone"
-                            color= '#77777777'
+                            color= '#57B9BB'
                             size = {20}
                         />
                         <Text style = {{marginLeft: 5}}>
@@ -52,7 +52,7 @@ function settings(props) {
                     <View style = {styles.row}>
                         <Icon 
                             name = "email"
-                            color= '#77777777'
+                            color= '#57B9BB'
                             size = {20}
                         />
                         <Text style = {{marginLeft: 5}}>
@@ -72,6 +72,7 @@ function settings(props) {
                         <Icon 
                             name = "heart-outline"
                             size = {25}
+                            color= '#57B9BB'
                             />
                         <Text style={styles.menuItemText}>Your Favourites</Text>
                     </View>
@@ -85,6 +86,7 @@ function settings(props) {
                         <Icon 
                             name = "credit-card"
                             size = {25}
+                            color= '#57B9BB'
                             />
                         <Text style={styles.menuItemText}>Payment</Text>
                     </View>
@@ -98,6 +100,7 @@ function settings(props) {
                         <Icon 
                             name = "share-outline"
                             size = {25}
+                            color= '#57B9BB'
                             />
                         <Text style={styles.menuItemText}>Share with your friends</Text>
                     </View>
@@ -111,6 +114,7 @@ function settings(props) {
                         <Icons
                             name = "rate-review"
                             size = {25}
+                            color= '#57B9BB'
                             />
                         <Text style={styles.menuItemText}>Reviews</Text>
                     </View>
@@ -124,6 +128,7 @@ function settings(props) {
                         <Icons 
                             name = "feedback"
                             size = {25}
+                            color= '#57B9BB'
                             />
                         <Text style={styles.menuItemText}>Feedback</Text>
                     </View>
@@ -137,6 +142,7 @@ function settings(props) {
                         <Icons 
                             name = "logout"
                             size = {25}
+                            color= '#57B9BB'
                             />
                         <Text style={styles.menuItemText}>Logout</Text>
                     </View>

@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
-import {auth} from  '../firebase/FirebaseConfig.js'
+import {auth} from  '../../firebase/FirebaseConfig.js'
 import {createUserWithEmailAndPassword } from "firebase/auth";
-import signIn from './Login.js'
-
-
 
 
 
@@ -33,7 +30,7 @@ const signUp = ({navigation}) => {
       <>
       <View style={styles.mainView}>
           <View style={styles.upView}>
-            <Image style ={{resizeMode: 'contain', height: '60%' }}  source={require('../assets/logo.png')} /> 
+            <Image style ={{resizeMode: 'contain', height: '60%' }}  source={require('../../assets/logo.png')} /> 
           </View>
           <ScrollView style={styles.downView}>
             <Text style = {styles.heading}> Sign Up </Text>

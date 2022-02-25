@@ -6,7 +6,7 @@ import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
 import { AntDesign,Ionicons } from "@expo/vector-icons/"
 import StarRating from 'react-native-star-rating-widget';
 import moment from 'moment';
-import ServiceCard from  '../components/businessProfile/ServiceCard.js';
+import ServiceCard from  '../../components/businessProfile/ServiceCard.js';
 
 const BusinessProfile = (props) => {
 
@@ -88,7 +88,7 @@ const BusinessProfile = (props) => {
     );
     
     const SecondRoute = () => (
-       
+
         <ScrollView>    
             <View style={{ flex: 1,alignItems:'center' }} >
             
