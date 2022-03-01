@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'react-native';
-import {TimePicker, ValueMap} from 'react-native-simple-time-picker';
 import React,{useState} from 'react'
 
-const AddService = () => {
+const AddPayment = () => {
 
     // const [value, setValue] = useState<ValueMap>({
     //     hours: 1,
@@ -52,7 +51,7 @@ const AddService = () => {
     )
 }
 
-export default AddService
+export default AddPayment
 
 const deviceWidth = Math.round(Dimensions.get('window').width);
 

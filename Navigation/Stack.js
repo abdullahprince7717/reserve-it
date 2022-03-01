@@ -16,71 +16,97 @@ import TabNavigation from '../components/MaterialBottomNav.js';
 import BusinessProfile from '../screens/userInterface/BusinessProfile.js';
 import BookingConfirm from '../screens/userInterface/BookingConfirm.js';
 import EditProfile from '../screens/userInterface/EditProfile.js';
+import AddPayment from '../screens/userInterface/AddPayment.js';
 
 import AddService from '../screens/businessInterface/AddService.js';
+import AddBusinessPayment from '../screens/businessInterface/AddBusinessPayment.js';
+import BusinessSettings from '../screens/businessInterface/Settings.js';
+import EditBusinessProfile from '../screens/businessInterface/EditBusinessProfile.js';
 
 function MyStack() {
     return (
         <Stack.Navigator
-        initialRouteName="AddService"
-        screenOptions={{
-            headerTintColor: 'white',
-            headerStyle: { backgroundColor: '#57B9BB' },
-            // headerShown: false,
-        }}
+            initialRouteName="Home"
+            screenOptions={{
+                headerTintColor: 'white',
+                headerStyle: { backgroundColor: '#57B9BB' },
+                // headerShown: false,
+            }}
         >
-        <Stack.Screen
-            name="Signup"
-            component={Signup}
-            options={{headerShown: false}}
-        />
-        <Stack.Screen
-            name="Home"
-            component={TabNavigation}
-            options={{headerShown: false}}
-        />
-        <Stack.Screen
-            name="Explore"
-            component={Explore}
+            <Stack.Screen
+                name="Signup"
+                component={Signup}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Home"
+                component={TabNavigation}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Explore"
+                component={Explore}
+
+            />
+            <Stack.Screen
+                name="Appointments"
+                component={Appointments}
+            />
+            <Stack.Screen
+                name="Booking"
+                component={Booking}
+            />
+            <Stack.Screen
+                name="Settings"
+                component={Settings}
+            />
+            <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Map"
+                component={MapScreen}
+            />
+            <Stack.Screen
+                name="BusinessProfile"
+                component={BusinessProfile}
+            />
+            <Stack.Screen
+                name="BookingConfirm"
+                component={BookingConfirm}
+            />
+            <Stack.Screen
+                name="EditProfile"
+                component={EditProfile}
+            />
+            <Stack.Screen
+                name="AddPayment"
+                component={AddPayment}
+            />
+
+
+
+
+            <Stack.Screen
+                name="AddService"
+                component={AddService}
+            />
+
+            <Stack.Screen
+                name="BusinessSettings"
+                component={BusinessSettings}
+            />
+            <Stack.Screen
+                name="AddBusinessPayment"
+                component={AddBusinessPayment}
+            />
+            <Stack.Screen
+                name="EditBusinessProfile"
+                component={EditBusinessProfile}
+            />
             
-        />
-        <Stack.Screen
-            name="Appointments"
-            component={Appointments}
-        />
-        <Stack.Screen
-            name="Booking"
-            component={Booking}
-        />
-        <Stack.Screen
-            name="Settings"
-            component={Settings}
-        />
-        <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{headerShown: false}}
-        />
-        <Stack.Screen
-            name="Map"
-            component={MapScreen}
-        />
-        <Stack.Screen
-            name="BusinessProfile"
-            component={BusinessProfile}
-        />
-        <Stack.Screen
-            name="BookingConfirm"
-            component={BookingConfirm}
-        />
-        <Stack.Screen
-            name="EditProfile"
-            component={EditProfile}
-        />
-        <Stack.Screen
-            name="AddService"
-            component={AddService}
-        />
 
         </Stack.Navigator>
     );
