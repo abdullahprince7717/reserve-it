@@ -7,6 +7,7 @@ import AddBusinessPayment from '../screens/businessInterface/AddBusinessPayment.
 import BusinessSettings from '../screens/businessInterface/Settings.js';
 import EditBusinessProfile from '../screens/businessInterface/EditBusinessProfile.js';
 import CustomerAppointments from '../screens/businessInterface/CustomerAppointments.js';
+import Checkout from '../screens/businessInterface/Checkout.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,11 @@ function MyStack() {
             <Stack.Screen
                 name="CustomerAppointments"
                 component={CustomerAppointments}
+            />
+
+            <Stack.Screen
+                name="Checkout"
+                component={Checkout}
             />
             
 

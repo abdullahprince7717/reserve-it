@@ -19,7 +19,7 @@ function settings(props) {
                             size = {25}
                             color= '#57B9BB'
                             />
-                        <Text style={styles.menuItemText}>Business Details</Text>
+                        <Text style={styles.menuItemText}>Business Profile</Text>
                     </View>
                 </TouchableRipple>
 
@@ -89,7 +89,8 @@ export default settings;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      marginTop: 20
     },
     userInfoSection: {
       paddingHorizontal: 20,

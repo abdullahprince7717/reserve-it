@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { FontAwesome5 } from "@expo/vector-icons/"
 
 import Appointments from '../../screens/businessInterface/CustomerAppointments.js'
 import Settings from '../../screens/businessInterface/Settings.js';
+import Checkout from '../../screens/businessInterface/Checkout.js';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -42,6 +44,15 @@ function TabNavigation(props) {
             
             />
 
+            <Tab.Screen name="Checkout" 
+            component={Checkout}
+            options={{
+                tabBarLabel: 'Checkout',
+                tabBarIcon: ({ color }) => (
+                    <FontAwesome5 name="money-check-alt" color={color} size={26} />
+                ), 
+            }}
+            />
 
             <Tab.Screen name="Settings" 
             component={Settings}
