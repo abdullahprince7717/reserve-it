@@ -8,9 +8,11 @@ function appointments({navigation}) {
         <ScrollView>
             <View style={styles.container}>
 
-                <Text style ={{fontSize: 22, margin: 10, fontWeight: 'bold'}}>
-                    Current Appointments
-                </Text>
+                <View style = {{flex: 0.07,alignItems: 'center', backgroundColor: '#57B9BB', justifyContent: 'flex-start',elevation: 2,}}>    
+                    <Text style ={{fontSize: 27, padding: 10,fontWeight: 'bold', color : '#fff'}}>
+                        Appointments
+                    </Text>
+                </View>
 
                 <Card
                     title="Grooming"
@@ -36,7 +38,7 @@ function appointments({navigation}) {
                     }}
                 />
 
-                <Text style ={{fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>
+                <Text style ={{fontSize: 22, marginTop: 20, fontWeight: 'bold',}}>
                     Past Appointments
                 </Text>
 
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // backgroundColor: '#fff',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        alignItems: 'center',
+        
         paddingBottom : 70,
     },
 })
