@@ -13,7 +13,7 @@ const AppointmentCard = (props) => {
                 <Text style = {{fontSize: 19, fontWeight:'bold'}}>
                     24
                 </Text>
-                <Text style = {{fontSize: 17}}>
+                <Text style = {{fontSize: 15}}>
                     12:00 PM
                 </Text>
 
@@ -21,7 +21,7 @@ const AppointmentCard = (props) => {
 
             <View style = {{height:'75%', width:2, backgroundColor:'grey',margin: 7,}}></View>
 
-            <View style = {styles.rightCol}>
+            <View style = {styles.midCol}>
 
                 <View >
 
@@ -38,8 +38,21 @@ const AppointmentCard = (props) => {
                     </Text>
                     
                 </View>
+            </View>
+
+            <View style = {{height:'75%', width:2, backgroundColor:'grey',margin: 7,}}></View>
+
+            <View style = {styles.rightCol}>
+                
+                <Text style = {{fontSize: 15,fontWeight:'bold'}}>
+                    Pkr. 1000
+                </Text>
+                
 
             </View>
+
+            
+
         </View>
     )
 }
@@ -76,11 +89,18 @@ const styles = StyleSheet.create({
         // backgroundColor: 'yellow',
         alignItems: 'center',
     },
-    rightCol: {
-        flex:3,
+    midCol: {
+        flex:2,
         padding:10, 
         flexDirection:'row',
         // backgroundColor: 'pink',
+        alignItems: 'center',
+    },
+
+    rightCol:{
+        flex: 1,
+        padding:10, 
+        flexDirection:'row',
         alignItems: 'center',
     },
 

@@ -29,7 +29,7 @@ function explore({navigation}) {
                         }}
                         styles={{
                             textInputContainer: {
-                                backgroundColor: 'black',
+                                backgroundColor: '#000',
                             },
                             textInput: {
                                 height: 50,
@@ -51,10 +51,6 @@ function explore({navigation}) {
             <View style = {styles.listView}>
             
                 <ScrollView>
-                    
-                    <Text style ={{fontSize: 22, margin: 10, fontWeight: 'bold'}}>
-                        Current Appointments
-                    </Text>
 
                     <View>    
                         <BusinessCard
@@ -90,8 +86,6 @@ function explore({navigation}) {
 
                     </View>    
                 </ScrollView>    
-
-                
 
                 <FAB
                     style={styles.fab}
@@ -131,7 +125,7 @@ const styles = StyleSheet.create({
         width: deviceWidth,
         alignItems:'center',
         paddingBottom: 10,
-        backgroundColor: '#9DC7FF',
+        // backgroundColor: '#9DC7FF',
     },
     searchBar:{
         width: deviceWidth-30,

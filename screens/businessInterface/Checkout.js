@@ -46,7 +46,7 @@ export default function Checkout() {
                             />
 
                             <Appointment
-                                customer="Grooming"
+                                customer="Abdullah Ali"
                                 service = "Haircut"
                                 price = "Pkr. 500"
                                 duration="45 mins"
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
         flex: 0.08,
         // backgroundColor: '#000',
         margin:15,
-
     },
 
     items: {

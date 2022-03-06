@@ -5,8 +5,6 @@ import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
 
 
-
-
 export default function App() {
 
   const [userType,setUserType] = useState('customer');

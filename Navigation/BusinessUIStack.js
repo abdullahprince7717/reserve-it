@@ -8,6 +8,11 @@ import BusinessSettings from '../screens/businessInterface/Settings.js';
 import EditBusinessProfile from '../screens/businessInterface/EditBusinessProfile.js';
 import CustomerAppointments from '../screens/businessInterface/CustomerAppointments.js';
 import Checkout from '../screens/businessInterface/Checkout.js';
+import BusinessDays from '../screens/businessInterface/BusinessDays.js';
+import EditBusinessHours from '../screens/businessInterface/EditBusinessHours.js';
+import ServicesList from '../screens/businessInterface/ServicesList.js';
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +58,21 @@ function MyStack() {
             <Stack.Screen
                 name="Checkout"
                 component={Checkout}
+            />
+
+            <Stack.Screen
+                name="ServicesList"
+                component={ServicesList}
+            />
+
+            <Stack.Screen
+                name="BusinessDays"
+                component={BusinessDays}
+            />
+
+            <Stack.Screen
+                name="EditBusinessHours"
+                component={EditBusinessHours}
             />
             
 

@@ -1,18 +1,7 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'react-native';
-import {TimePicker, ValueMap} from 'react-native-simple-time-picker';
 import React,{useState} from 'react'
 
 const AddService = () => {
-
-    // const [value, setValue] = useState<ValueMap>({
-    //     hours: 1,
-    //     minutes: 0,
-    //     seconds: 0,
-    // });
-
-    // const handleChange = (newValue: ValueMap) => {
-    //     setValue(newValue);
-    // };
 
     return (
         <View style = {styles.container}>

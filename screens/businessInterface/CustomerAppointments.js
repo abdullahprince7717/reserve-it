@@ -1,101 +1,90 @@
-import { View,StyleSheet,StatusBar,Text,ScrollView } from "react-native";
+import React, {useState} from 'react';
+import { View,StyleSheet,StatusBar,Text,ScrollView,useWindowDimensions } from "react-native";
 import Card from  '../../components/appointments/AppointmentCard.js';
+import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
+
+
+const FirstRoute = () => (
+
+        <ScrollView style={styles.container}>
+            <View >
+                <Card
+                    title="Grooming"
+                    businessName="LaLa Salon"
+                    address="Machi Mandi near Niagra Falls, Kenya"
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+                <Card
+                    title="Grooming"
+                    businessName="LaLa Salon"
+                    address="Machi Mandi near Niagra Falls, Kenya"
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+
+            </View>
+        </ScrollView>
+);
+
+const SecondRoute = () => (
+    <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
+);
+
+const ThirdRoute = () => (
+
+    <View style={{ flex: 1, backgroundColor: '#34839274' }} />
+    );
+    
+
+const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+    third: ThirdRoute,
+});
+
+const renderTabBar = props => (
+    <TabBar
+        {...props}
+        indicatorStyle={{ backgroundColor: '#fff' }}
+        style={{ backgroundColor: '#57B9BB', }}
+    />
+);
 
 
 
 function appointments({navigation}) {
+
+    const layout = useWindowDimensions();
+
+    const [index, setIndex] = React.useState(0);
+    const [routes] = React.useState([
+        { key: 'first', title: 'Current' },
+        { key: 'second', title: 'Completed' },
+        { key: 'third', title: 'Cancelled' },
+    ]);
+
     return(
-        <ScrollView>
-            <View style={styles.container}>
 
-                <View style = {{flex: 0.07,alignItems: 'center', backgroundColor: '#57B9BB', justifyContent: 'flex-start',elevation: 2,}}>    
-                    <Text style ={{fontSize: 27, padding: 10,fontWeight: 'bold', color : '#fff'}}>
-                        Appointments
-                    </Text>
-                </View>
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Text style ={{fontSize: 22, marginTop: 20, fontWeight: 'bold',}}>
-                    Past Appointments
-                </Text>
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Text style ={{fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>
-                    Cancelled Appointments
-                </Text>
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-            </View>
-        </ScrollView>
+        <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+            style = {styles.container}
+            renderTabBar={renderTabBar}
+        />
+        
     );
 }
 
@@ -108,7 +97,6 @@ const styles = StyleSheet.create({
         flex: 1,
         // backgroundColor: '#fff',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        
-        paddingBottom : 70,
+        paddingBottom : 50,
     },
 })
