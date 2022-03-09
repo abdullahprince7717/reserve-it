@@ -24,21 +24,43 @@ function settings(props) {
                 </TouchableRipple>
 
                 <TouchableRipple
-                    onPress = {() => console.log('pressed')}
+                    onPress = {() => {
+                        console.log('pressed')
+                        {props.navigation.navigate('BusinessHours')}
+                    }}
                 >
                     <View style = {styles.menuItem}>
                         <Icon 
-                            name = "share-outline"
+                            name = "timetable"
                             size = {25}
                             color= '#57B9BB'
                             />
-                        <Text style={styles.menuItemText}>Your Services</Text>
+                        <Text style={styles.menuItemText}>Business Hours</Text>
+                    </View>
+                </TouchableRipple>
+
+                <TouchableRipple
+                    onPress = {() => {
+                        console.log('pressed')
+                        {props.navigation.navigate('BusinessHours')}
+                    }}
+                >
+                    <View style = {styles.menuItem}>
+                        <Icons 
+                            name = "miscellaneous-services"
+                            size = {25}
+                            color= '#57B9BB'
+                            />
+                        <Text style={styles.menuItemText}>Services</Text>
                     </View>
                 </TouchableRipple>
 
 
                 <TouchableRipple 
-                    onPress = {() => console.log('pressed')}
+                    onPress = {() => {
+                        console.log('pressed')
+                        // {props.navigation.navigate('AddPayment')}
+                    }}
                 >
                     <View style = {styles.menuItem}>
                         <Icon 
@@ -78,6 +100,8 @@ function settings(props) {
                     </View>
                 </TouchableRipple>
 
+                
+
             </View>
 
         </View>
@@ -87,56 +111,56 @@ function settings(props) {
 export default settings;
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      marginTop: 20
-    },
-    userInfoSection: {
-      paddingHorizontal: 20,
-      marginBottom: 5,
-      marginTop: 20
-    },
-    title: {
-      fontSize: 28,
-      fontWeight: 'bold',
-      marginLeft: 5,
-      
-    },
-    caption: {
-      fontSize: 14,
-      lineHeight: 14,
-      fontWeight: '500',
-      marginLeft: 10,
-      marginTop: 5,
-    },
-    row: {
-      flexDirection: 'row',
-      marginBottom: 10,
-    },
-    infoBoxWrapper: {
-      borderBottomColor: '#fff',
-      borderBottomWidth: 1,
-      borderTopColor: '#dddddd',
-      borderTopWidth: 1,
-      flexDirection: 'row',
-      height: 100,
-    },
-    infoBox: {
-      width: '50%',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    menuItem: {
-      flexDirection: 'row',
-      paddingVertical: 15,
-      paddingHorizontal: 30,
-    },
-    menuItemText: {
-      color: '#777777',
-      marginLeft: 13,
-      fontWeight: '600',
-      fontSize: 19,
-      lineHeight: 26,
-    },
-  });
+container: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    marginTop: 20
+},
+userInfoSection: {
+    paddingHorizontal: 20,
+    marginBottom: 5,
+    marginTop: 20
+},
+title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginLeft: 5,
+    
+},
+caption: {
+    fontSize: 14,
+    lineHeight: 14,
+    fontWeight: '500',
+    marginLeft: 10,
+    marginTop: 5,
+},
+row: {
+    flexDirection: 'row',
+    marginBottom: 10,
+},
+infoBoxWrapper: {
+    borderBottomColor: '#fff',
+    borderBottomWidth: 1,
+    borderTopColor: '#dddddd',
+    borderTopWidth: 1,
+    flexDirection: 'row',
+    height: 100,
+},
+infoBox: {
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+menuItem: {
+    flexDirection: 'row',
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+},
+menuItemText: {
+    color: '#777777',
+    marginLeft: 13,
+    fontWeight: '600',
+    fontSize: 19,
+    lineHeight: 26,
+},
+});

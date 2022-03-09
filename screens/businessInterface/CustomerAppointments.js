@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { View,StyleSheet,StatusBar,Text,ScrollView,useWindowDimensions } from "react-native";
-import Card from  '../../components/appointments/AppointmentCard.js';
+import Card from  '../../components/businessUIComponents/AppointmentCard.js';
 import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
 
 
@@ -9,9 +9,9 @@ const FirstRoute = () => (
         <ScrollView style={styles.container}>
             <View >
                 <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
+                    customerName="Arslan Saleem"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
                     date="March 12"
                     time="10:00 AM"
                     onPress = {() => {
@@ -21,9 +21,21 @@ const FirstRoute = () => (
                 />
 
                 <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
                     date="March 12"
                     time="10:00 AM"
                     onPress = {() => {

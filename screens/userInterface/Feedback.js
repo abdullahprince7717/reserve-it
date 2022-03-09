@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const BusinessDays = () => {
+const Feedback = () => {
     return (
         <View>
-            <Text>ada</Text>
+            <Text>Feedback</Text>
         </View>
     )
 }
 
-export default BusinessDays
+export default Feedback
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    
+})

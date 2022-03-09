@@ -8,7 +8,7 @@ import BusinessSettings from '../screens/businessInterface/Settings.js';
 import EditBusinessProfile from '../screens/businessInterface/EditBusinessProfile.js';
 import CustomerAppointments from '../screens/businessInterface/CustomerAppointments.js';
 import Checkout from '../screens/businessInterface/Checkout.js';
-import BusinessDays from '../screens/businessInterface/BusinessDays.js';
+import BusinessHours from '../screens/businessInterface/BusinessHours.js';
 import EditBusinessHours from '../screens/businessInterface/EditBusinessHours.js';
 import ServicesList from '../screens/businessInterface/ServicesList.js';
 
@@ -66,8 +66,8 @@ function MyStack() {
             />
 
             <Stack.Screen
-                name="BusinessDays"
-                component={BusinessDays}
+                name="BusinessHours"
+                component={BusinessHours}
             />
 
             <Stack.Screen

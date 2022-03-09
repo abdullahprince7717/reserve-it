@@ -16,12 +16,10 @@ import TabNavigation from '../components/MaterialBottomNav.js';
 import BusinessProfile from '../screens/userInterface/BusinessProfile.js';
 import BookingConfirm from '../screens/userInterface/BookingConfirm.js';
 import EditProfile from '../screens/userInterface/EditProfile.js';
-import AddPayment from '../screens/userInterface/AddPayment.js';
+import Payment from '../screens/userInterface/Payment.js';
+import PaymentCardForm from '../screens/userInterface/PaymentCardForm.js';
+import Feedback from '../screens/userInterface/Feedback.js';
 
-import AddService from '../screens/businessInterface/AddService.js';
-import AddBusinessPayment from '../screens/businessInterface/AddBusinessPayment.js';
-import BusinessSettings from '../screens/businessInterface/Settings.js';
-import EditBusinessProfile from '../screens/businessInterface/EditBusinessProfile.js';
 
 function MyStack() {
     return (
@@ -82,31 +80,17 @@ function MyStack() {
                 component={EditProfile}
             />
             <Stack.Screen
-                name="AddPayment"
-                component={AddPayment}
-            />
-
-
-
-
-            <Stack.Screen
-                name="AddService"
-                component={AddService}
-            />
-
-            <Stack.Screen
-                name="BusinessSettings"
-                component={BusinessSettings}
+                name="Payment"
+                component={Payment}
             />
             <Stack.Screen
-                name="AddBusinessPayment"
-                component={AddBusinessPayment}
+                name="PaymentCardForm"
+                component={PaymentCardForm}
             />
             <Stack.Screen
-                name="EditBusinessProfile"
-                component={EditBusinessProfile}
+                name="Feedback"
+                component={Feedback}
             />
-            
 
         </Stack.Navigator>
     );

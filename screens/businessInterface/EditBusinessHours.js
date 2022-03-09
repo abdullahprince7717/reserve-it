@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
+
 const EditBusinessHours = () => {
     return (
-        <View>
+        <View style = {styles.container}>
             <Text>EditBusinessHours</Text>
         </View>
     )
@@ -12,6 +13,9 @@ const EditBusinessHours = () => {
 export default EditBusinessHours
 
 const styles = StyleSheet.create({
-    
+    container:{
+        flex:1,
+        backgroundColor: 'pink',
+    },
     
 })
