@@ -473,7 +473,7 @@ const BusinessProfile = (props) => {
         <TabBar
             {...props}
             indicatorStyle={{ backgroundColor: '#fff' }}
-            style={{ backgroundColor: '#57B9BB', }}
+            style={{ backgroundColor: '#000', }}
         />
     );
     

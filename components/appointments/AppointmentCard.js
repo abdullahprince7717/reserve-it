@@ -1,5 +1,5 @@
 import { View, Text,StyleSheet,Dimensions,TouchableWithoutFeedback } from 'react-native';
-import {Divider} from 'react-native-paper';
+import {Divider,Button} from 'react-native-paper';
 import React from 'react';
 
 const AppointmentCard = (props) => {
@@ -8,39 +8,71 @@ const AppointmentCard = (props) => {
     <TouchableWithoutFeedback
             onPress ={props.onPress}
     >
-                
-        <View style = {styles.container}>
-            <View style = {styles.leftColumn}>
-                <View style={{ height: '65%', width :'85%',backgroundColor:'white',flexDirection:'column',}}>
-                    <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
-                        {props.title}
-                    </Text>
-                    <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :20}}>
-                        {props.businessName}
-                    </Text>
-                    <Text style={{color:'black', fontSize:14, fontWeight:'100', marginTop :4}}>
-                        {props.address}
-                    </Text>
+        <View style = {styles.container}>        
+            <View style = {{flexDirection: 'row',alignItems: 'center'}}>
+                <View style = {styles.leftColumn}>
+                    <View style={{ height: '65%', width :'85%',backgroundColor:'white',flexDirection:'column',}}>
+                        <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
+                            {props.title}
+                        </Text>
+                        <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :20}}>
+                            {props.businessName}
+                        </Text>
+                        <Text style={{color:'black', fontSize:14, fontWeight:'100', marginTop :4}}>
+                            {props.address}
+                        </Text>
+                    </View>
+                </View>
+
+                <Divider style = {{height:'80%',color:'#000',width:'0.5%'}} />
+
+                <View style={styles.rightColumn}>
+                    <View style={{ height: '85%', width :'90%',backgroundColor:'white',
+                    flexDirection:'column',justifyContent: 'center',alignItems: 'center',
+                    }}>
+
+                        <Text style={{color:'black', fontSize:19, fontWeight:'bold',}}>
+                            {props.date}
+                        </Text>
+                        <Text style={{color:'black', fontSize:17, fontWeight:'200',margin:10}}>
+                            {props.time}
+                        </Text>
+
+                    </View>
+                </View>    
+            </View>
+
+            {/* <Divider style = {{height:'0.8%',color:'#000',width:'80%'}} /> */}
+
+            <View style = {styles.buttonArea}>
+                <View style = {{flexDirection:'row',}}>
+
+                    <Button mode="outlined" 
+                        style = {{marginRight:25,marginLeft:25,borderColor: 'green',borderWidth:1}}
+                        color = 'green' 
+                        onPress={() => {
+                            console.log('Pressed')
+                        }}>
+                            
+                        {props.buttonText1}
+                    </Button>
+
+                    <Button mode="outlined" 
+                        style = {{marginRight:25,marginLeft:25,borderColor: 'red',borderWidth:1}}
+                        color = 'red' 
+                        onPress={() => {
+                            console.log('Pressed')
+                        }}>
+                            
+                            
+                        {props.buttonText2}
+                    </Button>
+ 
+
                 </View>
             </View>
 
-            <Divider style = {{height:'100%',color:'#000',width:'0.5%'}} />
-            
-            <View style={styles.rightColumn}>
-                <View style={{ height: '85%', width :'90%',backgroundColor:'white',
-                flexDirection:'column',justifyContent: 'center',alignItems: 'center',
-                }}>
-
-                    <Text style={{color:'black', fontSize:19, fontWeight:'bold',}}>
-                        {props.date}
-                    </Text>
-                    <Text style={{color:'black', fontSize:17, fontWeight:'200',margin:10}}>
-                        {props.time}
-                    </Text>
-
-                </View>
-            </View>
-        </View>
+        </View>    
     </TouchableWithoutFeedback>    
     );
 };
@@ -50,9 +82,9 @@ const deviceWidth = Math.round(Dimensions.get('window').width);
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        flexDirection:'row',
-        flexWrap:'wrap',
-        height: 170,
+        flexDirection:'column',
+        // flexWrap:'wrap',
+        height: 200,
         width: deviceWidth-40,
         margin:20,
         marginTop:0,
@@ -72,7 +104,7 @@ const styles = StyleSheet.create({
     },
     leftColumn: {
         flex: 2.5,
-        height: 170,
+        height: 140,
         // backgroundColor: 'blue',
         justifyContent: 'center', 
         alignItems: 'center',
@@ -81,11 +113,18 @@ const styles = StyleSheet.create({
     },
     rightColumn: {
         flex: 1,
-        height: 170,
+        height: 130,
         // backgroundColor: 'green',
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomRightRadius: 20,
         borderTopRightRadius: 20,
+    },
+    buttonArea:{
+        flex: 1,
+        margin:10,
+        justifyContent: 'center',
+        alignItems: 'center',
+
     },
 })

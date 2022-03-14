@@ -42,7 +42,7 @@ function settings(props) {
                 <TouchableRipple
                     onPress = {() => {
                         console.log('pressed')
-                        {props.navigation.navigate('BusinessHours')}
+                        {props.navigation.navigate('ServicesList')}
                     }}
                 >
                     <View style = {styles.menuItem}>

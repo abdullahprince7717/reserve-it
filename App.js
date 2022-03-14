@@ -25,13 +25,13 @@ export default function App() {
       //   console.log('business');
       // }
 
-      // <NavigationContainer>
-      //     <StackNavigator/>
-      // </NavigationContainer>
-
       <NavigationContainer>
-        <BusinessStack/>
+          <StackNavigator/>
       </NavigationContainer>
+
+      // <NavigationContainer>
+      //     <BusinessStack/>
+      // </NavigationContainer>
 
   );
 }

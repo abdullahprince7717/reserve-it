@@ -7,10 +7,7 @@ const BusinessDays = (props) => {
             <TouchableOpacity
                 onPress = {props.onPress}
             >    
-                
                 <View style = {styles.component}>
-
-                
                     <Text style = {{fontSize:16, fontWeight: 'bold'}}>
                         {props.day}
                     </Text>
@@ -40,7 +37,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#fff',
         flexDirection:'row', 
         justifyContent: 'space-between', 
-        margin:10, 
+        margin: 5, 
         padding: 18
     },
 

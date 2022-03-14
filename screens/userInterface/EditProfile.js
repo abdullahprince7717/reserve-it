@@ -33,6 +33,14 @@ const EditProfile = () => {
                     style={styles.textInput}
                 />
             </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <Feather color="#57B9BB" name="phone" size={25} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Address"
+                    placeholderTextColor= {"#000"}
+                    style={styles.textInput}
+                />
+            </View>
 
             <View style = {{justifyContent: 'center',margin : 20,marginTop:40}}>
                 <TouchableOpacity 
@@ -51,8 +59,6 @@ const EditProfile = () => {
 
             </View>    
                 
-
-            
                 
 
         </View>
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
     
     },
     button: {
-        backgroundColor: '#57B9BB',
+        backgroundColor: '#000',
         width: deviceWidth-40,
         height: 40,
         borderRadius: 10,

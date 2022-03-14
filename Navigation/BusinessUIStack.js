@@ -11,6 +11,7 @@ import Checkout from '../screens/businessInterface/Checkout.js';
 import BusinessHours from '../screens/businessInterface/BusinessHours.js';
 import EditBusinessHours from '../screens/businessInterface/EditBusinessHours.js';
 import ServicesList from '../screens/businessInterface/ServicesList.js';
+import EditService from '../screens/businessInterface/EditService.js';
 
 
 
@@ -73,6 +74,10 @@ function MyStack() {
             <Stack.Screen
                 name="EditBusinessHours"
                 component={EditBusinessHours}
+            />
+            <Stack.Screen
+                name="EditService"
+                component={EditService}
             />
             
 

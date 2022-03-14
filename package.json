@@ -34,6 +34,7 @@
     "react-native-button-toggle-group": "^1.1.2",
     "react-native-calendars": "^1.1276.0",
     "react-native-character-input": "^1.0.5",
+    "react-native-dialog": "^9.2.1",
     "react-native-dynamic-search-bar": "^2.0.2",
     "react-native-elements": "^3.4.2",
     "react-native-flash-message": "^0.2.0",

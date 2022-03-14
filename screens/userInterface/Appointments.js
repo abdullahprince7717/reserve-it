@@ -29,7 +29,9 @@ function appointments(props) {
                         console.log('Pressed')
                         props.navigation.navigate('BusinessProfile')
                     }}
-                />
+                    buttonText1 = "Edit"
+                    buttonText2 = "Cancel"
+                /> 
 
                 <Card
                     title="Grooming"
@@ -41,6 +43,8 @@ function appointments(props) {
                         console.log('Pressed')
                         props.navigation.navigate('BusinessProfile')
                     }}
+                    buttonText1 = "Edit"
+                    buttonText2 = "Cancel"
                 />
 
 
@@ -49,12 +53,76 @@ function appointments(props) {
     );
 
     const SecondRoute = () => (
-        <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
+        <ScrollView style={styles.container}>
+            <View >
+                <Card
+                    title="Grooming"
+                    businessName="LaLa Salon"
+                    address="Machi Mandi near Niagra Falls, Kenya"
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        props.navigation.navigate('BusinessProfile')
+                    }}
+                    buttonText1 = "Rate"
+                    buttonText2 = "Report"
+                /> 
+
+                <Card
+                    title="Grooming"
+                    businessName="LaLa Salon"
+                    address="Machi Mandi near Niagra Falls, Kenya"
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        props.navigation.navigate('BusinessProfile')
+                    }}
+                    buttonText1 = "Rate"
+                    buttonText2 = "Report"
+                />
+
+
+            </View>
+        </ScrollView>
     );
 
     const ThirdRoute = () => (
 
-        <View style={{ flex: 1, backgroundColor: '#34839274' }} />
+        <ScrollView style={styles.container}>
+            <View >
+                <Card
+                    title="Grooming"
+                    businessName="LaLa Salon"
+                    address="Machi Mandi near Niagra Falls, Kenya"
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        props.navigation.navigate('BusinessProfile')
+                    }}
+                    buttonText1 = "Book Again"
+                    buttonText2 = "Report"
+                /> 
+
+                <Card
+                    title="Grooming"
+                    businessName="LaLa Salon"
+                    address="Machi Mandi near Niagra Falls, Kenya"
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        props.navigation.navigate('BusinessProfile')
+                    }}
+                    buttonText1 = "Book Again"
+                    buttonText2 = "Report"
+                />
+
+
+            </View>
+        </ScrollView>
         );
 
 
