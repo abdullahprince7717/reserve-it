@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
+import AdminStack from './Navigation/AdminUIStack.js';
 
 
 export default function App() {
@@ -25,13 +26,20 @@ export default function App() {
       //   console.log('business');
       // }
 
-      <NavigationContainer>
-          <StackNavigator/>
-      </NavigationContainer>
+
+
+
+      // <NavigationContainer>
+      //     <StackNavigator/>
+      // </NavigationContainer>
 
       // <NavigationContainer>
       //     <BusinessStack/>
       // </NavigationContainer>
+
+      <NavigationContainer>
+          <AdminStack/>
+      </NavigationContainer>
 
   );
 }
