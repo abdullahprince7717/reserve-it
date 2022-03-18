@@ -20,10 +20,67 @@ const Home = (props) => {
             <View style ={{width: '93%', backgroundColor:'grey',height:2}}></View>    
 
             
-            <View style ={{width: '90%'}}>
+            <View style ={{width: '90%',marginTop:10}}>
                 
-                <ScrollView>
-                    <CustomerCard/>    
+                <ScrollView >
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+                    
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+                    
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard/>
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+
                 </ScrollView>
                 
 

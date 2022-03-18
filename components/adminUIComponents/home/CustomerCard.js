@@ -11,7 +11,7 @@ const CustomerCard = () => {
                     Customer Name
                 </Text>
 
-                <View style ={{flexDirection:'row',justifyContent: 'space-between'}}>
+                <View style ={{flexDirection:'row',justifyContent: 'space-between',marginRight:25,paddingLeft:8}}>
                     <Text>
                         03214323489
                     </Text>
@@ -23,7 +23,7 @@ const CustomerCard = () => {
 
             </View>
             <View style = {{alignItems: 'center',justifyContent: 'center'}}>
-                <MaterialCommunityIcons name="greater-than"/>
+                <MaterialCommunityIcons name="greater-than" />
             </View>
         </View>
     )
@@ -34,7 +34,7 @@ export default CustomerCard
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'yellow',
+        backgroundColor:'#fff',
         height:70,
         width:'100%',
         flexDirection:'row',
