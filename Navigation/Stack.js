@@ -24,7 +24,7 @@ import Feedback from '../screens/userInterface/Feedback.js';
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Signup"
             screenOptions={{
                 headerTintColor: '#000',
                 headerStyle: { backgroundColor: '#fff' },

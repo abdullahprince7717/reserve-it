@@ -37,6 +37,7 @@
     "react-native-dialog": "^9.2.1",
     "react-native-dynamic-search-bar": "^2.0.2",
     "react-native-elements": "^3.4.2",
+    "react-native-fbsdk-next": "^7.3.3",
     "react-native-flash-message": "^0.2.0",
     "react-native-google-places-autocomplete": "^2.4.1",
     "react-native-image-slider-banner": "^1.0.2",

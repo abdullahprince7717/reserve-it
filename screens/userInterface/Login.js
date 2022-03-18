@@ -1,9 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
-
+import React, {useState,useEffect} from 'react'
+import {auth} from  '../../firebase/FirebaseConfig.js'
+import {signInWithEmailAndPassword} from "firebase/auth";
 
 
 const signIn = ({navigation}) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [IsSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+
+    const subscribe = auth.onAuthStateChanged(user => {
+      if(user){
+        navigation.navigate('Home')
+      }
+    })
+    return subscribe;
+
+  },[])
+
+  const handleLogin = () => {
+    auth.signInWithEmailAndPassword(email.trim(), password)
+    .then((credentials) => {
+
+      const user = credentials.user;
+      console.log('loggedIn as' + user?.email);
+      console.log("Pressed")
+      // setIsSignedIn(true);
+
+    })
+    .catch((error) => {
+      console.log("Error Message :" + error.message);
+
+      console.log("Error Code :" + error.code);
+    })
+  }
 
   return (
       <>
@@ -18,11 +52,13 @@ const signIn = ({navigation}) => {
               <TextInput
                 placeholder="Email"
                 placeholderTextColor= {"#fff"}
+                onChangeText ={text=>setEmail(text)}
                 style={styles.textInput}
               />
               <TextInput
                 placeholder="Password"
                 placeholderTextColor= {"#fff"}
+                onChangeText ={text=>setPassword(text)}
                 secureTextEntry = {true} 
                 style={styles.textInput}
               />
@@ -30,10 +66,7 @@ const signIn = ({navigation}) => {
 
             <TouchableOpacity 
               style = {styles.button}
-              onPress ={ () => {
-                console.log('Pressed')
-                navigation.navigate('Home')    
-            }}
+              onPress ={ handleLogin}
               >
               <Text>Sign In </Text>
             </TouchableOpacity>

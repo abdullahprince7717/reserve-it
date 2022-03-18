@@ -1177,7 +1177,7 @@
   "resolved" "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz"
   "version" "0.2.5"
 
-"@expo/config-plugins@^4.0.2", "@expo/config-plugins@4.0.14":
+"@expo/config-plugins@^4.0.2", "@expo/config-plugins@^4.0.4", "@expo/config-plugins@4.0.14":
   "integrity" "sha512-3UMo9STaIAQRAvtlXXIX83mrxWAh0prQYgVG+n2JRBwI9CWiRdj35W+jyXkTChtPYXGvW1JQF2xatjB8ituSvg=="
   "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.0.14.tgz"
   "version" "4.0.14"
@@ -5781,6 +5781,14 @@
     "react-native-ratings" "8.0.4"
     "react-native-size-matters" "^0.3.1"
 
+"react-native-fbsdk-next@^7.3.3":
+  "integrity" "sha512-8DRzfqPIUZ3OmzaVmn3zNDSg6eieDFDGhkoLbJvs2juXyz+RdqxM5DbMTTw0VFKiNrvdtfFFbL8Sslg8/ecStQ=="
+  "resolved" "https://registry.npmjs.org/react-native-fbsdk-next/-/react-native-fbsdk-next-7.3.3.tgz"
+  "version" "7.3.3"
+  dependencies:
+    "@expo/config-plugins" "^4.0.4"
+    "xml2js" "^0.4.23"
+
 "react-native-flash-message@^0.2.0":
   "integrity" "sha512-hntGa5tq6TvO6LuCMQaO+r18sWY8T3aXBr4TvXvsbrCWazWZdG9P+oALp5UsvRkk/Vtr2fQ1pT5dG+9AM/RXyQ=="
   "resolved" "https://registry.npmjs.org/react-native-flash-message/-/react-native-flash-message-0.2.0.tgz"
@@ -5981,7 +5989,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@>= 0.30.0", "react-native@>= 0.46", "react-native@>= 0.51", "react-native@>= 0.55.x", "react-native@>= 0.59", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.59.0-rc.0 <1.0.x", "react-native@>=0.63.0", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@>= 0.30.0", "react-native@>= 0.46", "react-native@>= 0.51", "react-native@>= 0.55.x", "react-native@>= 0.59", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.59.0-rc.0 <1.0.x", "react-native@>=0.63.0", "react-native@>=0.63.3", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
   "integrity" "sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.64.3.tgz"
   "version" "0.64.3"
@@ -7153,7 +7161,7 @@
   "resolved" "https://registry.npmjs.org/xdate/-/xdate-0.8.2.tgz"
   "version" "0.8.2"
 
-"xml2js@0.4.23":
+"xml2js@^0.4.23", "xml2js@0.4.23":
   "integrity" "sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug=="
   "resolved" "https://registry.npmjs.org/xml2js/-/xml2js-0.4.23.tgz"
   "version" "0.4.23"

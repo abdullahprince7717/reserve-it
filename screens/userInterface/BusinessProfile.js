@@ -17,8 +17,6 @@ const BusinessProfile = (props) => {
 
     const time = moment().format('MMMM Do YYYY');
 
-
-
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff',margin:10, }}>
             <ScrollView>
