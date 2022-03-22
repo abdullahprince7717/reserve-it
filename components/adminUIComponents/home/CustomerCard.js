@@ -1,31 +1,54 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,TouchableOpacity,Button } from 'react-native'
+import React, {useState} from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// import Modal from "react-native-modal";
 
 
-const CustomerCard = () => {
+const CustomerCard = (props) => {
+
+    // const [isModalVisible, setModalVisible] = useState(false);
+
+    // const toggleModal = () => {
+    //     setModalVisible(!isModalVisible);
+    // };
+
     return (
-        <View style ={styles.container}>
-            <View style ={{flexDirection:'column',width:'100%'}}>
-                <Text style = {{fontSize:17,fontWeight:'bold'}}>
-                    Customer Name
-                </Text>
-
-                <View style ={{flexDirection:'row',justifyContent: 'space-between',marginRight:25,paddingLeft:8}}>
-                    <Text>
-                        03214323489
+        <TouchableOpacity
+            // onPress= {toggleModal}
+        >
+            <View style ={styles.container}>
+                <View style ={{flexDirection:'column',width:'100%'}}>
+                    <Text style = {{fontSize:17,fontWeight:'bold'}}>
+                        Customer Name
                     </Text>
 
-                    <Text>
-                        test@test.com
-                    </Text>
+                    <View style ={{flexDirection:'row',justifyContent: 'space-between',marginRight:25,paddingLeft:8}}>
+                        <Text>
+                            03214323489
+                        </Text>
+
+                        <Text>
+                            test@test.com
+                        </Text>
+                    </View>
+
                 </View>
+                <View style = {{alignItems: 'center',justifyContent: 'center'}}>
+                    <MaterialCommunityIcons name="greater-than" />
+                </View>
+            </View>
 
-            </View>
-            <View style = {{alignItems: 'center',justifyContent: 'center'}}>
-                <MaterialCommunityIcons name="greater-than" />
-            </View>
-        </View>
+            {/* <Modal isVisible={isModalVisible}>
+                <View style={{ flex: 1 }}>
+                    <Text>Hello!</Text>
+
+                    <Button title="Hide modal" onPress={toggleModal} />
+                </View>
+            </Modal> */}
+        </TouchableOpacity>
+
+        
+            
     )
 }
 
@@ -40,6 +63,5 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         padding:15,
         justifyContent: 'space-between',
-        
     },
 })

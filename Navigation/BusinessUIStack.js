@@ -12,7 +12,8 @@ import BusinessHours from '../screens/businessInterface/BusinessHours.js';
 import EditBusinessHours from '../screens/businessInterface/EditBusinessHours.js';
 import ServicesList from '../screens/businessInterface/ServicesList.js';
 import EditService from '../screens/businessInterface/EditService.js';
-
+import Signup from '../screens/businessInterface/Signup.js';
+import Login from '../screens/businessInterface/Login.js';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,7 +21,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Login"
             screenOptions={{
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: '#57B9BB' },
@@ -78,6 +79,16 @@ function MyStack() {
             <Stack.Screen
                 name="EditService"
                 component={EditService}
+            />
+            <Stack.Screen
+                name="Signup"
+                component={Signup}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{headerShown: false}}
             />
             
 

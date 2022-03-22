@@ -5,6 +5,9 @@ import TabNavigation from '../components/adminUIComponents/BottomTabNavigator.js
 import Home from '../screens/adminInterface/Home.js';
 import Complaints from '../screens/adminInterface/Complaints.js';
 import Settings from '../screens/adminInterface/Settings.js';
+import Login from '../screens/adminInterface/Login.js';
+import AddBusiness from '../screens/adminInterface/AddBusiness.js';
+import AddCustomer from '../screens/adminInterface/AddCustomer.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +21,7 @@ function MyStack() {
                 // headerShown: false,
             }}
         >
-            
+
             <Stack.Screen
                 name="Home"
                 component={TabNavigation}
@@ -33,6 +36,21 @@ function MyStack() {
             <Stack.Screen
                 name="Settings"
                 component={Settings}
+            />
+            <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="AddBusiness"
+                component={AddBusiness}
+                // options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="AddCustomer"
+                component={AddCustomer}
+                // options={{headerShown: false}}
             />
         
         </Stack.Navigator>

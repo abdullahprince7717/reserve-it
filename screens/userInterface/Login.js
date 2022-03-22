@@ -66,7 +66,7 @@ const signIn = ({navigation}) => {
 
             <TouchableOpacity 
               style = {styles.button}
-              onPress ={ handleLogin}
+              onPress ={handleLogin}
               >
               <Text>Sign In </Text>
             </TouchableOpacity>
@@ -75,27 +75,22 @@ const signIn = ({navigation}) => {
               <Text style = {styles.fbText}>Continue with Facebook </Text>
             </TouchableOpacity>
 
-            <Text style = {styles.text}> Don't have an account?
-            <TouchableOpacity 
-              onPress ={ () => {
-                console.log('Pressed')
-                navigation.navigate('Signup')       //just for testing
-            }}
-            >
-              <Text style = {{color: '#4267B2',fontSize: 17 }}> SignUp</Text> 
-            </TouchableOpacity>
-            </Text>
+            <View style = {{flexDirection:'row', justifyContent: 'center',marginTop:5}}>
+                    <TouchableOpacity disabled ={true}>
+                        <Text style = {{color: '#fff',fontSize: 15,textDecorationLine: 'underline'}}> Don't have an account? </Text>
+                    </TouchableOpacity>
 
-    
-              {/* style={styles.facebookBtn}>
-                <FontAwesome name='facebook' size={20} color='#fff' />
-                <Text style={}>
-                  Login With Facebook 
-	              </Text> */}
-            
+                    <TouchableOpacity
+                        onPress ={ () => {
+                        console.log('Pressed')
+                        navigation.navigate('Signup')    
+                    }}
+                    >
+                        <Text style = {{color: '#4267B2',fontSize: 15, }}>SignUp</Text> 
+                    </TouchableOpacity>
 
+                </View>
           </View>
-
       </View>
     </>
   )

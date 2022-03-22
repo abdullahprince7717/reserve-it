@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { View, Text,StyleSheet,Dimensions,ScrollView,useWindowDimensions,StatusBar } from 'react-native';
+import { View, Text,StyleSheet,Dimensions,ScrollView,useWindowDimensions,StatusBar,Button } from 'react-native';
 import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
+import Modal from "react-native-modal";
 import SearchBar from '../../components/home/SearchBar.js'
 import CustomerCard from '../../components/adminUIComponents/home/CustomerCard.js'
 
@@ -10,6 +11,14 @@ const Home = (props) => {
     const layout = useWindowDimensions();
 
     const [index, setIndex] = useState(0);
+
+    const [isModalVisible, setModalVisible] = useState(false);
+
+    const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+    };
+
+
 
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff', alignItems: 'center',}}>
@@ -24,59 +33,59 @@ const Home = (props) => {
                 
                 <ScrollView >
 
-                    <CustomerCard/>
+                    <CustomerCard title = 'Abdullah' phone = "03214323489" email = 'sdfbhwo@ddqed.com' />
 
                     <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                    <CustomerCard/>
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.com' />
 
                     <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                    <CustomerCard/>
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.com' />
 
                     <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-                    
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                    <CustomerCard/>
-
-                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                    <CustomerCard/>
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.com' />
 
                     <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
                     
-                    <CustomerCard/>
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.com' />
 
                     <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                    <CustomerCard/>
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+                    
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                    <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                    <CustomerCard title = 'Abdullah' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
 
                     <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
@@ -102,59 +111,59 @@ const Home = (props) => {
             
             <ScrollView >
 
-                <CustomerCard/>
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
 
                 <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                <CustomerCard/>
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
 
                 <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                <CustomerCard/>
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
 
                 <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-                
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                <CustomerCard/>
-
-                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
-
-                <CustomerCard/>
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
 
                 <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
                 
-                <CustomerCard/>
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
 
                 <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
-                <CustomerCard/>
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                <CustomerCard title = 'Wah wah salon' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                <CustomerCard title = 'Wah wah salon' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                <CustomerCard title = 'Wah wah salon' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+                
+                <CustomerCard title = 'Wah wah salon' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+
+                <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
+
+                <CustomerCard title = 'Wah wah salon' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
 
                 <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
@@ -214,6 +223,13 @@ const Home = (props) => {
                 initialLayout={{ width: layout.width }}
                 renderTabBar={renderTabBar}
             />
+            <Modal isVisible={isModalVisible}>
+                <View style={{ flex: 1 }}>
+                    <Text>Hello!</Text>
+
+                    <Button title="Hide modal" onPress={toggleModal} />
+                </View>
+            </Modal>
         </View>     
     );
 };

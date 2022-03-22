@@ -3,8 +3,18 @@ import{ Text, Caption, Title, TouchableRipple,} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import { Ionicons } from "@expo/vector-icons/"
+import {auth} from  '../../firebase/FirebaseConfig.js'
+
 
 function settings(props) {
+
+    const handleSignOut = () => {
+        auth.signOut()
+        .then(()=>{
+            props.navigation.replace('Login')
+        })
+    }
+
     return (
         <View style = {styles.container}>
             <View>
@@ -88,7 +98,10 @@ function settings(props) {
 
 
                 <TouchableRipple 
-                    onPress = {() => console.log('pressed')}
+                    onPress = {() => {
+                        console.log(auth.currentUser?.email +'Logged Out')
+                        handleSignOut()
+                    }}
                 >
                     <View style = {styles.menuItem}>
                         <Icons 

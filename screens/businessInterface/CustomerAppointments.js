@@ -16,7 +16,7 @@ const FirstRoute = () => (
                     time="10:00 AM"
                     onPress = {() => {
                         console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
+                        // navigation.navigate('BusinessProfile')
                     }}
                 />
 
@@ -28,7 +28,7 @@ const FirstRoute = () => (
                     time="10:00 AM"
                     onPress = {() => {
                         console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
+                        // navigation.navigate('BusinessProfile')
                     }}
                 />
 
@@ -40,7 +40,7 @@ const FirstRoute = () => (
                     time="10:00 AM"
                     onPress = {() => {
                         console.log('Pressed')
-                        navigation.navigate('BusinessProfile')
+                        // navigation.navigate('BusinessProfile')
                     }}
                 />
 
