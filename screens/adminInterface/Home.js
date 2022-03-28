@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import { View, Text,StyleSheet,Dimensions,ScrollView,useWindowDimensions,StatusBar,Button } from 'react-native';
 import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
-import Modal from "react-native-modal";
 import SearchBar from '../../components/home/SearchBar.js'
 import CustomerCard from '../../components/adminUIComponents/home/CustomerCard.js'
-
+// import Modal from "react-native-modal";
 
 const Home = (props) => {
 
@@ -12,11 +11,11 @@ const Home = (props) => {
 
     const [index, setIndex] = useState(0);
 
-    const [isModalVisible, setModalVisible] = useState(false);
+    // const [isModalVisible, setModalVisible] = useState(false);
 
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
+    // const toggleModal = () => {
+    //     setModalVisible(!isModalVisible);
+    // };
 
 
 
@@ -33,7 +32,11 @@ const Home = (props) => {
                 
                 <ScrollView >
 
-                    <CustomerCard title = 'Abdullah' phone = "03214323489" email = 'sdfbhwo@ddqed.com' />
+                    <CustomerCard title = 'Abdullah' phone = "03214323489" email = 'sdfbhwo@ddqed.com' 
+                    onPress ={ () => {
+                        console.log('Pressed')
+                        props.navigation.navigate('CustomerProfile')
+                    }}/>
 
                     <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
@@ -111,7 +114,12 @@ const Home = (props) => {
             
             <ScrollView >
 
-                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' />
+                <CustomerCard title = 'Dr. Strange clinic' phone = '03214323489' email = 'sdfbhwo@ddqed.' 
+                    onPress ={ () => {
+                        console.log('Pressed')
+                        props.navigation.navigate('BusinessProfile')
+                    }}
+                />
 
                 <View style ={{width: '90%', backgroundColor:'grey',height:1,marginHorizontal:20}}></View>
 
@@ -223,13 +231,13 @@ const Home = (props) => {
                 initialLayout={{ width: layout.width }}
                 renderTabBar={renderTabBar}
             />
-            <Modal isVisible={isModalVisible}>
+            {/* <Modal isVisible={isModalVisible}>
                 <View style={{ flex: 1 }}>
                     <Text>Hello!</Text>
 
                     <Button title="Hide modal" onPress={toggleModal} />
                 </View>
-            </Modal>
+            </Modal> */}
         </View>     
     );
 };

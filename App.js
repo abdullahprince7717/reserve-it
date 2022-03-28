@@ -29,17 +29,17 @@ export default function App() {
 
 
 
-      // <NavigationContainer>
-      //     <StackNavigator/>
-      // </NavigationContainer>
+      <NavigationContainer>
+          <StackNavigator/>
+      </NavigationContainer>
 
       // <NavigationContainer>
       //     <BusinessStack/>
       // </NavigationContainer>
 
-      <NavigationContainer>
-          <AdminStack/>
-      </NavigationContainer>
+      // <NavigationContainer>
+      //     <AdminStack/>
+      // </NavigationContainer>
 
   );
 }

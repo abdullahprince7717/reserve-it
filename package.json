@@ -18,6 +18,7 @@
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/datetimepicker": "4.0.0",
     "@react-native-firebase/auth": "^14.2.2",
+    "@react-native-firebase/firestore": "^14.7.0",
     "@react-native-picker/picker": "2.2.1",
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/material-bottom-tabs": "^6.0.9",
@@ -59,6 +60,9 @@
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1",
     "react-navigation-stack": "^2.10.4",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

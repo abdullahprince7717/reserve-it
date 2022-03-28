@@ -4,7 +4,7 @@ import React from 'react'
 const Settings = () => {
     return (
         <View style={styles.container}>
-            <Text>Settings</Text>
+            <Text>COMPLAINTS</Text>
         </View>
     )
 }

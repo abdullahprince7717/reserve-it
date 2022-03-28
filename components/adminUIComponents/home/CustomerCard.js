@@ -15,6 +15,7 @@ const CustomerCard = (props) => {
     return (
         <TouchableOpacity
             // onPress= {toggleModal}
+            onPress={props.onPress}
         >
             <View style ={styles.container}>
                 <View style ={{flexDirection:'column',width:'100%'}}>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
-import {auth} from  '../../firebase/FirebaseConfig.js'
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {createUserWithEmailAndPassword } from "firebase/auth";
 
 
@@ -9,22 +9,33 @@ const signUp = ({navigation}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
 
   const signUp = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
     .then((credentials) => {
 
-      userCredentials = credentials;
-      console.log(userCredentials);
+        let userCredentials = credentials;
+        console.log(userCredentials);
+        navigation.navigate("Home")
 
     })
     .catch((error) => {
-      console.log("Error Message :" + error.message);
+        console.log("Error Message :" + error.message);
 
-      console.log("Error Message :" + error.code);
+        console.log("Error Message :" + error.code);
     })
+
+    // db.collection('users').add({})
+    
   }
+
+
+    
 
   return (
       <>
@@ -38,7 +49,9 @@ const signUp = ({navigation}) => {
             <View style = {styles.form}>
               <TextInput
 	              placeholder="Full name"
+                value={name}
                 placeholderTextColor= {"#fff"}
+                onChangeText ={text=>setName(text)}
                 style={styles.textInput}
               />
               <TextInput
@@ -50,7 +63,9 @@ const signUp = ({navigation}) => {
               />
               <TextInput
 	              placeholder="Phone number"
+                value={phone}
                 placeholderTextColor= {"#fff"}
+                onChangeText ={text=>setPhone(text)}
                 style={styles.textInput}
               />
               <TextInput
@@ -63,15 +78,17 @@ const signUp = ({navigation}) => {
               />
               <TextInput
                 placeholder="Confirm Password"
+                value={confirmPassword}
+                secureTextEntry = {true}
+                onChangeText ={text=>setConfirmPassword(text)}
                 placeholderTextColor= {"#fff"}
-                style={styles.textInput}
+                style={confirmPassword===password?styles.textInput:styles.textInputError}
               />
             </View>
 
             <TouchableOpacity style = {styles.button} 
               onPress ={ () => {
-                console.log('Pressed')
-                navigation.navigate('Login')    
+                signUp();  
             }} >
               <Text>Sign Up </Text>
             </TouchableOpacity>
