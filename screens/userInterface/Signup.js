@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword } from "firebase/auth";
 
 
@@ -21,21 +22,47 @@ const signUp = ({navigation}) => {
 
         let userCredentials = credentials;
         console.log(userCredentials);
+        console.log("A U T H ID :" + credentials.user.uid)
         navigation.navigate("Home")
+        // const userDoc = doc(db,"users",credentials.user.uid)
+        const userDoc = doc(db,"users","auth.uid")
+    
+        const userData = {
+          name: name,
+          phone: phone,
+          email: email,
+          password: password,
+          test : [{
+            test1: "test1",
+            test2: "test2",
+            test3: "test3"
+          },
 
-    })
+          {
+            test1: "test1",
+            test2: "test2",
+          }
+        ]         
+
+        }
+
+      setDoc(userDoc, userData)
+        .then(() =>{
+          alert("User Created Successfully")
+        })
+        .catch((error) => {
+          alert(error.message)
+        })
+
+
+      })
     .catch((error) => {
         console.log("Error Message :" + error.message);
 
         console.log("Error Message :" + error.code);
     })
-
-    // db.collection('users').add({})
     
   }
-
-
-    
 
   return (
       <>
@@ -98,7 +125,11 @@ const signUp = ({navigation}) => {
             </TouchableOpacity>
 
             <Text style = {styles.text}> Already have an account?
-            <TouchableOpacity >
+            <TouchableOpacity
+              onPress = {() => {
+                navigation.navigate("Login")
+              }}
+            >
               <Text style = {{color: '#4267B2',fontSize: 17 }}>SignIn</Text> 
             </TouchableOpacity>
             </Text>
@@ -222,6 +253,18 @@ const styles = StyleSheet.create({
     color:'#fff',
     marginLeft: 100,
     textDecorationLine: 'underline',
+
+  },
+
+  textInputError:{
+    borderColor: 'red',
+    borderWidth: 1,
+    width: '90%',
+    borderRadius: 10,
+    paddingLeft: 10,
+    marginTop:20,
+    color : '#fff',
+    height: 52,
 
   }
 

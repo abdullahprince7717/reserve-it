@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
-import {auth} from  '../../firebase/FirebaseConfig.js'
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword } from "firebase/auth";
 
 

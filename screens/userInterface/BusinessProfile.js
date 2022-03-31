@@ -508,17 +508,7 @@ const BusinessProfile = (props) => {
                 >
             </ImageSlider>
             </View>
-            {/* <ImageSlider
-                data={[                                 //{props.images}
-                    {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5a5uCP-n4teeW2SApcIqUrcQApev8ZVCJkA&usqp=CAU'},
-                    {img: 'https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'},
-                    {img: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg'}
-                ]}
-                autoPlay={false}
-                // onItemChanged={(item) => console.log("item", item)}
-                closeIconColor="#fff"
-                >
-            </ImageSlider> */}
+
             <View style = {{marginLeft:10}}>
                 <View style={{margin:10,}}>
                     <Title>

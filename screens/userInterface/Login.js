@@ -5,6 +5,7 @@ import {auth} from  '../../firebase/FirebaseConfig.js'
 import {signInWithEmailAndPassword} from "firebase/auth";
 
 
+
 const signIn = ({navigation}) => {
 
   const [email, setEmail] = useState('');
