@@ -10,15 +10,47 @@ const signUp = ({navigation}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [phone, setPhone] = useState('');
+    const [name, setName] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const signUp = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
     .then((credentials) => {
 
-        userCredentials = credentials;
+        let userCredentials = credentials;
         console.log(userCredentials);
         navigation.navigate("Home")
+        const userDoc = doc(db,"business_users",credentials.user.uid)
+    
+        const userData = {
+            name: name,
+            phone: phone,
+            email: email,
+            password: password,
+            test : [{
+                test1: "test1",
+                test2: "test2",
+                test3: "test3"
+            },
+
+            {
+                test1: "test1",
+                test2: "test2",
+            }
+        ]         
+
+        }
+
+        setDoc(userDoc, userData)
+        .then(() =>{
+            alert("User Created Successfully")
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
+
 
     })
     .catch((error) => {

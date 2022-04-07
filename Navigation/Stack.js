@@ -57,6 +57,7 @@ function MyStack() {
             <Stack.Screen
                 name="Settings"
                 component={Settings}
+                options={{headerShown: false}}
             />
             <Stack.Screen
                 name="Login"

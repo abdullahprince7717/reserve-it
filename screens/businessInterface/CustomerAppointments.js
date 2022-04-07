@@ -43,6 +43,39 @@ const FirstRoute = () => (
                         // navigation.navigate('BusinessProfile')
                     }}
                 />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
 
 
             </View>
@@ -50,12 +83,158 @@ const FirstRoute = () => (
 );
 
 const SecondRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
+    <ScrollView style={styles.container}>
+            <View >
+                <Card
+                    customerName="Arslan Saleem"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+
+            </View>
+        </ScrollView>
 );
 
 const ThirdRoute = () => (
 
-    <View style={{ flex: 1, backgroundColor: '#34839274' }} />
+    <ScrollView style={styles.container}>
+            <View >
+                <Card
+                    customerName="Arslan Saleem"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+                <Card
+                    customerName="Abdullah Ali"
+                    serviceName="Grooming"
+                    servicePrice="Pkr. 1000 "
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress = {() => {
+                        console.log('Pressed')
+                        // navigation.navigate('BusinessProfile')
+                    }}
+                />
+
+
+            </View>
+        </ScrollView>
     );
     
 
@@ -109,6 +288,6 @@ const styles = StyleSheet.create({
         flex: 1,
         // backgroundColor: '#fff',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        paddingBottom : 50,
+        // height: '80%',
     },
 })

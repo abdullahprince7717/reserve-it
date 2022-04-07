@@ -1,8 +1,54 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'react-native';
 import { FontAwesome,MaterialCommunityIcons,Feather } from "@expo/vector-icons/"
-import React from 'react';
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import {doc,getDoc,setDoc} from 'firebase/firestore';
+import React, {useState,useEffect} from 'react';
 
-const EditProfile = () => {
+const EditProfile = (props) => {
+
+    const [userData,setUserData] = useState(null);
+    const [name,setName] = useState('');
+    const [phone,setPhone] = useState('');
+    const [email,setEmail] = useState('');
+    const [address,setAddress] = useState('');
+    // const [password,setPassword] = useState('');
+
+    useEffect(() => {
+        // const myDoc = doc(db, "users", auth.currentUser.uid)
+        const myDoc = doc(db, "users", "auth.uid")
+        getDoc(myDoc)
+        .then((snapshot) => {
+            if(snapshot.exists){
+                setUserData(snapshot.data())
+                setName(snapshot.data().name)
+                setPhone(snapshot.data().phone)
+                setEmail(snapshot.data().email)
+                setAddress(snapshot.data().address)
+
+            }
+            else{
+                console.log("No User Data")
+            }
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+        
+    },[])
+
+    function Update(value,merge){
+        const myDoc = doc(db, "users", "auth.uid")
+        
+        setDoc(myDoc,value,{merge:merge})
+        .then(() => {
+            console.log("Updated")
+            props.navigation.replace('Settings')
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+    }
+
     return (
         <View style = {styles.container}>
 
@@ -15,6 +61,8 @@ const EditProfile = () => {
                     placeholder="Full Name"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
+                    value = {userData ? name : ''}
+                    onChangeText ={text=>setName(text)}
                 />
             </View>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
@@ -23,6 +71,8 @@ const EditProfile = () => {
                     placeholder="Email"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
+                    value = {userData ? email : ''}
+                    onChangeText ={text=>setEmail(text)}
                 />
             </View>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
@@ -31,14 +81,18 @@ const EditProfile = () => {
                     placeholder="Phone Number"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
+                    value = {userData ? phone : ''}
+                    onChangeText ={text=>setPhone(text)}
                 />
             </View>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                <Feather color="#57B9BB" name="phone" size={25} style ={{margin:10, marginTop: 25, }} /> 
+                <MaterialCommunityIcons color="#57B9BB" name="map-marker-radius" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Address"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
+                    value = {userData ? address : ''}
+                    onChangeText ={text=>setAddress(text)}
                 />
             </View>
 
@@ -46,8 +100,13 @@ const EditProfile = () => {
                 <TouchableOpacity 
                     style = {styles.button}
                     onPress = {() =>{
-                        console.log("Pressed SAVE")
-                        // navigation.navigate('')
+                        Update({
+                            name: name,
+                            phone: phone,
+                            email: email,
+                            address: address,
+
+                        },true)
                     }}
                 >
 
@@ -57,10 +116,7 @@ const EditProfile = () => {
 
                 </TouchableOpacity>
 
-            </View>    
-                
-                
-
+            </View>
         </View>
     );
 };

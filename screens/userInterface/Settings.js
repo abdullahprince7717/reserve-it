@@ -3,9 +3,13 @@ import{ Text, Caption, Title, TouchableRipple,} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import { FontAwesome,EvilIcons } from "@expo/vector-icons/"
-import {auth} from  '../../firebase/FirebaseConfig.js'
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import {doc,getDoc} from 'firebase/firestore';
+import React, {useState,useEffect} from 'react';
 
 function settings(props) {
+    
+    const [userData,setUserData] = useState(null);
 
     const handleSignOut = () => {
         auth.signOut()
@@ -13,12 +17,38 @@ function settings(props) {
             props.navigation.replace('Login')
         })
     }
+
+    useEffect(() => {
+        // const myDoc = doc(db, "users", auth.currentUser.uid)
+        const myDoc = doc(db, "users", "auth.uid")
+        getDoc(myDoc)
+        .then((snapshot) => {
+
+            if(snapshot.exists){
+                setUserData(snapshot.data())
+
+                // console.log(myDoc)
+            }
+            else{
+                console.log("No User Data")
+            }
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+        
+    },[])
+
+
     return (
         <SafeAreaView style = {styles.container}>
             <View style = {styles.userInfoSection}>
                 <View style  ={{flexDirection : 'row', justifyContent : 'space-between'}}>
                     <Title style = {styles.title}>
-                        Abdullah Ali
+                        {/* Abdullah Ali */}
+                        {
+                            userData?.name 
+                        }
                     </Title>
 
                     <TouchableOpacity  
@@ -37,16 +67,22 @@ function settings(props) {
                 </Caption> */}
                 
                 <View style = {styles.userInfoSection}>
-                    <View style = {styles.row}>
-                        <Icon 
-                            name = "map-marker-radius"
-                            color= '#000'
-                            size = {20}
-                        />
-                        <Text style = {{marginLeft: 5}} >
-                            Address  jhkdgasldjk
-                        </Text>
-                    </View>
+                    
+                    {(userData?.address) ? 
+                        <View style = {styles.row}>
+                            <Icon 
+                                name = "map-marker-radius"
+                                color= '#000'
+                                size = {20}
+                            />
+                            <Text style = {{marginLeft: 5}} >
+                                Address: {userData?.address}
+                            </Text>
+                        </View>
+                        :
+                        null
+                    }   
+                    
                     <View style = {styles.row}>
                         <Icon 
                             name = "phone"
@@ -54,7 +90,7 @@ function settings(props) {
                             size = {20}
                         />
                         <Text style = {{marginLeft: 5}}>
-                            Phone  j34r344r31232
+                            Phone  {userData?.phone}
                         </Text>
                     </View>
                     <View style = {styles.row}>
@@ -64,7 +100,7 @@ function settings(props) {
                             size = {20}
                         />
                         <Text style = {{marginLeft: 5}}>
-                            Email  sldjk@dfsf.csa
+                            Email  {userData?.email}
                         </Text>
                     </View>
                 </View>

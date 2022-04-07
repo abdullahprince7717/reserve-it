@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName="Signup"
             screenOptions={{
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: '#57B9BB' },

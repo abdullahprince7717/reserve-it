@@ -24,18 +24,20 @@ const signUp = ({navigation}) => {
         console.log(userCredentials);
         console.log("A U T H ID :" + credentials.user.uid)
         navigation.navigate("Home")
-        // const userDoc = doc(db,"users",credentials.user.uid)
-        const userDoc = doc(db,"users","auth.uid")
+        const userDoc = doc(db,"users",credentials.user.uid)      //Storing user details in firestore
+        // const userDoc = doc(db,"users","auth.uid")
     
         const userData = {
           name: name,
           phone: phone,
           email: email,
           password: password,
-          test : [{
-            test1: "test1",
-            test2: "test2",
-            test3: "test3"
+          appointments : [{
+            service: "grooming",
+            business: "ab salon",
+            timeSlot: "10:00-11:00",
+            duration: "30 mins",
+            date: "12/2/2022"
           },
 
           {
