@@ -1,8 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState,useContext,useEffect} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword } from "firebase/auth";
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CredentialsContext } from '../../components/CredentialsContext.js';
+
 
 
 
@@ -13,6 +17,21 @@ const signUp = ({navigation}) => {
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+
+
+  // useEffect(() => {
+
+  //   const subscribe = auth.onAuthStateChanged(user => {
+  //     if(user){
+  //       navigation.navigate('Home')
+  //       console.log(user)
+  //     }
+  //   })
+  //   return subscribe;
+
+  // },[])
 
 
   const signUp = () => {
@@ -25,6 +44,8 @@ const signUp = ({navigation}) => {
         console.log("A U T H ID :" + credentials.user.uid)
         navigation.navigate("Home")
         const userDoc = doc(db,"users",credentials.user.uid)      //Storing user details in firestore
+        persistLogin(userCredentials);
+
         // const userDoc = doc(db,"users","auth.uid")
     
         const userData = {
@@ -65,6 +86,20 @@ const signUp = ({navigation}) => {
     })
     
   }
+
+  const persistLogin = (credentials) => {
+
+    AsyncStorage.setItem('userCredentials', JSON.stringify(credentials))
+        .then(() => {
+            console.log('Stored credentials' + credentials);
+            setStoredCredentials(credentials);
+            // navigation.navigate('Home');
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+
+    }
 
   return (
       <>

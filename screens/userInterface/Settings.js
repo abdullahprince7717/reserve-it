@@ -5,18 +5,36 @@ import Icons from 'react-native-vector-icons/MaterialIcons'
 import { FontAwesome,EvilIcons } from "@expo/vector-icons/"
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,getDoc} from 'firebase/firestore';
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useContext} from 'react';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CredentialsContext } from '../../components/CredentialsContext.js';
 
 function settings(props) {
     
     const [userData,setUserData] = useState(null);
+    
+    const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
 
     const handleSignOut = () => {
         auth.signOut()
         .then(()=>{
-            props.navigation.replace('Login')
+            AsyncStorage.removeItem('userCredentials')
+            .then(()=>{
+                setStoredCredentials("");
+                props.navigation.replace('Login')
+                console.log("SignOut Successful");
+                
+            })
+            .catch((error)=>{
+                console.log(error.message)
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
         })
     }
+    
 
     useEffect(() => {
         // const myDoc = doc(db, "users", auth.currentUser.uid)
@@ -26,6 +44,7 @@ function settings(props) {
 
             if(snapshot.exists){
                 setUserData(snapshot.data())
+                console.log(storedCredentials);
 
                 // console.log(myDoc)
             }
@@ -35,6 +54,7 @@ function settings(props) {
         })
         .catch((error) => {
             console.log(error.message)
+            
         })
         
     },[])

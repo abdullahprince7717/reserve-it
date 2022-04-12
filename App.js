@@ -5,44 +5,78 @@ import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
 import AdminStack from './Navigation/AdminUIStack.js';
 
+import AppLoading from 'expo-app-loading';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { CredentialsContext } from './components/CredentialsContext.js';
+
 
 export default function App() {
 
-  const [userType,setUserType] = useState('customer');
+  const [appReady, setAppReady] = useState(false);
+  const [storedCredentials, setStoredCredentials] = useState(null);
 
+  const CheckLoginCredentials = () => {
+    AsyncStorage.getItem('userCredentials')
+      .then((value) => {
+        if(value !== null) {
+          setStoredCredentials(JSON.parse(value));
+        }
+        else{
+          setStoredCredentials(null);
+        }
+      
+      })
+    .catch((error) => {
+      console.log(error);
+    })
+
+  if(!appReady){
+    return(
+      <AppLoading
+        startAsync={CheckLoginCredentials}
+        onFinish={() => setAppReady(true)}
+        onError={console.warn}
+
+      />
+    )
+  }
+}
 
   return (
+
+    <CredentialsContext.Provider value={{storedCredentials, setStoredCredentials}}>
+
+        <NavigationContainer>
+            <StackNavigator/>
+        </NavigationContainer>
+
+    </CredentialsContext.Provider>
+
+
+    // <CredentialsContext.Provider value={{storedCredentials, setStoredCredentials}}>
+
+    //     <NavigationContainer>
+    //         <BusinessStack/>
+    //     </NavigationContainer> 
+
+    // </CredentialsContext.Provider>
+
     
-      // userType === 'customer' ? () => {
-      //   return (
-      //     <NavigationContainer>
-      //       <StackNavigator/>
-      //     </NavigationContainer>
-      //   )
-      // } 
-      // : 
-      // () => {
 
-      //   console.log('business');
-      // }
+    // <CredentialsContext.Provider value={{storedCredentials, setStoredCredentials}}>
+      
+    // <NavigationContainer>
+    //         <AdminStack/>
+    //     </NavigationContainer> 
+      
+    // </CredentialsContext.Provider>
+        
 
-
-
-
-      <NavigationContainer>
-          <StackNavigator/>
-      </NavigationContainer>
-
-      // <NavigationContainer>
-      //     <BusinessStack/>
-      // </NavigationContainer>
-
-      // <NavigationContainer>
-      //     <AdminStack/>
-      // </NavigationContainer>
 
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

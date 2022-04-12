@@ -1,8 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
 import {signInWithEmailAndPassword} from "firebase/auth";
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { CredentialsContext } from '../../components/CredentialsContext.js';
 
 
 
@@ -10,6 +14,10 @@ const signIn = ({navigation}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+
+
   // const [IsSignedIn, setIsSignedIn] = useState(false);
 
   useEffect(() => {
@@ -17,8 +25,10 @@ const signIn = ({navigation}) => {
     const subscribe = auth.onAuthStateChanged(user => {
       if(user){
         navigation.navigate('Home')
+        console.log(user)
       }
     })
+    console.log(storedCredentials)
     return subscribe;
 
   },[])
@@ -30,6 +40,9 @@ const signIn = ({navigation}) => {
       const user = credentials.user;
       console.log('loggedIn as' + user?.email);
       console.log("Pressed")
+      persistLogin(user);
+      
+
       // setIsSignedIn(true);
 
     })
@@ -37,7 +50,23 @@ const signIn = ({navigation}) => {
       console.log("Error Message :" + error.message);
 
       console.log("Error Code :" + error.code);
+      
     })
+  }
+
+  const persistLogin = (credentials) => {
+
+    AsyncStorage.setItem('userCredentials', JSON.stringify(credentials))
+      .then(() => {
+        console.log('Stored credentials' + credentials);
+        setStoredCredentials(credentials);
+        console.log("Login Persistence Successful");
+        navigation.navigate('Home');
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
   }
 
   return (
