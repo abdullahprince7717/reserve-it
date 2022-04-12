@@ -4,8 +4,8 @@ import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword } from "firebase/auth";
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { CredentialsContext } from '../../components/CredentialsContext.js';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { CredentialsContext } from '../../components/CredentialsContext.js';
 
 
 
@@ -18,20 +18,25 @@ const signUp = ({navigation}) => {
   const [name, setName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+  // const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const subscribe = auth.onAuthStateChanged(user => {
-  //     if(user){
-  //       navigation.navigate('Home')
-  //       console.log(user)
-  //     }
-  //   })
-  //   return subscribe;
+    const subscribe = auth.onAuthStateChanged(user => {
+      if(user){
+        navigation.navigate('Home')
+        console.log(" C O N N E C T E D")
+        console.log(user)
 
-  // },[])
+      }
+        console.log("n o t C O N N E C T E D")
+        console.log(user)
+    })
+    // console.log(storedCredentials)
+    return subscribe;
+
+  },[])
 
 
   const signUp = () => {
@@ -40,11 +45,11 @@ const signUp = ({navigation}) => {
     .then((credentials) => {
 
         let userCredentials = credentials;
-        console.log(userCredentials);
-        console.log("A U T H ID :" + credentials.user.uid)
+        // console.log(userCredentials);
         navigation.navigate("Home")
         const userDoc = doc(db,"users",credentials.user.uid)      //Storing user details in firestore
-        persistLogin(userCredentials);
+        console.log("A U T H ID :" + credentials.user.uid)
+        // persistLogin(userCredentials);
 
         // const userDoc = doc(db,"users","auth.uid")
     
@@ -87,19 +92,19 @@ const signUp = ({navigation}) => {
     
   }
 
-  const persistLogin = (credentials) => {
+  // const persistLogin = (credentials) => {
 
-    AsyncStorage.setItem('userCredentials', JSON.stringify(credentials))
-        .then(() => {
-            console.log('Stored credentials' + credentials);
-            setStoredCredentials(credentials);
-            // navigation.navigate('Home');
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+  //   AsyncStorage.setItem('userCredentials', JSON.stringify(credentials))
+  //       .then(() => {
+  //           console.log('Stored credentials' + credentials);
+  //           setStoredCredentials(credentials);
+  //           // navigation.navigate('Home');
+  //       })
+  //       .catch((error) => {
+  //           console.log(error);
+  //       })
 
-    }
+  //   }
 
   return (
       <>

@@ -5,73 +5,70 @@ import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
 import AdminStack from './Navigation/AdminUIStack.js';
 
-import AppLoading from 'expo-app-loading';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AppLoading from 'expo-app-loading';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { CredentialsContext } from './components/CredentialsContext.js';
+// import { CredentialsContext } from './components/CredentialsContext.js';
 
 
 export default function App() {
 
-  const [appReady, setAppReady] = useState(false);
-  const [storedCredentials, setStoredCredentials] = useState(null);
+  // const [appReady, setAppReady] = useState(false);
+  // const [storedCredentials, setStoredCredentials] = useState(null);
 
-  const CheckLoginCredentials = () => {
-    AsyncStorage.getItem('userCredentials')
-      .then((value) => {
-        if(value !== null) {
-          setStoredCredentials(JSON.parse(value));
-        }
-        else{
-          setStoredCredentials(null);
-        }
+//   const CheckLoginCredentials = () => {
+//     AsyncStorage.getItem('userCredentials')
+//       .then((value) => {
+//         if(value !== null) {
+//           setStoredCredentials(JSON.parse(value));
+//         }
+//         else{
+//           setStoredCredentials(null);
+//         }
       
-      })
-    .catch((error) => {
-      console.log(error);
-    })
+//       })
+//     .catch((error) => {
+//       console.log(error);
+//     })
 
-  if(!appReady){
-    return(
-      <AppLoading
-        startAsync={CheckLoginCredentials}
-        onFinish={() => setAppReady(true)}
-        onError={console.warn}
+//   if(!appReady){
+//     return(
+//       <AppLoading
+//         startAsync={CheckLoginCredentials}
+//         onFinish={() => setAppReady(true)}
+//         onError={console.warn}
 
-      />
-    )
-  }
-}
+//       />
+//     )
+//   }
+// }
 
   return (
 
-    <CredentialsContext.Provider value={{storedCredentials, setStoredCredentials}}>
 
         <NavigationContainer>
             <StackNavigator/>
+            {/* <BusinessStack/>
+            <AdminStack/> */}
         </NavigationContainer>
 
-    </CredentialsContext.Provider>
+
+
+
+
+
 
 
     // <CredentialsContext.Provider value={{storedCredentials, setStoredCredentials}}>
 
-    //     <NavigationContainer>
-    //         <BusinessStack/>
-    //     </NavigationContainer> 
+        // <NavigationContainer>
+        //     <StackNavigator/>
+        // </NavigationContainer>
 
     // </CredentialsContext.Provider>
 
-    
 
-    // <CredentialsContext.Provider value={{storedCredentials, setStoredCredentials}}>
-      
-    // <NavigationContainer>
-    //         <AdminStack/>
-    //     </NavigationContainer> 
-      
-    // </CredentialsContext.Provider>
-        
+  
 
 
   );

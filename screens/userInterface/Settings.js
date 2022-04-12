@@ -7,28 +7,32 @@ import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,getDoc} from 'firebase/firestore';
 import React, {useState,useEffect,useContext} from 'react';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { CredentialsContext } from '../../components/CredentialsContext.js';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { CredentialsContext } from '../../components/CredentialsContext.js';
 
 function settings(props) {
     
     const [userData,setUserData] = useState(null);
     
-    const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+    // const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
 
     const handleSignOut = () => {
         auth.signOut()
         .then(()=>{
-            AsyncStorage.removeItem('userCredentials')
-            .then(()=>{
-                setStoredCredentials("");
-                props.navigation.replace('Login')
-                console.log("SignOut Successful");
+
+            props.navigation.replace('Login')
+            console.log("SignOut Successful");
+
+            // AsyncStorage.removeItem('userCredentials')
+            // .then(()=>{
+            //     setStoredCredentials("");
+            //     props.navigation.replace('Login')
+            //     console.log("SignOut Successful");
                 
-            })
-            .catch((error)=>{
-                console.log(error.message)
-            })
+            // })
+            // .catch((error)=>{
+            //     console.log(error.message)
+            // })
         })
         .catch((error)=>{
             console.log(error)
@@ -37,14 +41,14 @@ function settings(props) {
     
 
     useEffect(() => {
-        // const myDoc = doc(db, "users", auth.currentUser.uid)
-        const myDoc = doc(db, "users", "auth.uid")
+        const myDoc = doc(db, "users", auth.currentUser.uid)
+        // const myDoc = doc(db, "users", "auth.uid")
         getDoc(myDoc)
         .then((snapshot) => {
 
             if(snapshot.exists){
                 setUserData(snapshot.data())
-                console.log(storedCredentials);
+                // console.log(storedCredentials);
 
                 // console.log(myDoc)
             }

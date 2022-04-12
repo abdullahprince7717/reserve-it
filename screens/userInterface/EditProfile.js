@@ -14,8 +14,8 @@ const EditProfile = (props) => {
     // const [password,setPassword] = useState('');
 
     useEffect(() => {
-        // const myDoc = doc(db, "users", auth.currentUser.uid)
-        const myDoc = doc(db, "users", "auth.uid")
+        const myDoc = doc(db, "users", auth.currentUser.uid)
+        // const myDoc = doc(db, "users", "auth.uid")
         getDoc(myDoc)
         .then((snapshot) => {
             if(snapshot.exists){
@@ -37,7 +37,7 @@ const EditProfile = (props) => {
     },[])
 
     function Update(value,merge){
-        const myDoc = doc(db, "users", "auth.uid")
+        const myDoc = doc(db, "users", auth.currentUser.uid)
         
         setDoc(myDoc,value,{merge:merge})
         .then(() => {

@@ -4,9 +4,9 @@ import React, {useState,useEffect,useContext} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
 import {signInWithEmailAndPassword} from "firebase/auth";
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { CredentialsContext } from '../../components/CredentialsContext.js';
+// import { CredentialsContext } from '../../components/CredentialsContext.js';
 
 
 
@@ -15,7 +15,7 @@ const signIn = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+  // const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
 
 
   // const [IsSignedIn, setIsSignedIn] = useState(false);
@@ -25,10 +25,14 @@ const signIn = ({navigation}) => {
     const subscribe = auth.onAuthStateChanged(user => {
       if(user){
         navigation.navigate('Home')
+        console.log("U S E R  C O N N E C T E D")
         console.log(user)
       }
+        console.log("n o t C O N N E C T E D")
+        console.log(user)
     })
-    console.log(storedCredentials)
+    // console.log(storedCredentials)
+        
     return subscribe;
 
   },[])
@@ -40,7 +44,7 @@ const signIn = ({navigation}) => {
       const user = credentials.user;
       console.log('loggedIn as' + user?.email);
       console.log("Pressed")
-      persistLogin(user);
+      // persistLogin(user);
       
 
       // setIsSignedIn(true);
@@ -54,20 +58,20 @@ const signIn = ({navigation}) => {
     })
   }
 
-  const persistLogin = (credentials) => {
+  // const persistLogin = (credentials) => {
 
-    AsyncStorage.setItem('userCredentials', JSON.stringify(credentials))
-      .then(() => {
-        console.log('Stored credentials' + credentials);
-        setStoredCredentials(credentials);
-        console.log("Login Persistence Successful");
-        navigation.navigate('Home');
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+  //   AsyncStorage.setItem('userCredentials', JSON.stringify(credentials))
+  //     .then(() => {
+  //       // console.log('Stored credentials' + credentials);
+  //       // setStoredCredentials(credentials);
+  //       // console.log("Login Persistence Successful");
+  //       navigation.navigate('Home');
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
 
-  }
+  // }
 
   return (
       <>

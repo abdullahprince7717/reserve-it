@@ -20,107 +20,83 @@ import Payment from '../screens/userInterface/Payment.js';
 import PaymentCardForm from '../screens/userInterface/PaymentCardForm.js';
 import Feedback from '../screens/userInterface/Feedback.js';
 
-import { CredentialsContext } from './../components/CredentialsContext.js';
+// import { CredentialsContext } from './../components/CredentialsContext.js';
 
 
 function MyStack() {
     return (
         
-        <CredentialsContext.Consumer >
-            {({storedCredentials}) => (
+        <Stack.Navigator
+            initialRouteName="Signup"
+            screenOptions={{
+                headerTintColor: '#000',
+                headerStyle: { backgroundColor: '#fff' },
+                // headerShown: false,
+            }}
+        >
+            <Stack.Screen
+                name="Signup"
+                component={Signup}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Home"
+                component={TabNavigation}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Explore"
+                component={Explore}
 
-                <Stack.Navigator
-                initialRouteName="Signup"
-                screenOptions={{
-                    headerTintColor: '#000',
-                    headerStyle: { backgroundColor: '#fff' },
-                    // headerShown: false,
-                }}
-            >
+            />
+            <Stack.Screen
+                name="Appointments"
+                component={Appointments}
+            />
+            <Stack.Screen
+                name="Booking"
+                component={Booking}
+            />
+            <Stack.Screen
+                name="Settings"
+                component={Settings}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Map"
+                component={MapScreen}
+            />
+            <Stack.Screen
+                name="BusinessProfile"
+                component={BusinessProfile}
+            />
+            <Stack.Screen
+                name="BookingConfirm"
+                component={BookingConfirm}
+            />
+            <Stack.Screen
+                name="EditProfile"
+                component={EditProfile}
+            />
+            <Stack.Screen
+                name="Payment"
+                component={Payment}
+            />
+            <Stack.Screen
+                name="PaymentCardForm"
+                component={PaymentCardForm}
+            />
+            <Stack.Screen
+                name="Feedback"
+                component={Feedback}
+            />
 
-            {storedCredentials ? 
-                
-                <Stack.Screen
-                    name="Home"
-                    component={TabNavigation}
-                    options={{headerShown: false}}
-                />
-
-                :
-                <>
-
-                <Stack.Screen
-                    name="Login"
-                    component={Login}
-                    options={{headerShown: false}}
-                />
-
-                <Stack.Screen
-                    name="Signup"
-                    component={Signup}
-                    options={{headerShown: false}}
-                />
-                
-                <Stack.Screen
-                    name="Home"
-                    component={TabNavigation}
-                    options={{headerShown: false}}
-                />
-
-                <Stack.Screen
-                    name="Explore"
-                    component={Explore}
-
-                />
-                <Stack.Screen
-                    name="Appointments"
-                    component={Appointments}
-                />
-                <Stack.Screen
-                    name="Booking"
-                    component={Booking}
-                />
-                <Stack.Screen
-                    name="Settings"
-                    component={Settings}
-                    options={{headerShown: false}}
-                />
-                <Stack.Screen
-                    name="Map"
-                    component={MapScreen}
-                />
-                <Stack.Screen
-                    name="BusinessProfile"
-                    component={BusinessProfile}
-                />
-                <Stack.Screen
-                    name="BookingConfirm"
-                    component={BookingConfirm}
-                />
-                <Stack.Screen
-                    name="EditProfile"
-                    component={EditProfile}
-                />
-                <Stack.Screen
-                    name="Payment"
-                    component={Payment}
-                />
-                <Stack.Screen
-                    name="PaymentCardForm"
-                    component={PaymentCardForm}
-                />
-                <Stack.Screen
-                    name="Feedback"
-                    component={Feedback}
-                />
-                </>
-            
-            }    
-                
-            </Stack.Navigator>
-            )}
-        </CredentialsContext.Consumer>
-
+        </Stack.Navigator>
     );
 }
 export default MyStack;
