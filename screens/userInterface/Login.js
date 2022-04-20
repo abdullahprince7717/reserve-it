@@ -23,13 +23,14 @@ const signIn = ({navigation}) => {
   useEffect(() => {
 
     const subscribe = auth.onAuthStateChanged(user => {
+      console.log(user)
       if(user){
-        navigation.navigate('Home')
+        navigation.replace('Home')
         console.log("U S E R  C O N N E C T E D")
         console.log(user)
       }
         console.log("n o t C O N N E C T E D")
-        console.log(user)
+        // console.log(user)
     })
     // console.log(storedCredentials)
         
@@ -109,7 +110,7 @@ const signIn = ({navigation}) => {
               <Text style = {styles.fbText}>Continue with Facebook </Text>
             </TouchableOpacity>
 
-            <View style = {{flexDirection:'row', justifyContent: 'center',marginTop:5}}>
+              <View style = {{flexDirection:'row', justifyContent: 'center',marginTop:5}}>
                     <TouchableOpacity disabled ={true}>
                         <Text style = {{color: '#fff',fontSize: 15,textDecorationLine: 'underline'}}> Don't have an account? </Text>
                     </TouchableOpacity>
@@ -124,6 +125,7 @@ const signIn = ({navigation}) => {
                     </TouchableOpacity>
 
                 </View>
+                
           </View>
       </View>
     </>

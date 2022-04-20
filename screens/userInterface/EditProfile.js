@@ -61,7 +61,7 @@ const EditProfile = (props) => {
                     placeholder="Full Name"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
-                    value = {userData ? name : ''}
+                    value = {name}
                     onChangeText ={text=>setName(text)}
                 />
             </View>
@@ -71,7 +71,7 @@ const EditProfile = (props) => {
                     placeholder="Email"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
-                    value = {userData ? email : ''}
+                    value = {email}
                     onChangeText ={text=>setEmail(text)}
                 />
             </View>
@@ -81,7 +81,7 @@ const EditProfile = (props) => {
                     placeholder="Phone Number"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
-                    value = {userData ? phone : ''}
+                    value = {phone}
                     onChangeText ={text=>setPhone(text)}
                 />
             </View>
@@ -91,7 +91,7 @@ const EditProfile = (props) => {
                     placeholder="Address"
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
-                    value = {userData ? address : ''}
+                    value = {address}
                     onChangeText ={text=>setAddress(text)}
                 />
             </View>

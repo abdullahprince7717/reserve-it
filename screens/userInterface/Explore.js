@@ -4,7 +4,8 @@ import BusinessCard from  '../../components/explore/Card.js';
 import SearchBar from '../../components/home/SearchBar.js'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { FAB } from 'react-native-paper';
-// import ButtonToggleGroup from 'react-native-button-toggle-group';
+// import {GOOGLE_MAPS_APIKEY} from "@env";
+
 
 function explore({navigation}) {
 
@@ -15,14 +16,16 @@ function explore({navigation}) {
             <View style = {styles.searchView}>
                 <View style = {styles.searchBar}>
                     <SearchBar />
-                    <GooglePlacesAutocomplete
+                    {/* <GooglePlacesAutocomplete
+                        nearbyPlacesAPI='GooglePlacesSearch'
+                        debounce={400}
                         placeholder='Location'
 
-                        onPress={(data, details = null) => {
-                            // 'details' is provided when fetchDetails = true
-                            // fetchDetails = true
-                            console.log(data, details);
-                        }}
+                        // onPress={(data, details = null) => {
+                        //     // 'details' is provided when fetchDetails = true
+                        //     // fetchDetails = true
+                        //     console.log(data, details);
+                        // }}
                         query={{
                             key: 'AIzaSyB3UIxXjy4PIW6ikhu5zTorpmgE_rN2hDk',
                             language: 'en',
@@ -44,7 +47,7 @@ function explore({navigation}) {
                                 color: '#1faadb',
                             },
                         }}
-                    />
+                    /> */}
                 </View>
             </View>
             
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     listView: {
-        flex:3,
+        flex:5,
         justifyContent: 'center',
         alignItems: 'center',
         width: deviceWidth,
