@@ -1891,6 +1891,47 @@
   resolved "https://registry.npmjs.org/@mdi/font/-/font-6.5.95.tgz"
   integrity sha512-ES5rj6J39FUkHe/b3C9SJs8bqIungYhuU7rBINTBaHOv/Ce4RCb3Gw08CZVl32W33UEkgRkzyWaIedV4at+QHg==
 
+"@mgcrea/react-native-action-sheet-provider@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@mgcrea/react-native-action-sheet-provider/-/react-native-action-sheet-provider-1.0.4.tgz#f9cd633932a0f4b20453b00dbbe6221cefdf5d6d"
+  integrity sha512-Iv9g1CTYTcC/UEZVMTUccxDzvZ21Lt7p7kRLt0F834ovCvgKyELrm8Q9QTklgR3Y6ZZ84fVtIUM8THNlLQ/kww==
+  dependencies:
+    "@mgcrea/react-native-modal-dialog" "1.0.4"
+
+"@mgcrea/react-native-backdrop-provider@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@mgcrea/react-native-backdrop-provider/-/react-native-backdrop-provider-1.0.4.tgz#9e0b2b3a167178bb4cc0d7e4047172ca03eb1f8a"
+  integrity sha512-ZqbM5Ss0tkKLFqtv82ZQX7ZBrEFJ5BEhC19VIQY9oH3Yd9tcignXrKAs6QVFGl4Ghu1lqSURZt/STekixkilzQ==
+
+"@mgcrea/react-native-button@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@mgcrea/react-native-button/-/react-native-button-1.0.4.tgz#d69c96e6c36dbdde777c4ed33767260928377cfc"
+  integrity sha512-brNaDjyJuwvxoBxvXpUOnoXTiNQAPlfp57EQfK2vtq+RGMhG06nV6EFqE3gYbmvaXrIfp6idYgdi0LbdY2C+mg==
+
+"@mgcrea/react-native-date-picker@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@mgcrea/react-native-date-picker/-/react-native-date-picker-1.0.4.tgz#50e9556529e7543508dec81438575624c27e4c23"
+  integrity sha512-MO5iYhR/yNL4nqA1AovUKTgEndxUt7TQXRRhrTQeT8NitfkkJje8KSWSsLKnh/pBUfO+n7cIMQx6y6Jms/MF8w==
+  dependencies:
+    "@mgcrea/react-native-button" "1.0.4"
+    "@mgcrea/react-native-modal-dialog" "1.0.4"
+
+"@mgcrea/react-native-modal-dialog@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@mgcrea/react-native-modal-dialog/-/react-native-modal-dialog-1.0.4.tgz#ec1726c3e8ce20552257d8f07e0d7afa50866c03"
+  integrity sha512-SLjfGWxZaS27++ax1XAaHkQ+lZoauA9sAqZX1lZD+eEd+qQWLqFgFzCeF/uSI14eh7fls7MaGjMUNFdAw0RYUw==
+  dependencies:
+    "@mgcrea/react-native-backdrop-provider" "1.0.4"
+    "@mgcrea/react-native-button" "1.0.4"
+
+"@mgcrea/react-native-select@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@mgcrea/react-native-select/-/react-native-select-1.0.4.tgz#7f57e7c0a257d902be858b5eaad552b5bb1614a5"
+  integrity sha512-+PrBkwR93hIVedxEg8AYR5+a1LEuHvvkl7MVztvq429VH14QTVEO8EwpDJV51SAxtcr9xPuk/m/LuqyLlyNL+Q==
+  dependencies:
+    "@mgcrea/react-native-button" "1.0.4"
+    "@mgcrea/react-native-modal-dialog" "1.0.4"
+
 "@mui/base@5.0.0-alpha.69":
   version "5.0.0-alpha.69"
   resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.69.tgz"
@@ -2187,10 +2228,10 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
-"@react-native-community/datetimepicker@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-4.0.0.tgz"
-  integrity sha512-q3JfDHX5PI0AxFeMsB6jcHSXODloXAqBVsOfkIvm+YbAe1TUs/xZ3qGazsKVBk9EdFyHO4k+S1Q8tQkEnk2YrQ==
+"@react-native-community/datetimepicker@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-6.1.2.tgz#a897291bc8ff2394f922721f40692c812f9145a0"
+  integrity sha512-4D21x4eywCY2Ex4BI6tQhUEOOKSruz9uPbGK0azGKZap/etoiPtH3nuG56ACtpmUlu5d1R9zzTlumr02dp39hA==
   dependencies:
     invariant "^2.2.4"
 
@@ -5783,6 +5824,15 @@ prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2,
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
+prop-types@^15.5.7:
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
 protobufjs@^6.10.0:
   version "6.11.2"
   resolved "https://registry.npmjs.org/protobufjs/-/protobufjs-6.11.2.tgz"
@@ -5870,7 +5920,7 @@ react-freeze@^1.0.0:
   resolved "https://registry.npmjs.org/react-freeze/-/react-freeze-1.0.0.tgz"
   integrity sha512-yQaiOqDmoKqks56LN9MTgY06O0qQHgV4FUrikH357DydArSZHQhl0BJFqGKIZoTqi8JizF9Dxhuk1FIZD6qCaw==
 
-react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
+react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -6050,6 +6100,18 @@ react-native-paper@^4.11.2, react-native-paper@^4.9.2:
     "@callstack/react-theme-provider" "^3.0.7"
     color "^3.1.2"
     react-native-iphone-x-helper "^1.3.1"
+
+react-native-propel-kit@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-propel-kit/-/react-native-propel-kit-1.0.4.tgz#8cb99d23a0349d1864153c7bdaacff04e1e6b51a"
+  integrity sha512-lcfn3/QLlzT5Hhe2C7r3xZHVe9SULL/gtuCvsXaOPt1kvnzvuplPjUf39gfMRzeKJADc7ak5X+gjMu4a4vH1Kw==
+  dependencies:
+    "@mgcrea/react-native-action-sheet-provider" "1.0.4"
+    "@mgcrea/react-native-backdrop-provider" "1.0.4"
+    "@mgcrea/react-native-button" "1.0.4"
+    "@mgcrea/react-native-date-picker" "1.0.4"
+    "@mgcrea/react-native-modal-dialog" "1.0.4"
+    "@mgcrea/react-native-select" "1.0.4"
 
 react-native-ratings@8.0.4:
   version "8.0.4"
@@ -7074,6 +7136,13 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+toggle-switch-react-native@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/toggle-switch-react-native/-/toggle-switch-react-native-3.3.0.tgz#4c7ef67576154adb7f118d18d19dc9b1caece51c"
+  integrity sha512-DE0UjTOvUpUXjrRjF5r06dqzp/XrbDvJ6hYAwTp6ZgNrxn5Z7bDqe9Rs7axaRbWr7MXe5FdSGkCmfmK6tL7esw==
+  dependencies:
+    prop-types "^15.5.7"
 
 toidentifier@1.0.1:
   version "1.0.1"

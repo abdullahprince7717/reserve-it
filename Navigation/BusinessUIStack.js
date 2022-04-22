@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Signup"
+            initialRouteName="EditBusinessHours"
             screenOptions={{
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: '#57B9BB' },

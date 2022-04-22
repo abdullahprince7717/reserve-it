@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
 import React, {useState,useEffect,useContext} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
-import {signInWithEmailAndPassword} from "firebase/auth";
+
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -30,10 +30,8 @@ const signIn = ({navigation}) => {
         console.log(user)
       }
         console.log("n o t C O N N E C T E D")
-        // console.log(user)
-    })
-    // console.log(storedCredentials)
         
+    })        
     return subscribe;
 
   },[])

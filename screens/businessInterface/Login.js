@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
 import React, {useState,useEffect} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
-import {signInWithEmailAndPassword} from "firebase/auth";
+
 
 
 const signIn = ({navigation}) => {
@@ -15,7 +15,7 @@ const signIn = ({navigation}) => {
 
     const subscribe = auth.onAuthStateChanged(user => {
         if(user){
-        navigation.navigate('Home')
+        navigation.replace('Home')
         }
     })
     return subscribe;
@@ -23,7 +23,7 @@ const signIn = ({navigation}) => {
     },[])
 
     const handleLogin = () => {
-        signInWithEmailAndPassword(email.trim(), password)
+        auth.signInWithEmailAndPassword(email.trim(), password)
         .then((credentials) => {
 
         const user = credentials.user;
