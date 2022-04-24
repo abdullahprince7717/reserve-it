@@ -4,6 +4,7 @@ import React from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 
 const BusinessHours = (props) => {
+    // let day;
     return (
         <View style={styles.container}>
 
@@ -12,9 +13,9 @@ const BusinessHours = (props) => {
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
                 status = 'open'
-                onPress = {() => {
+                onPress = {(day) => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('EditBusinessHours',day='Monday')}
                 }}
             />
             <HourComponent

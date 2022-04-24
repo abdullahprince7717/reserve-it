@@ -7,7 +7,7 @@ import Appointment from '../../components/businessUIComponents/checkout/Appointm
 
 var counter  = 1
 
-export default function Checkout() {
+export default function Checkout(props) {
 
     const [total,setTotal] = useState('0');
 
@@ -22,11 +22,11 @@ export default function Checkout() {
             </View>    
 
             <View style = {styles.buttonArea}>
-                <Button icon="plus" mode="outlined" color = '#57B9BB' onPress={() => console.log('Pressed')}>
+                <Button icon="plus" mode="outlined" color = '#57B9BB' onPress={() => {props.navigation.navigate("CheckoutAppointment")}}>
                     Appointment
                 </Button>
 
-                <Button icon="plus" mode="outlined" color = '#57B9BB' onPress={() => console.log('Pressed')}>
+                <Button icon="plus" mode="outlined" color = '#57B9BB' onPress={() => {props.navigation.navigate("CheckoutService")}}>
                     Service
                 </Button>
             </View>

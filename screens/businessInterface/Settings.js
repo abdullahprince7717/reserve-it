@@ -83,20 +83,6 @@ function settings(props) {
                 </TouchableRipple>
 
 
-                <TouchableRipple
-                    onPress = {() => console.log('pressed')}
-                >
-                    <View style = {styles.menuItem}>
-                        <Ionicons 
-                            name = "settings-outline"
-                            size = {25}
-                            color= '#57B9BB'
-                            />
-                        <Text style={styles.menuItemText}>Advanced Settings</Text>
-                    </View>
-                </TouchableRipple>
-
-
                 <TouchableRipple 
                     onPress = {() => {
                         console.log(auth.currentUser?.email +'Logged Out')

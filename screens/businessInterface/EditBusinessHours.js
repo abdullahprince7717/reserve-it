@@ -19,7 +19,11 @@ const EditBusinessHours = (props) => {
     return (
         <View style = {styles.container}>
             <View style = {{margin:20, marginVertical:30,flexDirection:'row', justifyContent: 'space-between'}}>
-                <Text style = {{fontSize:22,fontWeight:'bold'}}>Are You Open On {props.day}?</Text>
+                
+                <Text style = {{fontSize:22,fontWeight:'bold'}}>
+                    Are You Open On {props.day}?
+                </Text>
+                
                 <ToggleSwitch
                     isOn={isOpen}
                     onColor="green"
@@ -36,8 +40,8 @@ const EditBusinessHours = (props) => {
                 opacity = {isOpen ? 1 : 0.5}
                 style = {{justifyContent:'center', alignItems:'center', margin:10, marginVertical:60}}
             >
-                <Text style = {{fontSize:22,fontWeight:'bold'}}> Set New Business Hours</Text>
-                <Text style = {{fontSize:18,}}> Click to Edit Time</Text>
+                <Text style = {{fontSize:24,fontWeight:'bold'}}> Set New Business Hours</Text>
+                <Text style = {{fontSize:19,}}> Click to Edit Time</Text>
 
                 <View style = {{flexDirection:'row',margin:10, marginTop:40}}>
 
