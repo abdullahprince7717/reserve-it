@@ -27,7 +27,7 @@ function MyStack() {
     return (
         
         <Stack.Navigator
-            initialRouteName="Signup"
+            initialRouteName="Home"
             screenOptions={{
                 headerTintColor: '#000',
                 headerStyle: { backgroundColor: '#fff' },
