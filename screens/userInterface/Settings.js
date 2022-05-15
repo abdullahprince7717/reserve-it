@@ -50,7 +50,7 @@ function settings(props) {
                 setUserData(snapshot.data())
                 // console.log(storedCredentials);
 
-                // console.log(myDoc)
+                console.log(myDoc)
             }
             else{
                 console.log("No User Data")
