@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
-import { StyleSheet, Text, View,StatusBar, ScrollView} from 'react-native'
+import React, {useState,useEffect} from 'react'
+import { StyleSheet, Text, View,StatusBar, ScrollView,TouchableOpacity} from 'react-native'
 import { Button,TextInput } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Service from '../../components/businessUIComponents/checkout/ServiceCard.js'
 import Appointment from '../../components/businessUIComponents/checkout/AppointmentCard.js'
@@ -10,8 +11,9 @@ var counter  = 1
 export default function Checkout(props) {
 
     const [total,setTotal] = useState('0');
-
-    
+    useEffect(() => {
+        console.log(props.route.params)
+    });
 
     return (
         <View style = { styles.container}>
@@ -36,26 +38,50 @@ export default function Checkout(props) {
 
                     // <ScrollView style = {styles.items}>    
                         <View style = {styles.items} > 
-                            <Service
-                                title="Grooming"
-                                price = "Pkr. 500"
-                                duration="45 mins"
-                                onPress = {() => {
-                                    console.log('Pressed')
-                                }}
-                            />
-
-                            <Appointment
-                                customer="Abdullah Ali"
-                                service = "Haircut"
-                                price = "Pkr. 500"
-                                duration="45 mins"
-                                onPress = {() => {
-                                    console.log('Pressed')
-                                }}
-                            />
+                            <View style = {{flexDirection:'row',}}>    
+                                <View style = {{flex:4}}>    
+                                    <Service
+                                        title={props.route.params}
+                                        // title = "Grooming"
+                                        price = "Pkr. 500"
+                                        duration="45 mins"
+                                        onPress = {() => {
+                                            console.log('Pressed')
+                                        }}
+                                    />
+                                </View>    
+                                <View style ={{flex:0.5, marginHorizontal:5,justifyContent: 'center'}}>
+                                    <TouchableOpacity>
+                                        <View>
+                                            <Icon name = 'delete-outline' size = {30} color = 'orange'/>
+                                        </View>
+                                        
+                                    </TouchableOpacity>
+                                </View>    
+                            </View>
+                            <View style = {{flexDirection:'row',}}>            
+                                <View style = {{flex:4}}>    
+                                    <Appointment
+                                        customer="Abdullah Ali"
+                                        service = "Haircut"
+                                        price = "Pkr. 500"
+                                        duration="45 mins"
+                                        onPress = {() => {
+                                            console.log('Pressed')
+                                        }}
+                                    />
+                                </View>
+                                <View style ={{flex:0.5, marginHorizontal:5,justifyContent: 'center'}}>
+                                    <TouchableOpacity>
+                                        <View>
+                                            <Icon name = 'delete-outline' size = {30} color = 'orange'/>
+                                        </View>
+                                        
+                                    </TouchableOpacity>
+                                </View> 
+                            </View>
                         </View>
-                    // </ScrollView>                
+                    // </ScrollView>       {total}         
                 :
                     null
             }
@@ -69,6 +95,7 @@ export default function Checkout(props) {
                     activeOutlineColor = '#57B9BB'
                     activeUnderlineColor = '#57B9BB'
                     style ={{height:60}}
+                    disabled = {true}
                 />
             </View>
 
@@ -113,7 +140,7 @@ const styles = StyleSheet.create({
     },
 
     items: {
-        flex: 0.3,
+        flex: 0.5,
         backgroundColor: '#fff',
         margin: 15,
     },

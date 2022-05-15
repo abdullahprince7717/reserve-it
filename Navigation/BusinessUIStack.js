@@ -16,6 +16,11 @@ import Signup from '../screens/businessInterface/Signup.js';
 import Login from '../screens/businessInterface/Login.js';
 import CheckoutAppointment from '../screens/businessInterface/CheckoutAppointment.js';
 import CheckoutService from '../screens/businessInterface/CheckoutService.js';
+import AccountSetup1 from '../screens/businessInterface/AccountSetup1.js';
+import AccountSetup2 from '../screens/businessInterface/AccountSetup2.js';
+import AccountSetup3 from '../screens/businessInterface/AccountSetup3.js';
+import AccountSetup4 from '../screens/businessInterface/AccountSetup4.js';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -25,8 +30,8 @@ function MyStack() {
         <Stack.Navigator
             initialRouteName="Home"
             screenOptions={{
-                headerTintColor: 'white',
-                headerStyle: { backgroundColor: '#57B9BB' },
+                headerTintColor: 'black',
+                headerStyle: { opacity:0.5 },
                 // headerShown: false,
             }}
         >
@@ -100,6 +105,27 @@ function MyStack() {
             <Stack.Screen
                 name="CheckoutService"
                 component={CheckoutService}
+                options={{headerShown: true}}
+            />
+            <Stack.Screen
+                name="AccountSetup1"
+                component={AccountSetup1}
+                options={{headerShown: true,
+                    title: 'Account Setup',}}
+            />
+            <Stack.Screen
+                name="AccountSetup2"
+                component={AccountSetup2}
+                options={{headerShown: true}}
+            />
+            <Stack.Screen
+                name="AccountSetup3"
+                component={AccountSetup3}
+                options={{headerShown: true}}
+            />
+            <Stack.Screen
+                name="AccountSetup4"
+                component={AccountSetup4}
                 options={{headerShown: true}}
             />
             

@@ -42,7 +42,7 @@ const EditProfile = (props) => {
         setDoc(myDoc,value,{merge:merge})
         .then(() => {
             console.log("Updated")
-            props.navigation.replace('Settings')
+            props.navigation.goBack()
         })
         .catch((error) => {
             console.log(error.message)
