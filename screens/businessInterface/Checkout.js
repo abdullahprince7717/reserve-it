@@ -12,7 +12,7 @@ export default function Checkout(props) {
 
     const [total,setTotal] = useState('0');
     useEffect(() => {
-        console.log(props.route.params)
+        console.log(props.route.params.review)
     });
 
     return (
