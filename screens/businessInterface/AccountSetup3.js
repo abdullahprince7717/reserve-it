@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View,Image } from 'react-native'
 import MapView, { PROVIDER_GOOGLE,Marker } from "react-native-maps";
+import { Button } from 'react-native-paper';
 import React, { useState } from 'react'
 
-const AccountSetup3 = () => {
+const AccountSetup3 = (props) => {
 
     const [region, setRegion] = useState({
         latitude: 37.78825,
@@ -40,9 +41,18 @@ const AccountSetup3 = () => {
                     // }}
                 />
             </MapView>
-            {/* <View style = {{top: '50%', left: '50%'}}>
-                <Image style = {{height:40, width:40}}ource = {require('../../assets/logo.png')}/>
-            </View> */}
+            <View
+                style={{
+                    position: 'absolute', top: '90%', alignSelf: 'flex-end',left: '35%',
+                }}
+            >
+                <Button icon="camera" mode="contained" onPress={() => {
+                    console.log('Pressed')
+                    props.navigation.navigate('AccountSetup4')
+                    }}>
+                    Press me
+                </Button>
+            </View>
         </View>
     )
 }

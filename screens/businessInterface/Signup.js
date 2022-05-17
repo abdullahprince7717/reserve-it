@@ -21,7 +21,7 @@ const signUp = ({navigation}) => {
 
         let userCredentials = credentials;
         console.log(userCredentials);
-        navigation.navigate("Home")
+        navigation.navigate("AccountSetup1")
         const userDoc = doc(db,"business_users",credentials.user.uid)
     
         const userData = {
