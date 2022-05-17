@@ -16,6 +16,7 @@ import Signup from '../screens/businessInterface/Signup.js';
 import Login from '../screens/businessInterface/Login.js';
 import CheckoutAppointment from '../screens/businessInterface/CheckoutAppointment.js';
 import CheckoutService from '../screens/businessInterface/CheckoutService.js';
+import ForgotPassword from '../screens/businessInterface/ForgotPassword.js';
 import AccountSetup1 from '../screens/businessInterface/AccountSetup1.js';
 import AccountSetup2 from '../screens/businessInterface/AccountSetup2.js';
 import AccountSetup3 from '../screens/businessInterface/AccountSetup3.js';
@@ -28,7 +29,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="ForgotPassword"
             screenOptions={{
                 headerTintColor: 'black',
                 headerStyle: { opacity:0.5 },
@@ -105,6 +106,11 @@ function MyStack() {
             <Stack.Screen
                 name="CheckoutService"
                 component={CheckoutService}
+                options={{headerShown: true}}
+            />
+            <Stack.Screen
+                name="ForgotPassword"
+                component={ForgotPassword}
                 options={{headerShown: true}}
             />
             <Stack.Screen

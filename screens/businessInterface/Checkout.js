@@ -11,9 +11,9 @@ var counter  = 1
 export default function Checkout(props) {
 
     const [total,setTotal] = useState('0');
-    useEffect(() => {
-        console.log(props.route.params.review)
-    });
+    // useEffect(() => {
+    //     console.log(props.route.params.review.title)
+    // },[]);
 
     return (
         <View style = { styles.container}>
@@ -38,10 +38,12 @@ export default function Checkout(props) {
 
                     // <ScrollView style = {styles.items}>    
                         <View style = {styles.items} > 
+                            {props.route?.params?.review &&
                             <View style = {{flexDirection:'row',}}>    
                                 <View style = {{flex:4}}>    
+                                    
                                     <Service
-                                        title={props.route.params}
+                                        title={props.route.params.review.title}
                                         // title = "Grooming"
                                         price = "Pkr. 500"
                                         duration="45 mins"
@@ -58,7 +60,7 @@ export default function Checkout(props) {
                                         
                                     </TouchableOpacity>
                                 </View>    
-                            </View>
+                            </View>}
                             <View style = {{flexDirection:'row',}}>            
                                 <View style = {{flex:4}}>    
                                     <Appointment
