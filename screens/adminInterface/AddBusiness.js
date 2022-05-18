@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity,StatusBar
 import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons,MaterialIcons } from "@expo/vector-icons/"
 import React from 'react';
 
-const AddBusiness = () => {
+const AddBusiness = (props) => {
     return (
         <View style = {styles.container}>
 
@@ -43,10 +43,6 @@ const AddBusiness = () => {
                 />
             </View>
 
-
-
-        
-
             <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>
                 Business Details
             </Text>
@@ -79,7 +75,6 @@ const AddBusiness = () => {
             </View>
 
 
-
             <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>
                 Social Media
             </Text>
@@ -106,7 +101,7 @@ const AddBusiness = () => {
                     style = {styles.button}
                     onPress = {() =>{
                         console.log("Pressed SAVE")
-                        // navigation.navigate('')
+                        props.navigation.goBack()
                     }}
                 >
 
@@ -117,6 +112,7 @@ const AddBusiness = () => {
                 </TouchableOpacity>
 
             </View>
+            
             
         </View>
     );

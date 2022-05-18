@@ -1,7 +1,44 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'react-native';
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import { onAuthStateChanged } from "firebase/auth";
+import {
+    collection,
+    addDoc,
+    getDoc,
+    doc,
+    deleteDoc,
+    query,
+    where,
+    getDocs,
+} from "firebase/firestore";
 
-const AddService = () => {
+const AddService = (props) => {
+
+    const [serviceName,setServiceName] = useState('')
+    const [duration,setDuration] = useState('')
+    const [price,setPrice] = useState('')
+    const [user,setUser] = useState()
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    },[user])
+    const servicesCollection = collection(db, "services");
+
+    const addServices = async () => {
+
+        const service = {
+            serviceName: serviceName,
+            duration: duration,
+            price: price,
+            user: user,
+        } 
+
+        await addDoc(servicesCollection, business).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)});
+    };
+
 
     return (
         <View style = {styles.container}>
@@ -31,7 +68,7 @@ const AddService = () => {
                 <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    // navigation.navigate('BookingConfirm')
+                    props.navigation.navigate('AccountSetup5')
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>

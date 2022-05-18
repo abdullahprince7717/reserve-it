@@ -1,7 +1,10 @@
 import { StyleSheet, Text, View,Image, TouchableOpacity,Dimensions} from 'react-native'
 import React from 'react'
 
+
 const AccountSetup1 = (props) => {
+
+
     return (
         <View style = {styles.container}>
             <View style = {styles.picView}>

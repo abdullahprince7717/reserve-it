@@ -5,7 +5,6 @@ import Icons from 'react-native-vector-icons/MaterialIcons'
 import { Ionicons } from "@expo/vector-icons/"
 import {auth} from  '../../firebase/FirebaseConfig.js'
 
-
 function settings(props) {
 
     const handleSignOut = () => {
