@@ -19,10 +19,9 @@ const signUp = ({navigation}) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((credentials) => {
 
-        let userCredentials = credentials;
-        console.log(userCredentials);
-        navigation.navigate("AccountSetup1")
-        const userDoc = doc(db,"business_users",credentials.user.uid)
+        console.log(credentials);
+        const userDoc = doc(db,"business_users",credentials.user.uid);
+        navigation.navigate("AccountSetup1");
     
         const userData = {
             name: name,

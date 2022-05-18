@@ -50,7 +50,7 @@ const AccountSetup3 = (props) => {
                     console.log('Pressed')
                     props.navigation.navigate('AccountSetup4')
                     }}>
-                    Press me
+                    Next
                 </Button>
             </View>
         </View>

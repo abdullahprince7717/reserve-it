@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'r
 import React,{useState} from 'react'
 import {AntDesign} from '@expo/vector-icons'
 
-const EditService = () => {
+const EditService = (props) => {
 
     return (
         <View style = {styles.container}>
@@ -42,7 +42,7 @@ const EditService = () => {
                 <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    // navigation.navigate('BookingConfirm')
+                    props.navigation.goBack()
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>

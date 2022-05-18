@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import Card from '../../components/businessUIComponents/ServiceCard.js'
 import { FAB } from 'react-native-paper';
 
 const AccountSetup5 = (props) => {
 
+    const [services,setServices] = useState([{serviceName: '', duration: ' ', price: ''},])
     return (
         <View style = {styles.container}>
 

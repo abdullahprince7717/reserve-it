@@ -4,6 +4,12 @@ import { TextInput } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useState } from 'react';
 
+import { collection,doc, addDoc, getDocs,setDoc } from "firebase/firestore";
+// import firestore from '@react-native-firebase/firestore';
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
+// import Sidebar from "./admin_components/Sidebar";
+
 const BusinessDetails = (props) => {
     // const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
     const [open, setOpen] = useState(false);
@@ -14,6 +20,41 @@ const BusinessDetails = (props) => {
         { label: 'Doctor', value: 'doctor' }
     ]);
 
+    const [businessName, setBusinessName] = useState('');
+    const [businessAddress, setBusinessAddress] = useState('');
+    const [businessEmail, setBusinessEmail] = useState('');
+    const [category, setCategory] = useState(value);
+    const [businessPhone, setBusinessPhone] = useState('');
+    const [businessDescription, setBusinessDescription] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [facebook, setFacebook] = useState('');
+
+    const businessDoc = doc(db, "business_users", auth.currentUser.uid);
+    // const userDocument = firestore().collection('Users').doc('ABC');
+
+    const addBusinessInfo = async () => {
+
+        const business = {
+            businessName: businessName,
+            businessAddress: businessAddress,
+            businessEmail: businessEmail,
+            category: category,
+            businessPhone: businessPhone,
+            businessDescription: businessDescription,
+            instagram: instagram,
+            facebook: facebook
+        } 
+
+        await setDoc(businessDoc, business, { merge: true })
+        .then(
+            (res)=>{
+                console.log(res)
+            })
+        .catch(
+            (err)=>{
+                console.log(err)
+            });
+    };
     return (
         <KeyboardAvoidingView
             style={styles.container}
@@ -31,15 +72,30 @@ const BusinessDetails = (props) => {
                         placeholderTextColor={"grey"}
                         style={styles.textInput}
                         mode="outlined"
+                        value={businessEmail}
+                        onChangeText={text => setBusinessEmail(text)}
                     />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
                     {/* <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} />  */}
                     <TextInput
-                        label="Business email"
+                        label="Business Address"
                         placeholderTextColor={"grey"}
                         style={styles.textInput}
                         mode="outlined"
+                        value={businessAddress}
+                        onChangeText={text => setBusinessAddress(text)}
+                    />
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+                    {/* <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} />  */}
+                    <TextInput
+                        label="Business Phone"
+                        placeholderTextColor={"grey"}
+                        style={styles.textInput}
+                        mode="outlined"
+                        value={businessPhone}
+                        onChangeText={text => setBusinessPhone(text)}
                     />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
@@ -59,7 +115,7 @@ const BusinessDetails = (props) => {
                             width: '85%',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            marginTop:30
+                            marginTop: 30
                         }}
                         textStyle={{
                             fontSize: 15
@@ -79,6 +135,8 @@ const BusinessDetails = (props) => {
                         underlineColorAndroid='transparent'
                         style={styles.description}
                         mode="outlined"
+                        value={businessDescription}
+                        onChangeText={text => setBusinessDescription(text)}
 
                     />
                 </View>
@@ -94,6 +152,8 @@ const BusinessDetails = (props) => {
                         placeholder="Instagram"
                         placeholderTextColor={"grey"}
                         style={styles.textInput}
+                        value={instagram}
+                        onChangeText={text => setInstagram(text)}
                     />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
@@ -102,6 +162,8 @@ const BusinessDetails = (props) => {
                         placeholder="Facebook"
                         placeholderTextColor={"grey"}
                         style={styles.textInput}
+                        value={facebook}
+                        onChangeText={text => setFacebook(text)}
                     />
                 </View>
 
@@ -111,6 +173,7 @@ const BusinessDetails = (props) => {
                         style={styles.button}
                         onPress={() => {
                             console.log("Pressed SAVE")
+                            addBusinessInfo();
                             props.navigation.navigate('AccountSetup3')
                         }}
                     >

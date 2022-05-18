@@ -1,10 +1,18 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import{Button} from 'react-native-paper'
-import React from 'react'
+import React,{useState} from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 
 const AccountSetup4 = (props) => {
-    // let day;
+    
+    const [monday,setMonday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+    const [tuesday,setTuesday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+    const [wednesday,setWednesday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+    const [thursday,setThursday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+    const [friday,setFriday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+    const [saturday,setSaturday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+    const [sunday,setSunday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+
     return (
         <View style={styles.container}>
 

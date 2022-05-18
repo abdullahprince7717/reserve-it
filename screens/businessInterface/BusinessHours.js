@@ -13,9 +13,9 @@ const BusinessHours = (props) => {
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
                 status = 'open'
-                onPress = {(day) => {
+                onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours',day='Monday')}
+                    {props.navigation.navigate('EditBusinessHours',{day:'Monday'})}
                 }}
             />
             <HourComponent
@@ -25,7 +25,7 @@ const BusinessHours = (props) => {
                 status = 'open'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('EditBusinessHours'),{day:'Tuesday'}}
                 }}
             />
             <HourComponent
@@ -35,7 +35,7 @@ const BusinessHours = (props) => {
                 status = 'open'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('EditBusinessHours'),{day:'Wednesday'}}
                 }}
             />
             <HourComponent
@@ -45,7 +45,7 @@ const BusinessHours = (props) => {
                 status = 'open'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('EditBusinessHours'),{day:'Thursday'}}
                 }}
             />
             <HourComponent
@@ -55,7 +55,7 @@ const BusinessHours = (props) => {
                 status = 'open'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('EditBusinessHours'),{day:'Friday'}}
                 }}
             />
             <HourComponent
@@ -65,7 +65,7 @@ const BusinessHours = (props) => {
                 status = 'closed'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('EditBusinessHours'),{day:'Saturday'}}
                 }}
             />
             <HourComponent
@@ -75,7 +75,7 @@ const BusinessHours = (props) => {
                 status = 'closed'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('EditBusinessHours'),{day:'Sunday'}}
                 }}
             />
             
