@@ -43,25 +43,17 @@ const EditBusinessHours = (props) => {
                 <Text style = {{fontSize:24,fontWeight:'bold'}}> Set New Business Hours</Text>
                 <Text style = {{fontSize:19,}}> Click to Edit Time</Text>
 
-                <View style = {{flexDirection:'row',margin:10, marginTop:40}}>
-
-                    
-                    <TimePicker title="Pick a time" value={startTime} onChange={setStartTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
+                <View style = {{flexDirection:'row',margin:10, marginTop:40}}>                    
+                    {/* <TimePicker title="Pick a time" value={startTime} onChange={setStartTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
                         <Text style = {{fontSize:20,marginRight:10,fontWeight:'bold'}}>Start Time :</Text>
-                    </TimePicker>
-                    
+                    </TimePicker> */}
                 </View>
 
-
-                <View style = {{flexDirection:'row',margin:20,marginBottom:50,}}>
-
-                    
-                    <TimePicker title="Pick a time" value={endTime} onChange={setEndTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
+                <View style = {{flexDirection:'row',margin:20,marginBottom:50,}}>                    
+                    {/* <TimePicker title="Pick a time" value={endTime} onChange={setEndTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
                         <Text style = {{fontSize:20,marginRight:10,fontWeight:'bold'}}>End Time :</Text>
-                    </TimePicker>
-                
+                    </TimePicker> */}
                 </View>
-
                 
                 <HourComponent
                     day = {props.route?.params?.day}
@@ -76,7 +68,7 @@ const EditBusinessHours = (props) => {
             <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    // navigation.navigate('BookingConfirm')
+                    props.navigation.goBack();
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>

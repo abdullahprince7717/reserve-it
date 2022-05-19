@@ -48,9 +48,9 @@ export default function App() {
 
       <BackdropProvider>
         <NavigationContainer>
-            {/* <StackNavigator/> */}
+            <StackNavigator/>
             {/* <BusinessStack/> */}
-            <AdminStack/>
+            {/* <AdminStack/> */}
         </NavigationContainer>
       </BackdropProvider>
         

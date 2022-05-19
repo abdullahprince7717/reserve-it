@@ -67,7 +67,6 @@ const AppointmentCard = (props) => {
                             
                         {props.buttonText2}
                     </Button>
- 
 
                 </View>
             </View>

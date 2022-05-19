@@ -1,8 +1,8 @@
 import {View,StyleSheet,SafeAreaView,StatusBar,TouchableOpacity } from "react-native";
 import{ Text, Caption, Title, TouchableRipple,} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import Icons from 'react-native-vector-icons/MaterialIcons'
-import { Ionicons } from "@expo/vector-icons/"
+// import Icons from 'react-native-vector-icons/MaterialIcons'
+import { Ionicons, MaterialIcons } from "@expo/vector-icons/"
 import {auth} from  '../../firebase/FirebaseConfig.js'
 
 
@@ -51,11 +51,14 @@ function settings(props) {
 
 
                 <TouchableRipple
-                    onPress = {() => console.log('pressed')}
+                    onPress = {() => {
+                        console.log('pressed')
+                        props.navigation.navigate('BlockedBusinesses');
+                    }}
                 >
                     <View style = {styles.menuItem}>
-                        <Ionicons 
-                            name = "settings-outline"
+                        <MaterialIcons 
+                            name = "block"
                             size = {25}
                             color= '#57B9BB'
                         />
@@ -64,28 +67,18 @@ function settings(props) {
                 </TouchableRipple>
 
                 <TouchableRipple
-                    onPress = {() => console.log('pressed')}
+                    onPress = {() => {
+                        console.log('pressed')
+                        props.navigation.navigate('BlockedCustomers');
+                    }}
                 >
                     <View style = {styles.menuItem}>
-                        <Ionicons 
-                            name = "settings-outline"
+                        <MaterialIcons 
+                            name = "block"
                             size = {25}
                             color= '#57B9BB'
                             />
                         <Text style={styles.menuItemText}>Blocked Customers</Text>
-                    </View>
-                </TouchableRipple>
-                
-                <TouchableRipple
-                    onPress = {() => console.log('pressed')}
-                >
-                    <View style = {styles.menuItem}>
-                        <Ionicons 
-                            name = "settings-outline"
-                            size = {25}
-                            color= '#57B9BB'
-                            />
-                        <Text style={styles.menuItemText}>Advanced Settings</Text>
                     </View>
                 </TouchableRipple>
 
@@ -97,7 +90,7 @@ function settings(props) {
                     }}
                 >
                     <View style = {styles.menuItem}>
-                        <Icons 
+                        <MaterialIcons 
                             name = "logout"
                             size = {25}
                             color= '#57B9BB'
@@ -105,8 +98,6 @@ function settings(props) {
                         <Text style={styles.menuItemText}>Logout</Text>
                     </View>
                 </TouchableRipple>
-
-                
 
             </View>
 

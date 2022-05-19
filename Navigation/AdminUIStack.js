@@ -10,6 +10,8 @@ import AddBusiness from '../screens/adminInterface/AddBusiness.js';
 import AddCustomer from '../screens/adminInterface/AddCustomer.js';
 import BusinessProfile from '../screens/adminInterface/BusinessProfile.js';
 import CustomerProfile from '../screens/adminInterface/CustomerProfile.js';
+import BlockedBusinesses from '../screens/adminInterface/BlockedBusinesses.js';
+import BlockedCustomers from '../screens/adminInterface/BlockedCustomers.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +64,16 @@ function MyStack() {
             <Stack.Screen
                 name="CustomerProfile"
                 component={CustomerProfile}
+                // options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="BlockedBusinesses"
+                component={BlockedBusinesses}
+                // options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="BlockedCustomers"
+                component={BlockedCustomers}
                 // options={{headerShown: false}}
             />
         

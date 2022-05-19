@@ -31,7 +31,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Signup"
             screenOptions={{
                 headerTintColor: 'black',
                 headerStyle: { opacity:0.5 },

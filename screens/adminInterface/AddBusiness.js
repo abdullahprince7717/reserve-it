@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity,StatusBar } from 'react-native';
+import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity,ScrollView } from 'react-native';
 import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons,MaterialIcons } from "@expo/vector-icons/"
 import React from 'react';
 
 const AddBusiness = (props) => {
     return (
+        <ScrollView>
         <View style = {styles.container}>
 
             <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,}}>
@@ -115,6 +116,7 @@ const AddBusiness = (props) => {
             
             
         </View>
+        </ScrollView>
     );
 };
 

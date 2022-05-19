@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, Dimensions, T
 import { FontAwesome, MaterialCommunityIcons, Feather, Ionicons } from "@expo/vector-icons/"
 import { TextInput } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import { collection,doc, addDoc, getDocs,setDoc } from "firebase/firestore";
 // import firestore from '@react-native-firebase/firestore';
@@ -20,6 +20,10 @@ const BusinessDetails = (props) => {
         { label: 'Doctor', value: 'doctor' }
     ]);
 
+    useEffect(() => {
+        console.log()
+    },[])
+
     const [businessName, setBusinessName] = useState('');
     const [businessAddress, setBusinessAddress] = useState('');
     const [businessEmail, setBusinessEmail] = useState('');
@@ -30,8 +34,8 @@ const BusinessDetails = (props) => {
     const [facebook, setFacebook] = useState('');
 
     const businessDoc = doc(db, "business_users", auth.currentUser.uid);
-    // const userDocument = firestore().collection('Users').doc('ABC');
-
+    // const businessDoc = doc(db, "business_users", "auth.uid");
+    
     const addBusinessInfo = async () => {
 
         const business = {
@@ -141,8 +145,6 @@ const BusinessDetails = (props) => {
                     />
                 </View>
 
-
-
                 <Text style={{ fontSize: 20, fontWeight: 'bold', margin: 10, marginTop: 20 }}>
                     Social Media
                 </Text>
@@ -174,7 +176,7 @@ const BusinessDetails = (props) => {
                         onPress={() => {
                             console.log("Pressed SAVE")
                             addBusinessInfo();
-                            props.navigation.navigate('AccountSetup3')
+                            // props.navigation.navigate('AccountSetup3')
                         }}
                     >
 
