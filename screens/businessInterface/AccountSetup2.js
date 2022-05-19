@@ -7,8 +7,7 @@ import React, { useState,useEffect } from 'react';
 import { collection,doc, addDoc, getDocs,setDoc } from "firebase/firestore";
 // import firestore from '@react-native-firebase/firestore';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
-import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
-// import Sidebar from "./admin_components/Sidebar";
+
 
 const BusinessDetails = (props) => {
     // const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
@@ -48,6 +47,7 @@ const BusinessDetails = (props) => {
             instagram: instagram,
             facebook: facebook
         } 
+        console.log(auth.currentUser.uid)
 
         await setDoc(businessDoc, business, { merge: true })
         .then(

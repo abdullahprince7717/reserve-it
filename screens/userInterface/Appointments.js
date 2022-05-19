@@ -20,7 +20,8 @@ function appointments(props) {
 
     const layout = useWindowDimensions();
     const [appointments, setAppointments] = useState(0);
-    const [index, setIndex] = React.useState(0);
+    const [index, setIndex] = useState(0);
+    const [loading,setLoading] = useState(true);
     
     const [routes] = React.useState([
         { key: "first", title: "Current" },
@@ -28,32 +29,53 @@ function appointments(props) {
         { key: "third", title: "Cancelled" },
     ]);
 
-    useEffect(() => {
-        getAppointments();
-    }, []);
+    const array = [{id:"gys"},{id:"sgks"},{id: "skgs"},{id: "sjkhks"}]
 
     const getAppointments = async () => {
         await getDocs(appointmentsRef)
             .then((res) => {
+
                 setAppointments(res.docs.map((doc) => ({ 
                     ...doc.data(),
                     id: doc.id 
                 })));
 
                 // console.log(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-                console.log(appointments[0].status);
+                console.log(appointments[0].status.is_completed);
             })
             .catch((err) => {
                 console.log(err);
             });
     };
 
+
+    useEffect(() => {
+        getAppointments();
+    }, []);
+
+    
     const FirstRoute = () => (
         <ScrollView style={styles.container}>
             <View>
-                {/* {appointments?.map((item, key) => {
-                    return <Text key={key}>{item.id}</Text>;
-                })} */}
+
+
+                {appointments?.map((item,index) => (
+                    // <Text>{item.id}</Text>
+                    appointments[index].status.is_completed === true ? (
+                    <Card
+                    title={item.service_name}
+                    businessName="LaLa Salon"
+                    address="Machi Mandi near Niagra Falls, Kenya"
+                    date="March 12"
+                    time="10:00 AM"
+                    onPress={() => {
+                        console.log("Pressed");
+                        props.navigation.navigate("BusinessProfile");
+                    }}
+                    buttonText1="Edit"
+                    buttonText2="Cancel"
+                /> ) : null
+                ))}
 
                 {/* <Card
             title="Grooming"
@@ -69,8 +91,8 @@ function appointments(props) {
             buttonText1="Edit"
             buttonText2="Cancel"
         /> */}
-                {/* 
-                <Card
+                
+                {/* <Card
                     title="Grooming"
                     businessName="LaLa Salon"
                     address="Machi Mandi near Niagra Falls, Kenya"
@@ -82,7 +104,7 @@ function appointments(props) {
                     }}
                     buttonText1="Edit"
                     buttonText2="Cancel"
-                /> */}
+                />  */}
             </View>
         </ScrollView>
     );

@@ -3,6 +3,44 @@ import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons } from "@expo/vecto
 import React from 'react';
 
 const EditProfile = () => {
+
+    const [businessName, setBusinessName] = useState('');
+    const [businessAddress, setBusinessAddress] = useState('');
+    const [businessEmail, setBusinessEmail] = useState('');
+    const [category, setCategory] = useState(value);
+    const [businessPhone, setBusinessPhone] = useState('');
+    const [businessDescription, setBusinessDescription] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [facebook, setFacebook] = useState('');
+
+    const businessDoc = doc(db, "business_users", auth.currentUser.uid);
+    // const businessDoc = doc(db, "business_users", "auth.uid");
+    
+    const addBusinessInfo = async () => {
+
+        const business = {
+            businessName: businessName,
+            businessAddress: businessAddress,
+            businessEmail: businessEmail,
+            category: category,
+            businessPhone: businessPhone,
+            businessDescription: businessDescription,
+            instagram: instagram,
+            facebook: facebook
+        } 
+        console.log(auth.currentUser.uid)
+
+        await setDoc(businessDoc, business, { merge: true })
+        .then(
+            (res)=>{
+                console.log(res)
+            })
+        .catch(
+            (err)=>{
+                console.log(err)
+            });
+    };
+    
     return (
         <View style = {styles.container}>
 
@@ -33,9 +71,6 @@ const EditProfile = () => {
                     style={styles.textInput}
                 />
             </View>
-
-
-
         
 
             <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>

@@ -20,9 +20,10 @@ function TimeSlot(props){
 
 
     useEffect(() => {
-        console.log("Selected Slot is ",selectedSlot)}, [selectedSlot]
-
-    );
+        console.log("Selected Slot is ",selectedSlot)
+        console.log(requiredArray)
+    }, 
+        [selectedSlot]);
 
     const list = () => {
         return requiredArray.map((data,index,array) => {
@@ -44,7 +45,7 @@ function TimeSlot(props){
 
                             console.log("ARRAY IS: ",array)
 
-                            console.log("DATA IS: ",data)
+                            console.log("DATA IS: ",array[index])
 
                             
                         }}
