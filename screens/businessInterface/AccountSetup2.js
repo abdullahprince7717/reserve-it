@@ -176,7 +176,7 @@ const BusinessDetails = (props) => {
                         onPress={() => {
                             console.log("Pressed SAVE")
                             addBusinessInfo();
-                            // props.navigation.navigate('AccountSetup3')
+                            props.navigation.navigate('AccountSetup3')
                         }}
                     >
 

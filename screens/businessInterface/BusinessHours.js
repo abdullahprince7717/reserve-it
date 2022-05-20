@@ -19,13 +19,13 @@ const BusinessHours = (props) => {
                 }}
             />
             <HourComponent
-                day = 'Tuesday'
+                day = 'Monday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
                 status = 'open'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours'),{day:'Tuesday'}}
+                    {props.navigation.navigate('EditBusinessHours',{day:'Tuesday'})}
                 }}
             />
             <HourComponent
@@ -35,7 +35,7 @@ const BusinessHours = (props) => {
                 status = 'open'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours'),{day:'Wednesday'}}
+                    {props.navigation.navigate('EditBusinessHours',{day:'Wednesday'})}
                 }}
             />
             <HourComponent
@@ -55,7 +55,7 @@ const BusinessHours = (props) => {
                 status = 'open'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours'),{day:'Friday'}}
+                    {props.navigation.navigate('EditBusinessHours',{day:'Friday'})}
                 }}
             />
             <HourComponent
@@ -65,7 +65,7 @@ const BusinessHours = (props) => {
                 status = 'closed'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours'),{day:'Saturday'}}
+                    {props.navigation.navigate('EditBusinessHours',{day:'Saturday'})}
                 }}
             />
             <HourComponent
@@ -75,7 +75,7 @@ const BusinessHours = (props) => {
                 status = 'closed'
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours'),{day:'Sunday'}}
+                    {props.navigation.navigate('EditBusinessHours',{day:'Sunday'})}
                 }}
             />
             

@@ -19,7 +19,7 @@ function appointments(props) {
     const appointmentsRef = collection(db, "appointments");
 
     const layout = useWindowDimensions();
-    const [appointments, setAppointments] = useState(0);
+    const [appointments, setAppointments] = useState([]);
     const [index, setIndex] = useState(0);
     const [loading,setLoading] = useState(true);
     
@@ -61,7 +61,7 @@ function appointments(props) {
 
                 {appointments?.map((item,index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_completed === true ? (
+                    appointments[index].status.is_pending === true ? (
                     <Card
                     title={item.service_name}
                     businessName="LaLa Salon"
@@ -77,23 +77,19 @@ function appointments(props) {
                 /> ) : null
                 ))}
 
-                {/* <Card
-            title="Grooming"
-            businessName="LaLa Salon"
-            address="Machi Mandi near Niagra Falls, Kenya"
-            date="March 12"
-            time="10:00 AM"
-            onPress={() => {
-                console.log(appointments[0]);
-                props.navigation.navigate("BusinessProfile");
-              // getAppointments();
-            }}
-            buttonText1="Edit"
-            buttonText2="Cancel"
-        /> */}
                 
-                {/* <Card
-                    title="Grooming"
+            </View>
+        </ScrollView>
+    );
+
+    const SecondRoute = () => (
+        <ScrollView style={styles.container}>
+            <View>
+            {appointments?.map((item,index) => (
+                    // <Text>{item.id}</Text>
+                    appointments[index].status.is_completed === true ? (
+                    <Card
+                    title={item.service_name}
                     businessName="LaLa Salon"
                     address="Machi Mandi near Niagra Falls, Kenya"
                     date="March 12"
@@ -104,41 +100,8 @@ function appointments(props) {
                     }}
                     buttonText1="Edit"
                     buttonText2="Cancel"
-                />  */}
-            </View>
-        </ScrollView>
-    );
-
-    const SecondRoute = () => (
-        <ScrollView style={styles.container}>
-            <View>
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress={() => {
-                        console.log("Pressed");
-                        props.navigation.navigate("BusinessProfile");
-                    }}
-                    buttonText1="Rate"
-                    buttonText2="Report"
-                />
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress={() => {
-                        console.log("Pressed");
-                        props.navigation.navigate("BusinessProfile");
-                    }}
-                    buttonText1="Rate"
-                    buttonText2="Report"
-                />
+                /> ) : null
+                ))}
             </View>
         </ScrollView>
     );
@@ -146,8 +109,11 @@ function appointments(props) {
     const ThirdRoute = () => (
         <ScrollView style={styles.container}>
             <View>
-                <Card
-                    title="Grooming"
+            {appointments?.map((item,index) => (
+                    // <Text>{item.id}</Text>
+                    appointments[index].status.is_cancelled === true ? (
+                    <Card
+                    title={item.service_name}
                     businessName="LaLa Salon"
                     address="Machi Mandi near Niagra Falls, Kenya"
                     date="March 12"
@@ -156,23 +122,10 @@ function appointments(props) {
                         console.log("Pressed");
                         props.navigation.navigate("BusinessProfile");
                     }}
-                    buttonText1="Book Again"
-                    buttonText2="Report"
-                />
-
-                <Card
-                    title="Grooming"
-                    businessName="LaLa Salon"
-                    address="Machi Mandi near Niagra Falls, Kenya"
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress={() => {
-                        console.log("Pressed");
-                        props.navigation.navigate("BusinessProfile");
-                    }}
-                    buttonText1="Book Again"
-                    buttonText2="Report"
-                />
+                    buttonText1="Edit"
+                    buttonText2="Cancel"
+                /> ) : null
+                ))}
             </View>
         </ScrollView>
     );

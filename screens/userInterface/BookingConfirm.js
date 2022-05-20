@@ -13,7 +13,7 @@ const BookingConfirm = (props) => {
             <Button
                 onPress ={ () => {
                     console.log('Pressed')
-                    props.navigation.navigate('Appointments')       //just for testing
+                    props.navigation.navigate('Home')       //just for testing
                 }}
                 title="Go to Appointments"
                 color="#841584"

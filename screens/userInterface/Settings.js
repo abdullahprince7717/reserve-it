@@ -164,7 +164,7 @@ function settings(props) {
                 </TouchableRipple>
 
 
-                <TouchableRipple
+                {/* <TouchableRipple
                     onPress = {() => console.log('pressed')}
                 >
                     <View style = {styles.menuItem}>
@@ -175,10 +175,10 @@ function settings(props) {
                             />
                         <Text style={styles.menuItemText}>Share with your friends</Text>
                     </View>
-                </TouchableRipple>
+                </TouchableRipple> */}
 
 
-                <TouchableRipple
+                {/* <TouchableRipple
                     onPress = {() => console.log('pressed')}
                 >
                     <View style = {styles.menuItem}>
@@ -189,7 +189,7 @@ function settings(props) {
                             />
                         <Text style={styles.menuItemText}>Reviews</Text>
                     </View>
-                </TouchableRipple>
+                </TouchableRipple> */}
 
 
                 <TouchableRipple 

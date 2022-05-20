@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import ToggleSwitch from 'toggle-switch-react-native'
 import {BackdropContext, TimePicker} from 'react-native-propel-kit';
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
@@ -13,8 +13,13 @@ import moment from 'moment';
 const EditBusinessHours = (props) => {
     
     const [isOpen, setIsOpen] = useState(false);
-    const [startTime, setStartTime] = useState(new Date());
-    const [endTime, setEndTime] = useState(new Date());
+    const [startTime, setStartTime] = useState();
+    const [endTime, setEndTime] = useState();
+
+    useEffect(() => {
+        console.log(startTime)
+        console.log(endTime)
+    },[])
     
     return (
         <View style = {styles.container}>
@@ -44,15 +49,16 @@ const EditBusinessHours = (props) => {
                 <Text style = {{fontSize:19,}}> Click to Edit Time</Text>
 
                 <View style = {{flexDirection:'row',margin:10, marginTop:40}}>                    
-                    {/* <TimePicker title="Pick a time" value={startTime} onChange={setStartTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
+                    <TimePicker title="Pick a time" value={startTime} onChange={setStartTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
                         <Text style = {{fontSize:20,marginRight:10,fontWeight:'bold'}}>Start Time :</Text>
-                    </TimePicker> */}
+                    </TimePicker>
+
                 </View>
 
                 <View style = {{flexDirection:'row',margin:20,marginBottom:50,}}>                    
-                    {/* <TimePicker title="Pick a time" value={endTime} onChange={setEndTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
+                    <TimePicker title="Pick a time" value={endTime} onChange={setEndTime} style = {{fontSize:20,backgroundColor:'#fff', height:26,}} >
                         <Text style = {{fontSize:20,marginRight:10,fontWeight:'bold'}}>End Time :</Text>
-                    </TimePicker> */}
+                    </TimePicker>
                 </View>
                 
                 <HourComponent

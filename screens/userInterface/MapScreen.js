@@ -23,7 +23,7 @@ const CARD_HEIGHT = 220;
 const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
-const ExploreScreen = () => {
+const MapScreen = (props) => {
     // const theme = useTheme();
     const Images = [
         { image: require("../../assets/map-marker.png") },
@@ -319,7 +319,7 @@ const ExploreScreen = () => {
 
                             <View style={styles.button}>
                                 <TouchableOpacity
-                                    onPress={() => { }}
+                                    onPress={() => { props.navigation.navigate("BusinessProfile",marker[index]) }}
                                     style={[
                                         styles.signIn,
                                         {
@@ -336,7 +336,7 @@ const ExploreScreen = () => {
                                             },
                                         ]}
                                     >
-                                        Order Now
+                                        See Details
                                     </Text>
                                 </TouchableOpacity>
                             </View>
@@ -348,7 +348,7 @@ const ExploreScreen = () => {
     );
 };
 
-export default ExploreScreen;
+export default MapScreen;
 
 const styles = StyleSheet.create({
     container: {
