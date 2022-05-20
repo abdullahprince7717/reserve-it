@@ -1,170 +1,184 @@
-import {View,StyleSheet,SafeAreaView,StatusBar,TouchableOpacity } from "react-native";
-import{ Text, Caption, Title, TouchableRipple,} from 'react-native-paper'
+import { View, StyleSheet, SafeAreaView, StatusBar, TouchableOpacity } from "react-native";
+import { Text, Caption, Title, TouchableRipple, } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icons from 'react-native-vector-icons/MaterialIcons'
-import { FontAwesome,EvilIcons } from "@expo/vector-icons/"
-import {db,auth} from  '../../firebase/FirebaseConfig.js'
-import {doc,getDoc} from 'firebase/firestore';
-import React, {useState,useEffect,useContext} from 'react';
+import { FontAwesome, EvilIcons } from "@expo/vector-icons/"
+import { db, auth } from '../../firebase/FirebaseConfig.js'
+import { doc, getDoc } from 'firebase/firestore';
+import React, { useState, useEffect, useContext } from 'react';
+import {
+    BallIndicator,
+    BarIndicator,
+    DotIndicator,
+    MaterialIndicator,
+    PacmanIndicator,
+    PulseIndicator,
+    SkypeIndicator,
+    UIActivityIndicator,
+    WaveIndicator,
+} from 'react-native-indicators';
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { CredentialsContext } from '../../components/CredentialsContext.js';
 
 function settings(props) {
-    
-    const [userData,setUserData] = useState(null);
-    
+
+    const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     // const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
 
     const handleSignOut = () => {
         auth.signOut()
-        .then(()=>{
+            .then(() => {
 
-            props.navigation.replace('Login')
-            console.log("SignOut Successful");
+                props.navigation.replace('Login')
+                console.log("SignOut Successful");
 
-            // AsyncStorage.removeItem('userCredentials')
-            // .then(()=>{
-            //     setStoredCredentials("");
-            //     props.navigation.replace('Login')
-            //     console.log("SignOut Successful");
-                
-            // })
-            // .catch((error)=>{
-            //     console.log(error.message)
-            // })
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
+                // AsyncStorage.removeItem('userCredentials')
+                // .then(()=>{
+                //     setStoredCredentials("");
+                //     props.navigation.replace('Login')
+                //     console.log("SignOut Successful");
+
+                // })
+                // .catch((error)=>{
+                //     console.log(error.message)
+                // })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
-    
+
 
     useEffect(() => {
         const myDoc = doc(db, "users", auth.currentUser.uid)
         // const myDoc = doc(db, "users", "auth.uid")
         getDoc(myDoc)
-        .then((snapshot) => {
+            .then((snapshot) => {
 
-            if(snapshot.exists){
-                setUserData(snapshot.data())
-                // console.log(storedCredentials);
+                if (snapshot.exists) {
+                    setUserData(snapshot.data())
+                    setLoading(false)
+                    // console.log(storedCredentials);
 
-                console.log(myDoc)
-            }
-            else{
-                console.log("No User Data")
-            }
-        })
-        .catch((error) => {
-            console.log(error.message)
-            
-        })
-        
-    },[])
+                    console.log(myDoc)
+                }
+                else {
+                    console.log("No User Data")
+                }
+            })
+            .catch((error) => {
+                console.log(error.message)
+
+            })
+
+    }, [])
 
 
     return (
-        <SafeAreaView style = {styles.container}>
-            <View style = {styles.userInfoSection}>
-                <View style  ={{flexDirection : 'row', justifyContent : 'space-between'}}>
-                    <Title style = {styles.title}>
-                        {/* Abdullah Ali */}
-                        {
-                            userData?.name 
-                        }
-                    </Title>
+        <SafeAreaView style={styles.container}>
+            {loading === false ? <>
+                <View style={styles.userInfoSection}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Title style={styles.title}>
+                            {/* Abdullah Ali */}
+                            {
+                                userData?.name
+                            }
+                        </Title>
 
-                    <TouchableOpacity  
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('EditProfile')        
-                    }}>
-                        <FontAwesome color="black" name="edit" size={27} />
+                        <TouchableOpacity
+                            onPress={() => {
+                                console.log('Pressed')
+                                props.navigation.navigate('EditProfile')
+                            }}>
+                            <FontAwesome color="black" name="edit" size={27} />
 
-                    </TouchableOpacity>
-                    
-                </View>
+                        </TouchableOpacity>
 
-                {/* <Caption style = {styles.caption}>
+                    </View>
+
+                    {/* <Caption style = {styles.caption}>
                     Username
                 </Caption> */}
-                
-                <View style = {styles.userInfoSection}>
-                    
-                    {(userData?.address) ? 
-                        <View style = {styles.row}>
-                            <Icon 
-                                name = "map-marker-radius"
-                                color= '#000'
-                                size = {20}
+
+                    <View style={styles.userInfoSection}>
+
+                        {(userData?.address) ?
+                            <View style={styles.row}>
+                                <Icon
+                                    name="map-marker-radius"
+                                    color='#000'
+                                    size={20}
+                                />
+                                <Text style={{ marginLeft: 5 }} >
+                                    Address: {userData?.address}
+                                </Text>
+                            </View>
+                            :
+                            null
+                        }
+
+                        <View style={styles.row}>
+                            <Icon
+                                name="phone"
+                                color='#000'
+                                size={20}
                             />
-                            <Text style = {{marginLeft: 5}} >
-                                Address: {userData?.address}
+                            <Text style={{ marginLeft: 5 }}>
+                                Phone  {userData?.phone}
                             </Text>
                         </View>
-                        :
-                        null
-                    }   
-                    
-                    <View style = {styles.row}>
-                        <Icon 
-                            name = "phone"
-                            color= '#000'
-                            size = {20}
-                        />
-                        <Text style = {{marginLeft: 5}}>
-                            Phone  {userData?.phone}
-                        </Text>
-                    </View>
-                    <View style = {styles.row}>
-                        <Icon 
-                            name = "email"
-                            color= '#000'
-                            size = {20}
-                        />
-                        <Text style = {{marginLeft: 5}}>
-                            Email  {userData?.email}
-                        </Text>
+                        <View style={styles.row}>
+                            <Icon
+                                name="email"
+                                color='#000'
+                                size={20}
+                            />
+                            <Text style={{ marginLeft: 5 }}>
+                                Email  {userData?.email}
+                            </Text>
+                        </View>
                     </View>
                 </View>
-            </View>
 
-            <View style={{borderBottomColor: 'grey',borderBottomWidth: 0.5}}/>
+                <View style={{ borderBottomColor: 'grey', borderBottomWidth: 0.5 }} />
 
-            <View style={styles.menuWrapper}>
-                <TouchableRipple 
-                    onPress = {() => console.log('pressed')}
-                > 
-                    <View style = {styles.menuItem}>
-                        <Icon 
-                            name = "heart-outline"
-                            size = {25}
-                            color= '#000'
+                <View style={styles.menuWrapper}>
+                    <TouchableRipple
+                        onPress={() => console.log('pressed')}
+                    >
+                        <View style={styles.menuItem}>
+                            <Icon
+                                name="heart-outline"
+                                size={25}
+                                color='#000'
                             />
-                        <Text style={styles.menuItemText}>Your Favourites</Text>
-                    </View>
-                </TouchableRipple>
+                            <Text style={styles.menuItemText}>Your Favourites</Text>
+                        </View>
+                    </TouchableRipple>
 
 
-                <TouchableRipple 
-                    onPress = {() => {
-                        console.log('pressed')
-                        {props.navigation.navigate('Payment')}
-                }}
-                >
-                    <View style = {styles.menuItem}>
-                        <Icon 
-                            name = "credit-card"
-                            size = {25}
-                            color= '#000'
+                    <TouchableRipple
+                        onPress={() => {
+                            console.log('pressed')
+                            { props.navigation.navigate('Payment') }
+                        }}
+                    >
+                        <View style={styles.menuItem}>
+                            <Icon
+                                name="credit-card"
+                                size={25}
+                                color='#000'
                             />
-                        <Text style={styles.menuItemText}>Payment</Text>
-                    </View>
-                </TouchableRipple>
+                            <Text style={styles.menuItemText}>Payment</Text>
+                        </View>
+                    </TouchableRipple>
 
 
-                {/* <TouchableRipple
+                    {/* <TouchableRipple
                     onPress = {() => console.log('pressed')}
                 >
                     <View style = {styles.menuItem}>
@@ -178,7 +192,7 @@ function settings(props) {
                 </TouchableRipple> */}
 
 
-                {/* <TouchableRipple
+                    {/* <TouchableRipple
                     onPress = {() => console.log('pressed')}
                 >
                     <View style = {styles.menuItem}>
@@ -192,50 +206,53 @@ function settings(props) {
                 </TouchableRipple> */}
 
 
-                <TouchableRipple 
-                onPress = {() => console.log('pressed')}
-                >
-                    <View style = {styles.menuItem}>
-                        <Icons 
-                            name = "feedback"
-                            size = {25}
-                            color= '#000'
+                    <TouchableRipple
+                        onPress={() => console.log('pressed')}
+                    >
+                        <View style={styles.menuItem}>
+                            <Icons
+                                name="feedback"
+                                size={25}
+                                color='#000'
                             />
-                        <Text style={styles.menuItemText}>Feedback</Text>
-                    </View>
-                </TouchableRipple>
+                            <Text style={styles.menuItemText}>Feedback</Text>
+                        </View>
+                    </TouchableRipple>
 
-                <TouchableRipple 
-                onPress = {() => console.log('pressed')}
-                >
-                    <View style = {styles.menuItem}>
-                        <FontAwesome 
-                            name = "exclamation-circle"
-                            size = {26}
-                            color= '#000'
+                    <TouchableRipple
+                        onPress={() => console.log('pressed')}
+                    >
+                        <View style={styles.menuItem}>
+                            <FontAwesome
+                                name="exclamation-circle"
+                                size={26}
+                                color='#000'
                             />
-                        <Text style={styles.menuItemText}>About Reserve-it</Text>
-                    </View>
-                </TouchableRipple>
+                            <Text style={styles.menuItemText}>About Reserve-it</Text>
+                        </View>
+                    </TouchableRipple>
 
 
-                <TouchableRipple 
-                    onPress = {() =>{ 
-                        console.log(auth.currentUser?.email +'Logged Out')
-                        handleSignOut()
-                    }}
-                >
-                    <View style = {styles.menuItem}>
-                        <Icons 
-                            name = "logout"
-                            size = {25}
-                            color= '#000'
+                    <TouchableRipple
+                        onPress={() => {
+                            console.log(auth.currentUser?.email + 'Logged Out')
+                            handleSignOut()
+                        }}
+                    >
+                        <View style={styles.menuItem}>
+                            <Icons
+                                name="logout"
+                                size={25}
+                                color='#000'
                             />
-                        <Text style={styles.menuItemText}>Logout</Text>
-                    </View>
-                </TouchableRipple>
+                            <Text style={styles.menuItemText}>Logout</Text>
+                        </View>
+                    </TouchableRipple>
 
-            </View>
+                </View> </>
+                :
+                <MaterialIndicator color='black' />}
+
 
         </SafeAreaView>
     );
@@ -257,7 +274,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         marginLeft: 5,
-        
+
     },
     caption: {
         fontSize: 14,

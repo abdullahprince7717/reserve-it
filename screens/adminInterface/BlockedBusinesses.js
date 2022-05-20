@@ -19,7 +19,7 @@ export default function blockedBusiness  (props) {
     
                 <ScrollView >
     
-                    <CustomerCard title='Abdullah' phone="03214323489" email='sdfbhwo@ddqed.com'
+                    <CustomerCard title='ab Salon' phone="03214323489" email='sdfbhwo@ddqed.com'
                         onPress={() => {
                             console.log('Pressed')
                             props.navigation.navigate('CustomerProfile')
@@ -27,55 +27,55 @@ export default function blockedBusiness  (props) {
     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.com' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.com' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.com' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.com' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
+                    <CustomerCard title='ab Salon' phone='03214323489' email='sdfbhwo@ddqed.' />
                     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     

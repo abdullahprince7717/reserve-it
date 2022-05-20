@@ -1,46 +1,46 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'react-native';
 import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons } from "@expo/vector-icons/"
-import React from 'react';
+import React,{useState} from 'react';
 
 const EditProfile = () => {
 
-    const [businessName, setBusinessName] = useState('');
-    const [businessAddress, setBusinessAddress] = useState('');
-    const [businessEmail, setBusinessEmail] = useState('');
-    const [category, setCategory] = useState(value);
-    const [businessPhone, setBusinessPhone] = useState('');
-    const [businessDescription, setBusinessDescription] = useState('');
-    const [instagram, setInstagram] = useState('');
-    const [facebook, setFacebook] = useState('');
+    // const [businessName, setBusinessName] = useState('');
+    // const [businessAddress, setBusinessAddress] = useState('');
+    // const [businessEmail, setBusinessEmail] = useState('');
+    // const [category, setCategory] = useState('');
+    // const [businessPhone, setBusinessPhone] = useState('');
+    // const [businessDescription, setBusinessDescription] = useState('');
+    // const [instagram, setInstagram] = useState('');
+    // const [facebook, setFacebook] = useState('');
 
-    const businessDoc = doc(db, "business_users", auth.currentUser.uid);
-    // const businessDoc = doc(db, "business_users", "auth.uid");
+    // const businessDoc = doc(db, "business_users", auth.currentUser.uid);
+    // // const businessDoc = doc(db, "business_users", "auth.uid");
     
-    const addBusinessInfo = async () => {
+    // const addBusinessInfo = async () => {
 
-        const business = {
-            businessName: businessName,
-            businessAddress: businessAddress,
-            businessEmail: businessEmail,
-            category: category,
-            businessPhone: businessPhone,
-            businessDescription: businessDescription,
-            instagram: instagram,
-            facebook: facebook
-        } 
-        console.log(auth.currentUser.uid)
+    //     const business = {
+    //         businessName: businessName,
+    //         businessAddress: businessAddress,
+    //         businessEmail: businessEmail,
+    //         category: category,
+    //         businessPhone: businessPhone,
+    //         businessDescription: businessDescription,
+    //         instagram: instagram,
+    //         facebook: facebook
+    //     } 
+    //     console.log(auth.currentUser.uid)
 
-        await setDoc(businessDoc, business, { merge: true })
-        .then(
-            (res)=>{
-                console.log(res)
-            })
-        .catch(
-            (err)=>{
-                console.log(err)
-            });
-    };
-    
+    //     await setDoc(businessDoc, business, { merge: true })
+    //     .then(
+    //         (res)=>{
+    //             console.log(res)
+    //         })
+    //     .catch(
+    //         (err)=>{
+    //             console.log(err)
+    //         });
+    // };
+
     return (
         <View style = {styles.container}>
 

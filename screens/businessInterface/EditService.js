@@ -4,6 +4,31 @@ import {AntDesign} from '@expo/vector-icons'
 
 const EditService = (props) => {
 
+    const deleteAlert = () =>
+    Alert.alert(
+        "Do you want to Delete this Business?",
+        "",
+        [
+            {
+                text: "Cancel",
+                onPress: () => {
+                    console.log("Cancel Pressed")
+                    
+                },
+                style: "cancel"
+            },
+            {   
+                text: "Delete",
+                onPress: () => {
+                    console.log("Delete Pressed")
+                    props.navigation.pop()
+                } 
+            }
+
+        
+        ]
+    );
+
     return (
         <View style = {styles.container}>
             <View style = {{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center',margin: 10, }}>
@@ -34,6 +59,7 @@ const EditService = (props) => {
                 style = {styles.delBtn}
                 onPress = {() =>{
                     // navigation.navigate('BookingConfirm')
+                    deleteAlert();
                 }}
                 >
                     <AntDesign name="delete" size={20} color="red" />

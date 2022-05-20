@@ -20,16 +20,16 @@ const CustomerCard = (props) => {
             <View style ={styles.container}>
                 <View style ={{flexDirection:'column',width:'100%'}}>
                     <Text style = {{fontSize:17,fontWeight:'bold'}}>
-                        Customer Name
+                        {props.title}
                     </Text>
 
                     <View style ={{flexDirection:'row',justifyContent: 'space-between',marginRight:25,paddingLeft:8}}>
                         <Text>
-                            03214323489
+                            {props.phone}
                         </Text>
 
                         <Text>
-                            test@test.com
+                            {props.email}
                         </Text>
                     </View>
 
