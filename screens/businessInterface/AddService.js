@@ -25,6 +25,7 @@ const AddService = (props) => {
             setUser(currentUser);
         });
     },[user])
+
     const servicesCollection = collection(db, "services");
 
     const addServices = async () => {
@@ -38,6 +39,8 @@ const AddService = (props) => {
 
         await addDoc(servicesCollection, business).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)});
     };
+
+    
 
 
     return (
