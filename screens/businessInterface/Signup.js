@@ -3,6 +3,10 @@ import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, S
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword } from "firebase/auth";
+import {MaterialIndicator} from 'react-native-indicators';
+import {SignInWithPopup,FacebookAuthProvider} from  'firebase/auth';
+import {authentication} from '../../firebase/FirebaseConfig.js';
+
 
 
 
@@ -13,50 +17,119 @@ const signUp = ({navigation}) => {
     const [phone, setPhone] = useState('');
     const [name, setName] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(true);
 
-    const signUp = () => {
 
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((credentials) => {
+    const signUpWithFacebook = () => {
 
-        console.log(credentials);
-        const userDoc = doc(db,"business_users",credentials.user.uid);
-        navigation.navigate("AccountSetup1");
+        const provider = new FacebookAuthProvider();
+
+        SignInWithPopup(authentication,provider)
+    }
+
+    const storeData = (userDoc,appointmentsDoc,servicesDoc) => {
+        // const userDoc = doc(db,"business_users",credentials.user.uid);
+
+        // const userDoc = doc(db,"business_users","test");
+        // const appointmentsDoc = doc(db,"appointments","test");
+        // const servicesDoc = doc(db,"services","test");
     
         const userData = {
             name: name,
             phone: phone,
             email: email,
-            password: password,
-            test : [{
-                test1: "test1",
-                test2: "test2",
-                test3: "test3"
-            },
+            address: "",
+            description: "",
+            instagram: "",
+            facebook: "",
+            password: "",
+            workingDays: {
+                monday: true,
+                tuesday: true,
+                wednesday: true,
+                thursday: true,
+                friday: true,
+                saturday: false,
+                sunday: false
 
-            {
-                test1: "test1",
-                test2: "test2",
-            }
-        ]         
+            },
+            workingHours: {
+                startTime: "",
+                endTime: "",
+            },
+            timeSlots: [{
+                "10:00-11:00": true,
+                "11:00-12:00": true,
+                "12:00-13:00": true,
+            }]
+        }
+        const services = {
+            name: '',
+            price: '',
+            duration: '',
 
         }
+        const appointments = {
+            date: '',
+            time: '',
+            service: '',
+            status: '',
+            business_id: '',
+            client_id: '',
+            business_email: '',
+            client_email: '',
+
+        }
+        console.log(userDoc)
 
         setDoc(userDoc, userData)
         .then(() =>{
             alert("User Created Successfully")
+            setLoading(false)
         })
         .catch((error) => {
             alert(error.message)
         })
 
+        setDoc(appointmentsDoc, appointments)
+        .then(() =>{
+            console.log("appointments created Successfully")
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
 
-    })
-    .catch((error) => {
-        console.log("Error Message :" + error.message);
+        setDoc(servicesDoc, services)
+        .then(() =>{
+            console.log("services Created Successfully")
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
+    }
 
-        console.log("Error Message :" + error.code);
-    })
+    const signUp = () => {
+
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((credentials) => {
+
+            // console.log(credentials);
+
+            // // const userDoc = doc(db,"business_users",credentials.user.uid);
+
+            const userDoc = doc(db,"business_users","test");
+            const appointmentsDoc = doc(db,"appointments","test");
+            const servicesDoc = doc(db,"services","test");
+
+            storeData(userDoc, appointmentsDoc, servicesDoc);
+            navigation.navigate("AccountSetup1")
+        })
+        .catch((error) => {
+            console.log("Error Message :" + error.message);
+            console.log("Error Message :" + error.code);
+        })
+
+            // {loading == true ? <MaterialIndicator color='black' />: navigation.navigate("AccountSetup1")}
     }
 
     return (

@@ -3,7 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { FontAwesome5 } from "@expo/vector-icons/"
 
-import Appointments from '../../screens/businessInterface/CustomerAppointments.js'
+import Appointments from '../../screens/businessInterface/ClientAppointments.js'
 import Settings from '../../screens/businessInterface/Settings.js';
 import Checkout from '../../screens/businessInterface/Checkout.js';
 

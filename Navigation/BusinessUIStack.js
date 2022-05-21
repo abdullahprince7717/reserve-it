@@ -6,7 +6,7 @@ import AddService from '../screens/businessInterface/AddService.js';
 import AddBusinessPayment from '../screens/businessInterface/AddBusinessPayment.js';
 import BusinessSettings from '../screens/businessInterface/Settings.js';
 import EditBusinessProfile from '../screens/businessInterface/EditBusinessProfile.js';
-import CustomerAppointments from '../screens/businessInterface/CustomerAppointments.js';
+import ClientAppointments from '../screens/businessInterface/ClientAppointments.js';
 import Checkout from '../screens/businessInterface/Checkout.js';
 import BusinessHours from '../screens/businessInterface/BusinessHours.js';
 import EditBusinessHours from '../screens/businessInterface/EditBusinessHours.js';
@@ -63,8 +63,8 @@ function MyStack() {
                 component={EditBusinessProfile}
             />
             <Stack.Screen
-                name="CustomerAppointments"
-                component={CustomerAppointments}
+                name="ClientAppointments"
+                component={ClientAppointments}
             />
 
             <Stack.Screen

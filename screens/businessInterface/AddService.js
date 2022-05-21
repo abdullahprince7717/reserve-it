@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity,Alert } from 'react-native';
 import React,{useState, useEffect} from 'react'
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import { onAuthStateChanged } from "firebase/auth";

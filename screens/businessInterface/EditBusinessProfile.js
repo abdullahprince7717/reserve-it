@@ -6,6 +6,7 @@ import React, {useState,useEffect} from 'react';
 
 const EditProfile = (props) => {
 
+    const [userData,setUserData] = useState()
     const [businessName, setBusinessName] = useState('');
     const [businessAddress, setBusinessAddress] = useState('');
     const [businessEmail, setBusinessEmail] = useState('');
@@ -17,17 +18,18 @@ const EditProfile = (props) => {
     // const [password,setPassword] = useState('');
 
     useEffect(() => {
-        const myDoc = doc(db, "users", auth.currentUser.uid)
-        // const myDoc = doc(db, "users", "auth.uid")
+        // const myDoc = doc(db, "business_users", auth.currentUser.uid)
+        const myDoc = doc(db, "business_users", "test")
         getDoc(myDoc)
         .then((snapshot) => {
             if(snapshot.exists){
-                setUserData(snapshot.data())
-                setName(snapshot.data().name)
-                setPhone(snapshot.data().phone)
-                setEmail(snapshot.data().email)
-                setAddress(snapshot.data().address)
-
+                // setUserData(snapshot.data())
+                // setName(snapshot.data().name)
+                // setPhone(snapshot.data().phone)
+                // setEmail(snapshot.data().email)
+                // setAddress(snapshot.data().address)
+                console.log(snapshot.data())
+                console.log(myDoc.uid)
             }
             else{
                 console.log("No User Data")
@@ -40,7 +42,7 @@ const EditProfile = (props) => {
     },[])
 
     function Update(value,merge){
-        const myDoc = doc(db, "users", auth.currentUser.uid)
+        const myDoc = doc(db, "business_users", auth.currentUser.uid)
         
         setDoc(myDoc,value,{merge:merge})
         .then(() => {
@@ -52,9 +54,6 @@ const EditProfile = (props) => {
         })
     }
 
-    
-
-    
     return (
         <View style = {styles.container}>
 

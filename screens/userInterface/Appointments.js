@@ -29,7 +29,7 @@ function appointments(props) {
         { key: "third", title: "Cancelled" },
     ]);
 
-  
+
 
     // const array = [{id:"gys"},{id:"sgks"},{id: "skgs"},{id: "sjkhks"}]
 

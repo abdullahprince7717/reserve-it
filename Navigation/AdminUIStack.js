@@ -7,11 +7,11 @@ import Complaints from '../screens/adminInterface/Complaints.js';
 import Settings from '../screens/adminInterface/Settings.js';
 import Login from '../screens/adminInterface/Login.js';
 import AddBusiness from '../screens/adminInterface/AddBusiness.js';
-import AddCustomer from '../screens/adminInterface/AddCustomer.js';
+import AddClient from '../screens/adminInterface/AddClient.js';
 import BusinessProfile from '../screens/adminInterface/BusinessProfile.js';
-import CustomerProfile from '../screens/adminInterface/CustomerProfile.js';
+import ClientProfile from '../screens/adminInterface/ClientProfile.js';
 import BlockedBusinesses from '../screens/adminInterface/BlockedBusinesses.js';
-import BlockedCustomers from '../screens/adminInterface/BlockedCustomers.js';
+import BlockedClients from '../screens/adminInterface/BlockedClients.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,8 +52,8 @@ function MyStack() {
                 // options={{headerShown: false}}
             />
             <Stack.Screen
-                name="AddCustomer"
-                component={AddCustomer}
+                name="AddClient"
+                component={AddClient}
                 // options={{headerShown: false}}
             />
             <Stack.Screen
@@ -62,8 +62,8 @@ function MyStack() {
                 // options={{headerShown: false}}
             />
             <Stack.Screen
-                name="CustomerProfile"
-                component={CustomerProfile}
+                name="ClientProfile"
+                component={ClientProfile}
                 // options={{headerShown: false}}
             />
             <Stack.Screen
@@ -72,8 +72,8 @@ function MyStack() {
                 // options={{headerShown: false}}
             />
             <Stack.Screen
-                name="BlockedCustomers"
-                component={BlockedCustomers}
+                name="BlockedClients"
+                component={BlockedClients}
                 // options={{headerShown: false}}
             />
         

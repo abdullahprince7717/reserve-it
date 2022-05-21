@@ -44,10 +44,10 @@ const signUp = ({navigation}) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((credentials) => {
 
-        let userCredentials = credentials;
+        // let userCredentials = credentials;
         // console.log(userCredentials);
         navigation.navigate("Home")
-        const userDoc = doc(db,"users",credentials.user.uid)      //Storing user details in firestore
+        const userDoc = doc(db,"users",credentials.user.uid)    
         console.log("A U T H ID :" + credentials.user.uid)
         // persistLogin(userCredentials);
 

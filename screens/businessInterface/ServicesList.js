@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View, } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Card from '../../components/businessUIComponents/ServiceCard.js'
 import { FAB } from 'react-native-paper';
 
 const ServicesList = (props) => {
-
-    
 
     return (
         <View style = {styles.container}>
