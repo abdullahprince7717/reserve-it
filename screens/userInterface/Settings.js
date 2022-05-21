@@ -84,9 +84,7 @@ function settings(props) {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Title style={styles.title}>
                             {/* Abdullah Ali */}
-                            {
-                                userData?.name
-                            }
+                            <Text>{userData?.name}</Text>
                         </Title>
 
                         <TouchableOpacity
@@ -114,7 +112,7 @@ function settings(props) {
                                     size={20}
                                 />
                                 <Text style={{ marginLeft: 5 }} >
-                                    Address: {userData?.address}
+                                    <Text>Address: {userData?.address}</Text>
                                 </Text>
                             </View>
                             :
@@ -128,7 +126,7 @@ function settings(props) {
                                 size={20}
                             />
                             <Text style={{ marginLeft: 5 }}>
-                                Phone  {userData?.phone}
+                                <Text>Phone: {userData?.phone}</Text>
                             </Text>
                         </View>
                         <View style={styles.row}>
@@ -138,7 +136,7 @@ function settings(props) {
                                 size={20}
                             />
                             <Text style={{ marginLeft: 5 }}>
-                                Email  {userData?.email}
+                                <Text>Email  {userData?.email}</Text>
                             </Text>
                         </View>
                     </View>

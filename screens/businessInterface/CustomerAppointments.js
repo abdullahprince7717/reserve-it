@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { View,StyleSheet,StatusBar,Text,ScrollView,useWindowDimensions } from "react-native";
 import Card from  '../../components/businessUIComponents/AppointmentCard.js';
 import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
+import { db, auth } from "../../firebase/FirebaseConfig.js";
+
 
 
 const FirstRoute = () => (
@@ -264,6 +266,10 @@ function appointments({navigation}) {
         { key: 'second', title: 'Completed' },
         { key: 'third', title: 'Cancelled' },
     ]);
+
+    useEffect(() => {
+        console.log(auth.currentUser.uid);
+    },[])
 
     return(
 

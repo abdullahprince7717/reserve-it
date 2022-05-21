@@ -1,46 +1,60 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'react-native';
 import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons } from "@expo/vector-icons/"
-import React,{useState} from 'react';
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import {doc,getDoc,setDoc} from 'firebase/firestore';
+import React, {useState,useEffect} from 'react';
 
-const EditProfile = () => {
+const EditProfile = (props) => {
 
-    // const [businessName, setBusinessName] = useState('');
-    // const [businessAddress, setBusinessAddress] = useState('');
-    // const [businessEmail, setBusinessEmail] = useState('');
-    // const [category, setCategory] = useState('');
-    // const [businessPhone, setBusinessPhone] = useState('');
-    // const [businessDescription, setBusinessDescription] = useState('');
-    // const [instagram, setInstagram] = useState('');
-    // const [facebook, setFacebook] = useState('');
+    const [businessName, setBusinessName] = useState('');
+    const [businessAddress, setBusinessAddress] = useState('');
+    const [businessEmail, setBusinessEmail] = useState('');
+    const [category, setCategory] = useState('');
+    const [businessPhone, setBusinessPhone] = useState('');
+    const [businessDescription, setBusinessDescription] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [facebook, setFacebook] = useState('');
+    // const [password,setPassword] = useState('');
 
-    // const businessDoc = doc(db, "business_users", auth.currentUser.uid);
-    // // const businessDoc = doc(db, "business_users", "auth.uid");
+    useEffect(() => {
+        const myDoc = doc(db, "users", auth.currentUser.uid)
+        // const myDoc = doc(db, "users", "auth.uid")
+        getDoc(myDoc)
+        .then((snapshot) => {
+            if(snapshot.exists){
+                setUserData(snapshot.data())
+                setName(snapshot.data().name)
+                setPhone(snapshot.data().phone)
+                setEmail(snapshot.data().email)
+                setAddress(snapshot.data().address)
+
+            }
+            else{
+                console.log("No User Data")
+            }
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+        
+    },[])
+
+    function Update(value,merge){
+        const myDoc = doc(db, "users", auth.currentUser.uid)
+        
+        setDoc(myDoc,value,{merge:merge})
+        .then(() => {
+            console.log("Updated")
+            props.navigation.goBack()
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+    }
+
     
-    // const addBusinessInfo = async () => {
 
-    //     const business = {
-    //         businessName: businessName,
-    //         businessAddress: businessAddress,
-    //         businessEmail: businessEmail,
-    //         category: category,
-    //         businessPhone: businessPhone,
-    //         businessDescription: businessDescription,
-    //         instagram: instagram,
-    //         facebook: facebook
-    //     } 
-    //     console.log(auth.currentUser.uid)
-
-    //     await setDoc(businessDoc, business, { merge: true })
-    //     .then(
-    //         (res)=>{
-    //             console.log(res)
-    //         })
-    //     .catch(
-    //         (err)=>{
-    //             console.log(err)
-    //         });
-    // };
-
+    
     return (
         <View style = {styles.container}>
 
