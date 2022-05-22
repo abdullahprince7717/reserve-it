@@ -3683,6 +3683,13 @@ expo-error-recovery@~3.0.4:
   resolved "https://registry.npmjs.org/expo-error-recovery/-/expo-error-recovery-3.0.4.tgz"
   integrity sha512-7z2V7n9Yvm9/ogm4I1KgcsQZfgyDMSOBVHk8pA3IY0jL8+tXTyTrStxHsPXRjE8HHeYikfTRBIeFsh/1wWY7oA==
 
+expo-facebook@~12.1.0:
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/expo-facebook/-/expo-facebook-12.1.1.tgz#2dac8d3f4a98af4d08c3ff2cc63c9973f5580755"
+  integrity sha512-YKsuLkru3fLaVl28sIF7bbJeq1QAB/eVdxBy+W4UzkCm/l6K9/7J+9bhtT7BOJOBSK77puuuhfLPicPxTXthtQ==
+  dependencies:
+    "@expo/config-plugins" "^4.0.2"
+
 expo-file-system@~13.1.0:
   version "13.1.0"
   resolved "https://registry.npmjs.org/expo-file-system/-/expo-file-system-13.1.0.tgz"
@@ -6067,6 +6074,11 @@ react-native-google-places-autocomplete@^2.4.1:
     lodash.debounce "^4.0.8"
     prop-types "^15.7.2"
     qs "~6.9.1"
+
+react-native-image-crop-picker@^0.37.3:
+  version "0.37.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.37.3.tgz#f260e40b6a6ba8e98f4db3dde25a8f09e0936385"
+  integrity sha512-ih+0pWWRUNEFQyaHwGbH9rqJNOb7EBYMwKJhTY0VmsKIA9E+usfwMmQXAFIfOnee7fTn0A2vOXkBCPQZwyvnQw==
 
 react-native-image-slider-banner@^1.0.2:
   version "1.0.2"
