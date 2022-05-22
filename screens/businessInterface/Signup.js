@@ -25,6 +25,12 @@ const signUp = ({navigation}) => {
         const provider = new FacebookAuthProvider();
 
         SignInWithPopup(authentication,provider)
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
     }
 
     const storeData = (userDoc,appointmentsDoc,servicesDoc) => {
