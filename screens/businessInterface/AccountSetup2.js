@@ -3,9 +3,10 @@ import { FontAwesome, MaterialCommunityIcons, Feather, Ionicons } from "@expo/ve
 import { TextInput } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useState,useEffect } from 'react';
+import AddImages from '../businessInterface/AddImages.js';
+
 
 import { collection,doc, addDoc, getDocs,setDoc } from "firebase/firestore";
-// import firestore from '@react-native-firebase/firestore';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 
 
@@ -32,8 +33,8 @@ const BusinessDetails = (props) => {
     const [instagram, setInstagram] = useState('');
     const [facebook, setFacebook] = useState('');
 
-    const businessDoc = doc(db, "business_users", auth.currentUser.uid);
-    // const businessDoc = doc(db, "business_users", "auth.uid");
+    // const businessDoc = doc(db, "business_users", auth.currentUser.uid);
+    const businessDoc = doc(db, "business_users", "auth.uid");
     
     const addBusinessInfo = async () => {
 
@@ -169,8 +170,14 @@ const BusinessDetails = (props) => {
                     />
                 </View>
 
+                <Text style={{ fontSize: 20, fontWeight: 'bold', margin: 10, marginTop: 20 }}>
+                    Select a Banner Image
+                </Text>
 
-                <View style={{ justifyContent: 'center', margin: 20, marginTop: 40 }}>
+                <AddImages/>
+
+            </ScrollView>
+            <View style={{ justifyContent: 'center', margin: 20,marginTop:2 }}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
@@ -187,7 +194,6 @@ const BusinessDetails = (props) => {
                     </TouchableOpacity>
 
                 </View>
-            </ScrollView>
         </KeyboardAvoidingView>
     );
 };
