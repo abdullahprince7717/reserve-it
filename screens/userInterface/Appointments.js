@@ -91,8 +91,6 @@ function appointments(props) {
     const FirstRoute = () => (
         <ScrollView style={styles.container}>
             <View>
-
-
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
                     appointments[index].status.is_pending === true ? (

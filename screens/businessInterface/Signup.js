@@ -86,6 +86,8 @@ const signUp = ({navigation}) => {
             client_email: '',
 
         }
+
+
         console.log(userDoc)
 
         setDoc(userDoc, userData)
