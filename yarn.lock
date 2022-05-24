@@ -2259,10 +2259,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-14.9.4.tgz#e31f06998a160c6d3c655f03153b5fdba5ac16f4"
   integrity sha512-vojJskuLx70FyPboeD9wIJ3KNAq25aW2RkKEYu/WJ0r4eg2/CCDGsjEeN8vBooUbUW6VC1+cEpXKA3Q++Sna4w==
 
-"@react-native-firebase/storage@^14.8.0":
-  version "14.8.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-14.8.0.tgz#3581d2502d9d36f8f9cfe465a363abb58548b210"
-  integrity sha512-a+0donHYRrwJpiqTTxwbxzipp6Xev87VGfy3j1ZSBFH37D4ZVEeutO1j8/1Gf8F7UVJjotzmn4LhGBqCBUBUQw==
+"@react-native-firebase/storage@^14.9.4":
+  version "14.9.4"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-14.9.4.tgz#21c6cf53a54b6d45d7d27f01800deb5ad3e04796"
+  integrity sha512-Qvlnftov2pdlu6+FwXeI+3Y3iDwUJNdR5wu5QTZFWJM1gKvUG532jTuu9ZHzD6JdnsnPvnnrWEPhLHTzaTZ7pQ==
 
 "@react-native-masked-view/masked-view@^0.2.6":
   version "0.2.6"
@@ -6393,7 +6393,7 @@ react-native-screens@~3.10.1:
 
 react-native-simple-time-picker@^1.3.11:
   version "1.3.11"
-  resolved "https://registry.npmjs.org/react-native-simple-time-picker/-/react-native-simple-time-picker-1.3.11.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-simple-time-picker/-/react-native-simple-time-picker-1.3.11.tgz#d726f99d314321cfa6ddcd665309485b03655c28"
   integrity sha512-LdS0gcpfN2hR+vCWAyk+IGBPorNzNV9ZigvXHcEqJzwIRVkS0YUENRAk0gB3GB6QveOGaicMlx4eXzguKLMj+w==
   dependencies:
     "@react-stately/utils" "3.3.0"

@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, Dimensions, TouchableOpacity,Image, Alert } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons, Feather, Ionicons } from "@expo/vector-icons/"
-import { TextInput } from 'react-native-paper';
+import { TextInput,Button } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddImages from '../businessInterface/AddImages.js';
+import * as ImagePicker from 'expo-image-picker';
 
 
-import { collection,doc, addDoc, getDocs,setDoc } from "firebase/firestore";
-import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
+import { db, auth } from '../../firebase/FirebaseConfig.js'
+import storage from '@react-native-firebase/storage';
+
 
 
 const BusinessDetails = (props) => {
@@ -22,7 +25,7 @@ const BusinessDetails = (props) => {
 
     useEffect(() => {
         console.log()
-    },[])
+    }, [])
 
     const [businessName, setBusinessName] = useState('');
     const [businessAddress, setBusinessAddress] = useState('');
@@ -33,9 +36,14 @@ const BusinessDetails = (props) => {
     const [instagram, setInstagram] = useState('');
     const [facebook, setFacebook] = useState('');
 
-    // const businessDoc = doc(db, "business_users", auth.currentUser.uid);
-    const businessDoc = doc(db, "business_users", "auth.uid");
-    
+    const businessDoc = doc(db, "business_users", auth.currentUser.uid);
+    // const businessDoc = doc(db, "business_users", "auth.uid");
+
+    const [image, setImage] = useState(null);
+    const [uploading, setUploading] = useState(false);
+    const [transferred, setTransferred] = useState(0);
+
+
     const addBusinessInfo = async () => {
 
         const business = {
@@ -47,19 +55,63 @@ const BusinessDetails = (props) => {
             businessDescription: businessDescription,
             instagram: instagram,
             facebook: facebook
-        } 
+        }
         console.log(auth.currentUser.uid)
 
         await setDoc(businessDoc, business, { merge: true })
-        .then(
-            (res)=>{
-                console.log(res)
-            })
-        .catch(
-            (err)=>{
-                console.log(err)
-            });
+            .then(
+                (res) => {
+                    console.log("response" + res)
+                })
+            .catch(
+                (err) => {
+                    console.log("error" + err)
+                });
     };
+
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 6],
+            quality: 1,
+        });
+
+        console.log("result: " + result);
+        console.log("result.uri: " + result.uri);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
+    
+
+    const deleteImage = () => {
+        setImage(null);
+    }
+
+    const uploadImage = async () => {
+        const uri = image;
+        let filename =  uri.substring(uri.lastIndexOf('/') + 1);
+
+        setUploading(true);
+
+        try{
+            await storage().ref(filename).putFile(uri);
+            setUploading(false);
+            Alert.alert(
+                "Image Uploaded!"
+            )
+        }
+        catch(err){
+            Alert.alert(
+                "Error uploading image!"
+            )
+        }
+    }
+
+
     return (
         <KeyboardAvoidingView
             style={styles.container}
@@ -174,26 +226,46 @@ const BusinessDetails = (props) => {
                     Select a Banner Image
                 </Text>
 
-                <AddImages/>
+                {/* <AddImages uri = {image} /> */}
+                <View style={{ flex: 1, flexDirection: "column", alignItems: 'center', justifyContent: 'center', }}>
 
-            </ScrollView>
-            <View style={{ justifyContent: 'center', margin: 20,marginTop:2 }}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => {
-                            console.log("Pressed SAVE")
-                            addBusinessInfo();
-                            props.navigation.navigate('AccountSetup3')
-                        }}
-                    >
+                    <View style={{ flexDirection: "row", margin: 10 }}>
+                        {image && <Image source={{ uri: image }} style={{ width: 100, height: 100, borderRadius: 13 }} />}
 
-                        <Text style={{ color: '#fff', fontSize: 17 }}>
-                            NEXT
-                        </Text>
+                        <View style={{ justifyContent: 'center', margin: 10 }}>
+                            {image &&
+                                <Button icon="delete" mode="outlined" color='red' onPress={deleteImage} />}
+                        </View>
 
-                    </TouchableOpacity>
+                    </View>
+
+                    <View style={{ margin: 15, marginBottom: 20 }}>
+                        <Button icon="camera" mode="outlined" color='#57B9BB' onPress={pickImage}>
+                            {image ? <Text>Reselect the picture</Text> : <Text>Select a Picture from Gallery</Text>}
+                        </Button>
+                    </View>
 
                 </View>
+
+            </ScrollView>
+            <View style={{ justifyContent: 'center', margin: 20, marginTop: 2 }}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        console.log("Pressed SAVE")
+                        addBusinessInfo();
+                        uploadImage();
+                        props.navigation.navigate('AccountSetup3')
+                    }}
+                >
+
+                    <Text style={{ color: '#fff', fontSize: 17 }}>
+                        NEXT
+                    </Text>
+
+                </TouchableOpacity>
+
+            </View>
         </KeyboardAvoidingView>
     );
 };

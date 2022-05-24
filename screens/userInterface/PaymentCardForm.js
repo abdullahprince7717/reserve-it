@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity } from 'r
 import { FontAwesome,MaterialCommunityIcons,Feather } from "@expo/vector-icons/"
 import React from 'react';
 
-const PaymentCardForm = () => {
+const PaymentCardForm = (props) => {
     return (
         <View style = {styles.container}>
 
@@ -58,7 +58,7 @@ const PaymentCardForm = () => {
                     style = {styles.button}
                     onPress = {() =>{
                         console.log("Pressed SAVE")
-                        // navigation.navigate('')
+                        props.navigation.goBack()
                     }}
                 >
 
@@ -68,11 +68,7 @@ const PaymentCardForm = () => {
 
                 </TouchableOpacity>
 
-            </View>    
-                
-
-            
-                
+            </View>      
 
         </View>
     );

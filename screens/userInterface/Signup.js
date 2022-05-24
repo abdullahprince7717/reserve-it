@@ -41,13 +41,17 @@ const signUp = ({navigation}) => {
 
   const signUp = () => {
 
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email.trim(), password)
     .then((credentials) => {
 
         // let userCredentials = credentials;
         // console.log(userCredentials);
-        navigation.navigate("Home")
-        const userDoc = doc(db,"users",credentials.user.uid)    
+        navigation.replace("Home")
+        
+        const userDoc = doc(db,"users",credentials.user.uid)   
+        const appointmentsDoc = doc(db,"services",credentials.user.uid);
+        const reviewsDoc = doc(db,"reviews",credentials.user.uid);
+        
         console.log("A U T H ID :" + credentials.user.uid)
         // persistLogin(userCredentials);
 
@@ -57,22 +61,34 @@ const signUp = ({navigation}) => {
           name: name,
           phone: phone,
           email: email,
-          password: password,
-          appointments : [{
-            service: "grooming",
-            business: "ab salon",
-            timeSlot: "10:00-11:00",
-            duration: "30 mins",
-            date: "12/2/2022"
-          },
-
-          {
-            test1: "test1",
-            test2: "test2",
-          }
-        ]         
-
+          address: "",
         }
+
+        const appointments = {
+          date: '',
+          time: '',
+          service: '',
+          status: {
+            is_pending: false,
+            is_completed: false,
+            is_cancelled: false,
+          } ,
+          business_id: '',
+          client_id: '',
+          business_email: '',
+          client_email: '',
+
+      }
+
+      const reviews  = {
+        review: '',
+        rating: '',
+        business_id: '',
+        client_id: '',
+        business_email: '',
+        client_email: '',
+        appointment_id: '',
+      }
 
       setDoc(userDoc, userData)
         .then(() =>{
@@ -81,6 +97,23 @@ const signUp = ({navigation}) => {
         .catch((error) => {
           alert(error.message)
         })
+
+        setDoc(appointmentsDoc, appointments)
+        .then(() =>{
+            console.log("appointments created Successfully")
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
+
+        setDoc(reviewsDoc, reviews)
+        .then(() =>{
+            console.log("appointments created Successfully")
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
+
 
 
       })
@@ -117,7 +150,7 @@ const signUp = ({navigation}) => {
 
             <View style = {styles.form}>
               <TextInput
-	              placeholder="Full name"
+                placeholder="Full name"
                 value={name}
                 placeholderTextColor= {"#fff"}
                 onChangeText ={text=>setName(text)}

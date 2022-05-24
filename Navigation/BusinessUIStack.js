@@ -32,7 +32,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="AccountSetup2"
+            initialRouteName="Signup"
             screenOptions={{
                 headerTintColor: 'black',
                 headerStyle: { opacity:0.5 },

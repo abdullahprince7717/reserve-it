@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import {dbBusiness,authBusiness} from  '../../firebase/FirebaseConfig2.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import {MaterialIndicator} from 'react-native-indicators';
 import {SignInWithPopup,FacebookAuthProvider} from  'firebase/auth';
-import {authentication} from '../../firebase/FirebaseConfig.js';
+import {authentication} from '../../firebase/FirebaseConfig2.js';
 
 
 
@@ -33,7 +34,7 @@ const signUp = ({navigation}) => {
             })
     }
 
-    const storeData = (userDoc,appointmentsDoc,servicesDoc) => {
+    const storeData = (userDoc,servicesDoc) => {
         // const userDoc = doc(db,"business_users",credentials.user.uid);
 
         // const userDoc = doc(db,"business_users","test");
@@ -48,7 +49,6 @@ const signUp = ({navigation}) => {
             description: "",
             instagram: "",
             facebook: "",
-            password: "",
             workingDays: {
                 monday: true,
                 tuesday: true,
@@ -63,11 +63,11 @@ const signUp = ({navigation}) => {
                 startTime: "",
                 endTime: "",
             },
-            timeSlots: [{
+            timeSlots: {
                 "10:00-11:00": true,
                 "11:00-12:00": true,
                 "12:00-13:00": true,
-            }]
+            }
         }
         const services = {
             name: '',
@@ -75,18 +75,6 @@ const signUp = ({navigation}) => {
             duration: '',
 
         }
-        const appointments = {
-            date: '',
-            time: '',
-            service: '',
-            status: '',
-            business_id: '',
-            client_id: '',
-            business_email: '',
-            client_email: '',
-
-        }
-
 
         console.log(userDoc)
 
@@ -94,14 +82,6 @@ const signUp = ({navigation}) => {
         .then(() =>{
             alert("User Created Successfully")
             setLoading(false)
-        })
-        .catch((error) => {
-            alert(error.message)
-        })
-
-        setDoc(appointmentsDoc, appointments)
-        .then(() =>{
-            console.log("appointments created Successfully")
         })
         .catch((error) => {
             alert(error.message)
@@ -118,19 +98,17 @@ const signUp = ({navigation}) => {
 
     const signUp = () => {
 
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(authBusiness, email.trim(), password)
         .then((credentials) => {
 
-            // console.log(credentials);
+            console.log(credentials);
 
-            // // const userDoc = doc(db,"business_users",credentials.user.uid);
+            const userDoc = doc(db,"business_users",credentials.user.uid);
+            // const userDoc = doc(db,"business_users","test");
+            const servicesDoc = doc(db,"services",credentials.user.uid);
 
-            const userDoc = doc(db,"business_users","test");
-            const appointmentsDoc = doc(db,"appointments","test");
-            const servicesDoc = doc(db,"services","test");
-
-            storeData(userDoc, appointmentsDoc, servicesDoc);
-            navigation.navigate("AccountSetup1")
+            storeData(userDoc, servicesDoc);
+            navigation.replace("AccountSetup1")
         })
         .catch((error) => {
             console.log("Error Message :" + error.message);

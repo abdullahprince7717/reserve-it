@@ -33,9 +33,9 @@ export default function ImagePickerExample() {
             <View style = {{flexDirection: "row",margin:10}}>
                 {image && <Image source={{ uri: image }} style={{ width: 100, height: 100,borderRadius:13 }} />}
 
-                <View style = {{justifyContent: 'center',margin:10, padding: 10}}>
+                <View style = {{justifyContent: 'center',margin:10}}>
                     {image && 
-                    <Button icon="delete" mode="outlined" color = '#57B9BB' onPress={deleteImage} />}
+                    <Button icon="delete" mode="outlined" color = 'red' onPress={deleteImage} />}
                 </View>
                     
             </View>
