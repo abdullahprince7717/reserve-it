@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+
 // import 'firebase/compat/firestore';
 import {getFirestore} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth';
@@ -23,28 +24,7 @@ if (firebase.apps.length === 0) {
 
 const db = getFirestore(app);
 const auth = firebase.auth();
+// const authentication = getAuth(app);
 
-const authentication = getAuth(app);
+export { db, auth};
 
-export { db, auth,authentication };
-
-
-// import * as firebase from 'firebase';
-// import { initializeApp } from "firebase/app";
-// import { getAuth} from "firebase/auth";
-
-// const firebaseConfig = {
-//     apiKey: "AIzaSyBVIIaVQAiBzRlrbqop5K59gmuJhmL3im8",
-//     authDomain: "reserveit-4de46.firebaseapp.com",
-//     projectId: "reserveit-4de46",
-//     storageBucket: "reserveit-4de46.appspot.com",
-//     messagingSenderId: "71458307802",
-//     appId: "1:71458307802:web:3bfb7f2dc5adf97da72fe3",
-//     measurementId: "G-J8B5GHPQ6N"
-//   };
-
-
-// const app = initializeApp(firebaseConfig);
-// export const authentication  = getAuth(app);
-
-// v9 compat packages are API compatible with v8 code

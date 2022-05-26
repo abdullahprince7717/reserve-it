@@ -3,9 +3,8 @@ import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, S
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {dbBusiness,authBusiness} from  '../../firebase/FirebaseConfig2.js'
 import {doc,setDoc} from 'firebase/firestore';
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword,SignInWithPopup,FacebookAuthProvider } from "firebase/auth";
 import {MaterialIndicator} from 'react-native-indicators';
-import {SignInWithPopup,FacebookAuthProvider} from  'firebase/auth';
 import {authentication} from '../../firebase/FirebaseConfig2.js';
 
 
@@ -45,6 +44,8 @@ const signUp = ({navigation}) => {
             name: name,
             phone: phone,
             email: email,
+            business_name: "",
+            business_Description:"",
             address: "",
             description: "",
             instagram: "",

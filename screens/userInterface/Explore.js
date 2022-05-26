@@ -1,53 +1,68 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View,StyleSheet,Dimensions,ScrollView,StatusBar,Text } from "react-native";
+import {Button,Searchbar} from 'react-native-paper'
 import BusinessCard from  '../../components/explore/Card.js';
-import SearchBar from '../../components/home/SearchBar.js'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import {Ionicons} from '@expo/vector-icons'
 import { FAB } from 'react-native-paper';
+import { db, auth,} from "../../firebase/FirebaseConfig.js";
+import { doc, getDoc,setDoc,collection,getDocs,where,query } from "firebase/firestore";
+// import firestore from '@react-native-firebase/firestore';
+
+
 // import {GOOGLE_MAPS_APIKEY} from "@env";
 
 
 function explore({navigation}) {
 
-    const [value, setValue] = useState("");
+    const [searchQuery, setSearchQuery] = useState('Tester@hmal.com');   
+    const onChangeSearch = query => setSearchQuery(query);
+    const [businesses, setBusinesses] = useState([]);  
+    const collectionRef = collection(db, "users")
+
+    // Create a reference to the cities collection
+    // const citiesRef = collection(db, "business_users");
+
+    // Create a query against the collection.
+
+    const getBusinesses = async () => {
+        const q = query(collectionRef, where("email", "==", searchQuery));
+        await getDocs(q)
+            .then((res) => {
+
+                setBusinesses(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log("response " + res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                // console.log("response " + res);
+                console.log(businesses);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    useEffect(() => {
+
+        getBusinesses();
+
+    }, [])
 
     return (
         <View style = {styles.container}>
             <View style = {styles.searchView}>
                 <View style = {styles.searchBar}>
-                    <SearchBar />
-                    {/* <GooglePlacesAutocomplete
-                        nearbyPlacesAPI='GooglePlacesSearch'
-                        debounce={400}
-                        placeholder='Location'
-
-                        // onPress={(data, details = null) => {
-                        //     // 'details' is provided when fetchDetails = true
-                        //     // fetchDetails = true
-                        //     console.log(data, details);
-                        // }}
-                        query={{
-                            key: 'AIzaSyB3UIxXjy4PIW6ikhu5zTorpmgE_rN2hDk',
-                            language: 'en',
-                        }}
-                        styles={{
-                            textInputContainer: {
-                                backgroundColor: '#000',
-                            },
-                            textInput: {
-                                height: 50,
-                                color: '#000',
-                                fontSize: 17,
-                                marginBottom: 10,
-                                marginTop: 10,
-                                padding: 10,
-                                borderRadius: 20,
-                            },
-                            predefinedPlacesDescription: {
-                                color: '#1faadb',
-                            },
-                        }}
-                    /> */}
+                <Searchbar
+                    placeholder="Search"
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
+                    style = {styles.searchBar}
+                />
+                    <Button color = "#000" mode="outlined" style= {{height:50,width:50,borderColor:"#fff", marginTop:10}} onPress={() => console.log('Pressed')}>
+                        <Ionicons name = "search" size = {25}/>
+                    </Button>
+                    
                 </View>
             </View>
             
@@ -126,14 +141,17 @@ const styles = StyleSheet.create({
     searchView: {
         flex:0.55,
         width: deviceWidth,
-        alignItems:'center',
+        alignItems:'flex-start',
         paddingBottom: 10,
         // backgroundColor: '#9DC7FF',
     },
     searchBar:{
-        width: deviceWidth-30,
-        marginBottom: 10,
-        marginTop: 10,
+        width: '88%',
+        margin:10,
+        marginRight:0,
+        flexDirection:'row',
+        borderRadius:20,
+        // backgroundColor: '#000',
     },
     listView: {
         flex:5,
