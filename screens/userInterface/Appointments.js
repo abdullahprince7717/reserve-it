@@ -30,41 +30,6 @@ function appointments(props) {
     ]);
 
 
-
-    // const array = [{id:"gys"},{id:"sgks"},{id: "skgs"},{id: "sjkhks"}]
-
-    // const userDoc = doc(db, "appointments", credentials.user.uid)      //Storing user details in firestore
-    
-
-    // const userData = {
-    //     name: name,
-    //     phone: phone,
-    //     email: email,
-    //     password: password,
-    //     appointments: [{
-    //         service: "grooming",
-    //         business: "ab salon",
-    //         timeSlot: "10:00-11:00",
-    //         duration: "30 mins",
-    //         date: "12/2/2022"
-    //     },
-
-    //     {
-    //         test1: "test1",
-    //         test2: "test2",
-    //     }
-    //     ]
-
-    // }
-
-    // setDoc(userDoc, userData)
-    //     .then(() => {
-    //         alert("User Created Successfully")
-    //     })
-    //     .catch((error) => {
-    //         alert(error.message)
-    //     })
-
     const getAppointments = async () => {
         await getDocs(appointmentsRef)
             .then((res) => {

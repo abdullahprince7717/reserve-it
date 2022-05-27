@@ -7,7 +7,7 @@ import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
 import { db, auth,storage } from '../../firebase/FirebaseConfig.js'
-import storage from '@react-native-firebase/storage';
+// import storage from '@react-native-firebase/storage';
 
 
 

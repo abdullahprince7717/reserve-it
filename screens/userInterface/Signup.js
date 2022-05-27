@@ -21,23 +21,26 @@ const signUp = ({navigation}) => {
   // const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const subscribe = auth.onAuthStateChanged(user => {
-      if(user){
-        navigation.navigate('Home')
-        console.log(" C O N N E C T E D")
-        console.log(user)
+  //   const subscribe = auth.onAuthStateChanged(user => {
+  //     if(user){
+  //       navigation.navigate('Home')
+  //       console.log(" C O N N E C T E D")
+  //       console.log(user)
 
-      }
-        console.log("n o t C O N N E C T E D")
-        console.log(user)
-    })
-    // console.log(storedCredentials)
-    return subscribe;
+  //     }
+  //       console.log("n o t C O N N E C T E D")
+  //       console.log(user)
+  //   })
+  //   // console.log(storedCredentials)
+  //   return subscribe;
 
-  },[])
+  // },[])
 
+  const storeData = (userDoc,appointmentsDoc,reviewsDoc,complaintsDoc,) => {
+
+  }
 
   const signUp = () => {
 
@@ -73,20 +76,16 @@ const signUp = ({navigation}) => {
             is_completed: false,
             is_cancelled: false,
           } ,
-          business_id: '',
-          client_id: '',
           business_email: '',
-          client_email: '',
+          client_email: credentials.user.email,
 
       }
 
       const reviews  = {
         review: '',
         rating: '',
-        business_id: '',
-        client_id: '',
         business_email: '',
-        client_email: '',
+        client_email: credentials.user.email,
         appointment_id: '',
       }
 
@@ -108,7 +107,7 @@ const signUp = ({navigation}) => {
 
         setDoc(reviewsDoc, reviews)
         .then(() =>{
-            console.log("appointments created Successfully")
+            console.log("reviews created Successfully")
         })
         .catch((error) => {
             alert(error.message)

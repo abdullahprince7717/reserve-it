@@ -6,14 +6,16 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Service from '../../components/businessUIComponents/checkout/ServiceCard.js'
 import Appointment from '../../components/businessUIComponents/checkout/AppointmentCard.js'
 
-var counter  = 1
-
+var counter = 1;
 export default function Checkout(props) {
 
-    const [total,setTotal] = useState('0');
-    // useEffect(() => {
-    //     console.log(props.route.params.review.title)
-    // },[]);
+    const [total,setTotal] = useState(0);
+    const [appointments,setAppointments] = useState([])
+    const [services,setServices] = useState([])
+
+    useEffect(() => {
+        console.log(props.route?.params?.data?.name)
+    },[]);
 
     return (
         <View style = { styles.container}>
@@ -38,7 +40,7 @@ export default function Checkout(props) {
 
                     // <ScrollView style = {styles.items}>    
                         <View style = {styles.items} > 
-                            {props.route?.params?.review &&
+                            {props.route?.params?.data &&
                             <View style = {{flexDirection:'row',}}>    
                                 <View style = {{flex:4}}>    
                                     

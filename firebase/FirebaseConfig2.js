@@ -1,8 +1,10 @@
-// Import the functions you need from the SDKs you need
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+
 // import 'firebase/compat/firestore';
-import { getFirestore } from 'firebase/firestore';
+import {getFirestore} from 'firebase/firestore';
+import {getAuth} from 'firebase/auth';
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAdWgw5fZsZHzeBvULx8Qv6Mfbs5yC3pXE",
@@ -24,5 +26,7 @@ if (firebase.apps.length === 0) {
 
 const dbBusiness = getFirestore(app);
 const authBusiness = firebase.auth();
+const storage = getStorage(app);
 
-export { dbBusiness, authBusiness };
+
+export { dbBusiness, authBusiness,storage};

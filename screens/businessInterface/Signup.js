@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
-import {dbBusiness,authBusiness} from  '../../firebase/FirebaseConfig2.js'
+// import {dbBusiness,authBusiness} from  '../../firebase/FirebaseConfig2.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword,SignInWithPopup,FacebookAuthProvider } from "firebase/auth";
 import {MaterialIndicator} from 'react-native-indicators';
@@ -33,7 +33,7 @@ const signUp = ({navigation}) => {
             })
     }
 
-    const storeData = (userDoc,servicesDoc) => {
+    const storeData = (userDoc,servicesDoc,email) => {
         // const userDoc = doc(db,"business_users",credentials.user.uid);
 
         // const userDoc = doc(db,"business_users","test");
@@ -74,6 +74,7 @@ const signUp = ({navigation}) => {
             name: '',
             price: '',
             duration: '',
+            business_email: email,
 
         }
 
@@ -99,7 +100,7 @@ const signUp = ({navigation}) => {
 
     const signUp = () => {
 
-        createUserWithEmailAndPassword(authBusiness, email.trim(), password)
+        createUserWithEmailAndPassword(auth, email.trim(), password)
         .then((credentials) => {
 
             console.log(credentials);
@@ -108,7 +109,7 @@ const signUp = ({navigation}) => {
             // const userDoc = doc(db,"business_users","test");
             const servicesDoc = doc(db,"services",credentials.user.uid);
 
-            storeData(userDoc, servicesDoc);
+            storeData(userDoc, servicesDoc,credentials.user.email);
             navigation.replace("AccountSetup1")
         })
         .catch((error) => {

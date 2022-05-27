@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {  Card, Title, Paragraph } from 'react-native-paper';
-import {StyleSheet,Dimensions,TouchableWithoutFeedback} from 'react-native';
+import {View,StyleSheet,Dimensions,TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
+import {Ionicons} from '@expo/vector-icons'
+
 
 // const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
@@ -16,10 +18,16 @@ const BusinessCard = (props) => (
                 style={{height:150,resizeMode:'contain'}}
             />
             <Card.Content>
-                <Title>Card title</Title>
-                <Paragraph>lorem ipsum dolor sit amet, consectetur adipis.lorem ipsum dolor sit amet, 
-                    consectetur adipis.lorem ipsum dolor sit amet.
-                </Paragraph>
+                <View style = {{flexDirection: 'row',justifyContent:'space-between',margin:5}}>
+                    <Title>{props.title}</Title>
+                    <TouchableOpacity onPress={() =>{
+                        console.log("Pressed")
+                    }} >
+                        <Ionicons name = "heart-outline" size = {28}/>
+
+                    </TouchableOpacity>
+                </View>
+                <Paragraph>{props.description}</Paragraph>
             </Card.Content>
         </Card>
     </TouchableWithoutFeedback>    
@@ -35,6 +43,8 @@ const styles = StyleSheet.create  ({
         width: deviceWidth-30,
         marginTop:10,
         borderRadius:10,
+        borderColor:'grey',
+        borderWidth:1,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

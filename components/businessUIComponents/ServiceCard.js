@@ -20,10 +20,10 @@ const ServiceCard = (props) => {
                     <View style = {{flexDirection:'column',}}>
 
                         <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', }}>
-                            Service Name
+                            {props.title}
                         </Text>
                         <Text style={{ color: 'black', fontSize: 15, fontWeight: '200', paddingLeft: 5}}>
-                            30 mins
+                            {props.duration}
                         </Text>
 
                     </View>
@@ -31,7 +31,7 @@ const ServiceCard = (props) => {
                 </View>
 
                 <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', }}>
-                        Pkr. price
+                        {props.price} Rs
                 </Text>
 
             </View>

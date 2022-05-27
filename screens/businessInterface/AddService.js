@@ -5,12 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import {
     collection,
     addDoc,
-    getDoc,
-    doc,
-    deleteDoc,
-    query,
-    where,
-    getDocs,
+    setDoc
 } from "firebase/firestore";
 
 const AddService = (props) => {
@@ -21,23 +16,33 @@ const AddService = (props) => {
     const [user,setUser] = useState()
 
     useEffect(() => {
-        onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-    },[user])
+        // onAuthStateChanged(auth, (currentUser) => {
+        //     setUser(currentUser);
+        //     console.log(currentUser.email);
+        // });
+
+        console.log(auth.currentUser.email)
+
+    },[])
 
     const servicesCollection = collection(db, "services");
 
-    const addServices = async () => {
+    const addServices = () => {
 
         const service = {
-            serviceName: serviceName,
+            name: serviceName,
             duration: duration,
             price: price,
-            user: user,
+            business_email: auth.currentUser.email
         } 
 
-        await addDoc(servicesCollection, business).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)});
+        addDoc(servicesCollection, service)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        });
     };
 
     
@@ -47,6 +52,8 @@ const AddService = (props) => {
         <View style = {styles.container}>
             <View style = {{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center',margin: 10, }}>
                 <TextInput
+                    value={serviceName}
+                    onChangeText={(text) => setServiceName(text)}
                     placeholder="Service Name"
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
@@ -54,6 +61,8 @@ const AddService = (props) => {
             </View>
             <View style = {{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center',margin: 10, }}>
                 <TextInput
+                    value={duration}
+                    onChangeText={(text) => setDuration(text)}
                     placeholder="Duration"
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
@@ -61,6 +70,8 @@ const AddService = (props) => {
             </View>
             <View style = {{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center',margin: 10, }}>
                 <TextInput
+                    value={price}
+                    onChangeText={(text) => setPrice(text)}
                     placeholder="Price"
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
@@ -71,7 +82,8 @@ const AddService = (props) => {
                 <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    props.navigation.navigate('AccountSetup5')
+                    addServices();
+                    props.navigation.goBack()
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>

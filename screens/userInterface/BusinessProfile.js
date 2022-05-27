@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { View, Text,StyleSheet,Dimensions,ScrollView,useWindowDimensions,TouchableOpacity, } from 'react-native';
 import { ImageSlider } from "react-native-image-slider-banner";
 import { Caption,Title,Divider,TouchableRipple,Paragraph,ProgressBar,Subheading } from 'react-native-paper';
@@ -14,8 +14,15 @@ const BusinessProfile = (props) => {
 
     const [index, setIndex] = useState(0);
     const [rating, setRating] = useState(5);
+    const [data,setData] = useState([props.route?.params?.data]);
 
     const time = moment().format('MMMM Do YYYY');
+
+    useEffect(() => {
+        console.log(props.route.params.data.name)
+        // console.log(data.name)
+    }, [])
+    
 
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff',margin:10, }}>
@@ -512,10 +519,10 @@ const BusinessProfile = (props) => {
             <View style = {{marginLeft:10}}>
                 <View style={{margin:10,}}>
                     <Title>
-                        Title of business                        {/* {props.title} */}
+                        <Text>{props.route?.params?.data?.business_name}</Text>                        {/* {props.title} */}
                     </Title>
                     <Caption>
-                        Address of business                        {/* {props.address} */}
+                        {props.route?.params?.data?.address}                        {/* {props.address} */}
                     </Caption>
                 </View>
 
@@ -539,7 +546,7 @@ styles = StyleSheet.create({
 
     container: {
         
-        flex:2,
+        flex:3,
         // backgroundColor: 'grey',
     },
     services:{
