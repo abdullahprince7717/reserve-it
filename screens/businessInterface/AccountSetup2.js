@@ -1,14 +1,12 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, Dimensions, TouchableOpacity,Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, Dimensions, TouchableOpacity, Image, Alert } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons, Feather, Ionicons } from "@expo/vector-icons/"
-import { TextInput,Button } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useState, useEffect } from 'react';
-import AddImages from '../businessInterface/AddImages.js';
+import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
-
-
 import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
-import { db, auth } from '../../firebase/FirebaseConfig.js'
+import { db, auth,storage } from '../../firebase/FirebaseConfig.js'
 import storage from '@react-native-firebase/storage';
 
 
@@ -85,7 +83,7 @@ const BusinessDetails = (props) => {
             setImage(result.uri);
         }
     };
-    
+
 
     const deleteImage = () => {
         setImage(null);
@@ -110,6 +108,33 @@ const BusinessDetails = (props) => {
             )
         }
     }
+
+    // const uploadImage = () => {
+    //     if (!image[0]) return;
+    //     const arr = [];
+
+    //     for (let i = 0; i < image.length; i++) {
+    //         const storageRef = ref(storage, `products/${image[i].name}`);
+    //         const uploadTask = uploadBytesResumable(storageRef, image[i]);
+
+    //         uploadTask.on(
+    //             "state_changed",
+    //             (snapshot) => {
+    //                 const prog = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+    //                 setProgress(prog);
+    //             },
+    //             (error) => console.log(error),
+    //             () => {
+    //                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+    //                     console.log(url);
+    //                     arr.push(url);
+    //                     setUrls(arr);
+    //                 });
+    //             }
+    //         );
+    //     }
+    // };
 
 
     return (

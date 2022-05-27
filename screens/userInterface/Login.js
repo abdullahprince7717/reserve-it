@@ -23,18 +23,13 @@ const signIn = ({navigation}) => {
   useEffect(() => {
 
     const subscribe = auth.onAuthStateChanged(user => {
-      console.log(user)
-      if(user){
+        if(user){
         navigation.replace('Home')
-        console.log("U S E R  C O N N E C T E D")
-        console.log(user)
-      }
-        console.log("n o t C O N N E C T E D")
-        
-    })        
+        }
+    })
     return subscribe;
 
-  },[])
+    },[])
 
   const handleLogin = () => {
     auth.signInWithEmailAndPassword(email.trim(), password)

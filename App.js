@@ -7,74 +7,17 @@ import AdminStack from './Navigation/AdminUIStack.js';
 import {BackdropProvider} from 'react-native-propel-kit';
 
 
-// import AppLoading from 'expo-app-loading';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// import { CredentialsContext } from './components/CredentialsContext.js';
-
-
 export default function App() {
-
-  // const [appReady, setAppReady] = useState(false);
-  // const [storedCredentials, setStoredCredentials] = useState(null);
-
-//   const CheckLoginCredentials = () => {
-//     AsyncStorage.getItem('userCredentials')
-//       .then((value) => {
-//         if(value !== null) {
-//           setStoredCredentials(JSON.parse(value));
-//         }
-//         else{
-//           setStoredCredentials(null);
-//         }
-      
-//       })
-//     .catch((error) => {
-//       console.log(error);
-//     })
-
-//   if(!appReady){
-//     return(
-//       <AppLoading
-//         startAsync={CheckLoginCredentials}
-//         onFinish={() => setAppReady(true)}
-//         onError={console.warn}
-
-//       />
-//     )
-//   }
-// }
 
   return (
 
       <BackdropProvider>
         <NavigationContainer>
-            <StackNavigator/>
-            {/* <BusinessStack/> */}
+            {/* <StackNavigator/> */}
+            <BusinessStack/>
             {/* <AdminStack/> */}
         </NavigationContainer>
       </BackdropProvider>
-        
-        
-        
-
-
-
-
-
-
-
-    // <CredentialsContext.Provider value={{storedCredentials, setStoredCredentials}}>
-
-        // <NavigationContainer>
-        //     <StackNavigator/>
-        // </NavigationContainer>
-
-    // </CredentialsContext.Provider>
-
-
-  
-
 
   );
 }

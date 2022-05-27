@@ -14,29 +14,25 @@ import { doc, getDoc,setDoc,collection,getDocs,where,query } from "firebase/fire
 
 function explore({navigation}) {
 
-    const [searchQuery, setSearchQuery] = useState('Tester@hmal.com');   
+    const [searchQuery, setSearchQuery] = useState('ab salon');   
     const onChangeSearch = query => setSearchQuery(query);
-    const [businesses, setBusinesses] = useState([]);  
-    const collectionRef = collection(db, "users")
+    const [queryResult, setQueryResult] = useState([]);  
 
-    // Create a reference to the cities collection
-    // const citiesRef = collection(db, "business_users");
+    const collectionRef = collection(db, "business_users")
 
-    // Create a query against the collection.
-
-    const getBusinesses = async () => {
-        const q = query(collectionRef, where("email", "==", searchQuery));
+    const getQueryResult = async () => {
+        const q = query(collectionRef, where("business_name", "==", searchQuery));
         await getDocs(q)
             .then((res) => {
 
-                setBusinesses(res.docs.map((doc) => ({
+                setQueryResult(res.docs.map((doc) => ({
                     ...doc.data(),
                     id: doc.id
                 })));
 
                 // console.log("response " + res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
                 // console.log("response " + res);
-                console.log(businesses);
+                console.log(queryResult);
             })
             .catch((err) => {
                 console.log(err);
@@ -45,7 +41,7 @@ function explore({navigation}) {
 
     useEffect(() => {
 
-        getBusinesses();
+        getQueryResult();
 
     }, [])
 
@@ -59,8 +55,14 @@ function explore({navigation}) {
                     value={searchQuery}
                     style = {styles.searchBar}
                 />
-                    <Button color = "#000" mode="outlined" style= {{height:50,width:50,borderColor:"#fff", marginTop:10}} onPress={() => console.log('Pressed')}>
+                    <Button color = "#000" mode="outlined" style= {{height:50,width:50,borderColor:"#fff", marginTop:10}} 
+                            onPress={() => {
+                                console.log('Pressed')
+                                getQueryResult()
+                            }}>
+                        
                         <Ionicons name = "search" size = {25}/>
+                    
                     </Button>
                     
                 </View>
@@ -71,37 +73,21 @@ function explore({navigation}) {
                 <ScrollView>
 
                     <View>    
-                        <BusinessCard
-                            onPress =  {() => {
-                                console.log('Pressed')
-                                navigation.navigate('BusinessProfile')
-                            }}
-                        />
-                        <BusinessCard
-                            onPress =  {() => {
-                                console.log('Pressed')
-                                navigation.navigate('BusinessProfile')
-                            }}
-                        />
-                        <BusinessCard
-                            onPress =  {() => {
-                                console.log('Pressed')
-                                navigation.navigate('BusinessProfile')
-                            }}
-                        />
-                        <BusinessCard
-                            onPress =  {() => {
-                                console.log('Pressed')
-                                navigation.navigate('BusinessProfile')
-                            }}
-                        />
-                        <BusinessCard
-                            onPress =  {() => {
-                                console.log('Pressed')
-                                navigation.navigate('BusinessProfile')
-                            }}
-                        />
 
+                    {queryResult?.map((item,index) => (
+                    // <Text>{item.id}</Text>
+                    
+                    <BusinessCard
+                        title={item.business_name}
+                        description = {item.description}
+                        onPress =  {() => {
+                            console.log('Pressed')
+                            navigation.navigate('BusinessProfile',{data : queryResult[index]})
+                        }}
+                    />
+                ))}
+                    
+                    
                     </View>    
                 </ScrollView>    
 
