@@ -68,13 +68,13 @@ function MyStack() {
                 component={ClientAppointments}
             />
 
-            <Stack.Screen
+            {/* <Stack.Screen
                 name="Checkout"
                 component={Checkout}
                 screenOptions={{
                     headerShown: false,
                 }}
-            />
+            /> */}
 
             <Stack.Screen
                 name="ServicesList"

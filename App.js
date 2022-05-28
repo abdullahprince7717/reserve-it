@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
 import AdminStack from './Navigation/AdminUIStack.js';
+import  CartProvider  from './global/CartContext.js';
 
 
 
@@ -11,13 +12,13 @@ export default function App() {
 
   return (
 
-      
+      <CartProvider>
         <NavigationContainer>
             {/* <StackNavigator/> */}
             <BusinessStack/>
             {/* <AdminStack/> */}
         </NavigationContainer>
-
+      </CartProvider>
 
   );
 }

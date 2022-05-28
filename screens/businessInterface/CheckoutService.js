@@ -1,20 +1,28 @@
-
 import { StyleSheet, Text, View } from 'react-native'
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, useContext} from 'react'
 import Card from '../../components/businessUIComponents/ServiceCard.js'
 import { FAB } from 'react-native-paper';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { collection, getDocs,doc, setDoc,query,where } from "firebase/firestore";
+import { CartContext } from '../../global/CartContext.js';
 
 const CheckoutService = (props) => {
 
     const [services, setServices] = useState([]);
     const [queryResult,setQueryResult] = useState([]);
     const servicesRef = collection(db, "services");
+    const [cart, setCart] = useContext(CartContext);
 
     useEffect(() => {
         getServices();
     },[])
+
+    const handlePress = (value) => {
+        const temp = [...cart];
+        temp.push(value);
+        setCart(temp);
+        props.navigation.navigate('Checkout')
+    }
 
 
     const getServices = async () => {
@@ -45,8 +53,9 @@ const CheckoutService = (props) => {
                 price = {item.price}
                 duration = {item.duration}
                 onPress = {() => {
-                    console.log('pressed')
-                    {props.navigation.navigate('Checkout',{service: services[index]})}
+                    // console.log('pressed')
+                    // {props.navigation.navigate('Checkout',{service: services[index]})}
+                    handlePress(services[index])
                 }}
 
             />))}
@@ -75,63 +84,3 @@ const styles = StyleSheet.create({
         // borderRadius: 80,
     },
 })
-// import { StyleSheet, Text, View, } from 'react-native'
-// import React, {useState,useEffect} from 'react'
-// import Card from '../../components/businessUIComponents/ServiceCard.js'
-// import { FAB } from 'react-native-paper';
-
-// const ServicesList = ({navigation}) => {
-    
-//     const [reviews, setReviews] = useState([
-//         { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: '1' },
-//         { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem ipsum', key: '2' },
-//         { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
-//     ]);
-
-//     useEffect(() => {
-//         console.log(reviews)
-//     },[])
-
-//     return (
-//         <View style = {styles.container}>
-
-//             <Card 
-//                 onPress = {() => {
-//                     console.log('pressed')
-//                     {props.navigation.navigate('Checkout', {review: reviews[0]})}
-//                     // navigation.jumpTo('Checkout', {review: reviews[0]});
-//                 }}
-
-//             />
-
-//             <Card 
-//                 onPress = {() => {
-//                     console.log('pressed')
-//                     // {props.navigation.navigate('EditService')}
-//                 }}
-//             />
-
-
-//         </View>
-//     )
-// }
-
-// export default ServicesList
-
-// const styles = StyleSheet.create({
-
-//     container: {
-//         flex: 1,
-//         // backgroundColor: '#fff',
-//         marginTop: 20
-//     },
-//     fab: {
-//         position: 'absolute',
-//         margin: 10,
-//         right: 15,
-//         bottom: 20,
-//         elevation: 1,
-//         backgroundColor: '#57B9BB',
-//         // borderRadius: 80,
-//     },
-// })

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { StyleSheet, Text, View, StatusBar, ScrollView, TouchableOpacity } from 'react-native'
 import { Button, TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Service from '../../components/businessUIComponents/checkout/ServiceCard.js'
 import Appointment from '../../components/businessUIComponents/checkout/AppointmentCard.js'
+import { CartContext } from '../../global/CartContext.js';
 
 var counter = 1;
 export default function Checkout(props) {
@@ -12,14 +13,15 @@ export default function Checkout(props) {
     const [total, setTotal] = useState(0);
     const [appointments, setAppointments] = useState([])
     const [services, setServices] = useState([])
+    const [cart, setCart] = useContext(CartContext);
 
     let arr = []
 
     useEffect(() => {
         // console.log(props.route?.params?.service)
         // setServices(...services,props.route?.params?.service)
-        arr = [...arr,props.route?.params?.service]
-        console.log(arr)
+        // arr = [...arr,props.route?.params?.service]
+        console.log(cart)
         // console.log(services)
     }, []);
 
@@ -112,7 +114,7 @@ export default function Checkout(props) {
                     Checkout
                 </Button>
             </View>
-
+            <Text>{cart.length}</Text>
         </View>
     )
 }
