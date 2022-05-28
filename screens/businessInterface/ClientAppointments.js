@@ -3,6 +3,46 @@ import { View,StyleSheet,StatusBar,Text,ScrollView,useWindowDimensions } from "r
 import Card from  '../../components/businessUIComponents/AppointmentCard.js';
 import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+
+function appointments({navigation}) {
+
+    const appointmentsRef = collection(db, "appointments");
+
+    const [appointments, setAppointments] = useState([]);
+    const layout = useWindowDimensions();
+    const [index, setIndex] = useState(0);
+    const [routes] = useState([
+        { key: 'first', title: 'Current' },
+        { key: 'second', title: 'Completed' },
+        { key: 'third', title: 'Cancelled' },
+    ]);
+
+
+    const getAppointments = async () => {
+        await getDocs(appointmentsRef)
+            .then((res) => {
+
+                setAppointments(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                console.log(appointments[0].status.is_completed);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+
+    useEffect(() => {
+        getAppointments();
+    }, []);
+
+
 
 
 
@@ -10,74 +50,24 @@ const FirstRoute = () => (
 
         <ScrollView style={styles.container}>
             <View >
-                <Card
-                    customerName="Arslan Saleem"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
+            {appointments?.map((item, index) => (
+                    // <Text>{item.id}</Text>
+                    appointments[index].status.is_pending === true 
+                    && appointments[index].business_email == auth.currentUser.email ? (
+                        <Card
+                            title={item.service_name}
+                            businessName="LaLa Salon"
+                            address="Machi Mandi near Niagra Falls, Kenya"
+                            date="March 12"
+                            time="10:00 AM"
+                            onPress={() => {
+                                console.log("Pressed");
+                                props.navigation.navigate("BusinessProfile");
+                            }}
+                            buttonText1="Edit"
+                            buttonText2="Cancel"
+                        />) : null
+                ))}
 
 
             </View>
@@ -87,75 +77,23 @@ const FirstRoute = () => (
 const SecondRoute = () => (
     <ScrollView style={styles.container}>
             <View >
-                <Card
-                    customerName="Arslan Saleem"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-
+            {appointments?.map((item, index) => (
+                    // <Text>{item.id}</Text>
+                    appointments[index].status.is_completed === true 
+                    && appointments[index].business_email == auth.currentUser.email ? (
+                        <Card
+                            title={item.service_name}
+                            customerName={item.business_name}
+                            price={item.price}
+                            date={item.date}
+                            time={item.time}
+                            onPress={() => {
+                                console.log("Pressed");
+                            }}
+                            buttonText1="Edit"
+                            buttonText2="Cancel"
+                        />) : null
+                ))}
 
             </View>
         </ScrollView>
@@ -165,74 +103,24 @@ const ThirdRoute = () => (
 
     <ScrollView style={styles.container}>
             <View >
-                <Card
-                    customerName="Arslan Saleem"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
-                <Card
-                    customerName="Abdullah Ali"
-                    serviceName="Grooming"
-                    servicePrice="Pkr. 1000 "
-                    date="March 12"
-                    time="10:00 AM"
-                    onPress = {() => {
-                        console.log('Pressed')
-                        // navigation.navigate('BusinessProfile')
-                    }}
-                />
+            {appointments?.map((item, index) => (
+                    // <Text>{item.id}</Text>
+                    appointments[index].status.is_cancelled === true 
+                    && appointments[index].business_email == auth.currentUser.email ? (
+                        <Card
+                            title={item.service_name}
+                            businessName="LaLa Salon"
+                            address="Machi Mandi near Niagra Falls, Kenya"
+                            date="March 12"
+                            time="10:00 AM"
+                            onPress={() => {
+                                console.log("Pressed");
+                                props.navigation.navigate("BusinessProfile");
+                            }}
+                            buttonText1="Edit"
+                            buttonText2="Cancel"
+                        />) : null
+                ))}
 
 
             </View>
@@ -240,36 +128,22 @@ const ThirdRoute = () => (
     );
     
 
-const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
-    third: ThirdRoute,
-});
-
-const renderTabBar = props => (
-    <TabBar
-        {...props}
-        indicatorStyle={{ backgroundColor: '#fff' }}
-        style={{ backgroundColor: '#57B9BB', }}
-    />
-);
 
 
+    const renderScene = SceneMap({
+        first: FirstRoute,
+        second: SecondRoute,
+        third: ThirdRoute,
+    });
 
-function appointments({navigation}) {
+    const renderTabBar = props => (
+        <TabBar
+            {...props}
+            indicatorStyle={{ backgroundColor: '#fff' }}
+            style={{ backgroundColor: '#57B9BB', }}
+        />
+    );
 
-    const layout = useWindowDimensions();
-
-    const [index, setIndex] = React.useState(0);
-    const [routes] = React.useState([
-        { key: 'first', title: 'Current' },
-        { key: 'second', title: 'Completed' },
-        { key: 'third', title: 'Cancelled' },
-    ]);
-
-    useEffect(() => {
-        console.log(auth.currentUser.uid);
-    },[])
 
     return(
 
