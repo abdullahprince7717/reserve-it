@@ -10,16 +10,17 @@ var counter = 1;
 export default function Checkout(props) {
 
     const [total, setTotal] = useState(0);
-    const [appointments, setAppointments] = useState([{}])
-    const [services, setServices] = useState([{}])
+    const [appointments, setAppointments] = useState([])
+    const [services, setServices] = useState([])
 
     let arr = []
 
     useEffect(() => {
         // console.log(props.route?.params?.service)
-        setServices(...services,props.route?.params?.service)
-        // arr = [...arr,props.route?.params?.service]
+        // setServices(...services,props.route?.params?.service)
+        arr = [...arr,props.route?.params?.service]
         console.log(arr)
+        // console.log(services)
     }, []);
 
     return (

@@ -4,20 +4,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
 import AdminStack from './Navigation/AdminUIStack.js';
-import {BackdropProvider} from 'react-native-propel-kit';
+
 
 
 export default function App() {
 
   return (
 
-      <BackdropProvider>
+      
         <NavigationContainer>
             {/* <StackNavigator/> */}
             <BusinessStack/>
             {/* <AdminStack/> */}
         </NavigationContainer>
-      </BackdropProvider>
+
 
   );
 }
