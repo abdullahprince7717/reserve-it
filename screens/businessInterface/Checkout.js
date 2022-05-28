@@ -10,19 +10,16 @@ import { CartContext } from '../../global/CartContext.js';
 var counter = 1;
 export default function Checkout(props) {
 
-    const [total, setTotal] = useState(0);
+    const [total, setTotal] = useState();
     const [appointments, setAppointments] = useState([])
     const [services, setServices] = useState([])
     const [cart, setCart] = useContext(CartContext);
 
-    let arr = []
 
     useEffect(() => {
-        // console.log(props.route?.params?.service)
-        // setServices(...services,props.route?.params?.service)
-        // arr = [...arr,props.route?.params?.service]
+    
         console.log(cart)
-        // console.log(services)
+        
     }, []);
 
     return (
@@ -45,30 +42,34 @@ export default function Checkout(props) {
 
 
             <View style={styles.items} >
-
-                {props.route?.params?.service &&
+                <ScrollView>
+                {cart.map((item, index) => ( <>
                     <View style={{ flexDirection: 'row', }}>
                         <View style={{ flex: 4 }}>
-
                             <Service
-                                title={props.route.params.service.name}
+                                title={item.name}
                                 // title = "Grooming"
-                                price={props.route.params.service.price + " Rs"}
-                                duration={props.route.params.service.duration}
+                                price={item.price + " Rs"}
+                                duration={item.duration}
                                 onPress={() => {
                                     console.log('Pressed')
                                 }}
                             />
                         </View>
                         <View style={{ flex: 0.5, marginHorizontal: 5, justifyContent: 'center' }}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                var temp = [...cart];
+                                temp.splice(index, 1);
+                                setCart(temp);
+                                setTotal(total - item.price);
+                            }}>
                                 <View>
                                     <Icon name='delete-outline' size={30} color='orange' />
                                 </View>
 
                             </TouchableOpacity>
                         </View>
-                    </View>}
+                    </View></>))}
                 <View style={{ flexDirection: 'row', }}>
                     <View style={{ flex: 4 }}>
                         <Appointment
@@ -90,6 +91,7 @@ export default function Checkout(props) {
                         </TouchableOpacity>
                     </View>
                 </View>
+                </ScrollView>
             </View>
 
 
