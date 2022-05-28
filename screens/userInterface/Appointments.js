@@ -23,7 +23,7 @@ function appointments(props) {
     const [index, setIndex] = useState(0);
     const [loading, setLoading] = useState(true);
 
-    const [routes] = React.useState([
+    const [routes] = useState([
         { key: "first", title: "Current" },
         { key: "second", title: "Completed" },
         { key: "third", title: "Cancelled" },
