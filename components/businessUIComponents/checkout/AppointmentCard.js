@@ -34,7 +34,7 @@ const AppointmentCard = (props) => {
                     </Text>
 
                     <Text style = {{fontSize: 15, fontWeight:'bold', color: 'grey',paddingLeft: 5 }}>
-                        40 mins
+                        {props.duration}
                     </Text>
                     
                 </View>
@@ -45,7 +45,7 @@ const AppointmentCard = (props) => {
             <View style = {styles.rightCol}>
                 
                 <Text style = {{fontSize: 15,fontWeight:'bold'}}>
-                    Pkr. 1000
+                    {props.price} Rs
                 </Text>
                 
 

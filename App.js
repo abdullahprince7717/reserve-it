@@ -4,22 +4,23 @@ import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
 import AdminStack from './Navigation/AdminUIStack.js';
-import  CartProvider  from './global/CartContext.js';
+import ContextProvider  from './global/CartContext.js';
+import AppointmentContext from './global/AppointmentContext.js';
 
 
 
 export default function App() {
 
   return (
-
-      <CartProvider>
+    <AppointmentContext>
+      <ContextProvider>
         <NavigationContainer>
             {/* <StackNavigator/> */}
             <BusinessStack/>
             {/* <AdminStack/> */}
         </NavigationContainer>
-      </CartProvider>
-
+      </ContextProvider>
+    </AppointmentContext>
   );
 }
 

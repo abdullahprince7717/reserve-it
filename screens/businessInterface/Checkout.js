@@ -6,19 +6,21 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Service from '../../components/businessUIComponents/checkout/ServiceCard.js'
 import Appointment from '../../components/businessUIComponents/checkout/AppointmentCard.js'
 import { CartContext } from '../../global/CartContext.js';
+import { AppointmentContext } from '../../global/AppointmentContext.js';
 
-var counter = 1;
+
 export default function Checkout(props) {
 
     const [total, setTotal] = useState();
-    const [appointments, setAppointments] = useState([])
-    const [services, setServices] = useState([])
-    const [cart, setCart] = useContext(CartContext);
+    const [serviceCart, setServiceCart] = useContext(CartContext);
+    const [appointmentCart, setAppointmentCart] = useContext(AppointmentContext);
+    var counter = serviceCart.length + appointmentCart.length;
+
 
 
     useEffect(() => {
     
-        console.log(cart)
+        console.log(serviceCart)
         
     }, []);
 
@@ -40,10 +42,10 @@ export default function Checkout(props) {
                 </Button>
             </View>
 
-
+            {counter>0 ? 
             <View style={styles.items} >
                 <ScrollView>
-                {cart.map((item, index) => ( <>
+                {serviceCart.map((item, index) => ( <>
                     <View style={{ flexDirection: 'row', }}>
                         <View style={{ flex: 4 }}>
                             <Service
@@ -58,9 +60,9 @@ export default function Checkout(props) {
                         </View>
                         <View style={{ flex: 0.5, marginHorizontal: 5, justifyContent: 'center' }}>
                             <TouchableOpacity onPress={() => {
-                                var temp = [...cart];
+                                var temp = [...serviceCart];
                                 temp.splice(index, 1);
-                                setCart(temp);
+                                setServiceCart(temp);
                                 setTotal(total - item.price);
                             }}>
                                 <View>
@@ -70,12 +72,14 @@ export default function Checkout(props) {
                             </TouchableOpacity>
                         </View>
                     </View></>))}
+
+                {appointmentCart.map((item, index) => ( <>    
                 <View style={{ flexDirection: 'row', }}>
                     <View style={{ flex: 4 }}>
                         <Appointment
                             customer="Abdullah Ali"
-                            service="Haircut"
-                            price="Pkr. 500"
+                            service={item.service_name}
+                            price={item.price}
                             duration="45 mins"
                             onPress={() => {
                                 console.log('Pressed')
@@ -83,7 +87,12 @@ export default function Checkout(props) {
                         />
                     </View>
                     <View style={{ flex: 0.5, marginHorizontal: 5, justifyContent: 'center' }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => {
+                            var temp = [...appointmentCart];
+                            temp.splice(index, 1);
+                            setAppointmentCart(temp);
+                            setTotal(total - item.price);
+                        }}>
                             <View>
                                 <Icon name='delete-outline' size={30} color='orange' />
                             </View>
@@ -91,14 +100,16 @@ export default function Checkout(props) {
                         </TouchableOpacity>
                     </View>
                 </View>
+                </>))}
                 </ScrollView>
             </View>
+            : null}
 
 
             <View style={styles.inputField}>
                 <TextInput
                     label="Total"
-                    value={total}
+                    value={serviceCart.map((item,index) => (parseInt(item.price))).reduce((a, b) => a + b, 0) + (appointmentCart.map((item,index) => (parseInt(item.price))).reduce((a, b) => a + b, 0))  + " Rs"}
                     onChangeText={x => setTotal(x)}
                     activeOutlineColor='#57B9BB'
                     activeUnderlineColor='#57B9BB'
@@ -116,7 +127,7 @@ export default function Checkout(props) {
                     Checkout
                 </Button>
             </View>
-            <Text>{cart.length}</Text>
+            <Text>{serviceCart.length}</Text>
         </View>
     )
 }

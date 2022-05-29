@@ -26,7 +26,7 @@ const CheckoutService = (props) => {
 
 
     const getServices = async () => {
-        const q = query(servicesRef, where("business_email", "==", auth.currentUser.email));
+        const q = query(servicesRef, where("business_email", "==", auth.currentUser.email ));
         setQueryResult(q);
         await getDocs(q)
             .then((res) => {
