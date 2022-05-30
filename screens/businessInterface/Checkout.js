@@ -7,6 +7,7 @@ import Service from '../../components/businessUIComponents/checkout/ServiceCard.
 import Appointment from '../../components/businessUIComponents/checkout/AppointmentCard.js'
 import { CartContext } from '../../global/CartContext.js';
 import { AppointmentContext } from '../../global/AppointmentContext.js';
+import {db, auth, storage} from '../../firebase/FirebaseConfig.js'
 
 
 export default function Checkout(props) {
@@ -21,6 +22,7 @@ export default function Checkout(props) {
     useEffect(() => {
     
         console.log(serviceCart)
+        console.log(auth.currentUser.uid)
         
     }, []);
 

@@ -75,7 +75,7 @@ const signUp = ({navigation}) => {
             name: '',
             price: '',
             duration: '',
-            business_email: email,
+            business_email: '',
 
         }
 

@@ -16,7 +16,8 @@ const EditBusinessHours = (props) => {
 
     useEffect(() => {
         console.log(moment(startTime).format('LT'))
-        console.log(endTime)
+        console.log(moment(endTime).format('LT'))
+        console.log(isOpen)
         
     },[])
     

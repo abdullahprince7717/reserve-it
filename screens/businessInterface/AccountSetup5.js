@@ -13,7 +13,8 @@ const AccountSetup5 = (props) => {
 
     useEffect(() => {
         getServices();
-        console.log(services.length)
+        console.log(services)
+        console.log(auth.currentUser.email)
     },[])
 
 
@@ -75,7 +76,6 @@ const AccountSetup5 = (props) => {
                 style={styles.done}
                 label = "Done"
                 large
-                icon="plus"
                 onPress={() => {
                     console.log('Pressed')
                     props.navigation.navigate('Home')

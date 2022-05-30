@@ -1,7 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 const BusinessDays = (props) => {
+
+    useEffect(() => {
+        console.log(props.day)
+        console.log(props.startTime)
+        console.log(props.endTime)
+        console.log(props.status)
+    },[])
     return (
         <View style={styles.container}>
             <TouchableOpacity
