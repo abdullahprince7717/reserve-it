@@ -14,7 +14,7 @@ import { doc, getDoc,setDoc,collection,getDocs,where,query } from "firebase/fire
 
 function explore(props) {
 
-    const [searchQuery, setSearchQuery] = useState('ab salon');   
+    const [searchQuery, setSearchQuery] = useState();   
     const onChangeSearch = query => setSearchQuery(query);
     const [queryResult, setQueryResult] = useState([]);  
 
@@ -40,8 +40,8 @@ function explore(props) {
     };
 
     useEffect(() => {
-        props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query):getQueryResult();
-        getQueryResult();
+        props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : getQueryResult();
+        // getQueryResult();
         console.log(auth.currentUser.email)
         console.log(searchQuery)
     

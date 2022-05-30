@@ -4,7 +4,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
-import Home from '../screens/userInterface/HomeScreen.js';
+import HomeScreen from '../screens/userInterface/HomeScreen.js';
 import Appointments from '../screens/userInterface/Appointments.js';
 import Booking from '../screens/userInterface/BookAppointment.js';
 import Explore from '../screens/userInterface/Explore.js';
@@ -44,6 +44,11 @@ function MyStack() {
             <Stack.Screen
                 name="Home"
                 component={TabNavigation}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
                 options={{headerShown: false}}
             />
             <Stack.Screen
