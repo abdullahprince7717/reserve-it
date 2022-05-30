@@ -36,7 +36,7 @@ function settings(props) {
                 <TouchableRipple
                     onPress = {() => {
                         console.log('pressed')
-                        {props.navigation.navigate('AddCustomer')}
+                        {props.navigation.navigate('AddClient')}
                     }}
                 >
                     <View style = {styles.menuItem}>
@@ -45,7 +45,7 @@ function settings(props) {
                             size = {25}
                             color= '#57B9BB'
                             />
-                        <Text style={styles.menuItemText}>Add a Customer</Text>
+                        <Text style={styles.menuItemText}>Add a Client</Text>
                     </View>
                 </TouchableRipple>
 
@@ -69,7 +69,7 @@ function settings(props) {
                 <TouchableRipple
                     onPress = {() => {
                         console.log('pressed')
-                        props.navigation.navigate('BlockedCustomers');
+                        props.navigation.navigate('BlockedClients');
                     }}
                 >
                     <View style = {styles.menuItem}>
@@ -78,7 +78,7 @@ function settings(props) {
                             size = {25}
                             color= '#57B9BB'
                             />
-                        <Text style={styles.menuItemText}>Blocked Customers</Text>
+                        <Text style={styles.menuItemText}>Blocked Clients</Text>
                     </View>
                 </TouchableRipple>
 

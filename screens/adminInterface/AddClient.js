@@ -26,6 +26,14 @@ const AddCustomer = () => {
                 />
             </View>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <MaterialCommunityIcons color="#57B9BB" name="form-textbox-password" size={25} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Password"
+                    placeholderTextColor= {"#000"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
                 <Feather color="#57B9BB" name="phone" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Phone Number"
