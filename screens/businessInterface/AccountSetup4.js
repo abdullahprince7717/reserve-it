@@ -93,16 +93,15 @@ const AccountSetup4 = (props) => {
 
     const addWorkingDays = async () => {
 
-        const workingDaysInfo = {
-            monday: monday,
-            tuesday: tuesday,
-            wednesday: wednesday,
-            thursday: thursday,
-            friday: friday,
-            saturday: saturday,
-            sunday: sunday,
-
-        }
+        const workingDaysInfo = [
+            monday,
+            tuesday,
+            wednesday,
+            thursday,
+            friday,
+            saturday,
+            sunday,
+        ]
         console.log(auth.currentUser.uid)
 
         await setDoc(businessDoc, workingDaysInfo, { merge: true })

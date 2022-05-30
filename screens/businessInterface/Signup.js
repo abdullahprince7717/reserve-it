@@ -56,6 +56,9 @@ const signUp = ({navigation}) => {
             instagram: "",
             facebook: "",
             image:"",
+            rating: 0,
+            startTime:"",
+            endTime:"",
             workingDays: {
                 monday: true,
                 tuesday: true,
@@ -65,11 +68,11 @@ const signUp = ({navigation}) => {
                 saturday: false,
                 sunday: false
             },
-            workingHours: {
-                startTime: "",
-                endTime: "",
-            },
-            timeSlots:[]
+            // workingHours: {
+            //     startTime: "",
+            //     endTime: "",
+            // },
+            // timeSlots:[]
         }
         const services = {
             name: '',

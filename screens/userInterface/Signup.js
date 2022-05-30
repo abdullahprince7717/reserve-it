@@ -52,7 +52,7 @@ const signUp = ({navigation}) => {
         navigation.replace("Home")
         
         const userDoc = doc(db,"users",credentials.user.uid)   
-        const appointmentsDoc = doc(db,"services",credentials.user.uid);
+        const appointmentsDoc = doc(db,"appointments",credentials.user.uid);
         const reviewsDoc = doc(db,"reviews",credentials.user.uid);
         
         console.log("A U T H ID :" + credentials.user.uid)
@@ -77,7 +77,7 @@ const signUp = ({navigation}) => {
             is_cancelled: false,
           } ,
           business_email: '',
-          client_email: credentials.user.email,
+          client_email: email,
 
       }
 

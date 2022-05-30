@@ -7,6 +7,8 @@ import { AntDesign,Ionicons } from "@expo/vector-icons/"
 import StarRating from 'react-native-star-rating-widget';
 import moment from 'moment';
 import ServiceCard from  '../../components/businessProfile/ServiceCard.js';
+import { db, auth } from "../../firebase/FirebaseConfig.js";
+import { collection, getDocs,doc, setDoc,query,where } from "firebase/firestore";
 
 const BusinessProfile = (props) => {
 
@@ -15,11 +17,37 @@ const BusinessProfile = (props) => {
     const [index, setIndex] = useState(0);
     const [rating, setRating] = useState(5);
     const [data,setData] = useState([props.route?.params?.data]);
+    const [services, setServices] = useState([]);
+    const [queryResult,setQueryResult] = useState([]);
+    const servicesRef = collection(db, "services");
 
     const time = moment().format('MMMM Do YYYY');
 
+    const getServices = async () => {
+        const q = query(servicesRef, where("business_email", "==", props?.route?.params?.data?.email));
+        setQueryResult(q);
+        await getDocs(q)
+            .then((res) => {
+
+                setServices(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                
+                console.log(services);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+
     useEffect(() => {
+        getServices();
         console.log(props.route.params.data)
+        // console.log(services)
         // console.log(data.name)
     }, [])
     
@@ -27,66 +55,16 @@ const BusinessProfile = (props) => {
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff',margin:10, }}>
             <ScrollView>
+            {services.map((item,index) => (
                 <ServiceCard
-                    name = "Haircut"
-                    price = "2999"
-                    time = "1 hr"
+                    name = {item.name}
+                    price = {item.price}
+                    time = {item.duration+" mins"}
                     onPress ={ () => {
                         console.log('Pressed')
-                        props.navigation.navigate('Booking')
+                        props.navigation.navigate('Booking',{service: services[index]})
                     }}
-                />
-                <ServiceCard
-                    name = "Haircut"
-                    price = "1999"
-                    time = "40 mins"
-
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('Booking')       //just for testing
-                    }}
-                />
-                <ServiceCard
-                    name = "Haircut"
-                    price = "1999"
-                    time = "40 mins"
-
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('Booking')       //just for testing
-                    }}
-                />
-                <ServiceCard
-                    name = "Haircut"
-                    price = "1999"
-                    time = "40 mins"
-
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('Booking')       //just for testing
-                    }}
-                />
-                <ServiceCard
-                    name = "Haircut"
-                    price = "1999"
-                    time = "40 mins"
-
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('Booking')       //just for testing
-                    }}
-                />
-                <ServiceCard
-                    name = "Haircut"
-                    price = "1999"
-                    time = "40 mins"
-
-                    onPress ={ () => {
-                        console.log('Pressed')
-                        props.navigation.navigate('Booking')       //just for testing
-                    }}
-                />
-                
+                />))}
                 
             </ScrollView>    
         </View>
@@ -336,7 +314,7 @@ const BusinessProfile = (props) => {
                     </Text>
 
                     <Paragraph style={{ color:'black',fontSize: 15, marginTop:10}}>
-                        lorem ipsum dolor sit amet,
+                        {props.route.params.data.business_description}
                     </Paragraph>
 
                     <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:10,}} />
@@ -350,7 +328,7 @@ const BusinessProfile = (props) => {
                     <View style = {{flexDirection:'row'}}>   
                         <AntDesign color="black" name="mobile1" size={20} />
                         <Text style = {{marginLeft:10,color:"black",fontSize: 17, color:'grey'}}>
-                            03214323489
+                            {props.route.params.data.business_phone}
                         </Text>
                     </View>    
 
@@ -424,9 +402,9 @@ const BusinessProfile = (props) => {
                             <AntDesign color="red" name="instagram" size={40} />
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        {/* <TouchableOpacity>
                             <AntDesign color="green" name="sharealt" size={40} />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
 
                         <TouchableOpacity>
                             <AntDesign color="blue" name="facebook-square" size={40} />
@@ -436,7 +414,7 @@ const BusinessProfile = (props) => {
 
                     <Divider style = {{height:1,color:'#000',marginTop:10,marginBottom:10,}} />
                     
-                    <TouchableRipple
+                    {/* <TouchableRipple
                         onPress = { ()=> {
                                 console.log("jhasdk,")
                         }}
@@ -454,7 +432,7 @@ const BusinessProfile = (props) => {
                         <Text style={{ color:'grey',fontSize: 20, fontWeight:'bold',marginLeft: 10,marginTop: 10,marginBottom: 10 }}>
                             Report
                         </Text>
-                    </TouchableRipple>
+                    </TouchableRipple> */}
 
                     
 
@@ -522,7 +500,7 @@ const BusinessProfile = (props) => {
                         <Text>{props.route?.params?.data?.business_name}</Text>                        {/* {props.title} */}
                     </Title>
                     <Caption>
-                        {props.route?.params?.data?.address}                        {/* {props.address} */}
+                        {props.route?.params?.data?.business_address}                        {/* {props.address} */}
                     </Caption>
                 </View>
 

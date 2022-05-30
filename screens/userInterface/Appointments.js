@@ -67,7 +67,7 @@ function appointments(props) {
                             time="10:00 AM"
                             onPress={() => {
                                 console.log("Pressed");
-                                props.navigation.navigate("BusinessProfile");
+                                // props.navigation.navigate("BusinessProfile");
                             }}
                             buttonText1="Edit"
                             buttonText2="Cancel"
@@ -93,7 +93,7 @@ function appointments(props) {
                             time="10:00 AM"
                             onPress={() => {
                                 console.log("Pressed");
-                                props.navigation.navigate("BusinessProfile");
+                                // props.navigation.navigate("BusinessProfile");
                             }}
                             onPressRate={() => {
                                 
@@ -125,7 +125,7 @@ function appointments(props) {
                             time="10:00 AM"
                             onPress={() => {
                                 console.log("Pressed");
-                                props.navigation.navigate("BusinessProfile");
+                                // props.navigation.navigate("BusinessProfile");
                             }}
                             onPressBookAgain={() => {
                                 

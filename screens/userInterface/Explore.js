@@ -12,7 +12,7 @@ import { doc, getDoc,setDoc,collection,getDocs,where,query } from "firebase/fire
 // import {GOOGLE_MAPS_APIKEY} from "@env";
 
 
-function explore({navigation}) {
+function explore(props) {
 
     const [searchQuery, setSearchQuery] = useState('ab salon');   
     const onChangeSearch = query => setSearchQuery(query);
@@ -21,7 +21,7 @@ function explore({navigation}) {
     const collectionRef = collection(db, "business_users")
 
     const getQueryResult = async () => {
-        const q = query(collectionRef, where("business_name", "==", searchQuery));
+        const q = query(collectionRef, where("category", "==", searchQuery));
         await getDocs(q)
             .then((res) => {
 
@@ -40,10 +40,13 @@ function explore({navigation}) {
     };
 
     useEffect(() => {
-
+        props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query):getQueryResult();
         getQueryResult();
+        console.log(auth.currentUser.email)
+        console.log(searchQuery)
+    
 
-    }, [])
+    }, [searchQuery]);
 
     return (
         <View style = {styles.container}>
@@ -76,15 +79,16 @@ function explore({navigation}) {
 
                     {queryResult?.map((item,index) => (
                     // <Text>{item.id}</Text>
-                    
+                    item.business_name === "" ? null : 
                     <BusinessCard
                         title={item.business_name}
-                        description = {item.description}
+                        description = {item.business_description}
+                        
                         onPress =  {() => {
                             console.log('Pressed')
-                            navigation.navigate('BusinessProfile',{data : queryResult[index]})
+                            props.navigation.navigate('BusinessProfile',{data : queryResult[index]})
                         }}
-                    />
+                    /> 
                 ))}
                     
                     
