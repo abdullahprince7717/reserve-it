@@ -22,13 +22,13 @@ const BusinessDetails = (props) => {
     ]);
 
     useEffect(() => {
-        console.log()
+        console.log(auth.currentUser.uid);
     }, [])
 
     const [businessName, setBusinessName] = useState('');
     const [businessAddress, setBusinessAddress] = useState('');
     const [businessEmail, setBusinessEmail] = useState('');
-    const [category, setCategory] = useState(value);
+    const [category, setCategory] = useState("");
     const [businessPhone, setBusinessPhone] = useState('');
     const [businessDescription, setBusinessDescription] = useState('');
     const [instagram, setInstagram] = useState('');
@@ -45,14 +45,15 @@ const BusinessDetails = (props) => {
     const addBusinessInfo = async () => {
 
         const business = {
-            businessName: businessName,
-            businessAddress: businessAddress,
-            businessEmail: businessEmail,
-            category: category,
-            businessPhone: businessPhone,
-            businessDescription: businessDescription,
+            business_name: businessName,
+            business_address: businessAddress,
+            business_email: businessEmail,
+            category: value,
+            business_phone: businessPhone,
+            business_description: businessDescription,
             instagram: instagram,
-            facebook: facebook
+            facebook: facebook,
+            image:image
         }
         console.log(auth.currentUser.uid)
 
@@ -151,6 +152,17 @@ const BusinessDetails = (props) => {
                     {/* <Ionicons color="#57B9BB" name="business" size={23} style ={{margin:10, marginTop: 25, }} />  */}
                     <TextInput
                         label="Business Name"
+                        placeholderTextColor={"grey"}
+                        style={styles.textInput}
+                        mode="outlined"
+                        value={businessName}
+                        onChangeText={text => setBusinessName(text)}
+                    />
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+                    {/* <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} />  */}
+                    <TextInput
+                        label="Business Email"
                         placeholderTextColor={"grey"}
                         style={styles.textInput}
                         mode="outlined"

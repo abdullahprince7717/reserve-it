@@ -17,6 +17,7 @@ const EditBusinessHours = (props) => {
     useEffect(() => {
         console.log(moment(startTime).format('LT'))
         console.log(endTime)
+        
     },[])
     
     return (
@@ -24,7 +25,7 @@ const EditBusinessHours = (props) => {
             <View style = {{margin:20, marginVertical:30,flexDirection:'row', justifyContent: 'space-between'}}>
                 
                 <Text style = {{fontSize:22,fontWeight:'bold'}}>
-                    Are You Open On {props.day}?
+                    Are You Open On {props.route?.params?.day}?
                 </Text>
                 
                 <ToggleSwitch
@@ -33,8 +34,9 @@ const EditBusinessHours = (props) => {
                     offColor="grey"
                     size="medium"
                     onToggle={()=> {
-                        setIsOpen(!isOpen)
                         isOpen ? console.log("On") : console.log("Off")
+                        setIsOpen(!isOpen)
+                        
                     }}
                 />
             </View>
@@ -63,8 +65,7 @@ const EditBusinessHours = (props) => {
                     day = {props.route?.params?.day}
                     startTime = {moment(startTime).format('LT')}
                     endTime = {moment(endTime).format('LT')} 
-                    status = 'open'
-                    
+                    status = {isOpen ? 'open' : 'closed'}
                 />
                 
             </View>
@@ -72,7 +73,7 @@ const EditBusinessHours = (props) => {
             <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    props.navigation.goBack();
+                    props.navigation.navigate('AccountSetup4',isOpen == true ? {startTime: startTime ,endTime:endTime,day:props.route.params.day,isOpen: true}: {day:props.route.params.day, isOpen: false});
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>

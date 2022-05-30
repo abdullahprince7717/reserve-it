@@ -21,6 +21,7 @@ import AccountSetup1 from '../screens/businessInterface/AccountSetup1.js';
 import AccountSetup2 from '../screens/businessInterface/AccountSetup2.js';
 import AccountSetup3 from '../screens/businessInterface/AccountSetup3.js';
 import AccountSetup4 from '../screens/businessInterface/AccountSetup4.js';
+import AccountSetup4b from '../screens/businessInterface/AccountSetup4b.js';
 import AccountSetup5 from '../screens/businessInterface/AccountSetup5.js';
 import AccountSetup6 from '../screens/businessInterface/AccountSetup6.js';
 import AddImages from '../screens/businessInterface/AddImages.js';
@@ -32,7 +33,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Signup"
+            initialRouteName="AccountSetup4"
             screenOptions={{
                 headerTintColor: 'black',
                 headerStyle: { opacity:0.5 },
@@ -138,6 +139,11 @@ function MyStack() {
             <Stack.Screen
                 name="AccountSetup4"
                 component={AccountSetup4}
+                options={{headerShown: true}}
+            />
+            <Stack.Screen
+                name="AccountSetup4b"
+                component={AccountSetup4b}
                 options={{headerShown: true}}
             />
             <Stack.Screen

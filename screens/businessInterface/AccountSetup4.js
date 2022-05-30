@@ -1,89 +1,103 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import{Button} from 'react-native-paper'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
+import moment from 'moment';
+
 
 const AccountSetup4 = (props) => {
     
-    const [monday,setMonday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
-    const [tuesday,setTuesday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
-    const [wednesday,setWednesday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
-    const [thursday,setThursday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
-    const [friday,setFriday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
-    const [saturday,setSaturday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
-    const [sunday,setSunday] = useState({startTime: '',endTime: '',isOpen: true, duration: '',})
+    const [monday,setMonday] = useState({startTime: '9:00 AM',endTime: '6:00 PM',isOpen: true,})
+    const [tuesday,setTuesday] = useState({startTime: '9:00 AM',endTime: '6:00 PM',isOpen: true, })
+    const [wednesday,setWednesday] = useState({startTime: '9:00 AM',endTime: '6:00 PM',isOpen: true,})
+    const [thursday,setThursday] = useState({startTime: '9:00 AM',endTime: '6:00 PM',isOpen: true, })
+    const [friday,setFriday] = useState({startTime: '9:00 AM',endTime: '6:00 PM',isOpen: true, })
+    const [saturday,setSaturday] = useState({startTime: '9:00 AM',endTime: '6:00 PM',isOpen: false, })
+    const [sunday,setSunday] = useState({startTime: '9:00 AM',endTime: '6:00 PM',isOpen: false, })
+
+    useEffect(() => {
+        // console.log(monday.startTime)
+        // console.log(monday.endTime)
+        console.log(moment(props?.route?.params?.endTime).format('LT'))
+        setMonday({...monday,
+            startTime: moment(props?.route?.params?.startTime).format('LT'),
+            endTime: moment(props?.route?.params?.endTime).format('LT'),
+            isOpen: props?.route?.params?.isOpen,
+        })
+        console.log(tuesday.startTime)
+    },[])
 
     return (
         <View style={styles.container}>
 
             <HourComponent
                 day = 'Monday'
-                startTime = '9:00 AM'
-                endTime = '5:00 PM' 
-                status = 'open'
+                startTime = {monday.startTime}
+                endTime = {monday.endTime} 
+                status = {monday.isOpen}
                 onPress = {(day) => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours',day='Monday')}
+                    {props.navigation.navigate('AccountSetup4b',{day:'Monday'})}
                 }}
             />
             <HourComponent
                 day = 'Tuesday'
-                startTime = '9:00 AM'
-                endTime = '5:00 PM' 
-                status = 'open'
+                startTime = {tuesday.startTime}
+                endTime = {tuesday.endTime}
+                status = {tuesday.isOpen}
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('AccountSetup4b',{day:'Tuesday'})}
                 }}
             />
             <HourComponent
                 day = 'Wednesday'
-                startTime = '9:00 AM'
-                endTime = '5:00 PM' 
-                status = 'open'
+                startTime = {wednesday.startTime}
+                endTime = {wednesday.endTime}
+                status = {wednesday.isOpen}
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('AccountSetup4b',{day:'Wednesday'})}
                 }}
             />
             <HourComponent
                 day = 'Thursday'
-                startTime = '9:00 AM'
-                endTime = '5:00 PM' 
-                status = 'open'
+                startTime = {thursday.startTime}
+                endTime = {thursday.endTime} 
+                status = {thursday.isOpen}
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('AccountSetup4b',{day:'Thursday'})}
                 }}
             />
             <HourComponent
                 day = 'Friday'
-                startTime = '9:00 AM'
-                endTime = '5:00 PM' 
-                status = 'open'
+                startTime = {friday.startTime}
+                endTime = {friday.endTime}
+                status = {friday.isOpen}
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('AccountSetup4b', {day:'Friday'})}
                 }}
             />
             <HourComponent
                 day = 'Saturday'
-                startTime = '9:00 AM'
-                endTime = '5:00 PM' 
-                status = 'closed'
+                startTime = {saturday.startTime}
+                endTime = {saturday.endTime}
+                status = {saturday.isOpen}
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('AccountSetup4b',{day:'Saturday'})}
                 }}
             />
             <HourComponent
                 day = 'Sunday'
-                startTime = '9:00 AM'
-                endTime = '5:00 PM' 
-                status = 'closed'
+                startTime = {sunday.startTime}
+                endTime = {sunday.endTime}
+                status = {sunday.isOpen}
                 onPress = {() => {
                     console.log("Pressed")
-                    {props.navigation.navigate('EditBusinessHours')}
+                    {props.navigation.navigate('AccountSetup4b',{day:'Sunday'})}
                 }}
             />
 

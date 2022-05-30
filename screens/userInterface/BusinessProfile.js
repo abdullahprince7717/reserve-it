@@ -19,7 +19,7 @@ const BusinessProfile = (props) => {
     const time = moment().format('MMMM Do YYYY');
 
     useEffect(() => {
-        console.log(props.route.params.data.name)
+        console.log(props.route.params.data)
         // console.log(data.name)
     }, [])
     
@@ -546,7 +546,7 @@ styles = StyleSheet.create({
 
     container: {
         
-        flex:3,
+        flex:2,
         // backgroundColor: 'grey',
     },
     services:{
