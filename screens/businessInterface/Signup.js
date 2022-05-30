@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
+import React, {useState,useEffect} from 'react'
+import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar, Alert} from 'react-native';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 // import {dbBusiness,authBusiness} from  '../../firebase/FirebaseConfig2.js'
 import {doc,setDoc} from 'firebase/firestore';
@@ -18,6 +18,10 @@ const signUp = ({navigation}) => {
     const [name, setName] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        
+    },[])
 
 
     const signUpWithFacebook = () => {
@@ -43,13 +47,15 @@ const signUp = ({navigation}) => {
         const userData = {
             name: name,
             phone: phone,
+            business_phone: "",
             email: email,
             business_name: "",
-            business_Description:"",
+            business_description:"",
+            category: "",
             address: "",
-            description: "",
             instagram: "",
             facebook: "",
+            image:"",
             workingDays: {
                 monday: true,
                 tuesday: true,
@@ -58,17 +64,12 @@ const signUp = ({navigation}) => {
                 friday: true,
                 saturday: false,
                 sunday: false
-
             },
             workingHours: {
                 startTime: "",
                 endTime: "",
             },
-            timeSlots: {
-                "10:00-11:00": true,
-                "11:00-12:00": true,
-                "12:00-13:00": true,
-            }
+            timeSlots:[]
         }
         const services = {
             name: '',
@@ -114,7 +115,8 @@ const signUp = ({navigation}) => {
         })
         .catch((error) => {
             console.log("Error Message :" + error.message);
-            console.log("Error Message :" + error.code);
+            console.log("Error Code :" + error.code);
+            Alert.alert(error.message)
         })
 
             // {loading == true ? <MaterialIndicator color='black' />: navigation.navigate("AccountSetup1")}
@@ -135,6 +137,8 @@ const signUp = ({navigation}) => {
                         placeholder="Full name"
                         placeholderTextColor= {"#fff"}
                         style={styles.textInput}
+                        value={name}
+                        onChangeText={(text) => setName(text)}
                     />
                     <TextInput
                         placeholder="Email"
@@ -147,6 +151,8 @@ const signUp = ({navigation}) => {
                         placeholder="Phone number"
                         placeholderTextColor= {"#fff"}
                         style={styles.textInput}
+                        value={phone}
+                        onChangeText={(text) => setPhone(text)}
                     />
                     <TextInput
                         placeholder="Password"
