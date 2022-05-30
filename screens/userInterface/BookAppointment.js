@@ -1,17 +1,67 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect ,useContext} from 'react'
 import { View,StyleSheet,StatusBar,Dimensions,Text,TouchableOpacity,Button, } from "react-native";
 import { Calendar} from 'react-native-calendars';
 import TimeSlot from  '../../components/appointments/TimeSlotCreator.js';
 import moment from 'moment';
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import { onAuthStateChanged } from "firebase/auth";
+import {
+    collection,
+    addDoc,
+    setDoc
+} from "firebase/firestore";
+// import TimeSlotContext from '../../global/TimeSlotContext.js'
 
 
-function explore({navigation}) {
+function bookAppointment(props) {
 
     let now = new Date();
     var currentDate = moment(now).format('YYYY-MM-DD');
 
     const [selectedDate,setSelectedDate] = useState(currentDate)
     const [value, setValue] = useState("");
+    const [service, setService] = useState([])
+    const [data,setData] = useState([])
+    // const [timeSlot,setTimeSlot] = useContext(TimeSlotContext)
+
+    useEffect(() => {
+        console.log(props.route.params.service)
+        setService(props.route.params.service)
+
+        console.log(props.route.params.data)
+        setData(props.route.params.data)
+        // console.log(timeSlot)
+        console.log(data.business_email)
+
+
+    },[])
+
+    const appointmentCollection = collection(db, "appointments");
+
+    const addAppointment = () => {
+
+        const appointment = {
+            service_name: service.name,
+            service_duration: service.duration,
+            service_price: service.price,
+            business_email: data.business_email,
+            customer_email: auth.currentUser.email,
+            business_name: data.business_name,
+            business_address: data.business_address,
+            date: selectedDate,
+            time: "10:40 A.M",
+            status: {"is_pending":true},
+        }
+
+        addDoc(appointmentCollection, appointment)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        });
+    };
+
 
     return (
         <View style = {styles.container}>
@@ -52,8 +102,8 @@ function explore({navigation}) {
 
 
             <TimeSlot
-                startTime = "08:00"
-                endTime = "14:10"
+                startTime = "10:00"
+                endTime = "19:00"
                 slotDuration = "40"
                 breakStartTime = ""
                 breakEndTime = ""
@@ -64,15 +114,15 @@ function explore({navigation}) {
 
             <View style = {styles.servicesList}>
                 <Text style = {{fontSize: 20, marginTop: 0,fontWeight:'bold', marginLeft:20,}}> 
-                    Service Name                                                
+                    {service.name}                                                
                 </Text>
-                <Text style = {{ fontSize: 20, marginTop: 0,fontWeight:'normal', marginLeft:170,marginRight:20 }}>
-                        5000 Pkr
+                <Text style = {{ fontSize: 20, marginTop: 0,fontWeight:'normal', marginLeft:220,marginRight:20 }}>
+                        {service.price}
                 </Text>
             </View>
             <View style = {styles.servicesList}>
                 <Text style = {{ fontSize: 16, marginTop: 0,fontWeight:'normal', marginLeft:290,marginRight:10, }}>
-                        10:00 - 10:30
+                        10:00 - 10:40 
                 </Text>
             </View>
 
@@ -82,7 +132,8 @@ function explore({navigation}) {
                 <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    navigation.navigate('BookingConfirm')
+                    addAppointment();
+                    props.navigation.navigate('BookingConfirm')
                 }}
                 >
                     <Text>Book</Text>
@@ -94,7 +145,7 @@ function explore({navigation}) {
     
 }
 
-export default explore;
+export default bookAppointment;
 
 const deviceWidth = Math.round(Dimensions.get('window').width);
 

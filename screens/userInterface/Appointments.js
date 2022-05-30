@@ -61,10 +61,10 @@ function appointments(props) {
                     appointments[index].status.is_pending === true ? (
                         <Card
                             title={item.service_name}
-                            businessName="LaLa Salon"
-                            address="Machi Mandi near Niagra Falls, Kenya"
-                            date="March 12"
-                            time="10:00 AM"
+                            businessName={item.business_name}
+                            address={item.business_address}
+                            date={item.date}
+                            time ={item.time}
                             onPress={() => {
                                 console.log("Pressed");
                                 // props.navigation.navigate("BusinessProfile");

@@ -41,7 +41,7 @@ function explore(props) {
 
     useEffect(() => {
         props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : getQueryResult();
-        // getQueryResult();
+        getQueryResult();
         console.log(auth.currentUser.email)
         console.log(searchQuery)
     
@@ -102,7 +102,7 @@ function explore(props) {
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        navigation.navigate('Map')
+                        props.navigation.navigate('Map')
                     }}
                     color = '#fff'
                 />

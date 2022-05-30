@@ -62,7 +62,7 @@ const BusinessProfile = (props) => {
                     time = {item.duration+" mins"}
                     onPress ={ () => {
                         console.log('Pressed')
-                        props.navigation.navigate('Booking',{service: services[index]})
+                        props.navigation.navigate('Booking',{service: services[index],data: props?.route?.params?.data})
                     }}
                 />))}
                 

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useContext} from 'react';
 import { View, StyleSheet, Text, Dimensions,TouchableOpacity,ScrollView, } from 'react-native';
-
 import { slotCreator } from "react-native-slot-creator";
+// import { TimeSlotContext } from '../../global/TimeSlotContext.js';
+
 
 function TimeSlot(props){
 
@@ -16,14 +17,12 @@ function TimeSlot(props){
 
     const [selectedSlot,setSelectedSlot] = useState([])
     const [indexCheck,setIndexCheck] = useState("0")
-
-
+    // const [timeSlot,setTimeSlot] = useContext(TimeSlotContext)
 
     useEffect(() => {
         console.log("Selected Slot is ",selectedSlot)
         console.log(requiredArray)
-    }, 
-        [selectedSlot]);
+    },[selectedSlot]);
 
     const list = () => {
         return requiredArray.map((data,index,array) => {
@@ -33,21 +32,9 @@ function TimeSlot(props){
                         onPress = {() => {
                             setSelectedSlot(array[index])
                             setIndexCheck(index)
-                            
-                            // setTimeout(async () => {
-                            //     await console.log("selectedSlot: ",selectedSlot)
-                            // }, 3000);
 
-                            // console.log("Selected Slot is ",selectedSlot)
                             console.log("V A L U E OF SLOT IS: ",array[index])
 
-                            console.log("INDEX IS: ",index)
-
-                            console.log("ARRAY IS: ",array)
-
-                            console.log("DATA IS: ",array[index])
-
-                            
                         }}
                     >
                         {/* <Text>{index + 1}</Text> */}

@@ -1,26 +1,28 @@
-import React, {useState} from 'react'; 
+import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './Navigation/Stack.js';
 import BusinessStack from './Navigation/BusinessUIStack.js';
 import AdminStack from './Navigation/AdminUIStack.js';
-import ContextProvider  from './global/CartContext.js';
+import ContextProvider from './global/CartContext.js';
 import AppointmentContext from './global/AppointmentContext.js';
-
+// import TimeSlotContext from './global/TimeSlotContext.js';
 
 
 export default function App() {
 
   return (
-    <AppointmentContext>
-      <ContextProvider>
-        <NavigationContainer>
-            <StackNavigator/>
+    // <TimeSlotContext>
+      <AppointmentContext>
+        <ContextProvider>
+          <NavigationContainer>
+            <StackNavigator />
             {/* <BusinessStack/> */}
             {/* <AdminStack/> */}
-        </NavigationContainer>
-      </ContextProvider>
-    </AppointmentContext>
+          </NavigationContainer>
+        </ContextProvider>
+      </AppointmentContext>
+    // </TimeSlotContext>
   );
 }
 
