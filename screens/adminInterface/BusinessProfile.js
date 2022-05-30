@@ -1,8 +1,11 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity,StatusBar,ScrollView,Alert } from 'react-native';
 import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons,MaterialIcons,AntDesign } from "@expo/vector-icons/"
-import React from 'react';
 
 const BusinessProfile = (props) => {
+
+    useEffect(() => {
+        console.log(props.route?.params?.data)
+    },[])
 
     const deleteAlert = () =>
     Alert.alert(
@@ -81,9 +84,6 @@ const BusinessProfile = (props) => {
                         style={styles.textInput}
                     />
                 </View>
-                
-
-
 
                 <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>
                     Business Details
@@ -135,10 +135,7 @@ const BusinessProfile = (props) => {
                         placeholderTextColor= {"grey"}
                         style={styles.textInput}
                     />
-                </View>
-
-
-                
+                </View>                
             </ScrollView>
             
             <View style = {{flexDirection: 'row',justifyContent: 'space-evenly',marginVertical : 20,marginHorizontal : 10}}>

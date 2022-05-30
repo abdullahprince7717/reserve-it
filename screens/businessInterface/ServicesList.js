@@ -13,6 +13,7 @@ const ServicesList = (props) => {
 
     useEffect(() => {
         getServices();
+        
     },[])
 
 

@@ -1,7 +1,7 @@
 import {Text, View,StyleSheet,ScrollView,StatusBar,Dimensions,Image } from "react-native";
 import HorizontalScrollView  from '../../components/home/HorizontalScrollView'
 
-function homeScreen() {
+function homeScreen(props) {
     return (
         <View style = {styles.container}>
             <View style = {styles.logo}>

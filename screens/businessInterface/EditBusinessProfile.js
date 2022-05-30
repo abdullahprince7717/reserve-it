@@ -7,6 +7,9 @@ import React, {useState,useEffect} from 'react';
 const EditProfile = (props) => {
 
     const [userData,setUserData] = useState()
+    const [name,setName] = useState('');
+    const [email,setEmail] = useState('');
+    const [phone,setPhone] = useState('');
     const [businessName, setBusinessName] = useState('');
     const [businessAddress, setBusinessAddress] = useState('');
     const [businessEmail, setBusinessEmail] = useState('');
@@ -18,18 +21,27 @@ const EditProfile = (props) => {
     // const [password,setPassword] = useState('');
 
     useEffect(() => {
-        // const myDoc = doc(db, "business_users", auth.currentUser.uid)
-        const myDoc = doc(db, "business_users", "test")
+        const myDoc = doc(db, "business_users", auth.currentUser.uid)
+        // const myDoc = doc(db, "business_users", "test")
         getDoc(myDoc)
         .then((snapshot) => {
             if(snapshot.exists){
-                // setUserData(snapshot.data())
-                // setName(snapshot.data().name)
-                // setPhone(snapshot.data().phone)
-                // setEmail(snapshot.data().email)
-                // setAddress(snapshot.data().address)
-                console.log(snapshot.data())
-                console.log(myDoc.uid)
+                setUserData(snapshot.data())
+                setName(snapshot.data().name)
+                setPhone(snapshot.data().phone)
+                setEmail(snapshot.data().email)
+                setAddress(snapshot.data().address)
+                setBusinessName(snapshot.data().business_name)
+                setBusinessAddress(snapshot.data().business_address)
+                setBusinessEmail(snapshot.data().business_email)
+                setCategory(snapshot.data().category)
+                setBusinessPhone(snapshot.data().business_phone)
+                setBusinessDescription(snapshot.data().business_description)
+                setInstagram(snapshot.data().instagram)
+                setFacebook(snapshot.data().facebook)
+
+                // console.log(snapshot.data())
+                // console.log(myDoc.uid)
             }
             else{
                 console.log("No User Data")
@@ -38,6 +50,7 @@ const EditProfile = (props) => {
         .catch((error) => {
             console.log(error.message)
         })
+        console.log(userData)
         
     },[])
 
@@ -64,6 +77,7 @@ const EditProfile = (props) => {
                 <FontAwesome color="#57B9BB" name="user-o" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Full Name"
+                    value= {name}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -100,7 +114,15 @@ const EditProfile = (props) => {
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
                 <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
-                    placeholder="Email"
+                    placeholder="Business Email"
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <MaterialCommunityIcons color="#57B9BB" name="map-marker-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Business Address"
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
