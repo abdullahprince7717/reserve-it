@@ -1,5 +1,8 @@
 import { Text, View, StyleSheet, ScrollView, StatusBar, Dimensions, Image, TouchableOpacity } from "react-native";
 import HorizontalScrollView from '../../components/home/HorizontalScrollView'
+// import BusinessCard from  '../../components/explore/Card.js';
+import PopularHorizontalScrollView from '../../components/home/PopularCardHorizontalScrollView.js';
+
 
 function homeScreen(props) {
     return (
@@ -15,28 +18,28 @@ function homeScreen(props) {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                 >
-                    <TouchableOpacity onPress={()=>{
+                    <TouchableOpacity onPress={() => {
                         console.log("pressed")
-                        props.navigation.navigate("Explore",{query: "doctor"})
-                        }}>
+                        props.navigation.navigate("Explore", { query: "doctor" })
+                    }}>
                         <HorizontalScrollView image={require('../../assets/doc-logo.jpg')} name='Doctor' />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{
+                    <TouchableOpacity onPress={() => {
                         console.log("pressed")
-                        props.navigation.navigate("Explore",{query: "salon"})
-                        }}> 
+                        props.navigation.navigate("Explore", { query: "salon" })
+                    }}>
                         <HorizontalScrollView image={require('../../assets/salon-logo.jpg')} name='Salon' />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{
+                    <TouchableOpacity onPress={() => {
                         console.log("pressed")
-                        props.navigation.navigate("Explore",{query: "restaurant"})
-                        }}>
+                        props.navigation.navigate("Explore", { query: "restaurant" })
+                    }}>
                         <HorizontalScrollView image={require('../../assets/plate-logo.jpg')} name='Restaurant' />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{
+                    <TouchableOpacity onPress={() => {
                         console.log("pressed")
-                        props.navigation.navigate("Explore",{query: "movie"})
-                        }}>
+                        props.navigation.navigate("Explore", { query: "movie" })
+                    }}>
                         <HorizontalScrollView image={require('../../assets/logo.png')} name='Movie' />
                     </TouchableOpacity>
                 </ScrollView>
@@ -44,14 +47,62 @@ function homeScreen(props) {
 
 
             <View style={styles.listView}>
-                <ScrollView>
 
-                    <View>
-                        <Text style={{ fontSize: 30, color: 'black', }}>List of popular businesses</Text>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
 
+                >
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        <View style={{ flexDirection: 'row', }}>
+                            <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Salons</Text>
+                        </View>
+
+                        <View style={{ backgroundColor: "#fff" }}>
+                            <ScrollView
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                            >
+                                <TouchableOpacity onPress={() => {
+                                    console.log("pressed")
+                                    props.navigation.navigate("Explore", { query: "doctor" })
+                                }}>
+                                    <PopularHorizontalScrollView />
+                                </TouchableOpacity>
+
+                                <TouchableOpacity onPress={() => {
+                                    console.log("pressed")
+                                    props.navigation.navigate("Explore", { query: "salon" })
+                                }}>
+                                    <PopularHorizontalScrollView />
+                                </TouchableOpacity>
+
+                            </ScrollView>
+                        </View>
+                        <View style={{ backgroundColor: "#fff", marginTop: 10, flexDirection: "column", }}>
+                            <View style={{ flexDirection: 'row', }}>
+                                <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Salons</Text>
+                            </View>
+                            <ScrollView
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                            >
+                                <TouchableOpacity onPress={() => {
+                                    console.log("pressed")
+                                    props.navigation.navigate("Explore", { query: "doctor" })
+                                }}>
+                                    <PopularHorizontalScrollView />
+                                </TouchableOpacity>
+
+                                <TouchableOpacity onPress={() => {
+                                    console.log("pressed")
+                                    props.navigation.navigate("Explore", { query: "salon" })
+                                }}>
+                                    <PopularHorizontalScrollView />
+                                </TouchableOpacity>
+
+                            </ScrollView>
+                        </View>
                     </View>
-
-
                 </ScrollView>
             </View>
 
@@ -93,7 +144,8 @@ const styles = StyleSheet.create({
         flex: 5.5,
         width: deviceWidth - 5,
         justifyContent: 'center',
-        alignItems: 'center',
+        flexWrap: 'wrap',
+        // alignItems: 'center',
         // backgroundColor: '#fff',
     },
 })

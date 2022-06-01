@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {StyleSheet,View,Image,Text,TouchableOpacity } from "react-native";
 
+
 function HorizontalScrollView(props){    
 return(
     

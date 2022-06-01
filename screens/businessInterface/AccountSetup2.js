@@ -6,9 +6,11 @@ import React, { useState, useEffect } from 'react';
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
-import { db, auth,storage } from '../../firebase/FirebaseConfig.js'
-// import storage from '@react-native-firebase/storage';
+import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
 
+
+
+// initializeApp(firebaseConfig)
 
 
 const BusinessDetails = (props) => {
@@ -22,7 +24,8 @@ const BusinessDetails = (props) => {
     ]);
 
     useEffect(() => {
-        console.log(auth.currentUser.uid);
+        // console.log(auth.currentUser.uid);
+        console.log(image ? image : "no image" );
     }, [])
 
     const [businessName, setBusinessName] = useState('');
@@ -53,7 +56,7 @@ const BusinessDetails = (props) => {
             business_description: businessDescription,
             instagram: instagram,
             facebook: facebook,
-            image:image
+            image: image
         }
         console.log(auth.currentUser.uid)
 
@@ -69,6 +72,8 @@ const BusinessDetails = (props) => {
     };
 
     const pickImage = async () => {
+
+        
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -77,36 +82,81 @@ const BusinessDetails = (props) => {
             quality: 1,
         });
 
+
+
         console.log("result: " + result);
         console.log("result.uri: " + result.uri);
 
         if (!result.cancelled) {
             setImage(result.uri);
+
+    //         // const storage = getStorage();
+    //         // const refer = ref(storage, "image.jpg")
+    //         // const img = await fetch(image)
+    //         // const bytes = await img.Blob();
+
+    //         // await uploadBytes(refer, bytes)
         }
     };
+    
 
 
     const deleteImage = () => {
         setImage(null);
     }
 
-    const uploadImage = async () => {
-        const uri = image;
-        let filename =  uri.substring(uri.lastIndexOf('/') + 1);
+    // const uploadImage =  () => {
+    //     // const storage = getStorage();
+    //     const refer = ref(storage,"image.jpg")
+    //     const img  = fetch(image)
+    //     const bytes = img.Blob();
 
+    //      uploadBytes(refer,bytes)
+    //     .then((res)=>{
+    //         console.log(res)
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err)
+    //     })
+
+    // }
+
+
+    const uploadImage = async () => {
         setUploading(true);
 
-        try{
-            await storage().ref(filename).putFile(uri);
-            setUploading(false);
-            Alert.alert(
-                "Image Uploaded!"
-            )
+        try {
+            const uri = image;
+            let filename =  uri.substring(uri.lastIndexOf('/') + 1);
+
+            if (!image) return;
+            const storageRef = ref(storage, `products/${filename}`);
+            const uploadTask = uploadBytesResumable(storageRef, image);
+
+            console.log(filename)
+            console.log(`products/${filename}`)
+
+            uploadTask.on(
+                "state_changed",
+                (snapshot) => {
+                    // const prog = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log(snapshot.bytesTransferred)
+
+                    // setProgress(prog);
+                },
+                (error) => console.log(error),
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                        console.log(url);
+                    });
+                }
+            );
         }
-        catch(err){
+        catch (err) {
             Alert.alert(
                 "Error uploading image!"
             )
+            console.log(err)
         }
     }
 
@@ -292,7 +342,7 @@ const BusinessDetails = (props) => {
                         console.log("Pressed SAVE")
                         addBusinessInfo();
                         uploadImage();
-                        props.navigation.navigate('AccountSetup3')
+                        // props.navigation.navigate('AccountSetup3')
                     }}
                 >
 

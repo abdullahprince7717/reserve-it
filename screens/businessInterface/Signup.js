@@ -3,7 +3,7 @@ import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, S
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 // import {dbBusiness,authBusiness} from  '../../firebase/FirebaseConfig2.js'
 import {doc,setDoc} from 'firebase/firestore';
-import {createUserWithEmailAndPassword,SignInWithPopup,FacebookAuthProvider } from "firebase/auth";
+import {createUserWithEmailAndPassword,SignInWithRedirect,FacebookAuthProvider } from "firebase/auth";
 import {MaterialIndicator} from 'react-native-indicators';
 import {authentication} from '../../firebase/FirebaseConfig2.js';
 
@@ -28,7 +28,7 @@ const signUp = ({navigation}) => {
 
         const provider = new FacebookAuthProvider();
 
-        SignInWithPopup(authentication,provider)
+        SignInWithRedirect(authentication,provider)
             .then((result) => {
                 console.log(result)
             })

@@ -77,9 +77,12 @@ function settings(props) {
     }, [])
 
 
+// if(loading) return <SafeAreaView style={styles.container}>
+//     <MaterialIndicator color='black'/>
+// </SafeAreaView>
     return (
         <SafeAreaView style={styles.container}>
-            {/* {loading === false ? <> */}
+            {loading === false ? <>
                 <View style={styles.userInfoSection}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Title style={styles.title}>
@@ -248,9 +251,9 @@ function settings(props) {
                     </TouchableRipple>
 
                 </View> 
-                {/* </>
+                </>
                 :
-                <MaterialIndicator color='black' />} */}
+                <MaterialIndicator color='black' />}
 
 
         </SafeAreaView>

@@ -18,7 +18,7 @@ function settings(props) {
     return (
         <View style = {styles.container}>
             <View>
-                <TouchableRipple 
+                {/* <TouchableRipple 
                     onPress = {() => {
                         props.navigation.navigate('AddBusiness')
                     }}
@@ -31,9 +31,9 @@ function settings(props) {
                             />
                         <Text style={styles.menuItemText}>Add a Business</Text>
                     </View>
-                </TouchableRipple>
+                </TouchableRipple> */}
 
-                <TouchableRipple
+                {/* <TouchableRipple
                     onPress = {() => {
                         console.log('pressed')
                         {props.navigation.navigate('AddClient')}
@@ -47,7 +47,7 @@ function settings(props) {
                             />
                         <Text style={styles.menuItemText}>Add a Client</Text>
                     </View>
-                </TouchableRipple>
+                </TouchableRipple> */}
 
 
                 <TouchableRipple

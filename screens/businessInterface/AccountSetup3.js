@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image,TouchableOpacity,Dimensions } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { Button } from 'react-native-paper';
 import React, { useState,useEffect } from 'react'
@@ -104,22 +104,41 @@ const AccountSetup3 = (props) => {
             </MapView>
             <View
                 style={{
-                    position: 'absolute', top: '90%', alignSelf: 'flex-end', left: '35%',
+                    position: 'absolute', top: '85%', alignSelf: 'flex-end', left: '14%',
                 }}
             >
-                <Button icon="camera" mode="contained" onPress={() => {
-                    console.log('Pressed')
-                    addLocationInfo()
-                    props.navigation.navigate('AccountSetup4')
-                    
-                }}>
-                    Next
-                </Button>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        console.log("Pressed SAVE")
+                        addLocationInfo();
+                        props.navigation.navigate('AccountSetup4')
+                    }}
+                >
+
+                    <Text style={{ color: '#fff', fontSize: 17 }}>
+                        NEXT
+                    </Text>
+
+                </TouchableOpacity>
             </View>
         </View>
     )
 }
+const deviceWidth = Math.round(Dimensions.get('window').width);
+
 
 export default AccountSetup3
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: '#57B9BB',
+        width: deviceWidth - 105,
+        height: 50,
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+})

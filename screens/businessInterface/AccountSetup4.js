@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions } from 'react-native'
 import { Button } from 'react-native-paper'
 import React, { useState, useEffect } from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
@@ -189,19 +189,30 @@ const AccountSetup4 = (props) => {
                 }}
             />
 
-            <View style={{ marginTop: 30 }}>
-                <Button mode="contained" onPress={() => {
-                    console.log('Pressed')
-                    addWorkingDays()
-                    props.navigation.navigate('AccountSetup5')
-                }}>
-                    Next
-                </Button>
+            <View style={{ justifyContent: 'center', margin: 20, marginTop: 20 }}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        console.log("Pressed SAVE")
+                        addWorkingDays()
+                        props.navigation.navigate('AccountSetup5')
+                    }}
+                >
+
+                    <Text style={{ color: '#fff', fontSize: 17 }}>
+                        NEXT
+                    </Text>
+
+                </TouchableOpacity>
+
             </View>
 
         </View>
     )
 }
+
+const deviceWidth = Math.round(Dimensions.get('window').width);
+
 
 export default AccountSetup4
 
@@ -213,6 +224,16 @@ const styles = StyleSheet.create({
         marginTop: 20,
         alignItems: 'center',
         marginLeft: 15
+
+    },
+    button: {
+        backgroundColor: '#57B9BB',
+        width: deviceWidth - 105,
+        height: 50,
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
 
     },
 

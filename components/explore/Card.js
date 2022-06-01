@@ -1,50 +1,78 @@
-import * as React from 'react';
-import {  Card, Title, Paragraph } from 'react-native-paper';
-import {View,StyleSheet,Dimensions,TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
-import {Ionicons} from '@expo/vector-icons'
+import React, { useState } from 'react';
+import { Card, Title, Paragraph } from 'react-native-paper';
+import { View, StyleSheet, Dimensions, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'
+import StarRating from 'react-native-star-rating-widget';
+import { Chip } from 'react-native-paper';
+
 
 
 // const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const BusinessCard = (props) => (
+const BusinessCard = (props) => {
 
-    <TouchableWithoutFeedback
-        onPress = {props.onPress}
-    >
-        <Card style = {styles.card}>
-            
-            <Card.Cover 
-                source={{ uri: 'https://picsum.photos/700' }}
-                style={{height:150,resizeMode:'contain'}}
-            />
-            <Card.Content>
-                <View style = {{flexDirection: 'row',justifyContent:'space-between',margin:5}}>
-                    <Title>{props.title}</Title>
-                    <TouchableOpacity onPress={() =>{
-                        console.log("Pressed")
-                    }} >
-                        <Ionicons name = "heart-outline" size = {28}/>
+    const [isFilled,setIsFilled] = useState(false)
+    const [category,setCategory] = useState('salon')
 
-                    </TouchableOpacity>
-                </View>
-                <Paragraph>{props.description}</Paragraph>
-            </Card.Content>
-        </Card>
-    </TouchableWithoutFeedback>    
-);
+    return (
+        <TouchableWithoutFeedback
+            onPress={props.onPress}
+        >
+            <Card style={styles.card}>
+
+                <Card.Cover
+                    source={{ uri: 'https://picsum.photos/700' }}
+                    style={{ height: 150, resizeMode: 'contain' }}
+                />
+                <Card.Content >
+                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <StarRating
+                            rating="2.5"
+                            // onChange={setRating}
+                            maxStars={5}
+                            starSize={20}
+                            color="orange"
+
+
+                        />
+                        <Chip icon="stethoscope" style={{ height: 28, width: 80, backgroundColor: (category === 'salon' ) ? '#57B9BB': '#ff7cb5'  , }}
+                            onPress={() => console.log('Pressed')
+                        }>
+                            Salon
+                        </Chip>
+
+                    </View>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+                        <Title>{props.title}</Title>
+                        <TouchableOpacity style = {{marginTop:10}} onPress={() => {
+                            setIsFilled(!isFilled)
+                        }}>
+                            <Ionicons name= {isFilled ? "heart" : "heart-outline"} size={28} color="red" />
+
+                        </TouchableOpacity>
+                    </View>
+
+                    <Paragraph>{props.description}</Paragraph>
+                </Card.Content>
+            </Card>
+        </TouchableWithoutFeedback>
+    )
+}
 
 export default BusinessCard;
 
 const deviceWidth = Math.round(Dimensions.get('window').width);
 
-const styles = StyleSheet.create  ({
+const styles = StyleSheet.create({
     card: {
-        height: 260,
-        width: deviceWidth-30,
-        marginTop:10,
-        borderRadius:10,
-        borderColor:'grey',
-        borderWidth:1,
+        flex: 1,
+        height: "50%",
+        width: deviceWidth - 30,
+        marginTop: 10,
+        borderRadius: 10,
+        borderColor: 'grey',
+        borderWidth: 1,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

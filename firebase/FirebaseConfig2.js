@@ -26,7 +26,7 @@ if (firebase.apps.length === 0) {
 
 const dbBusiness = getFirestore(app);
 const authBusiness = firebase.auth();
-const storage = getStorage(app);
+const storageBusiness = getStorage(app);
 
 
-export { dbBusiness, authBusiness,storage};
+export { dbBusiness, authBusiness,storageBusiness};

@@ -2,7 +2,7 @@ import React, {useState,useContext,useEffect} from 'react'
 import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, StatusBar} from 'react-native';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,setDoc} from 'firebase/firestore';
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword,signInWithRedirect,FacebookAuthProvider ,GoogleAuthProvider} from "firebase/auth";
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { CredentialsContext } from '../../components/CredentialsContext.js';
@@ -16,31 +16,26 @@ const signUp = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
 
-  // const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
-
-
-  // useEffect(() => {
-
-  //   const subscribe = auth.onAuthStateChanged(user => {
-  //     if(user){
-  //       navigation.navigate('Home')
-  //       console.log(" C O N N E C T E D")
-  //       console.log(user)
-
-  //     }
-  //       console.log("n o t C O N N E C T E D")
-  //       console.log(user)
-  //   })
-  //   // console.log(storedCredentials)
-  //   return subscribe;
-
-  // },[])
-
+  
   const storeData = (userDoc,appointmentsDoc,reviewsDoc,complaintsDoc,) => {
 
   }
+
+  const signUpWithFacebook = () => {
+
+    // const provider = new FacebookAuthProvider();
+    const provider = new GoogleAuthProvider();
+
+    signInWithRedirect(auth,provider)
+        .then((result) => {
+            console.log(result)
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+}
 
   const signUp = () => {
 
@@ -91,7 +86,7 @@ const signUp = ({navigation}) => {
 
       setDoc(userDoc, userData)
         .then(() =>{
-          alert("User Created Successfully")
+          // alert("User Created Successfully")
         })
         .catch((error) => {
           alert(error.message)
@@ -177,14 +172,14 @@ const signUp = ({navigation}) => {
                 placeholderTextColor= {"#fff"}
                 style={styles.textInput}
               />
-              <TextInput
+              {/* <TextInput
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 secureTextEntry = {true}
                 onChangeText ={text=>setConfirmPassword(text)}
                 placeholderTextColor= {"#fff"}
                 style={confirmPassword===password?styles.textInput:styles.textInputError}
-              />
+              /> */}
             </View>
 
             <TouchableOpacity style = {styles.button} 
@@ -194,7 +189,12 @@ const signUp = ({navigation}) => {
               <Text>Sign Up </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style = {styles.fbButton} >
+            <TouchableOpacity 
+              style = {styles.fbButton} 
+              onPress = { () => {
+                signUpWithFacebook();
+              }}
+              >
               <Text style = {styles.fbText}>Continue with Facebook </Text>
             </TouchableOpacity>
 
@@ -209,12 +209,6 @@ const signUp = ({navigation}) => {
             </Text>
 
     
-	            {/* style={styles.facebookBtn}>
-              	<FontAwesome name='facebook' size={20} color='#fff' />
-                <Text style={}>
-                  Login With Facebook 
-	            </Text> */}
-            
 
           </ScrollView>
 
