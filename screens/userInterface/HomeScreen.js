@@ -78,10 +78,11 @@ function homeScreen(props) {
 
                             </ScrollView>
                         </View>
+                        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+                            <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Salons</Text>
+                        </View>
                         <View style={{ backgroundColor: "#fff", marginTop: 10, flexDirection: "column", }}>
-                            <View style={{ flexDirection: 'row', }}>
-                                <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Salons</Text>
-                            </View>
+
                             <ScrollView
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}

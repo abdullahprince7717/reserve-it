@@ -3,9 +3,9 @@ import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons,MaterialIcons,AntDe
 
 const BusinessProfile = (props) => {
 
-    useEffect(() => {
-        console.log(props.route?.params?.data)
-    },[])
+    // useEffect(() => {
+    //     console.log(props.route?.params?.data)
+    // },[])
 
     const deleteAlert = () =>
     Alert.alert(

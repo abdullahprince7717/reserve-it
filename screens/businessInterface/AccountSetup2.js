@@ -321,7 +321,7 @@ const BusinessDetails = (props) => {
 
                         <View style={{ justifyContent: 'center', margin: 10 }}>
                             {image &&
-                                <Button icon="delete" mode="outlined" color='red' onPress={deleteImage} />}
+                                <Button icon="delete"  color='red' onPress={deleteImage} />}
                         </View>
 
                     </View>
@@ -342,7 +342,7 @@ const BusinessDetails = (props) => {
                         console.log("Pressed SAVE")
                         addBusinessInfo();
                         uploadImage();
-                        // props.navigation.navigate('AccountSetup3')
+                        props.navigation.navigate('AccountSetup3')
                     }}
                 >
 
