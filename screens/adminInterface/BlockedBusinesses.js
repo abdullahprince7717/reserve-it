@@ -22,8 +22,8 @@ export default function blockedBusiness  (props) {
                     <CustomerCard title='ab Salon' phone="03214323489" email='sdfbhwo@ddqed.com'
                         onPress={() => {
                             console.log('Pressed')
-                            props.navigation.navigate('CustomerProfile')
-                        }} />
+                            props.navigation.navigate('Client  Profile')
+                        }} />  
     
                     <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
                     
