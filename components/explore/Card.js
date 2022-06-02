@@ -11,7 +11,7 @@ import { Chip } from 'react-native-paper';
 
 const BusinessCard = (props) => {
 
-    const [isFilled,setIsFilled] = useState(false)
+    // const [isFilled,setIsFilled] = useState(false)
     const [category,setCategory] = useState('salon')
 
     return (
@@ -45,12 +45,12 @@ const BusinessCard = (props) => {
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
                         <Title>{props.title}</Title>
-                        <TouchableOpacity style = {{marginTop:10}} onPress={() => {
+                        {/* <TouchableOpacity style = {{marginTop:10}} onPress={() => {
                             setIsFilled(!isFilled)
                         }}>
                             <Ionicons name= {isFilled ? "heart" : "heart-outline"} size={28} color="red" />
 
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
 
                     <Paragraph>{props.description}</Paragraph>

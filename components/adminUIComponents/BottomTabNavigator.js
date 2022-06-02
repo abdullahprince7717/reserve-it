@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-// import { FontAwesome5 } from "@expo/vector-icons/"
+import { MaterialIcons } from "@expo/vector-icons/"
 
 import Home from '../../screens/adminInterface/Home.js'
 import Complaints from '../../screens/adminInterface/Complaints.js'
@@ -48,7 +48,7 @@ function TabNavigation(props) {
             options={{
                 tabBarLabel: 'Complaints',
                 tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="cog-outline" color={color} size={26} />
+                    <MaterialIcons name="report" color={color} size={26} />
                 ), 
             }}
             />

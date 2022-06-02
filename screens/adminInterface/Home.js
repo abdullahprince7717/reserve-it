@@ -30,9 +30,8 @@ const Home = (props) => {
             <View style={{ width: '90%', marginTop: 10 }}>
 
                 <ScrollView 
-                    
+                    showsVerticalScrollIndicator={false}
                 >
-
                     <CustomerCard title='Abdullah' phone="03214323489" email='sdfbhwo@ddqed.com'
                         onPress={() => {
                             console.log('Pressed')

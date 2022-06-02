@@ -9,7 +9,7 @@ const Settings = () => {
         <View style={styles.container}>
             <SearchBar/>
             
-            <ScrollView style = {{}}>
+            <ScrollView style = {{}} showsVerticalScrollIndicator={false}>  
                 <TouchableOpacity style={{ flex: 0.15 }}>
                     <ComplaintCard />
                 </TouchableOpacity>

@@ -64,14 +64,14 @@ function homeScreen(props) {
                             >
                                 <TouchableOpacity onPress={() => {
                                     console.log("pressed")
-                                    props.navigation.navigate("Explore", { query: "doctor" })
+                                    // props.navigation.navigate("Explore", { query: "doctor" })
                                 }}>
                                     <PopularHorizontalScrollView />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={() => {
                                     console.log("pressed")
-                                    props.navigation.navigate("Explore", { query: "salon" })
+                                    // props.navigation.navigate("Explore", { query: "salon" })
                                 }}>
                                     <PopularHorizontalScrollView />
                                 </TouchableOpacity>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        paddingBottom: 70,
+        paddingBottom: 55,
         // backgroundColor: '#000',
     },
     logo: {
