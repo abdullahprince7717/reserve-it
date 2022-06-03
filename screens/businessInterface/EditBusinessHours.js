@@ -29,7 +29,7 @@ const EditBusinessHours = (props) => {
         // console.log(days)
         temp.push(value);
         setDays(temp);
-        // props.navigation.navigate('BusinessHours');
+        props.navigation.navigate('BusinessHours');
         // console.log(value)
     }
 

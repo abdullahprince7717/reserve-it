@@ -25,7 +25,7 @@ const BusinessDetails = (props) => {
 
     useEffect(() => {
         // console.log(auth.currentUser.uid);
-        console.log(image ? image : "no image" );
+        console.log(image ? image : "no image");
     }, [])
 
     const [businessName, setBusinessName] = useState('');
@@ -73,12 +73,12 @@ const BusinessDetails = (props) => {
 
     const pickImage = async () => {
 
-        
+
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
-            aspect: [4, 6],
+            aspect: [5, 10],
             quality: 1,
         });
 
@@ -90,15 +90,15 @@ const BusinessDetails = (props) => {
         if (!result.cancelled) {
             setImage(result.uri);
 
-    //         // const storage = getStorage();
-    //         // const refer = ref(storage, "image.jpg")
-    //         // const img = await fetch(image)
-    //         // const bytes = await img.Blob();
+            //         // const storage = getStorage();
+            //         // const refer = ref(storage, "image.jpg")
+            //         // const img = await fetch(image)
+            //         // const bytes = await img.Blob();
 
-    //         // await uploadBytes(refer, bytes)
+            //         // await uploadBytes(refer, bytes)
         }
     };
-    
+
 
 
     const deleteImage = () => {
@@ -158,7 +158,38 @@ const BusinessDetails = (props) => {
             )
             console.log(err)
         }
-    }
+    
+    // const getPictureBlob = (uri) => {
+    //     // https://github.com/expo/expo/issues/2402#issuecomment-443726662
+    //     return new Promise((resolve, reject) => {
+    //         const xhr = new XMLHttpRequest();
+    //         xhr.onload = function () {
+    //             resolve(xhr.response);
+    //         };
+    //         xhr.onerror = function (e) {
+    //             console.log(e);
+    //             reject(new TypeError("Network request failed"));
+    //         };
+    //         xhr.responseType = "blob";
+    //         xhr.open("GET", image, true);
+    //         xhr.send(null);
+    //     });
+    // };
+
+    // const uploadImage = async () => {
+        // const storage = getStorage();
+    //     const refer = ref(storage,"image.jpg")
+    //     const img  = fetch(image)
+    //     const bytes = img.Blob();
+
+    //      uploadBytes(refer,bytes)
+    //     .then((res)=>{
+    //         console.log(res)
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err)
+    //     })
+    };
 
     // const uploadImage = () => {
     //     if (!image[0]) return;
@@ -321,7 +352,7 @@ const BusinessDetails = (props) => {
 
                         <View style={{ justifyContent: 'center', margin: 10 }}>
                             {image &&
-                                <Button icon="delete"  color='red' onPress={deleteImage} />}
+                                <Button icon="delete" color='red' onPress={deleteImage} />}
                         </View>
 
                     </View>
