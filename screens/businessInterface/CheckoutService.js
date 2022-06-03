@@ -55,6 +55,7 @@ const CheckoutService = (props) => {
                 onPress = {() => {
                     // console.log('pressed')
                     // {props.navigation.navigate('Checkout',{service: services[index]})}
+                    console.log(services[index])
                     handlePress(services[index])
                 }}
 

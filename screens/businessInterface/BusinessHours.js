@@ -1,12 +1,18 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import{TouchableRipple,} from 'react-native-paper'
-import React , {useState,useEffect} from 'react'
+import React , {useState,useEffect,useContext} from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
+import { BusinessHoursContext } from '../../global/BusinessHoursContext.js';
 
 const BusinessHours = (props) => {
+
+    const [days,setDays] = useContext(BusinessHoursContext);
+    const [businessHours, setBusinessHours] = useState([]);
     // let day;
     useEffect(() => {
-        console.log(props?.route?.params?.data)
+        // console.log(props?.route?.params?.data)
+        // setDays(props?.route?.params?.data)
+        console.log(days[0])
     },[])
     return (
         <View style={styles.container}>

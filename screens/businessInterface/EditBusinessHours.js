@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import ToggleSwitch from 'toggle-switch-react-native'
 import {BackdropContext, TimePicker} from 'react-native-propel-kit';
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 import moment from 'moment';
+import {BusinessHoursContext} from '../../global/BusinessHoursContext.js'
 
 // import { DateTimePicker } from '@react-native-community/datetimepicker';
 
@@ -13,12 +14,25 @@ const EditBusinessHours = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
+    const [days, setDays] = useContext(BusinessHoursContext);
+    
 
     useEffect(() => {
-        console.log(moment(startTime).format('LT'))
-        console.log(moment(startTime).format('LT'))
-        console.log(props?.route?.params?.day)
-    },[])
+        // console.log(moment(startTime).format('LT'))
+        // console.log(moment(startTime).format('LT'))
+        // console.log(props?.route?.params?.day)
+        console.log(days)
+    },[days])
+
+    const handlePress = (value) => {
+        const temp = days?[...days]:[];
+        // console.log(days)
+        temp.push(value);
+        setDays(temp);
+        // props.navigation.navigate('BusinessHours');
+        // console.log(value)
+    }
+
     
     return (
         <View style = {styles.container}>
@@ -73,7 +87,10 @@ const EditBusinessHours = (props) => {
             <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    props.navigation.navigate("BusinessHours",{data: {day:props?.route?.params?.day ,isOpen:isOpen, startTime:startTime, endTime:endTime}});
+                    // setDays(days => [...days, {isOpen:isOpen, startTime:moment(startTime).format('LT'), endTime:moment(endTime).format('LT'), day:props.route?.params?.day}])
+                    // props.navigation.navigate("BusinessHours",{data: {day:props?.route?.params?.day ,isOpen:isOpen, startTime:startTime, endTime:endTime}});
+                    // props.navigation.navigate("BusinessHours")
+                    handlePress({isOpen: isOpen, startTime:moment(startTime).format('LT'), endTime:moment(endTime).format('LT'), day:props?.route?.params?.day})
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>

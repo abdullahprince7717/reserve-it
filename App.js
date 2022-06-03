@@ -15,16 +15,17 @@ export default function App() {
 
   return (
     // <TimeSlotContext>
+    <BusinessHoursContext>
       <AppointmentContext>
         <ContextProvider>
           <NavigationContainer>
-            
             {/* <StackNavigator /> */}
             <BusinessStack/>
             {/* <AdminStack/> */}
           </NavigationContainer>
         </ContextProvider>
       </AppointmentContext>
+    </BusinessHoursContext>
     // </TimeSlotContext>
   );
 }
