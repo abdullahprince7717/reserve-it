@@ -15,7 +15,7 @@ const BusinessHours = (props) => {
                 day = 'Monday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = {props?.route?.params?.data?.isOpen}
+                status = {props?.route?.params?.data?.day === 'Monday' ? props?.route?.params?.data?.isOpen : "open"}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours',{day:'Monday'})}
@@ -25,7 +25,7 @@ const BusinessHours = (props) => {
                 day = 'Tuesday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = 'open'
+                status = {props?.route?.params?.data?.day === 'Tuesday' ? props?.route?.params?.data?.isOpen : "open"}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours',{day:'Tuesday'})}
@@ -35,7 +35,7 @@ const BusinessHours = (props) => {
                 day = 'Wednesday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = 'open'
+                status = {props?.route?.params?.data?.day === 'Wednesday' ? props?.route?.params?.data?.isOpen : "open"}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours',{day:'Wednesday'})}
@@ -45,7 +45,7 @@ const BusinessHours = (props) => {
                 day = 'Thursday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = 'open'
+                status = {props?.route?.params?.data?.day === 'Thursday' ? props?.route?.params?.data?.isOpen : "open"}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours'),{day:'Thursday'}}
@@ -55,7 +55,7 @@ const BusinessHours = (props) => {
                 day = 'Friday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = 'open'
+                status = {props?.route?.params?.data?.day === 'Friday' ? props?.route?.params?.data?.isOpen : "open"}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours',{day:'Friday'})}
@@ -65,7 +65,7 @@ const BusinessHours = (props) => {
                 day = 'Saturday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = 'closed'
+                status = {props?.route?.params?.data?.day === 'Saturday' ? props?.route?.params?.data?.isOpen : "open"}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours',{day:'Saturday'})}
@@ -75,7 +75,7 @@ const BusinessHours = (props) => {
                 day = 'Sunday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = 'closed'
+                status = {props?.route?.params?.data?.day === 'Sunday' ? props?.route?.params?.data?.isOpen : "open"}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours',{day:'Sunday'})}

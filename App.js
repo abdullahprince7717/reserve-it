@@ -7,7 +7,7 @@ import BusinessStack from './Navigation/BusinessUIStack.js';
 import AdminStack from './Navigation/AdminUIStack.js';
 import ContextProvider from './global/CartContext.js';
 import AppointmentContext from './global/AppointmentContext.js';
-
+import BusinessHoursContext from './global/BusinessHoursContext.js';
 // import TimeSlotContext from './global/TimeSlotContext.js';
 
 

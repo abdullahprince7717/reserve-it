@@ -17,6 +17,7 @@ const EditBusinessHours = (props) => {
     useEffect(() => {
         console.log(moment(startTime).format('LT'))
         console.log(moment(startTime).format('LT'))
+        console.log(props?.route?.params?.day)
     },[])
     
     return (
@@ -24,7 +25,7 @@ const EditBusinessHours = (props) => {
             <View style = {{margin:20, marginVertical:30,flexDirection:'row', justifyContent: 'space-between'}}>
                 
                 <Text style = {{fontSize:22,fontWeight:'bold'}}>
-                    Are You Open On {props.day}?
+                    Are You Open on {props?.route?.params?.day}?
                 </Text>
                 
                 <ToggleSwitch
@@ -72,7 +73,7 @@ const EditBusinessHours = (props) => {
             <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    props.navigation.navigate("BusinessHours",{data: {isOpen:isOpen, startTime:startTime, endTime:endTime}});
+                    props.navigation.navigate("BusinessHours",{data: {day:props?.route?.params?.day ,isOpen:isOpen, startTime:startTime, endTime:endTime}});
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>
