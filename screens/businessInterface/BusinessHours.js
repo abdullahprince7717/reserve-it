@@ -6,22 +6,29 @@ import { BusinessHoursContext } from '../../global/BusinessHoursContext.js';
 
 const BusinessHours = (props) => {
 
-    const [days, setDays] = useContext(BusinessHoursContext);
-    const [businessHours, setBusinessHours] = useState([]);
-    // let day;
+    const [monday,tuesday,wednesday,thursday,friday,saturday,sunday] = useContext(BusinessHoursContext);
+
     useEffect(() => {
         // console.log(props?.route?.params?.data)
         // setDays(props?.route?.params?.data)
-        console.log(days[0])
+        // console.log(days[0])
+        // console.log(monday)
+        // console.log(tuesday)
+        // console.log(wednesday)
+        // console.log(thursday)
+        // console.log(friday)
+        // console.log(saturday)
+        // console.log(sunday)
+
     }, [])
     return (
         <View style={styles.container}>
 
             <HourComponent
                 day='Monday'
-                startTime='9:00 AM'
-                endTime='5:00 PM'
-                status={props?.route?.params?.data?.day === 'Monday' ? props?.route?.params?.data?.isOpen : "open"}
+                startTime={monday? monday?.startTime :'9:00 AM'}
+                endTime={monday? monday?.endTime :'5:00 PM'}
+                status={monday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
                     { props.navigation.navigate('EditBusinessHours', { day: 'Monday' }) }
@@ -29,9 +36,9 @@ const BusinessHours = (props) => {
             />
             <HourComponent
                 day='Tuesday'
-                startTime='9:00 AM'
-                endTime='5:00 PM'
-                status={props?.route?.params?.data?.day === 'Tuesday' ? props?.route?.params?.data?.isOpen : "open"}
+                startTime={tuesday? tuesday?.startTime :'9:00 AM'}
+                endTime={tuesday? tuesday?.endTime :'5:00 PM'}
+                status={tuesday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
                     { props.navigation.navigate('EditBusinessHours', { day: 'Tuesday' }) }
@@ -39,9 +46,9 @@ const BusinessHours = (props) => {
             />
             <HourComponent
                 day='Wednesday'
-                startTime='9:00 AM'
-                endTime='5:00 PM'
-                status={props?.route?.params?.data?.day === 'Wednesday' ? props?.route?.params?.data?.isOpen : "open"}
+                startTime={wednesday? wednesday?.startTime :'9:00 AM'}
+                endTime={wednesday? wednesday?.endTime :'5:00 PM'}
+                status={wednesday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
                     { props.navigation.navigate('EditBusinessHours', { day: 'Wednesday' }) }
@@ -49,9 +56,9 @@ const BusinessHours = (props) => {
             />
             <HourComponent
                 day='Thursday'
-                startTime='9:00 AM'
-                endTime='5:00 PM'
-                status={props?.route?.params?.data?.day === 'Thursday' ? props?.route?.params?.data?.isOpen : "open"}
+                startTime={thursday? thursday?.startTime :'9:00 AM'}
+                endTime={thursday? thursday?.endTime :'5:00 PM'}
+                status={thursday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
                     { props.navigation.navigate('EditBusinessHours'), { day: 'Thursday' } }
@@ -59,9 +66,9 @@ const BusinessHours = (props) => {
             />
             <HourComponent
                 day='Friday'
-                startTime='9:00 AM'
-                endTime='5:00 PM'
-                status={props?.route?.params?.data?.day === 'Friday' ? props?.route?.params?.data?.isOpen : "open"}
+                startTime={friday? friday?.startTime :'9:00 AM'}
+                endTime={friday? friday?.endTime :'5:00 PM'}
+                status={friday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
                     { props.navigation.navigate('EditBusinessHours', { day: 'Friday' }) }
@@ -69,9 +76,9 @@ const BusinessHours = (props) => {
             />
             <HourComponent
                 day='Saturday'
-                startTime='9:00 AM'
-                endTime='5:00 PM'
-                status={props?.route?.params?.data?.day === 'Saturday' ? props?.route?.params?.data?.isOpen : "open"}
+                startTime={saturday? saturday?.startTime :'9:00 AM'}
+                endTime={saturday? saturday?.endTime :'5:00 PM'}
+                status={saturday?.isOpen === true ? 'open' :'closed'}
                 onPress={() => {
                     console.log("Pressed")
                     { props.navigation.navigate('EditBusinessHours', { day: 'Saturday' }) }
@@ -79,9 +86,9 @@ const BusinessHours = (props) => {
             />
             <HourComponent
                 day='Sunday'
-                startTime='9:00 AM'
-                endTime='5:00 PM'
-                status={props?.route?.params?.data?.day === 'Sunday' ? props?.route?.params?.data?.isOpen : "open"}
+                startTime={sunday? sunday?.startTime :'9:00 AM'}
+                endTime={sunday? sunday?.endTime :'5:00 PM'}
+                status={sunday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
                     { props.navigation.navigate('EditBusinessHours', { day: 'Sunday' }) }
@@ -91,7 +98,7 @@ const BusinessHours = (props) => {
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
-                    props.navigation.navigate('AccountSetup4', isOpen == true ? { startTime: startTime, endTime: endTime, day: props.route.params.day, isOpen: true } : { day: props.route.params.day, isOpen: false });
+                    props.navigation.navigate('Settings');
                 }}
             >
                 <Text style={{ color: '#fff' }}>Save</Text>
