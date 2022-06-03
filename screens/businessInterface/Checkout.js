@@ -7,7 +7,7 @@ import Service from '../../components/businessUIComponents/checkout/ServiceCard.
 import Appointment from '../../components/businessUIComponents/checkout/AppointmentCard.js'
 import { CartContext } from '../../global/CartContext.js';
 import { AppointmentContext } from '../../global/AppointmentContext.js';
-import {db, auth, storage} from '../../firebase/FirebaseConfig.js'
+import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
 
 
 export default function Checkout(props) {
@@ -20,10 +20,10 @@ export default function Checkout(props) {
 
 
     useEffect(() => {
-    
+
         console.log(serviceCart)
         console.log(auth.currentUser.uid)
-        
+
     }, []);
 
     return (
@@ -44,74 +44,74 @@ export default function Checkout(props) {
                 </Button>
             </View>
 
-            {counter>0 ? 
-            <View style={styles.items} >
-                <ScrollView>
-                {serviceCart.map((item, index) => ( <>
-                    <View style={{ flexDirection: 'row', }}>
-                        <View style={{ flex: 4 }}>
-                            <Service
-                                title={item.name}
-                                // title = "Grooming"
-                                price={item.price + " Rs"}
-                                duration={item.duration}
-                                onPress={() => {
-                                    console.log('Pressed')
-                                }}
-                            />
-                        </View>
-                        <View style={{ flex: 0.5, marginHorizontal: 5, justifyContent: 'center' }}>
-                            <TouchableOpacity onPress={() => {
-                                var temp = [...serviceCart];
-                                temp.splice(index, 1);
-                                setServiceCart(temp);
-                                setTotal(total - item.price);
-                            }}>
-                                <View>
-                                    <Icon name='delete-outline' size={30} color='orange' />
+            {counter > 0 ?
+                <View style={styles.items} >
+                    <ScrollView>
+                        {serviceCart.map((item, index) => (<>
+                            <View style={{ flexDirection: 'row', }}>
+                                <View style={{ flex: 4 }}>
+                                    <Service
+                                        title={item.name}
+                                        // title = "Grooming"
+                                        price={item.price + " Rs"}
+                                        duration={item.duration}
+                                        onPress={() => {
+                                            console.log('Pressed')
+                                        }}
+                                    />
                                 </View>
+                                <View style={{ flex: 0.5, marginHorizontal: 5, justifyContent: 'center' }}>
+                                    <TouchableOpacity onPress={() => {
+                                        var temp = [...serviceCart];
+                                        temp.splice(index, 1);
+                                        setServiceCart(temp);
+                                        setTotal(total - item.price);
+                                    }}>
+                                        <View>
+                                            <Icon name='delete-outline' size={30} color='orange' />
+                                        </View>
 
-                            </TouchableOpacity>
-                        </View>
-                    </View></>))}
+                                    </TouchableOpacity>
+                                </View>
+                            </View></>))}
 
-                {appointmentCart.map((item, index) => ( <>    
-                <View style={{ flexDirection: 'row', }}>
-                    <View style={{ flex: 4 }}>
-                        <Appointment
-                            customer="Abdullah Ali"
-                            service={item.service_name}
-                            price={item.price}
-                            duration="45 mins"
-                            onPress={() => {
-                                console.log('Pressed')
-                            }}
-                        />
-                    </View>
-                    <View style={{ flex: 0.5, marginHorizontal: 5, justifyContent: 'center' }}>
-                        <TouchableOpacity onPress={() => {
-                            var temp = [...appointmentCart];
-                            temp.splice(index, 1);
-                            setAppointmentCart(temp);
-                            setTotal(total - item.price);
-                        }}>
-                            <View>
-                                <Icon name='delete-outline' size={30} color='orange' />
+                        {appointmentCart.map((item, index) => (<>
+                            <View style={{ flexDirection: 'row', }}>
+                                <View style={{ flex: 4 }}>
+                                    <Appointment
+                                        customer="Abdullah Ali"
+                                        service={item.service_name}
+                                        price={item.price}
+                                        duration="45 mins"
+                                        onPress={() => {
+                                            console.log('Pressed')
+                                        }}
+                                    />
+                                </View>
+                                <View style={{ flex: 0.5, marginHorizontal: 5, justifyContent: 'center' }}>
+                                    <TouchableOpacity onPress={() => {
+                                        var temp = [...appointmentCart];
+                                        temp.splice(index, 1);
+                                        setAppointmentCart(temp);
+                                        setTotal(total - item.price);
+                                    }}>
+                                        <View>
+                                            <Icon name='delete-outline' size={30} color='orange' />
+                                        </View>
+
+                                    </TouchableOpacity>
+                                </View>
                             </View>
-
-                        </TouchableOpacity>
-                    </View>
+                        </>))}
+                    </ScrollView>
                 </View>
-                </>))}
-                </ScrollView>
-            </View>
-            : null}
+                : null}
 
 
             <View style={styles.inputField}>
                 <TextInput
                     label="Total"
-                    value={serviceCart.map((item,index) => (parseInt(item.price))).reduce((a, b) => a + b, 0) + (appointmentCart.map((item,index) => (parseInt(item.price))).reduce((a, b) => a + b, 0))  + " Rs"}
+                    value={serviceCart.map((item, index) => (parseInt(item.price))).reduce((a, b) => a + b, 0) + (appointmentCart.map((item, index) => (parseInt(item.price))).reduce((a, b) => a + b, 0)) + " Rs"}
                     onChangeText={x => setTotal(x)}
                     activeOutlineColor='#57B9BB'
                     activeUnderlineColor='#57B9BB'
