@@ -60,19 +60,59 @@ const signUp = ({navigation}) => {
             startTime:"",
             endTime:"",
             workingDays: {
-                monday: true,
-                tuesday: true,
-                wednesday: true,
-                thursday: true,
-                friday: true,
-                saturday: false,
-                sunday: false
+                monday: {
+                    isOpen:true,
+                    startTime:"",
+                    endTime:"",
+                    breakTimeStart:"",
+                    breakTimeEnd:""
+                },
+                tuesday: {
+                    isOpen:true,
+                    startTime:"",
+                    endTime:"",
+                    breakTimeStart:"",
+                    breakTimeEnd:""
+                },
+                wednesday: {
+                    isOpen:true,
+                    startTime:"",
+                    endTime:"",
+                    breakTimeStart:"",
+                    breakTimeEnd:""
+
+                },
+                thursday: {
+                    isOpen:true,
+                    startTime:"",
+                    endTime:"",
+                    breakTimeStart:"",
+                    breakTimeEnd:""
+
+                },
+                friday: {
+                    isOpen:true,
+                    startTime:"",
+                    endTime:"",
+                    breakTimeStart:"",
+                    breakTimeEnd:""
+                },
+                saturday: {
+                    isOpen:true,
+                    startTime:"",
+                    endTime:"",
+                    breakTimeStart:"",
+                    breakTimeEnd:""
+                },
+                sunday: {
+                    isOpen:true,
+                    startTime:"",
+                    endTime:"",
+                    breakTimeStart:"",
+                    breakTimeEnd:""
+                }
+                
             },
-            // workingHours: {
-            //     startTime: "",
-            //     endTime: "",
-            // },
-            // timeSlots:[]
         }
         const services = {
             name: '',

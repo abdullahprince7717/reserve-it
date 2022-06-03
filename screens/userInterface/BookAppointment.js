@@ -31,7 +31,7 @@ function bookAppointment(props) {
         console.log(props.route.params.data)
         setData(props.route.params.data)
         // console.log(timeSlot)
-        console.log(data.business_email)
+        console.log(data?.business_email)
 
 
     },[])

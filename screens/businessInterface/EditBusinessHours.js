@@ -16,7 +16,7 @@ const EditBusinessHours = (props) => {
 
     useEffect(() => {
         console.log(moment(startTime).format('LT'))
-        console.log(endTime)
+        console.log(moment(startTime).format('LT'))
     },[])
     
     return (
@@ -63,7 +63,7 @@ const EditBusinessHours = (props) => {
                     day = {props.route?.params?.day}
                     startTime = {moment(startTime).format('LT')}
                     endTime = {moment(endTime).format('LT')} 
-                    status = 'open'
+                    status = {isOpen == true ? 'open' : 'closed'}
                     
                 />
                 
@@ -72,7 +72,7 @@ const EditBusinessHours = (props) => {
             <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    props.navigation.goBack();
+                    props.navigation.navigate("BusinessHours",{data: {isOpen:isOpen, startTime:startTime, endTime:endTime}});
                 }}
                 >
                     <Text style = {{color: '#fff'}}>Save</Text>

@@ -64,7 +64,8 @@ const EditBusinessHours = (props) => {
                 
                 <HourComponent
                     day = {props.route?.params?.day}
-                    startTime = {moment(startTime).format('LT')}
+                    // startTime = {moment(startTime).format('LT')}
+                    startTime = {startTime}
                     endTime = {moment(endTime).format('LT')} 
                     status = {isOpen ? 'open' : 'closed'}
                 />

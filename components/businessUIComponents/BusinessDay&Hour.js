@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React,{useState,useEffect} from 'react'
+// import moment from 'moment'
 
 const BusinessDays = (props) => {
 
@@ -20,7 +21,7 @@ const BusinessDays = (props) => {
                     </Text>
 
                     <Text style = {{fontSize:16, fontWeight: 'bold'}}>
-                    { props.status == 'open' ? props.startTime - props.endTime : "CLOSED"}
+                    { props.status === 'open'  || props.status === true ? props.startTime  + " - "  + props.endTime : "CLOSED"}
                     </Text>
                 </View>
 

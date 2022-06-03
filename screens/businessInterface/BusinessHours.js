@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import{TouchableRipple,} from 'react-native-paper'
-import React from 'react'
+import React , {useState,useEffect} from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 
 const BusinessHours = (props) => {
     // let day;
+    useEffect(() => {
+        console.log(props?.route?.params?.data)
+    },[])
     return (
         <View style={styles.container}>
 
@@ -12,14 +15,14 @@ const BusinessHours = (props) => {
                 day = 'Monday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
-                status = 'open'
+                status = {props?.route?.params?.data?.isOpen}
                 onPress = {() => {
                     console.log("Pressed")
                     {props.navigation.navigate('EditBusinessHours',{day:'Monday'})}
                 }}
             />
             <HourComponent
-                day = 'Monday'
+                day = 'Tuesday'
                 startTime = '9:00 AM'
                 endTime = '5:00 PM' 
                 status = 'open'

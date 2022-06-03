@@ -51,7 +51,7 @@ const BusinessDetails = (props) => {
             business_name: businessName,
             business_address: businessAddress,
             business_email: businessEmail,
-            category: value,
+            category: category,
             business_phone: businessPhone,
             business_description: businessDescription,
             instagram: instagram,
@@ -245,10 +245,10 @@ const BusinessDetails = (props) => {
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
                     <DropDownPicker
                         open={open}
-                        value={value}
+                        value={category}
                         items={items}
                         setOpen={setOpen}
-                        setValue={setValue}
+                        setValue={setCategory}
                         setItems={setItems}
                         style={{
                             backgroundColor: "#E7E7E7",
