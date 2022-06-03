@@ -49,6 +49,7 @@ const signUp = ({navigation}) => {
         const userDoc = doc(db,"users",credentials.user.uid)   
         const appointmentsDoc = doc(db,"appointments",credentials.user.uid);
         const reviewsDoc = doc(db,"reviews",credentials.user.uid);
+        const complaintsDoc = doc(db,"complaints",credentials.user.uid);
         
         console.log("A U T H ID :" + credentials.user.uid)
         // persistLogin(userCredentials);
@@ -60,6 +61,7 @@ const signUp = ({navigation}) => {
           phone: phone,
           email: email,
           address: "",
+          is_blocked: false,
         }
 
         const appointments = {
@@ -80,8 +82,16 @@ const signUp = ({navigation}) => {
         review: '',
         rating: '',
         business_email: '',
-        client_email: credentials.user.email,
+        client_email: email,
         appointment_id: '',
+      }
+
+      const complaints = {
+        complaint: '',
+        business_email: '',
+        client_email: email,
+        appointment_id: '',
+        created_at: '',
       }
 
       setDoc(userDoc, userData)
@@ -107,6 +117,18 @@ const signUp = ({navigation}) => {
         .catch((error) => {
             alert(error.message)
         })
+
+        setDoc(complaintsDoc, complaints)
+        .then(() =>{
+            console.log("complaints created Successfully")
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
+
+
+
+    
 
 
 
