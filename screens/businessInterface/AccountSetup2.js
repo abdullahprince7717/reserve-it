@@ -56,7 +56,7 @@ const BusinessDetails = (props) => {
             business_description: businessDescription,
             instagram: instagram,
             facebook: facebook,
-            image: image
+            image: ""
         }
         console.log(auth.currentUser.uid)
 
@@ -80,12 +80,13 @@ const BusinessDetails = (props) => {
             allowsEditing: true,
             aspect: [5, 10],
             quality: 1,
+            base64: true,
         });
 
 
 
         console.log("result: " + result);
-        console.log("result.uri: " + result.uri);
+        console.log("result.uri: " + result.uri );
 
         if (!result.cancelled) {
             setImage(result.uri);
@@ -131,7 +132,7 @@ const BusinessDetails = (props) => {
 
             if (!image) return;
             const storageRef = ref(storage, `products/${filename}`);
-            const uploadTask = uploadBytesResumable(storageRef, image);
+            const uploadTask = uploadBytesResumable(storageRef, uri);
 
             console.log(filename)
             console.log(`products/${filename}`)

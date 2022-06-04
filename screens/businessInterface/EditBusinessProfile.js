@@ -78,6 +78,7 @@ const EditProfile = (props) => {
                 <TextInput
                     placeholder="Full Name"
                     value= {name}
+                    onChangeText={(value) =>setName(value)} 
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -86,6 +87,8 @@ const EditProfile = (props) => {
                 <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Email"
+                    value= {email}
+                    onChangeText={(value) =>setEmail(value)}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -94,6 +97,8 @@ const EditProfile = (props) => {
                 <Feather color="#57B9BB" name="phone" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Phone Number"
+                    value= {phone}
+                    onChangeText={(value) =>setPhone(value)}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -107,6 +112,8 @@ const EditProfile = (props) => {
                 <Ionicons color="#57B9BB" name="business" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Business Name"
+                    value= {businessName}
+                    onChangeText={(value) =>setBusinessName(value)}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -115,6 +122,8 @@ const EditProfile = (props) => {
                 <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Business Email"
+                    value= {businessEmail}
+                    onChangeText={(value) =>setBusinessEmail(value)}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -123,6 +132,8 @@ const EditProfile = (props) => {
                 <MaterialCommunityIcons color="#57B9BB" name="map-marker-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Business Address"
+                    value= {businessAddress}
+                    onChangeText={(value) =>setBusinessAddress(value)}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -131,6 +142,8 @@ const EditProfile = (props) => {
                 <Feather color="#57B9BB" name="phone" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Business Description "
+                    value= {businessDescription}
+                    onChangeText={(value) =>setBusinessDescription(value)}
                     placeholderTextColor= {"grey"}
                     multiline={true}
                     underlineColorAndroid='transparent'
@@ -148,6 +161,8 @@ const EditProfile = (props) => {
                 <Feather color="red" name="instagram" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Instagram"
+                    value= {instagram}
+                    onChangeText={(value) =>setInstagram(value)}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -156,6 +171,8 @@ const EditProfile = (props) => {
                 <Feather color="blue" name="facebook" size={23} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Facebook"
+                    value= {facebook}
+                    onChangeText={(value) =>setFacebook(value)}
                     placeholderTextColor= {"grey"}
                     style={styles.textInput}
                 />
@@ -167,6 +184,7 @@ const EditProfile = (props) => {
                     style = {styles.button}
                     onPress = {() =>{
                         console.log("Pressed SAVE")
+                        Update();
                         // navigation.navigate('')
                     }}
                 >

@@ -14,9 +14,7 @@ const EditBusinessHours = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
-    const [monday,setMonday,tuesday,setTuesday,wednesday,setWednesday,
-        thursday,setThursday,friday,setFriday,
-        saturday,setSaturday,sunday,setSunday] = useContext(BusinessHoursContext);
+    const [monday,setMonday,tuesday,setTuesday,wednesday,setWednesday,thursday,setThursday,friday,setFriday,saturday,setSaturday,sunday,setSunday] = useContext(BusinessHoursContext);
     
     
 
@@ -24,40 +22,45 @@ const EditBusinessHours = (props) => {
         // console.log(moment(startTime).format('LT'))
         // console.log(moment(startTime).format('LT'))
         console.log(props?.route?.params?.day)
-        // console.log(monday)
-        // console.log(tuesday)
-        // console.log(wednesday)
+        console.log(monday)
+        console.log(tuesday)
+        console.log(wednesday)
+        console.log(thursday)
+        console.log(friday)
+        console.log(saturday)
+        console.log(sunday)
+
     },[])
 
     const handlePress = (value) => {
         // const temp = monday?[...monday]:[]       
         // temp.push(value);
 
-        // if(props?.route?.params?.day === 'Monday'){
-        //     setMonday(value)
-        // }
-        // else if(props?.route?.params?.day === 'Tuesday'){
-        //     setTuesday(value)
-        // }
-        // else if(props?.route?.params?.day === 'Wednesday'){
-        //     setWednesday(value)
-        // }
-        // else if(props?.route?.params?.day === 'Thursday'){
-        //     setThursday(value)
-        // }
-        // else if(props?.route?.params?.day === 'Friday'){
-        //     setFriday(value)
-        // }
-        // else if(props?.route?.params?.day === 'Saturday'){
-        //     setSaturday(value)
-        // }
-        // else if(props?.route?.params?.day === 'Sunday'){
-        //     setSunday(value)
-        // }
+        if(props?.route?.params?.day === 'Monday'){
+            setMonday(value)
+        }
+        else if(props?.route?.params?.day === 'Tuesday'){
+            setTuesday(value)
+        }
+        else if(props?.route?.params?.day === 'Wednesday'){
+            setWednesday(value)
+        }
+        else if(props?.route?.params?.day === 'Thursday'){
+            setThursday(value)
+        }
+        else if(props?.route?.params?.day === 'Friday'){
+            setFriday(value)
+        }
+        else if(props?.route?.params?.day === 'Saturday'){
+            setSaturday(value)
+        }
+        else if(props?.route?.params?.day === 'Sunday'){
+            setSunday(value)
+        }
 
-        setThursday(value)
+        // setThursday(value)
 
-        // props.navigation.navigate('BusinessHours');
+        props.navigation.navigate('BusinessHours');
         // console.log(value)
     }
 
