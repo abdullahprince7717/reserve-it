@@ -6,17 +6,7 @@ import { FontAwesome, EvilIcons } from "@expo/vector-icons/"
 import { db, auth } from '../../firebase/FirebaseConfig.js'
 import { doc, getDoc } from 'firebase/firestore';
 import React, { useState, useEffect, useContext } from 'react';
-import {
-    BallIndicator,
-    BarIndicator,
-    DotIndicator,
-    MaterialIndicator,
-    PacmanIndicator,
-    PulseIndicator,
-    SkypeIndicator,
-    UIActivityIndicator,
-    WaveIndicator,
-} from 'react-native-indicators';
+import {bbMaterialIndicator,} from 'react-native-indicators';
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { CredentialsContext } from '../../components/CredentialsContext.js';

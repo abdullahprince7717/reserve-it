@@ -7,6 +7,7 @@ import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
 import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
+import {authentication} from '../../firebase/FirebaseConfig2.js';
 
 
 
@@ -24,7 +25,8 @@ const BusinessDetails = (props) => {
     ]);
 
     useEffect(() => {
-        // console.log(auth.currentUser.uid);
+        console.log(auth.currentUser.uid);
+        console.log(authentication.currentUser.uid);
         console.log(image ? image : "no image");
     }, [])
 
@@ -56,7 +58,8 @@ const BusinessDetails = (props) => {
             business_description: businessDescription,
             instagram: instagram,
             facebook: facebook,
-            image: ""
+            image: "https://source.unsplash.com/user/c_v_r/1900x800"
+            
         }
         console.log(auth.currentUser.uid)
 
@@ -77,15 +80,16 @@ const BusinessDetails = (props) => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [5, 10],
-            quality: 1,
+            // allowsEditing: true,
+            // aspect: [5, 10],
+            // quality: 1,
             base64: true,
         });
 
 
 
         console.log("result: " + result);
+        console.log(JSON.stringify(result));
         console.log("result.uri: " + result.uri );
 
         if (!result.cancelled) {

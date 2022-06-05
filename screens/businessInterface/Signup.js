@@ -5,7 +5,7 @@ import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword,SignInWithRedirect,FacebookAuthProvider } from "firebase/auth";
 import {MaterialIndicator} from 'react-native-indicators';
-import {authentication} from '../../firebase/FirebaseConfig2.js';
+// import {authentication} from '../../firebase/FirebaseConfig2.js';
 
 
 
@@ -144,7 +144,7 @@ const signUp = ({navigation}) => {
 
     const signUp = () => {
 
-        createUserWithEmailAndPassword(auth, email.trim(), password)
+        createUserWithEmailAndPassword(authentication, email.trim(), password)
         .then((credentials) => {
 
             console.log(credentials);
