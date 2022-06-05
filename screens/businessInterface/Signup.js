@@ -24,18 +24,18 @@ const signUp = ({navigation}) => {
     },[])
 
 
-    const signUpWithFacebook = () => {
+    // const signUpWithFacebook = () => {
 
-        const provider = new FacebookAuthProvider();
+    //     const provider = new FacebookAuthProvider();
 
-        SignInWithRedirect(authentication,provider)
-            .then((result) => {
-                console.log(result)
-            })
-            .catch((error) => {
-                console.log(error.message)
-            })
-    }
+    //     SignInWithRedirect(auth,provider)
+    //         .then((result) => {
+    //             console.log(result)
+    //         })
+    //         .catch((error) => {
+    //             console.log(error.message)
+    //         })
+    // }
 
     const storeData = (userDoc,servicesDoc,email) => {
         // const userDoc = doc(db,"business_users",credentials.user.uid);
@@ -144,7 +144,7 @@ const signUp = ({navigation}) => {
 
     const signUp = () => {
 
-        createUserWithEmailAndPassword(authentication, email.trim(), password)
+        createUserWithEmailAndPassword(auth, email.trim(), password)
         .then((credentials) => {
 
             console.log(credentials);

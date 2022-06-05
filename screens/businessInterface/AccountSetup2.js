@@ -7,7 +7,7 @@ import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
 import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
-import {authentication} from '../../firebase/FirebaseConfig2.js';
+
 
 
 
@@ -26,7 +26,7 @@ const BusinessDetails = (props) => {
 
     useEffect(() => {
         console.log(auth.currentUser.uid);
-        console.log(authentication.currentUser.uid);
+
         console.log(image ? image : "no image");
     }, [])
 

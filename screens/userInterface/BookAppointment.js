@@ -10,13 +10,14 @@ import {
     addDoc,
     setDoc
 } from "firebase/firestore";
-// import TimeSlotContext from '../../global/TimeSlotContext.js'
+import TimeSlotContext from '../../global/TimeSlotContext.js'
 
 
 function bookAppointment(props) {
 
     let now = new Date();
     var currentDate = moment(now).format('YYYY-MM-DD');
+    const [timeSlot, setTimeSlot] = useContext(TimeSlotContext);
 
     const [selectedDate,setSelectedDate] = useState(currentDate)
     const [value, setValue] = useState("");

@@ -65,6 +65,7 @@ const AddService = (props) => {
                     onChangeText={(text) => setDuration(text)}
                     placeholder="Duration"
                     placeholderTextColor= {"grey"}
+                    keyboardType = 'numeric'
                     style={styles.textInput}
                 />
             </View>
@@ -74,6 +75,7 @@ const AddService = (props) => {
                     onChangeText={(text) => setPrice(text)}
                     placeholder="Price"
                     placeholderTextColor= {"grey"}
+                    keyboardType = 'numeric'
                     style={styles.textInput}
                 />
             </View>

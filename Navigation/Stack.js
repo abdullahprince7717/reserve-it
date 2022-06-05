@@ -12,6 +12,7 @@ import Login from '../screens/userInterface/Login.js';
 import Signup from '../screens/userInterface/Signup.js';
 import Settings from '../screens/userInterface/Settings.js';
 import MapScreen from '../screens/userInterface/MapScreen.js';
+import MapsTestScreen from '../screens/userInterface/MapsTestScreen.js';
 import TabNavigation from '../components/MaterialBottomNav.js';
 import BusinessProfile from '../screens/userInterface/BusinessProfile.js';
 import BookingConfirm from '../screens/userInterface/BookingConfirm.js';
@@ -77,6 +78,10 @@ function MyStack() {
             <Stack.Screen
                 name="Map"
                 component={MapScreen}
+            />
+            <Stack.Screen
+                name="MapsTest"
+                component={MapsTestScreen}
             />
             <Stack.Screen
                 name="BusinessProfile"

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState,useEffect,useContext} from 'react';
 import { View, StyleSheet, Text, Dimensions,TouchableOpacity,ScrollView, } from 'react-native';
 import { slotCreator } from "react-native-slot-creator";
-// import { TimeSlotContext } from '../../global/TimeSlotContext.js';
+import { TimeSlotContext } from '../../global/TimeSlotContext.js';
 
 
 function TimeSlot(props){
@@ -17,7 +17,7 @@ function TimeSlot(props){
 
     const [selectedSlot,setSelectedSlot] = useState([])
     const [indexCheck,setIndexCheck] = useState("0")
-    // const [timeSlot,setTimeSlot] = useContext(TimeSlotContext)
+    const [timeSlot,setTimeSlot] = useContext(TimeSlotContext)
 
     useEffect(() => {
         console.log("Selected Slot is ",selectedSlot)

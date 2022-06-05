@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import ToggleSwitch from 'toggle-switch-react-native'
 import {BackdropContext, TimePicker} from 'react-native-propel-kit';
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 import moment from 'moment';
+import {BusinessHoursContext} from '../../global/BusinessHoursContext.js'
 
 // import { DateTimePicker } from '@react-native-community/datetimepicker';
 
@@ -13,20 +14,63 @@ const EditBusinessHours = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
+    const [monday,setMonday,tuesday,setTuesday,wednesday,setWednesday,thursday,setThursday,friday,setFriday,saturday,setSaturday,sunday,setSunday] = useContext(BusinessHoursContext);
+    
+    
 
     useEffect(() => {
-        console.log(moment(startTime).format('LT'))
-        console.log(moment(endTime).format('LT'))
-        console.log(isOpen)
-        
+        // console.log(moment(startTime).format('LT'))
+        // console.log(moment(startTime).format('LT'))
+        console.log(props?.route?.params?.day)
+        console.log(monday)
+        console.log(tuesday)
+        console.log(wednesday)
+        console.log(thursday)
+        console.log(friday)
+        console.log(saturday)
+        console.log(sunday)
+
     },[])
+
+    const handlePress = (value) => {
+        // const temp = monday?[...monday]:[]       
+        // temp.push(value);
+
+        if(props?.route?.params?.day === 'Monday'){
+            setMonday(value)
+        }
+        else if(props?.route?.params?.day === 'Tuesday'){
+            setTuesday(value)
+        }
+        else if(props?.route?.params?.day === 'Wednesday'){
+            setWednesday(value)
+        }
+        else if(props?.route?.params?.day === 'Thursday'){
+            setThursday(value)
+        }
+        else if(props?.route?.params?.day === 'Friday'){
+            setFriday(value)
+        }
+        else if(props?.route?.params?.day === 'Saturday'){
+            setSaturday(value)
+        }
+        else if(props?.route?.params?.day === 'Sunday'){
+            setSunday(value)
+        }
+
+        // setThursday(value)
+
+        props.navigation.goBack();
+        // console.log(value)
+    }
+
     
     return (
         <View style = {styles.container}>
             <View style = {{margin:20, marginVertical:30,flexDirection:'row', justifyContent: 'space-between'}}>
                 
                 <Text style = {{fontSize:22,fontWeight:'bold'}}>
-                    Are You Open On {props.route?.params?.day}?
+                    Are You Open on {props?.route?.params?.day}?
                 </Text>
                 
                 <ToggleSwitch
@@ -35,9 +79,8 @@ const EditBusinessHours = (props) => {
                     offColor="grey"
                     size="medium"
                     onToggle={()=> {
-                        isOpen ? console.log("On") : console.log("Off")
                         setIsOpen(!isOpen)
-                        
+                        isOpen ? console.log("On") : console.log("Off")
                     }}
                 />
             </View>
@@ -64,10 +107,10 @@ const EditBusinessHours = (props) => {
                 
                 <HourComponent
                     day = {props.route?.params?.day}
-                    // startTime = {moment(startTime).format('LT')}
-                    startTime = {startTime}
+                    startTime = {moment(startTime).format('LT')}
                     endTime = {moment(endTime).format('LT')} 
-                    status = {isOpen ? 'open' : 'closed'}
+                    status = {isOpen == true ? 'open' : 'closed'}
+                    
                 />
                 
             </View>
@@ -75,10 +118,13 @@ const EditBusinessHours = (props) => {
             <TouchableOpacity 
                 style = {styles.button}
                 onPress = {() =>{
-                    props.navigation.navigate('AccountSetup4',isOpen == true ? {startTime: startTime ,endTime:endTime,day:props.route.params.day,isOpen: true}: {day:props.route.params.day, isOpen: false});
+                    // setDays(days => [...days, {isOpen:isOpen, startTime:moment(startTime).format('LT'), endTime:moment(endTime).format('LT'), day:props.route?.params?.day}])
+                    // props.navigation.navigate("BusinessHours",{data: {day:props?.route?.params?.day ,isOpen:isOpen, startTime:startTime, endTime:endTime}});
+                    // props.navigation.navigate("BusinessHours")
+                    handlePress({isOpen: isOpen, startTime:moment(startTime).format('LT'), endTime:moment(endTime).format('LT'), day:props?.route?.params?.day})
                 }}
                 >
-                    <Text style = {{color: '#fff'}}>Save</Text>
+                    <Text style = {{color: '#fff'}}>Next</Text>
             </TouchableOpacity>
 
         </View>

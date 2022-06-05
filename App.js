@@ -8,29 +8,28 @@ import AdminStack from './Navigation/AdminUIStack.js';
 import ContextProvider from './global/CartContext.js';
 import AppointmentContext from './global/AppointmentContext.js';
 import BusinessHoursContext from './global/BusinessHoursContext.js';
-// import TimeSlotContext from './global/TimeSlotContext.js';
+import TimeSlotContext from './global/TimeSlotContext.js';
 
 
 export default function App() {
 
   return (
-    // <TimeSlotContext>
-    <BusinessHoursContext>
-      <AppointmentContext>
-        <ContextProvider>
-          <NavigationContainer>
-            <StackNavigator />
-            {/* <BusinessStack/> */}
-            {/* <AdminStack/> */}
-          </NavigationContainer>
-        </ContextProvider>
-      </AppointmentContext>
-    </BusinessHoursContext>
-    // </TimeSlotContext>
+    <TimeSlotContext>
+      <BusinessHoursContext>
+        <AppointmentContext>
+          <ContextProvider>
+            <NavigationContainer>
+              <StackNavigator />
+              {/* <BusinessStack/> */}
+              {/* <AdminStack/> */}
+            </NavigationContainer>
+          </ContextProvider>
+        </AppointmentContext>
+      </BusinessHoursContext>
+    </TimeSlotContext>
   );
 }
 
-// registerRootComponent(App);
 
 
 const styles = StyleSheet.create({

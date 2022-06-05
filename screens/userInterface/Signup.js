@@ -3,6 +3,7 @@ import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, S
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword,signInWithRedirect,FacebookAuthProvider ,GoogleAuthProvider} from "firebase/auth";
+import { getNotificationInbox } from 'native-notify';
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { CredentialsContext } from '../../components/CredentialsContext.js';
@@ -12,16 +13,26 @@ import {createUserWithEmailAndPassword,signInWithRedirect,FacebookAuthProvider ,
 
 const signUp = ({navigation}) => {
 
+  // registerNNPushToken(2874, '8RGIzG08cvN06b2755Iopz');
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
+  const [data,setData] = useState([]);
   // const [confirmPassword, setConfirmPassword] = useState('');
+
+  useEffect(async() => {
+    let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
+    console.log("notifications: ", notifications);
+    setData(notifications);
+  },[]);
 
   
   const storeData = (userDoc,appointmentsDoc,reviewsDoc,complaintsDoc,) => {
 
   }
+  
 
   const signUpWithFacebook = () => {
 
@@ -127,16 +138,12 @@ const signUp = ({navigation}) => {
         })
 
 
-
-    
-
-
-
       })
     .catch((error) => {
         console.log("Error Message :" + error.message);
 
         console.log("Error Message :" + error.code);
+        alert(error.message)
     })
     
   }
@@ -230,8 +237,7 @@ const signUp = ({navigation}) => {
             </TouchableOpacity>
             </Text>
 
-    
-
+  
           </ScrollView>
 
       </View>

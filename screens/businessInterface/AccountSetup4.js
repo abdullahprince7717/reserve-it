@@ -3,6 +3,9 @@ import { TouchableRipple, } from 'react-native-paper'
 import React, { useState, useEffect, useContext } from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 import { BusinessHoursContext } from '../../global/BusinessHoursContext.js';
+import {doc,setDoc} from 'firebase/firestore';
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
+
 
 const BusinessHours = (props) => {
 
@@ -27,7 +30,7 @@ const BusinessHours = (props) => {
 
     const addWorkingDays = async () => {
 
-        const workingDaysInfo = [
+        const workingDaysInfo = {
             monday,
             tuesday,
             wednesday,
@@ -35,13 +38,14 @@ const BusinessHours = (props) => {
             friday,
             saturday,
             sunday,
-        ]
+        }
         console.log(auth.currentUser.uid)
 
         await setDoc(businessDoc, workingDaysInfo, { merge: true })
             .then(
                 (res) => {
                     console.log("response" + res)
+                    props.navigation.navigate('AccountSetup5');
                 })
             .catch(
                 (err) => {
@@ -58,7 +62,7 @@ const BusinessHours = (props) => {
                 status={monday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    { props.navigation.navigate('EditBusinessHours', { day: 'Monday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Monday' }) }
                 }}
             />
             <HourComponent
@@ -68,7 +72,7 @@ const BusinessHours = (props) => {
                 status={tuesday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    { props.navigation.navigate('EditBusinessHours', { day: 'Tuesday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Tuesday' }) }
                 }}
             />
             <HourComponent
@@ -78,7 +82,7 @@ const BusinessHours = (props) => {
                 status={wednesday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    { props.navigation.navigate('EditBusinessHours', { day: 'Wednesday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Wednesday' }) }
                 }}
             />
             <HourComponent
@@ -88,7 +92,7 @@ const BusinessHours = (props) => {
                 status={thursday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    { props.navigation.navigate('EditBusinessHours', { day: 'Thursday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Thursday' }) }
                 }}
             />
             <HourComponent
@@ -98,7 +102,7 @@ const BusinessHours = (props) => {
                 status={friday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    { props.navigation.navigate('EditBusinessHours', { day: 'Friday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Friday' }) }
                 }}
             />
             <HourComponent
@@ -108,7 +112,7 @@ const BusinessHours = (props) => {
                 status={saturday?.isOpen === true ? 'open' :'closed'}
                 onPress={() => {
                     console.log("Pressed")
-                    { props.navigation.navigate('EditBusinessHours', { day: 'Saturday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Saturday' }) }
                 }}
             />
             <HourComponent
@@ -118,14 +122,15 @@ const BusinessHours = (props) => {
                 status={sunday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    { props.navigation.navigate('EditBusinessHours', { day: 'Sunday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Sunday' }) }
                 }}
             />
 
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
-                    props.navigation.goBack();
+                    addWorkingDays()
+                    
                 }}
             >
                 <Text style={{ color: '#fff' }}>NEXT</Text>

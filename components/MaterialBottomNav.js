@@ -16,9 +16,9 @@ function TabNavigation(props) {
         <Tab.Navigator
             initialRouteName="Home"
             activeColor='#57B9BB'
-            inactiveColor="#000"
+            inactiveColor="#fff"
             barStyle={{ 
-                backgroundColor: '#fff',
+                backgroundColor: '#000',
                 position: 'absolute',
                 // bottom: 10,
                 // left: 10,

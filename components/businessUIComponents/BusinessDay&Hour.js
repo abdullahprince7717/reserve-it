@@ -37,16 +37,19 @@ const styles = StyleSheet.create({
     container:{
         flexDirection: 'column',
         width: '100%',
-        marginTop: 10
+        marginTop: 10,
+        borderColor: "#57B9BB",
+        borderWidth: 1,
     },
     component:{
         height: 60, 
-        width: '100%',
+        width: '98%',
         backgroundColor:'#fff',
         flexDirection:'row', 
         justifyContent: 'space-between', 
         margin: 5, 
-        padding: 18
+        paddingVertical: 18,
+        paddingHorizontal: 10,
     },
 
 })

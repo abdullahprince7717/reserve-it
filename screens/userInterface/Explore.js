@@ -326,7 +326,12 @@ function explore(props) {
     const collectionRef = collection(db, "business_users")
 
     const getQueryResult = async () => {
-        const q = query(collectionRef, where("category", "==", searchQuery));
+        let q
+        checked == 'first' ?  
+            q = query(collectionRef, where("name", "==", searchQuery))
+        :
+            q = query(collectionRef, where("category", "==", searchQuery))
+        
         await getDocs(q)
             .then((res) => {
 
@@ -344,16 +349,17 @@ function explore(props) {
             });
     };
 
-    // useEffect(() => {
-    //     props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : getQueryResult();
-    //     getQueryResult();
-    //     console.log(auth.currentUser.email)
-    //     console.log(searchQuery)
+    useEffect(() => {
+        // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
+        getQueryResult();
+        console.log(auth.currentUser.email)
+        console.log(searchQuery)
 
 
-    // }, [searchQuery]);
+    }, [searchQuery]);
 
     return (
+        
         <View style={styles.container}>
             <View style={styles.searchView}>
                 <View style={styles.searchBar}>
@@ -378,7 +384,7 @@ function explore(props) {
                 <View style={{ marginLeft: 10, }}>
                     <Text style={{ color: '#fff', fontSize: 18 }}>Search By:</Text>
                 </View>
-                <View style={{ flexDirection: 'row', width: '90%', backgroundColor: '#000', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+                <View style={{ flexDirection: 'row', width: '100%', backgroundColor: '#000', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
                     <View style={{ flexDirection: "row" }}>
                         <RadioButton
                             value="first"
@@ -435,7 +441,7 @@ function explore(props) {
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        props.navigation.navigate('Map')
+                        props.navigation.navigate('MapsTest')
                     }}
                     color='#fff'
                 />
@@ -462,7 +468,7 @@ const styles = StyleSheet.create({
         paddingBottom: 70,
     },
     searchView: {
-        flex: 0.95,
+        flex: 1.1,
         width: deviceWidth,
         alignItems: 'flex-start',
         paddingBottom: 10,

@@ -4,6 +4,7 @@ import Card from '../../components/businessUIComponents/ServiceCard.js'
 import { FAB } from 'react-native-paper';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { collection, getDocs,doc, setDoc,query,where } from "firebase/firestore";
+import {MaterialIcons} from '@expo/vector-icons'
 
 const AccountSetup5 = (props) => {
 
@@ -45,7 +46,9 @@ const AccountSetup5 = (props) => {
         
         {services.length == 0 ?  
         <View style = {{justifyContent: 'center',alignItems: 'center'}}>
-            <Text style = {{fontSize:24, fontWeight:'bold'}}> Please Add at least 1 service</Text>
+            <MaterialIcons name = "post-add" size = {100} color = '#00a680'/>
+            <Text style = {{color:"grey",fontSize:24, fontWeight:'bold'}}> Please Add at least 1 service</Text>
+
             </View> 
         : 
         services.map((item,index) => (
