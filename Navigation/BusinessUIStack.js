@@ -124,22 +124,29 @@ function MyStack() {
                 name="AccountSetup1"
                 component={AccountSetup1}
                 options={{headerShown: true,
-                    title: 'Account Setup',}}
+                    title: 'Business Account Setup',
+                }}
             />
             <Stack.Screen
                 name="AccountSetup2"
                 component={AccountSetup2}
-                options={{headerShown: true}}
+                options={{headerShown: true,
+                    title: 'Business Details',
+                }}
             />
             <Stack.Screen
                 name="AccountSetup3"
                 component={AccountSetup3}
-                options={{headerShown: true}}
+                options={{headerShown: true,
+                    title: 'Your Business Location',
+                }}
             />
             <Stack.Screen
                 name="AccountSetup4"
                 component={AccountSetup4}
-                options={{headerShown: true}}
+                options={{headerShown: true,
+                    title: 'Your Business Hours',
+                }}
             />
             <Stack.Screen
                 name="AccountSetup4b"
@@ -149,7 +156,9 @@ function MyStack() {
             <Stack.Screen
                 name="AccountSetup5"
                 component={AccountSetup5}
-                options={{headerShown: true}}
+                options={{headerShown: true,
+                    title: 'Your Business Services',
+                }}
             />
             <Stack.Screen
                 name="AccountSetup6"
