@@ -1,11 +1,14 @@
 import { View, Text,StyleSheet,Dimensions,TouchableWithoutFeedback } from 'react-native';
 import {Divider,Button} from 'react-native-paper';
 import React,{useState,useEffect} from 'react';
+import moment from 'moment';
 
 const AppointmentCard = (props) => {
 
     useEffect(() => {
-        console.log(props.time)
+        console.log(moment(props.date).format('ll'))
+        // console.log(moment(props.time).format('LTS'))
+        // console.log(props.time)
     },[])
 
     return (
@@ -18,7 +21,7 @@ const AppointmentCard = (props) => {
                 <View style = {styles.leftColumn}>
                     <View style={{ height: '65%', width :'85%',backgroundColor:'white',flexDirection:'column',}}>
                         <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
-                            {props.title}
+                           Service: {props.title}
                         </Text>
                         <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :20}}>
                             {props.businessName}
@@ -37,7 +40,7 @@ const AppointmentCard = (props) => {
                     }}>
 
                         <Text style={{color:'black', fontSize:19, fontWeight:'bold',}}>
-                            {props.date}
+                            {moment(props.date).format('ll')}
                         </Text>
                         <Text style={{color:'black', fontSize:17, fontWeight:'200',margin:10}}>
                             {props.time}
