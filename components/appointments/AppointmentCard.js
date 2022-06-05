@@ -1,8 +1,13 @@
 import { View, Text,StyleSheet,Dimensions,TouchableWithoutFeedback } from 'react-native';
 import {Divider,Button} from 'react-native-paper';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 
 const AppointmentCard = (props) => {
+
+    useEffect(() => {
+        console.log(props.time)
+    },[])
+
     return (
 
     <TouchableWithoutFeedback
@@ -50,9 +55,8 @@ const AppointmentCard = (props) => {
                     <Button mode="outlined" 
                         style = {{marginRight:25,marginLeft:25,borderColor: 'green',borderWidth:1}}
                         color = 'green' 
-                        onPress={() => {
-                            console.log('Pressed')
-                        }}>
+                        onPress={props.onEditPress}
+                        >
                             
                         {props.buttonText1}
                     </Button>

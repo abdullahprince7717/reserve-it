@@ -21,7 +21,9 @@ function TimeSlot(props){
 
     useEffect(() => {
         console.log("Selected Slot is ",selectedSlot)
-        console.log(requiredArray)
+        // console.log(requiredArray)
+        setTimeSlot(selectedSlot)
+        // console.log(timeSlot)
     },[selectedSlot]);
 
     const list = () => {

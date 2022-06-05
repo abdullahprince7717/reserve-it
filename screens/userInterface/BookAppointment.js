@@ -1,16 +1,17 @@
-import React, { useState,useEffect ,useContext} from 'react'
-import { View,StyleSheet,StatusBar,Dimensions,Text,TouchableOpacity,Button, } from "react-native";
-import { Calendar} from 'react-native-calendars';
-import TimeSlot from  '../../components/appointments/TimeSlotCreator.js';
+import React, { useState, useEffect, useContext } from 'react'
+import { View, StyleSheet, StatusBar, Dimensions, Text, TouchableOpacity, Button, } from "react-native";
+import { Calendar } from 'react-native-calendars';
+import TimeSlot from '../../components/appointments/TimeSlotCreator.js';
 import moment from 'moment';
-import {db,auth} from  '../../firebase/FirebaseConfig.js'
+import { db, auth } from '../../firebase/FirebaseConfig.js'
 import { onAuthStateChanged } from "firebase/auth";
 import {
     collection,
     addDoc,
-    setDoc
+    setDoc,
+    doc
 } from "firebase/firestore";
-import TimeSlotContext from '../../global/TimeSlotContext.js'
+import { TimeSlotContext } from '../../global/TimeSlotContext.js'
 
 
 function bookAppointment(props) {
@@ -19,60 +20,81 @@ function bookAppointment(props) {
     var currentDate = moment(now).format('YYYY-MM-DD');
     const [timeSlot, setTimeSlot] = useContext(TimeSlotContext);
 
-    const [selectedDate,setSelectedDate] = useState(currentDate)
+    const [selectedDate, setSelectedDate] = useState(currentDate)
     const [value, setValue] = useState("");
     const [service, setService] = useState([])
-    const [data,setData] = useState([])
-    // const [timeSlot,setTimeSlot] = useContext(TimeSlotContext)
+    const [data, setData] = useState([])
 
     useEffect(() => {
-        console.log(props.route.params.service)
-        setService(props.route.params.service)
+        // console.log(props?.route?.params?.service)
 
-        console.log(props.route.params.data)
-        setData(props.route.params.data)
-        // console.log(timeSlot)
-        console.log(data?.business_email)
+        // setService(props?.route?.params?.service)
+
+        // console.log(props?.route?.params?.data)
+        // setData(props?.route?.params?.data)
+        console.log(JSON.stringify(timeSlot))
+        // console.log(data?.business_email)
+
+        props?.route?.params?.service ? setService(props?.route?.params?.service) : setService(props?.route?.params?.appointment)
+        // props?.route?.params?.appointment ? setService(props?.route?.params?.appointment) : null 
+
+        // console.log(props?.route?.params?.appointment.service_name)
+        console.log(service)
 
 
-    },[])
+
+
+    }, [])
 
     const appointmentCollection = collection(db, "appointments");
+    const appointmentDoc = doc(db, "appointments", service?.id ? service?.id : "test");
 
     const addAppointment = () => {
 
         const appointment = {
-            service_name: service.name,
-            service_duration: service.duration,
-            service_price: service.price,
-            business_email: data.business_email,
+            service_name: service?.name ? service?.name : service?.service_name,
+            service_duration: service?.duration ? service?.duration : service?.service_duration,
+            service_price: service?.price ? service?.price : service?.service_price,
+            business_email: service?.business_email ? service?.business_email : service?.business_email,
             customer_email: auth.currentUser.email,
-            business_name: data.business_name,
-            business_address: data.business_address,
+            business_name: service?.business_name ? service?.business_name : service?.business_name ? service?.business_name : "test",
+            business_address: service?.business_address ? service?.business_address : service?.business_address ? service?.business_address : "test",
             date: selectedDate,
-            time: "10:40 A.M",
-            status: {"is_pending":true},
+            time: timeSlot,
+            status: { "is_pending": true },
         }
 
-        addDoc(appointmentCollection, appointment)
-        .then((res)=>{
-            console.log(res)
-        })
-        .catch((err)=>{
-            console.log(err)
-        });
+        props?.route?.params?.service ?
+
+            addDoc(appointmentCollection, appointment)
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+
+            :
+
+            setDoc(appointmentDoc, appointment)
+                .then((res) => {
+                    console.log(res)
+                }
+                ).catch((err) => {
+                    console.log(err)
+                })
     };
 
 
     return (
-        <View style = {styles.container}>
+        <View style={styles.container}>
 
             <Calendar
                 style={styles.calendar}
-                onDayPress={(day) =>  {
+                onDayPress={(day) => {
                     setSelectedDate(day.dateString)
-                    console.log("Selected Date",day.dateString)
-                    console.log("current Date",currentDate)
+                    console.log("Selected Date", day.dateString)
+                    console.log("current Date", currentDate)
                 }}
                 markedDates={{
                     [selectedDate]: {
@@ -103,39 +125,39 @@ function bookAppointment(props) {
 
 
             <TimeSlot
-                startTime = "10:00"
-                endTime = "19:00"
-                slotDuration = "40"
-                breakStartTime = ""
-                breakEndTime = ""
-                is12HoursFormat = {true}
+                startTime="10:00"
+                endTime="19:00"
+                slotDuration="40"
+                breakStartTime=""
+                breakEndTime=""
+                is12HoursFormat={true}
             />
 
-            <View style= {{borderWidth:0.2,width:deviceWidth,marginTop:10,marginBottom:10}}/>
+            <View style={{ borderWidth: 0.2, width: deviceWidth, marginTop: 10, marginBottom: 10 }} />
 
-            <View style = {styles.servicesList}>
-                <Text style = {{fontSize: 20, marginTop: 0,fontWeight:'bold', marginLeft:20,}}> 
-                    {service.name}                                                
+            <View style={styles.servicesList}>
+                <Text style={{ fontSize: 20, marginTop: 0, fontWeight: 'bold', marginLeft: 20, }}>
+                    {service?.name ? service?.name : service?.service_name}
                 </Text>
-                <Text style = {{ fontSize: 20, marginTop: 0,fontWeight:'normal', marginLeft:220,marginRight:20 }}>
-                        {service.price}
-                </Text>
-            </View>
-            <View style = {styles.servicesList}>
-                <Text style = {{ fontSize: 16, marginTop: 0,fontWeight:'normal', marginLeft:290,marginRight:10, }}>
-                        10:00 - 10:40 
+                <Text style={{ fontSize: 20, marginTop: 0, fontWeight: 'normal', marginLeft: 220, marginRight: 20 }}>
+                    {service?.price ? service?.price : service?.service_price} Pkr
                 </Text>
             </View>
+            <View style={styles.servicesList}>
+                <Text style={{ fontSize: 16, marginTop: 0, fontWeight: 'normal', marginLeft: 290, marginRight: 10, }}>
+                    {service?.time ? service?.time : service?.service_time}
+                </Text>
+            </View>
 
-            <View style= {{borderWidth:0.2,width:deviceWidth,marginTop:10}}/>
+            <View style={{ borderWidth: 0.2, width: deviceWidth, marginTop: 10 }} />
 
-            <View style = {styles.buttonContainer}>
-                <TouchableOpacity 
-                style = {styles.button}
-                onPress = {() =>{
-                    addAppointment();
-                    props.navigation.navigate('BookingConfirm')
-                }}
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        addAppointment();
+                        props.navigation.navigate('BookingConfirm')
+                    }}
                 >
                     <Text>Book</Text>
                 </TouchableOpacity>
@@ -143,7 +165,7 @@ function bookAppointment(props) {
         </View>
     );
 
-    
+
 }
 
 export default bookAppointment;
@@ -160,7 +182,7 @@ const styles = StyleSheet.create({
     },
     calendar: {
 
-        width: deviceWidth-25,
+        width: deviceWidth - 25,
         paddingBottom: 5,
         borderRadius: 20,
         // height: 300, 
@@ -177,25 +199,25 @@ const styles = StyleSheet.create({
         height: 25,
 
     },
-    buttonContainer:{
-        width:deviceWidth-40, 
+    buttonContainer: {
+        width: deviceWidth - 40,
         marginBottom: 20,
-        flexDirection:'column',
+        flexDirection: 'column',
         // backgroundColor:'#000',
         alignItems: 'flex-end',
-        justifyContent:'flex-end',
+        justifyContent: 'flex-end',
         marginTop: 20,
-        flexWrap:'wrap',
+        flexWrap: 'wrap',
     },
     button: {
         backgroundColor: '#57B9BB',
-        width: deviceWidth-40,
+        width: deviceWidth - 40,
         height: 40,
         borderRadius: 10,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center',        
+        alignItems: 'center',
 
     },
-    
+
 })

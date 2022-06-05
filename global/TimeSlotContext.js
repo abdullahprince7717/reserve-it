@@ -3,7 +3,7 @@ import React, {createContext, useState} from "react";
 export const TimeSlotContext = createContext(null);
 
 const TimeSlotProvider = ({children}) => {
-    const [timeSlot, setTimeSlot] = useState("");
+    const [timeSlot, setTimeSlot] = useState([]);
 
     return (
         <TimeSlotContext.Provider value={[timeSlot, setTimeSlot]}>

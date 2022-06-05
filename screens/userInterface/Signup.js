@@ -3,7 +3,7 @@ import { StyleSheet, View,Text,TextInput, ScrollView, Image, TouchableOpacity, S
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 import {doc,setDoc} from 'firebase/firestore';
 import {createUserWithEmailAndPassword,signInWithRedirect,FacebookAuthProvider ,GoogleAuthProvider} from "firebase/auth";
-import { getNotificationInbox } from 'native-notify';
+// import { getNotificationInbox } from 'native-notify';
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { CredentialsContext } from '../../components/CredentialsContext.js';
@@ -23,9 +23,9 @@ const signUp = ({navigation}) => {
   // const [confirmPassword, setConfirmPassword] = useState('');
 
   useEffect(async() => {
-    let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
-    console.log("notifications: ", notifications);
-    setData(notifications);
+    // let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
+    // console.log("notifications: ", notifications);
+    // setData(notifications);
   },[]);
 
   

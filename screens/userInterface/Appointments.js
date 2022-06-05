@@ -12,6 +12,7 @@ import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
+import {Button} from "react-native-paper";
 
 
 
@@ -40,7 +41,8 @@ function appointments(props) {
                 })));
 
                 // console.log(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-                console.log(appointments[0].status.is_completed);
+                // console.log(appointments[0].status.is_completed);
+                console.log(JSON.stringify(appointments[1]))
             })
             .catch((err) => {
                 console.log(err);
@@ -58,20 +60,28 @@ function appointments(props) {
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_pending === true ? (
+                    appointments[index].status.is_pending === true ? (<>
                         <Card
                             title={item.service_name}
                             businessName={item.business_name}
                             address={item.business_address}
                             date={item.date}
-                            time ={item.time}
+                            time={item.time}
                             onPress={() => {
                                 console.log("Pressed");
                                 // props.navigation.navigate("BusinessProfile");
                             }}
                             buttonText1="Edit"
+                            onEditPress={() => {
+                                console.log("Pressed");
+                                props.navigation.navigate("Booking",{appointment: appointments[index]});
+                            }}
                             buttonText2="Cancel"
-                        />) : null
+                            data={appointments[index]}
+                        />
+
+                    </>
+                    ) : null
                 ))}
 
 
@@ -96,13 +106,13 @@ function appointments(props) {
                                 // props.navigation.navigate("BusinessProfile");
                             }}
                             onPressRate={() => {
-                                
+
                                 props.navigation.navigate("BusinessProfile");
                             }}
                             onPressReport={() => {
                                 console.log("Pressed Report");
                             }}
-                            
+
                             buttonText1="Rate"
                             buttonText2="Report"
                         />) : null
@@ -128,7 +138,7 @@ function appointments(props) {
                                 // props.navigation.navigate("BusinessProfile");
                             }}
                             onPressBookAgain={() => {
-                                
+
                                 props.navigation.navigate("BusinessProfile");
                             }}
                             onPressReport={() => {
@@ -176,5 +186,12 @@ const styles = StyleSheet.create({
         // backgroundColor: '#fff',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         paddingBottom: 50,
+    },
+    buttonArea:{
+        flex: 1,
+        margin:10,
+        justifyContent: 'center',
+        alignItems: 'center',
+
     },
 });
