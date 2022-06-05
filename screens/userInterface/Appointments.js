@@ -52,6 +52,8 @@ function appointments(props) {
 
     useEffect(() => {
         getAppointments();
+        console.log(JSON.stringify(appointments[1]))
+
     }, []);
 
 

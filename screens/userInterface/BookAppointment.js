@@ -26,12 +26,12 @@ function bookAppointment(props) {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        // console.log(props?.route?.params?.service)
+        console.log(props?.route?.params?.service)
 
         // setService(props?.route?.params?.service)
 
-        // console.log(props?.route?.params?.data)
-        // setData(props?.route?.params?.data)
+        console.log(props?.route?.params?.data)
+        setData(props?.route?.params?.data)
         console.log(JSON.stringify(timeSlot))
         // console.log(data?.business_email)
 
@@ -39,7 +39,7 @@ function bookAppointment(props) {
         // props?.route?.params?.appointment ? setService(props?.route?.params?.appointment) : null 
 
         // console.log(props?.route?.params?.appointment.service_name)
-        console.log(service)
+        console.log(JSON.stringify(service))
 
 
 
@@ -57,8 +57,8 @@ function bookAppointment(props) {
             service_price: service?.price ? service?.price : service?.service_price,
             business_email: service?.business_email ? service?.business_email : service?.business_email,
             customer_email: auth.currentUser.email,
-            business_name: service?.business_name ? service?.business_name : service?.business_name ? service?.business_name : "test",
-            business_address: service?.business_address ? service?.business_address : service?.business_address ? service?.business_address : "test",
+            business_name: service?.business_name ? service?.business_name : data?.business_name ? data?.business_name : "no name",
+            business_address: service?.business_address ? service?.business_address : data?.business_address ? data?.business_address : "no address",
             date: selectedDate,
             time: timeSlot,
             status: { "is_pending": true },
@@ -139,14 +139,13 @@ function bookAppointment(props) {
                 <Text style={{ fontSize: 20, marginTop: 0, fontWeight: 'bold', marginLeft: 20, }}>
                     {service?.name ? service?.name : service?.service_name}
                 </Text>
-                <Text style={{ fontSize: 20, marginTop: 0, fontWeight: 'normal', marginLeft: 220, marginRight: 20 }}>
+                <Text style={{ fontSize: 20, marginTop: 0, fontWeight: 'normal', marginLeft: 210, marginRight: 20 }}>
                     {service?.price ? service?.price : service?.service_price} Pkr
                 </Text>
             </View>
             <View style={styles.servicesList}>
-                <Text style={{ fontSize: 16, marginTop: 0, fontWeight: 'normal', marginLeft: 290, marginRight: 10, }}>
-                    {service?.time ? service?.time : service?.service_time}
-                </Text>
+                <Text style={{ fontSize: 16, marginTop: 0, fontWeight: 'normal', marginLeft: 310, marginRight: 10, }}>
+                    {service?.time ? service?.time : service?.service_time ? service?.service_time : timeSlot}</Text>
             </View>
 
             <View style={{ borderWidth: 0.2, width: deviceWidth, marginTop: 10 }} />
