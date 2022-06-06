@@ -184,7 +184,7 @@ const BusinessProfile = (props) => {
 
                 {/* END of Overall rating card */}
 
-                {showReview === true ? (
+                {/* {showReview === true ? (
                 <View style={{ height: "15%", width: '90%', borderColor: 'black', borderWidth: 0.5, borderRadius: 10, padding: 10 }} >
                     <View style={{}}>
                         <StarRating
@@ -216,7 +216,7 @@ const BusinessProfile = (props) => {
                             Submit
                         </Button>
                     </View>
-                </View>) : null}
+                </View>) : null} */}
 
 
                 <View style={{ width: '90%', flex: 1, flexDirection: 'column', borderRadius: 5 }}>

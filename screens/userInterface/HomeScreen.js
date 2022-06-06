@@ -89,14 +89,14 @@ function homeScreen(props) {
                             >
                                 <TouchableOpacity onPress={() => {
                                     console.log("pressed")
-                                    props.navigation.navigate("Explore", { query: "doctor" })
+                                    // props.navigation.navigate("Explore", { query: "doctor" })
                                 }}>
                                     <PopularHorizontalScrollView />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={() => {
                                     console.log("pressed")
-                                    props.navigation.navigate("Explore", { query: "salon" })
+                                    // props.navigation.navigate("Explore", { query: "salon" })
                                 }}>
                                     <PopularHorizontalScrollView />
                                 </TouchableOpacity>
