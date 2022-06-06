@@ -13,7 +13,7 @@ import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import { Button } from "react-native-paper";
+import { Button, Dialog, Portal, Provider,Paragraph, } from "react-native-paper";
 
 
 
@@ -24,12 +24,36 @@ function appointments(props) {
     const [appointments, setAppointments] = useState([]);
     const [index, setIndex] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [visible, setVisible] = React.useState(false);
+
+    const showDialog = () => setVisible(true);
+
+    const hideDialog = () => setVisible(false);
 
     const [routes] = useState([
         { key: "first", title: "Current" },
         { key: "second", title: "Completed" },
         { key: "third", title: "Cancelled" },
     ]);
+
+    const showReportDialog = () => {
+        <Provider>
+            <View>
+                <Button onPress={showDialog}>Show Dialog</Button>
+                <Portal>
+                    <Dialog visible={visible} onDismiss={hideDialog}>
+                        <Dialog.Title>Alert</Dialog.Title>
+                        <Dialog.Content>
+                            <Paragraph>This is simple dialog</Paragraph>
+                        </Dialog.Content>
+                        <Dialog.Actions>
+                            <Button onPress={hideDialog}>Done</Button>
+                        </Dialog.Actions>
+                    </Dialog>
+                </Portal>
+            </View>
+        </Provider>
+    }
 
 
     const getAppointments = async () => {
@@ -88,7 +112,7 @@ function appointments(props) {
                                 is_completed: false,
                                 is_pending: false,
                             },
-                        },{merge: true})
+                        }, { merge: true })
                     }
                 }
 
@@ -180,9 +204,15 @@ function appointments(props) {
                             data={appointments[index]}
                             buttonText1="Rate"
                             buttonText2="Report"
+                            onRatePress={() => {}}
+                            onReportPress={() => {
+                                showDialog();
+                                
+                            }}
                         />) : null
                 ))}
             </View>
+            
         </ScrollView>
     );
 

@@ -9,6 +9,7 @@ const AppointmentCard = (props) => {
         console.log(moment(props.date).format('ll'))
         // console.log(moment(props.time).format('LTS'))
         // console.log(props.time)
+        console.log(props.buttonText2)
     },[])
 
     return (
@@ -58,7 +59,7 @@ const AppointmentCard = (props) => {
                     <Button mode="outlined" 
                         style = {{marginRight:25,marginLeft:25,borderColor: 'green',borderWidth:1}}
                         color = 'green' 
-                        onPress={props.onEditPress}
+                        onPress={props.buttonText1 == "Edit" || props.buttonText2 == "Book Again" ? props.onEditPress : props.onRatePress}
                         >
                             
                         {props.buttonText1}
@@ -67,16 +68,16 @@ const AppointmentCard = (props) => {
                     <Button mode="outlined" 
                         style = {{marginRight:25,marginLeft:25,borderColor: 'red',borderWidth:1}}
                         color = 'red' 
-                        onPress={props.onCancelPress}>
+                        onPress={props.buttonText2 == "Cancel" ? props.onCancelPress : props.onRepoAGrtPress}>
                             
                             
                         {props.buttonText2}
                     </Button>
 
-                </View>
+                </View>eport
             </View>
 
-        </View>    
+        </View>    eport
     </TouchableWithoutFeedback>    
     );
 };
