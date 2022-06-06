@@ -142,6 +142,7 @@ const MapScreen = (props) => {
     let mapAnimation = new Animated.Value(0);
 
     useEffect(() => {
+        console.log(props?.route?.params?.data)
         mapAnimation.addListener(({ value }) => {
             let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
             if (index >= state.markers.length) {

@@ -21,13 +21,13 @@ const AppointmentCard = (props) => {
                 <View style = {styles.leftColumn}>
                     <View style={{ height: '65%', width :'85%',backgroundColor:'white',flexDirection:'column',}}>
                         <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
-                           Service: {props.title}
+                            Service: {props.title}
                         </Text>
-                        <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :20}}>
-                            {props.businessName}
+                        <Text style={{color:'black', fontSize:18, fontWeight:'bold', marginTop :20}}>
+                            Business: {props.businessName}
                         </Text>
-                        <Text style={{color:'black', fontSize:14, fontWeight:'100', marginTop :4}}>
-                            {props.address}
+                        <Text style={{color:'black', fontSize:16, fontWeight:'100', marginTop :4}}>
+                            Address: {props.address}
                         </Text>
                     </View>
                 </View>
@@ -67,9 +67,7 @@ const AppointmentCard = (props) => {
                     <Button mode="outlined" 
                         style = {{marginRight:25,marginLeft:25,borderColor: 'red',borderWidth:1}}
                         color = 'red' 
-                        onPress={() => {
-                            console.log('Pressed')
-                        }}>
+                        onPress={props.onCancelPress}>
                             
                             
                         {props.buttonText2}

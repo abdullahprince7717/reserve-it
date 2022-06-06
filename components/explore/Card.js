@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Card, Title, Paragraph } from 'react-native-paper';
-import { View, StyleSheet, Dimensions, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { Text,View, StyleSheet, Dimensions, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
 import StarRating from 'react-native-star-rating-widget';
 import { Chip } from 'react-native-paper';
@@ -10,6 +10,11 @@ import { Chip } from 'react-native-paper';
 // const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 const BusinessCard = (props) => {
+
+    useEffect(() => {
+        console.log(props?.category)
+        // props.category == ""
+    }, [])
 
     // const [isFilled,setIsFilled] = useState(false)
     const [category,setCategory] = useState('salon')
@@ -28,17 +33,18 @@ const BusinessCard = (props) => {
                     <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <StarRating
                             rating="2.5"
-                            // onChange={setRating}
+                            onChange={(rating) => console.log(rating)}
+                            disabled={true}
                             maxStars={5}
                             starSize={20}
                             color="orange"
 
 
                         />
-                        <Chip icon="stethoscope" style={{ height: 28, width: 80, backgroundColor: (category === 'salon' ) ? '#57B9BB': '#ff7cb5'  , }}
+                        <Chip icon= {(props?.category == "salon") ? "suitcase":"stethoscope" } style={{ height: 28, width: 80, backgroundColor: (props.category === 'salon' ) ? '#57B9BB': '#ff7cb5'  , }}
                             onPress={() => console.log('Pressed')
                         }>
-                            Salon
+                            <Text style={{ color: 'white' }}>{props.category == "salon" ? "Salon" : "Doctor"}</Text>
                         </Chip>
 
                     </View>
@@ -53,7 +59,7 @@ const BusinessCard = (props) => {
                         </TouchableOpacity> */}
                     </View>
 
-                    <Paragraph>{props.description}</Paragraph>
+                    <Paragraph>{props.address}</Paragraph>
                 </Card.Content>
             </Card>
         </TouchableWithoutFeedback>

@@ -6,13 +6,14 @@ import {
     Text,
     ScrollView,
     useWindowDimensions,
+    Alert,
 } from "react-native";
 import Card from "../../components/appointments/AppointmentCard.js";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import {Button} from "react-native-paper";
+import { Button } from "react-native-paper";
 
 
 
@@ -49,10 +50,66 @@ function appointments(props) {
             });
     };
 
+    const cancelAppointment = (appointment) => {
+
+        // const appointment = {
+        //     service_name: service?.name ? service?.name : service?.service_name,
+        //     service_duration: service?.duration ? service?.duration : service?.service_duration,
+        //     service_price: service?.price ? service?.price : service?.service_price,
+        //     business_email: service?.business_email ? service?.business_email : service?.business_email,
+        //     customer_email: auth.currentUser.email,
+        //     business_name: service?.business_name ? service?.business_name : data?.business_name ? data?.business_name : "no name",
+        //     business_address: service?.business_address ? service?.business_address : data?.business_address ? data?.business_address : "no address",
+        //     date: selectedDate,
+        //     time: timeSlot,
+        //     status: { "is_pending": true },
+        // }
+
+        Alert.alert(
+            "Do you want to Cancel this Business?",
+            "",
+            [
+                {
+                    text: "No",
+                    onPress: () => {
+                        console.log("No Pressed")
+
+                    },
+                    style: "cancel"
+                },
+                {
+                    text: "Yes",
+                    onPress: () => {
+                        console.log("Yes Pressed")
+                        const appointmentDoc = doc(db, "appointments", appointment.id);
+                        setDoc(appointmentDoc, {
+                            status: {
+                                is_cancelled: true,
+                                is_completed: false,
+                                is_pending: false,
+                            },
+                        },{merge: true})
+                    }
+                }
+
+
+            ]
+        );
+
+        // const appointmentDoc = doc(db, "appointments", appointment.id);
+        // setDoc(appointmentDoc, {
+        //     status: {
+        //         is_cancelled: true,
+        //         is_completed: false,
+        //         is_pending: false,
+        //     }
+        // })
+    };
+
 
     useEffect(() => {
         getAppointments();
-        console.log(JSON.stringify(appointments[1]))
+        console.log(JSON.stringify(appointments[0]))
 
     }, []);
 
@@ -76,9 +133,13 @@ function appointments(props) {
                             buttonText1="Edit"
                             onEditPress={() => {
                                 console.log("Pressed");
-                                props.navigation.navigate("Booking",{appointment: appointments[index]});
+                                props.navigation.navigate("Booking", { appointment: appointments[index] });
                             }}
                             buttonText2="Cancel"
+                            onCancelPress={() => {
+
+                                cancelAppointment(appointments[index]);
+                            }}
                             data={appointments[index]}
                         />
 
@@ -99,22 +160,24 @@ function appointments(props) {
                     appointments[index].status.is_completed === true ? (
                         <Card
                             title={item.service_name}
-                            businessName="LaLa Salon"
-                            address="Machi Mandi near Niagra Falls, Kenya"
-                            date="March 12"
-                            time="10:00 AM"
+                            businessName={item.business_name}
+                            address={item.business_address}
+                            date={item.date}
+                            time={item.time}
                             onPress={() => {
                                 console.log("Pressed");
                                 // props.navigation.navigate("BusinessProfile");
                             }}
-                            onPressRate={() => {
 
-                                props.navigation.navigate("BusinessProfile");
-                            }}
-                            onPressReport={() => {
-                                console.log("Pressed Report");
+                            onEditPress={() => {
+                                console.log("Pressed");
+                                props.navigation.navigate("Booking", { appointment: appointments[index] });
                             }}
 
+                            onCancelPress={() => {
+                                cancelAppointment(appointments[index].id);
+                            }}
+                            data={appointments[index]}
                             buttonText1="Rate"
                             buttonText2="Report"
                         />) : null
@@ -131,21 +194,22 @@ function appointments(props) {
                     appointments[index].status.is_cancelled === true ? (
                         <Card
                             title={item.service_name}
-                            businessName="LaLa Salon"
-                            address="Machi Mandi near Niagra Falls, Kenya"
-                            date="March 12"
-                            time="10:00 AM"
+                            businessName={item.business_name}
+                            address={item.business_address}
+                            date={item.date}
+                            time={item.time}
                             onPress={() => {
                                 console.log("Pressed");
                                 // props.navigation.navigate("BusinessProfile");
                             }}
-                            onPressBookAgain={() => {
-
-                                props.navigation.navigate("BusinessProfile");
+                            onEditPress={() => {
+                                console.log("Pressed");
+                                props.navigation.navigate("Booking", { appointment: appointments[index] });
                             }}
-                            onPressReport={() => {
-                                console.log("Pressed Report");
+                            onCancelPress={() => {
+                                cancelAppointment(appointments[index].id);
                             }}
+                            data={appointments[index]}
                             buttonText1="Book Again"
                             buttonText2="Report"
                         />) : null
@@ -189,9 +253,9 @@ const styles = StyleSheet.create({
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         paddingBottom: 50,
     },
-    buttonArea:{
+    buttonArea: {
         flex: 1,
-        margin:10,
+        margin: 10,
         justifyContent: 'center',
         alignItems: 'center',
 

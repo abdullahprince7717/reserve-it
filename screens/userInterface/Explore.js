@@ -422,7 +422,9 @@ function explore(props) {
                                 <BusinessCard
                                     title={item.business_name}
                                     description={item.business_description}
-
+                                    category={item.category}
+                                    image={item.image}
+                                    address={item.business_address}
                                     onPress={() => {
                                         console.log('Pressed')
                                         props.navigation.navigate('BusinessProfile', { data: queryResult[index] })
@@ -441,7 +443,7 @@ function explore(props) {
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        props.navigation.navigate('MapsTest')
+                        props.navigation.navigate('Map', { data: queryResult })
                     }}
                     color='#fff'
                 />
