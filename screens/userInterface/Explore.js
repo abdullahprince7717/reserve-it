@@ -436,7 +436,7 @@ function explore(props) {
                     </View>
                 </ScrollView>
 
-                <FAB
+                {/* <FAB
                     style={styles.fab}
                     label="Maps"
                     large
@@ -446,7 +446,7 @@ function explore(props) {
                         props.navigation.navigate('Map', { data: queryResult })
                     }}
                     color='#fff'
-                />
+                /> */}
             </View>
         </View>
     );

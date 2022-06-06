@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import {
     StyleSheet,
     Text,
@@ -23,8 +23,10 @@ const CARD_HEIGHT = 220;
 const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
+
 const MapScreen = (props) => {
     // const theme = useTheme();
+    const [businesses,setBusiness] = useState([])
     const Images = [
         { image: require("../../assets/map-marker.png") },
         { image: require("../../assets/logo.png") },
@@ -93,6 +95,7 @@ const MapScreen = (props) => {
 
 
     const initialMapState = {
+        businesses,
         markers,
         categories: [
             {
@@ -143,6 +146,8 @@ const MapScreen = (props) => {
 
     useEffect(() => {
         console.log(props?.route?.params?.data)
+        setBusiness(props?.route?.params?.data)
+
         mapAnimation.addListener(({ value }) => {
             let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
             if (index >= state.markers.length) {

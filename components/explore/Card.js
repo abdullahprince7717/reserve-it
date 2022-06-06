@@ -32,7 +32,7 @@ const BusinessCard = (props) => {
                 <Card.Content >
                     <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <StarRating
-                            rating="2.5"
+                            rating="0"
                             onChange={(rating) => console.log(rating)}
                             disabled={true}
                             maxStars={5}

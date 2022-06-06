@@ -9,6 +9,8 @@ import moment from 'moment';
 import ServiceCard from '../../components/businessProfile/ServiceCard.js';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { collection, getDocs, doc, setDoc, query, where } from "firebase/firestore";
+import * as Linking from 'expo-linking';
+
 
 const BusinessProfile = (props) => {
 
@@ -23,7 +25,7 @@ const BusinessProfile = (props) => {
     const[reviewsAverage,setReviewsAverage] = useState(0);
     
     const [index, setIndex] = useState(0);
-    const [rating, setRating] = useState(5);
+    const [rating, setRating] = useState(0);
     const [data, setData] = useState([props.route?.params?.data]);
     const [services, setServices] = useState([]);
     const [queryResult, setQueryResult] = useState([]);
@@ -94,7 +96,7 @@ const BusinessProfile = (props) => {
 
                         <View style={{ flexDirection: 'row', margin: 3, alignItems: 'center', }}>
                             <Text style={{ marginRight: 0, fontSize: 30 }}>
-                                5.0
+                                0
                             </Text>
                             <Text style={{ marginTop: 10, fontSize: 20 }}>
                                 /5
@@ -102,6 +104,7 @@ const BusinessProfile = (props) => {
                         </View>
                         <StarRating
                             rating={rating}
+                            onChange={setRating}
                             disabled={true}
                             starSize={20}
                             color="orange"
@@ -184,7 +187,7 @@ const BusinessProfile = (props) => {
 
                 {/* END of Overall rating card */}
 
-                {/* {showReview === true ? (
+                {showReview === true ? (
                 <View style={{ height: "15%", width: '90%', borderColor: 'black', borderWidth: 0.5, borderRadius: 10, padding: 10 }} >
                     <View style={{}}>
                         <StarRating
@@ -216,7 +219,7 @@ const BusinessProfile = (props) => {
                             Submit
                         </Button>
                     </View>
-                </View>) : null} */}
+                </View>) : null}
 
 
                 <View style={{ width: '90%', flex: 1, flexDirection: 'column', borderRadius: 5 }}>
@@ -373,9 +376,13 @@ const BusinessProfile = (props) => {
 
                     <View style={{ flexDirection: 'row' }}>
                         <AntDesign color="black" name="mobile1" size={20} />
+                        <TouchableOpacity onPress={() => {
+                             Linking.openURL(`tel:${props.route.params.data.business_phone}`);
+                        }}>
                         <Text style={{ marginLeft: 10, color: "black", fontSize: 17, color: 'grey' }}>
                             {props.route.params.data.business_phone}
                         </Text>
+                        </TouchableOpacity>
                     </View>
 
                     <Divider style={{ height: 1, color: '#000', marginTop: 10, marginBottom: 15, }} />
@@ -385,7 +392,9 @@ const BusinessProfile = (props) => {
                             Monday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            10:00 AM - 10:00 PM
+                            
+                            {props?.route?.params?.data?.monday?.isOpen === true ? (props?.route?.params?.data?.monday?.startTime) + " - " + (props?.route?.params?.data?.monday?.endTime):"CLOSED"}
+                            
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -393,7 +402,7 @@ const BusinessProfile = (props) => {
                             Tuesday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            10:00 AM - 10:00 PM
+                            {props?.route?.params?.data?.tuesday?.isOpen === true ? (props?.route?.params?.data?.tuesday?.startTime) + " - " + (props?.route?.params?.data?.tuesday?.endTime):"CLOSED"}
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -401,7 +410,7 @@ const BusinessProfile = (props) => {
                             Wednesday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            10:00 AM - 10:00 PM
+                            {props?.route?.params?.data?.wednesday?.isOpen === true ? (props?.route?.params?.data?.wednesday?.startTime) + " - " + (props?.route?.params?.data?.wednesday?.endTime):"CLOSED"}
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -409,14 +418,14 @@ const BusinessProfile = (props) => {
                             Thursday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            10:00 AM - 10:00 PM
+                            {props?.route?.params?.data?.thursday?.isOpen === true ? (props?.route?.params?.data?.thursday?.startTime) + " - " + (props?.route?.params?.data?.thursday?.endTime):"CLOSED"}
                         </Text>
                     </View><View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
                         <Text style={{}}>
                             Friday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            10:00 AM - 10:00 PM
+                            {props?.route?.params?.data?.friday?.isOpen === true ? (props?.route?.params?.data?.friday?.startTime) + " - " + (props?.route?.params?.data?.friday?.endTime):"CLOSED"}
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -424,7 +433,7 @@ const BusinessProfile = (props) => {
                             Saturday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            10:00 AM - 10:00 PM
+                            {props?.route?.params?.data?.saturday?.isOpen === true ?  (props?.route?.params?.data?.saturday?.startTime) + " - " + (props?.route?.params?.data?.saturday?.endTime):"CLOSED"}
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -432,8 +441,8 @@ const BusinessProfile = (props) => {
                             Sunday
                         </Text>
                         <Text style={{ fontWeight: 'bold', }}>
-                            CLOSED
-                        </Text>
+                            {props?.route?.params?.data?.sunday?.isOpen === true ? (props?.route?.params?.data?.sunday?.startTime) + " - " + (props?.route?.params?.data?.sunday?.endTime):"CLOSED"}
+                        </Text> 
                     </View>
 
                     <Text style={{ color: 'black', fontSize: 17, fontWeight: 'bold' }}>
@@ -444,15 +453,21 @@ const BusinessProfile = (props) => {
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 360, marginTop: 20, marginBottom: 20 }}>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() =>{
+                            Linking.openURL(`https://www.instagram.com/sharer/sharer.php?u=${props.route.params.data.business_url}`);
+                        }}>
                             <AntDesign color="red" name="instagram" size={40} />
                         </TouchableOpacity>
 
-                        {/* <TouchableOpacity>
+                        <TouchableOpacity onPress={() => {
+                            Linking.openURL(`whatsapp://send?text=${props.route.params.data.business_name}`);
+                        }}>
                             <AntDesign color="green" name="sharealt" size={40} />
-                        </TouchableOpacity> */}
+                        </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => {
+                            Linking.openURL(`https://www.facebook.com/sharer/sharer.php?u=${props.route.params.data.business_url}`);
+                        }}>
                             <AntDesign color="blue" name="facebook-square" size={40} />
                         </TouchableOpacity>
 
