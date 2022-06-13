@@ -2,9 +2,72 @@ import { Text, View, StyleSheet, ScrollView, StatusBar, Dimensions, Image, Touch
 import HorizontalScrollView from '../../components/home/HorizontalScrollView'
 // import BusinessCard from  '../../components/explore/Card.js';
 import PopularHorizontalScrollView from '../../components/home/PopularCardHorizontalScrollView.js';
+import { FAB } from 'react-native-paper';
+import { db, auth, } from "../../firebase/FirebaseConfig.js";
+import { doc, getDoc, setDoc, collection, getDocs, where, query } from "firebase/firestore";
+import React, { useEffect, useState } from 'react'
+
 
 
 function homeScreen(props) {
+    const [searchQuery, setSearchQuery] = useState();
+    const onChangeSearch = query => setSearchQuery(query);
+    const [queryResult, setQueryResult] = useState([]);
+    const [queryResult1, setQueryResult1] = useState([]);
+    const [checked, setChecked] = useState('first');
+
+
+    const collectionRef = collection(db, "business_users")
+
+    const getQueryResult = async () => {
+        let q
+        let q1
+
+            q = query(collectionRef, where("name", "==", "salon"))
+        
+            q1 = query(collectionRef, where("category", "==", "doctor"))
+        
+        await getDocs(q)
+            .then((res) => {
+
+                setQueryResult(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log("response " + res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                // console.log("response " + res);
+                console.log(queryResult);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+            await getDocs(q1)
+            .then((res) => {
+
+                setQueryResult1(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log("response " + res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                // console.log("response " + res);
+                console.log(queryResult1);
+            })
+            .catch((err) => {
+                console.log(err);
+            });    
+    };
+
+    useEffect(() => {
+        // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
+        getQueryResult();
+        console.log(auth.currentUser.email)
+        console.log(queryResult)
+        console.log(queryResult1)
+
+
+    }, [searchQuery]);
     return (
         <View style={styles.container}>
             <View style={styles.logo}>
@@ -61,12 +124,16 @@ function homeScreen(props) {
                             <ScrollView
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
-                            >
+                            > 
+                            {queryResult.map((item, index) => {
+
+                                
+                            })}
                                 <TouchableOpacity onPress={() => {
                                     console.log("pressed")
                                     // props.navigation.navigate("Explore", { query: "doctor" })
                                 }}>
-                                    <PopularHorizontalScrollView />
+                                    <PopularHorizontalScrollView  />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={() => {
@@ -79,7 +146,7 @@ function homeScreen(props) {
                             </ScrollView>
                         </View>
                         <View style={{ flexDirection: 'row', marginTop: 20 }}>
-                            <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Salons</Text>
+                            <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Doctors</Text>
                         </View>
                         <View style={{ backgroundColor: "#fff", marginTop: 10, flexDirection: "column", }}>
 

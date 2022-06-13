@@ -378,7 +378,8 @@ const BusinessDetails = (props) => {
                         console.log("Pressed SAVE")
                         addBusinessInfo();
                         uploadImage();
-                        props.navigation.navigate('AccountSetup3')
+                        // props.navigation.navigate('AccountSetup3')
+                        props.navigation.navigate('AccountSetup3test')
                     }}
                 >
 

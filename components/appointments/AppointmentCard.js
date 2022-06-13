@@ -74,10 +74,10 @@ const AppointmentCard = (props) => {
                         {props.buttonText2}
                     </Button>
 
-                </View>eport
+                </View>
             </View>
 
-        </View>    eport
+        </View>    
     </TouchableWithoutFeedback>    
     );
 };

@@ -206,7 +206,7 @@ function appointments(props) {
                             buttonText2="Report"
                             onRatePress={() => {}}
                             onReportPress={() => {
-                                showDialog();
+                                // showDialog();
                                 
                             }}
                         />) : null

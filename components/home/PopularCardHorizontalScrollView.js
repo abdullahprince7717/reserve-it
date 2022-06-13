@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { View } from "react-native";
-import BusinessCard from '../explore/Card';
+import BusinessCard from '../explore/Card.js';
+import BusinessCard2 from '../explore/CardTest.js';
+
 
 function HorizontalScrollView(props) {
     return (
@@ -9,7 +11,7 @@ function HorizontalScrollView(props) {
 
             <View style={{ height: 280, width: 220, marginLeft: 7, marginRight: 90 }} >
                 <View style={{ flex: 2, margin: 10 }}>
-                    <BusinessCard />
+                    <BusinessCard2 />
                 </View>
             </View>
         </View>

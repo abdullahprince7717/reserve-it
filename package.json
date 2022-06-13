@@ -39,6 +39,7 @@
     "expo-notifications": "~0.14.0",
     "expo-status-bar": "~1.2.0",
     "firebase": "^9.6.3",
+    "googleapis": "^101.0.0",
     "moment": "^2.29.1",
     "native-notify": "^2.2.3",
     "react": "17.0.1",

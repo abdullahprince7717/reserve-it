@@ -205,11 +205,11 @@ const signUp = ({navigation}) => {
                         placeholderTextColor= {"#fff"}
                         style={styles.textInput}
                     />
-                    <TextInput
+                    {/* <TextInput
                         placeholder="Confirm Password"
                         placeholderTextColor= {"#fff"}
                         style={styles.textInput}
-                    />
+                    /> */}
             </View>
 
             <TouchableOpacity style = {styles.button} 

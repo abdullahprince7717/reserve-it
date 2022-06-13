@@ -20,6 +20,7 @@ import ForgotPassword from '../screens/businessInterface/ForgotPassword.js';
 import AccountSetup1 from '../screens/businessInterface/AccountSetup1.js';
 import AccountSetup2 from '../screens/businessInterface/AccountSetup2.js';
 import AccountSetup3 from '../screens/businessInterface/AccountSetup3.js';
+import AccountSetup3test from '../screens/businessInterface/AccountSetup3test.js';
 import AccountSetup4 from '../screens/businessInterface/AccountSetup4.js';
 import AccountSetup4b from '../screens/businessInterface/AccountSetup4b.js';
 import AccountSetup5 from '../screens/businessInterface/AccountSetup5.js';
@@ -137,6 +138,13 @@ function MyStack() {
             <Stack.Screen
                 name="AccountSetup3"
                 component={AccountSetup3}
+                options={{headerShown: true,
+                    title: 'Your Business Location',
+                }}
+            />
+            <Stack.Screen
+                name="AccountSetup3test"
+                component={AccountSetup3test}
                 options={{headerShown: true,
                     title: 'Your Business Location',
                 }}
