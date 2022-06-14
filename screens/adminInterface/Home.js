@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Dimensions, ScrollView, useWindowDimensions, StatusBar, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions, ScrollView, useWindowDimensions, StatusBar, } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import SearchBar from '../../components/home/SearchBar.js'
+import { Button,Searchbar } from 'react-native-paper'
 import CustomerCard from '../../components/adminUIComponents/home/CustomerCard.js'
+import { db, auth, } from "../../firebase/FirebaseConfig.js";
+import { doc, getDoc, setDoc, collection, getDocs, where, query } from "firebase/firestore";
+import { Ionicons } from '@expo/vector-icons'
+
 // import Modal from "react-native-modal";
 
 const Home = (props) => {
@@ -10,87 +14,132 @@ const Home = (props) => {
     const layout = useWindowDimensions();
 
     const [index, setIndex] = useState(0);
+    const [searchQuery, setSearchQuery] = useState();
+    const [searchQuery2, setSearchQuery2] = useState();
+    const onChangeSearch = query => setSearchQuery(query);
+    const onChangeSearch2 = query => setSearchQuery2(query);
+    const [queryResult, setQueryResult] = useState([]);
+    const [queryResult2, setQueryResult2] = useState([]);
 
-    // const [isModalVisible, setModalVisible] = useState(false);
 
-    // const toggleModal = () => {
-    //     setModalVisible(!isModalVisible);
-    // };
+    const businessCollectionRef = collection(db, "business_users")
+    const customerCollectionRef = collection(db, "users")
+
+    const getQueryResult = async () => {
+
+        let q1
+        if(searchQuery2 != "" ){
+            q1 = query(businessCollectionRef, where("business_name", "==", searchQuery))
+        }
+        else{
+            q1 = query(customerCollectionRef)
+        }
 
 
+        await getDocs(q1)
+            .then((res) => {
+
+                setQueryResult(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log("response " + res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                console.log("response " + res);
+                console.log(queryResult);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+    };
+
+    const getQueryResult2 = async () => {
+        let q2
+        if(searchQuery2 != "" ){
+            q2 = query(customerCollectionRef, where("name", "==", searchQuery2))
+        }
+        else{
+            q2 = query(customerCollectionRef)
+        }
+
+
+        await getDocs(q2)
+            .then((res) => {
+
+                setQueryResult2(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log("response " + res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                console.log("response " + res);
+                console.log(queryResult2);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+
+    useEffect(() => {
+        // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
+        getQueryResult();
+        // console.log(auth.currentUser.email)
+        console.log(searchQuery)
+
+
+    }, []);
+
+    useEffect(() => {
+        // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
+        getQueryResult2();
+        // console.log(auth.currentUser.email)
+        console.log(searchQuery2)
+
+
+    }, []);
 
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff', alignItems: 'center', }}>
-            <View style={{ width: '93%', margin: 10 }}>
-                <SearchBar />
-            </View>
+           <View style={styles.searchBar}>
+                    <View style={{ flexDirection: 'row', }}>
+                        <Searchbar
+                            placeholder="Search"
+                            onChangeText={onChangeSearch}
+                            value={searchQuery}
+                            style={styles.searchBar}
+                        />
+                        <Button color="#000" mode="contained" style={{ height: 40, padding: 0, width: 30, borderColor: "#fff", marginTop: 14, borderRadius: 20 }}
+                            onPress={() => {
+                                console.log('Pressed')
+                                getQueryResult()
+                            }}>
+
+                            <Ionicons name="search" size={23} color='#fff' />
+
+                        </Button>
+                    </View>
+                </View>
 
             <View style={{ width: '93%', backgroundColor: 'grey', height: 2 }}></View>
 
             <View style={{ width: '90%', marginTop: 10 }}>
 
-                <ScrollView 
+                <ScrollView
                     showsVerticalScrollIndicator={false}
                 >
-                    <CustomerCard title='Abdullah' phone="03214323489" email='sdfbhwo@ddqed.com'
-                        onPress={() => {
-                            console.log('Pressed')
-                            props.navigation.navigate('CustomerProfile')
-                        }} />
 
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
+                    {queryResult2?.map((item, index) => (
+                        // <Text>{item.id}</Text>
+                        // item.business_name === "" ? null :
 
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.com' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Abdullah' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
+                            <CustomerCard title={item.name} phone={item.phone} email={item.email}
+                                onPress={() => {
+                                    console.log('Pressed')
+                                    props.navigation.navigate('ClientProfile')
+                                }} />
+                    ))}
 
 
                 </ScrollView>
@@ -103,9 +152,25 @@ const Home = (props) => {
     const SecondRoute = () => (
 
         <View style={{ flex: 1, backgroundColor: '#fff', alignItems: 'center', }}>
-            <View style={{ width: '93%', margin: 10 }}>
-                <SearchBar />
-            </View>
+             <View style={styles.searchBar}>
+                    <View style={{ flexDirection: 'row', }}>
+                        <Searchbar
+                            placeholder="Search"
+                            onChangeText={onChangeSearch2}
+                            value={searchQuery2}
+                            style={styles.searchBar}
+                        />
+                        <Button color="#000" mode="contained" style={{ height: 40, padding: 0, width: 30, borderColor: "#fff", marginTop: 14, borderRadius: 20 }}
+                            onPress={() => {
+                                console.log('Pressed')
+                                getQueryResult2()
+                            }}>
+
+                            <Ionicons name="search" size={23} color='#fff' />
+
+                        </Button>
+                    </View>
+                </View>
 
             <View style={{ width: '93%', backgroundColor: 'grey', height: 2 }}></View>
 
@@ -114,66 +179,16 @@ const Home = (props) => {
 
                 <ScrollView >
 
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.'
-                        onPress={() => {
-                            console.log('Pressed')
-                            props.navigation.navigate('BusinessProfile')
-                        }}
-                    />
+                {queryResult?.map((item, index) => (
+                        // <Text>{item.id}</Text>
+                        // item.business_name === "" ? null :
 
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Dr. Strange clinic' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Wah wah salon' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Wah wah salon' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Wah wah salon' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Wah wah salon' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
-
-                    <CustomerCard title='Wah wah salon' phone='03214323489' email='sdfbhwo@ddqed.' />
-
-                    <View style={{ width: '90%', backgroundColor: 'grey', height: 1, marginHorizontal: 20 }}></View>
+                            <CustomerCard title={item.business_name} phone={item.business_phone} email={item.business_email}
+                                onPress={() => {
+                                    console.log('Pressed')
+                                    props.navigation.navigate('BusinessProfile')
+                                }} />
+                    ))}
 
 
                 </ScrollView>
@@ -253,5 +268,22 @@ styles = StyleSheet.create({
         flex: 1,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         // backgroundColor: 'grey',
+    },
+    searchView: {
+        flex: 1.1,
+        width: deviceWidth,
+        alignItems: 'flex-start',
+        paddingBottom: 10,
+        backgroundColor: '#000',
+        flexDirection: 'column',
+    },
+    searchBar: {
+        width: '88%',
+        margin: 10,
+        marginLeft: 1,
+        marginRight: 5,
+        flexDirection: 'row',
+        borderRadius: 20,
+        // backgroundColor: '#000',
     },
 });
