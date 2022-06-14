@@ -393,7 +393,8 @@ const BusinessProfile = (props) => {
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
                             
-                            {props?.route?.params?.data?.monday?.isOpen === true ? (props?.route?.params?.data?.monday?.startTime) + " - " + (props?.route?.params?.data?.monday?.endTime):"CLOSED"}
+                            {/* {props?.route?.params?.data?.monday?.isOpen === true ? (props?.route?.params?.data?.monday?.startTime) + " - " + (props?.route?.params?.data?.monday?.endTime):"CLOSED"} */}
+                            <Text>10:00 AM - 10:00 PM</Text>
                             
                         </Text>
                     </View>
@@ -402,7 +403,8 @@ const BusinessProfile = (props) => {
                             Tuesday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.tuesday?.isOpen === true ? (props?.route?.params?.data?.tuesday?.startTime) + " - " + (props?.route?.params?.data?.tuesday?.endTime):"CLOSED"}
+                            {/* {props?.route?.params?.data?.tuesday?.isOpen === true ? (props?.route?.params?.data?.tuesday?.startTime) + " - " + (props?.route?.params?.data?.tuesday?.endTime):"CLOSED"} */}
+                            <Text>10:00 AM - 10:00 PM</Text>
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -410,7 +412,8 @@ const BusinessProfile = (props) => {
                             Wednesday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.wednesday?.isOpen === true ? (props?.route?.params?.data?.wednesday?.startTime) + " - " + (props?.route?.params?.data?.wednesday?.endTime):"CLOSED"}
+                            {/* {props?.route?.params?.data?.wednesday?.isOpen === true ? (props?.route?.params?.data?.wednesday?.startTime) + " - " + (props?.route?.params?.data?.wednesday?.endTime):"CLOSED"} */}
+                            <Text>10:00 AM - 10:00 PM</Text>
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -418,14 +421,16 @@ const BusinessProfile = (props) => {
                             Thursday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.thursday?.isOpen === true ? (props?.route?.params?.data?.thursday?.startTime) + " - " + (props?.route?.params?.data?.thursday?.endTime):"CLOSED"}
+                            {/* {props?.route?.params?.data?.thursday?.isOpen === true ? (props?.route?.params?.data?.thursday?.startTime) + " - " + (props?.route?.params?.data?.thursday?.endTime):"CLOSED"} */}
+                            <Text>10:00 AM - 10:00 PM</Text>
                         </Text>
                     </View><View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
                         <Text style={{}}>
                             Friday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.friday?.isOpen === true ? (props?.route?.params?.data?.friday?.startTime) + " - " + (props?.route?.params?.data?.friday?.endTime):"CLOSED"}
+                            {/* {props?.route?.params?.data?.friday?.isOpen === true ? (props?.route?.params?.data?.friday?.startTime) + " - " + (props?.route?.params?.data?.friday?.endTime):"CLOSED"} */}
+                            <Text>10:00 AM - 10:00 PM</Text>
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -433,7 +438,8 @@ const BusinessProfile = (props) => {
                             Saturday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.saturday?.isOpen === true ?  (props?.route?.params?.data?.saturday?.startTime) + " - " + (props?.route?.params?.data?.saturday?.endTime):"CLOSED"}
+                            {/* {props?.route?.params?.data?.saturday?.isOpen === true ?  (props?.route?.params?.data?.saturday?.startTime) + " - " + (props?.route?.params?.data?.saturday?.endTime):"CLOSED"} */}
+                            <Text>10:00 AM - 10:00 PM</Text>
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -441,7 +447,8 @@ const BusinessProfile = (props) => {
                             Sunday
                         </Text>
                         <Text style={{ fontWeight: 'bold', }}>
-                            {props?.route?.params?.data?.sunday?.isOpen === true ? (props?.route?.params?.data?.sunday?.startTime) + " - " + (props?.route?.params?.data?.sunday?.endTime):"CLOSED"}
+                            {/* {props?.route?.params?.data?.sunday?.isOpen === true ? (props?.route?.params?.data?.sunday?.startTime) + " - " + (props?.route?.params?.data?.sunday?.endTime):"CLOSED"} */}
+                            <Text>CLOSED</Text>
                         </Text> 
                     </View>
 

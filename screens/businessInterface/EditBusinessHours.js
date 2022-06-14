@@ -11,7 +11,7 @@ import {BusinessHoursContext} from '../../global/BusinessHoursContext.js'
 
 const EditBusinessHours = (props) => {
     
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
     const [monday,setMonday,tuesday,setTuesday,wednesday,setWednesday,thursday,setThursday,friday,setFriday,saturday,setSaturday,sunday,setSunday] = useContext(BusinessHoursContext);

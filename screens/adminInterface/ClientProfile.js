@@ -1,8 +1,12 @@
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity,Alert } from 'react-native';
 import { FontAwesome,MaterialCommunityIcons,Feather,AntDesign,MaterialIcons } from "@expo/vector-icons/"
-import React from 'react';
+import React,{ useState,useEffect} from 'react';
 
 const CustomerProfile = (props) => {
+
+    useEffect(() => {
+        console.log(props?.route?.params?.data)
+    },[])
 
     const deleteAlert = () =>
     Alert.alert(
@@ -59,6 +63,7 @@ const CustomerProfile = (props) => {
                 <FontAwesome color="#000" name="user-o" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Full Name"
+                    value={props?.route?.params?.data?.name}
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
                 />
@@ -67,6 +72,7 @@ const CustomerProfile = (props) => {
                 <MaterialCommunityIcons color="#000" name="email-outline" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Email"
+                    value={props?.route?.params?.data?.email}
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
                 />
@@ -75,6 +81,7 @@ const CustomerProfile = (props) => {
                 <Feather color="#000" name="phone" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Phone Number"
+                    value={props?.route?.params?.data?.phone}
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
                 />
@@ -83,6 +90,7 @@ const CustomerProfile = (props) => {
             <MaterialCommunityIcons color="#000" name="map-marker-outline" size={23} style = {{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Address"
+                    value={props?.route?.params?.data?.address}
                     placeholderTextColor= {"#000"}
                     style={styles.textInput}
                 />

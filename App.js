@@ -22,8 +22,8 @@ export default function App() {
             <ContextProvider>
               <NavigationContainer>
                 {/* <StackNavigator /> */}
-                {/* <BusinessStack /> */}
-                <AdminStack/>
+                <BusinessStack />
+                {/* <AdminStack/> */}
               </NavigationContainer>
             </ContextProvider>
           </AppointmentContext>

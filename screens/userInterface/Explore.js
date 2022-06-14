@@ -5,7 +5,7 @@ import BusinessCard from '../../components/explore/Card.js';
 import { Ionicons } from '@expo/vector-icons'
 import { FAB } from 'react-native-paper';
 import { db, auth, } from "../../firebase/FirebaseConfig.js";
-import { doc, getDoc, setDoc, collection, getDocs, where, query } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, getDocs, where, query,limit } from "firebase/firestore";
 // import firestore from '@react-native-firebase/firestore';
 import { RadioButton } from 'react-native-paper';
 
@@ -350,7 +350,7 @@ function explore(props) {
     };
 
     useEffect(() => {
-        // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
+        props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
         getQueryResult();
         console.log(auth.currentUser.email)
         console.log(searchQuery)
@@ -424,6 +424,7 @@ function explore(props) {
                                     description={item.business_description}
                                     category={item.category}
                                     image={item.image}
+                                    rating = {item.rating}
                                     address={item.business_address}
                                     onPress={() => {
                                         console.log('Pressed')

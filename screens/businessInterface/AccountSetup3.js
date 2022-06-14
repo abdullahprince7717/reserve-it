@@ -130,7 +130,7 @@ const AccountSetup3 = (props) => {
                     onPress={() => {
                         console.log("Pressed SAVE")
                         addLocationInfo();
-                        props.navigation.navigate('AccountSetup4')
+                        props.navigation.navigate('AccountSetup5')
                     }}
                 >
 

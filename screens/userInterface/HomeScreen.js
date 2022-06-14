@@ -20,11 +20,11 @@ function homeScreen(props) {
     const collectionRef = collection(db, "business_users")
 
     const getQueryResult = async () => {
-        
-            let q = query(collectionRef, where("name", "==", "salon"))
-        
-            let q1 = query(collectionRef, where("category", "==", "doctor"))
-        
+
+        let q = query(collectionRef, where("name", "==", "salon"))
+
+        let q1 = query(collectionRef, where("category", "==", "doctor"))
+
         await getDocs(q)
             .then((res) => {
 
@@ -40,7 +40,7 @@ function homeScreen(props) {
             .catch((err) => {
                 console.log(err);
             });
-            await getDocs(q1)
+        await getDocs(q1)
             .then((res) => {
 
                 setQueryResult1(res.docs.map((doc) => ({
@@ -54,7 +54,7 @@ function homeScreen(props) {
             })
             .catch((err) => {
                 console.log(err);
-            });    
+            });
     };
 
     useEffect(() => {
@@ -122,16 +122,18 @@ function homeScreen(props) {
                             <ScrollView
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
-                            > 
-                            {queryResult.map((item, index) => {
+                            >
+                                {queryResult.map((item, index) => {
 
-                                
-                            })}
+
+                                })}
                                 <TouchableOpacity onPress={() => {
                                     console.log("pressed")
                                     // props.navigation.navigate("Explore", { query: "doctor" })
                                 }}>
-                                    <PopularHorizontalScrollView  />
+                                    <PopularHorizontalScrollView
+                                        
+                                    />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={() => {

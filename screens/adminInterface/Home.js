@@ -28,7 +28,7 @@ const Home = (props) => {
     const getQueryResult = async () => {
 
         let q1
-        if(searchQuery2 != "" ){
+        if(setSearchQuery != "" ){
             q1 = query(businessCollectionRef, where("business_name", "==", searchQuery))
         }
         else{
@@ -85,35 +85,36 @@ const Home = (props) => {
     useEffect(() => {
         // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
         getQueryResult();
+        getQueryResult2();
         // console.log(auth.currentUser.email)
         console.log(searchQuery)
 
 
     }, []);
 
-    useEffect(() => {
-        // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
-        getQueryResult2();
-        // console.log(auth.currentUser.email)
-        console.log(searchQuery2)
+    // useEffect(() => {
+    //     // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
+    //     getQueryResult2();
+    //     // console.log(auth.currentUser.email)
+    //     console.log(searchQuery2)
 
 
-    }, []);
+    // }, []);
 
     const FirstRoute = () => (
         <View style={{ flex: 1, backgroundColor: '#fff', alignItems: 'center', }}>
-           <View style={styles.searchBar}>
+            <View style={styles.searchBar}>
                     <View style={{ flexDirection: 'row', }}>
                         <Searchbar
                             placeholder="Search"
-                            onChangeText={onChangeSearch}
-                            value={searchQuery}
+                            onChangeText={onChangeSearch2}
+                            value={searchQuery2}
                             style={styles.searchBar}
                         />
                         <Button color="#000" mode="contained" style={{ height: 40, padding: 0, width: 30, borderColor: "#fff", marginTop: 14, borderRadius: 20 }}
                             onPress={() => {
                                 console.log('Pressed')
-                                getQueryResult()
+                                getQueryResult2()
                             }}>
 
                             <Ionicons name="search" size={23} color='#fff' />
@@ -137,7 +138,7 @@ const Home = (props) => {
                             <CustomerCard title={item.name} phone={item.phone} email={item.email}
                                 onPress={() => {
                                     console.log('Pressed')
-                                    props.navigation.navigate('ClientProfile')
+                                    props.navigation.navigate('ClientProfile',{ data: queryResult2[index]})
                                 }} />
                     ))}
 
@@ -156,14 +157,14 @@ const Home = (props) => {
                     <View style={{ flexDirection: 'row', }}>
                         <Searchbar
                             placeholder="Search"
-                            onChangeText={onChangeSearch2}
-                            value={searchQuery2}
+                            onChangeText={onChangeSearch}
+                            value={searchQuery}
                             style={styles.searchBar}
                         />
                         <Button color="#000" mode="contained" style={{ height: 40, padding: 0, width: 30, borderColor: "#fff", marginTop: 14, borderRadius: 20 }}
                             onPress={() => {
                                 console.log('Pressed')
-                                getQueryResult2()
+                                getQueryResult()
                             }}>
 
                             <Ionicons name="search" size={23} color='#fff' />
@@ -186,7 +187,7 @@ const Home = (props) => {
                             <CustomerCard title={item.business_name} phone={item.business_phone} email={item.business_email}
                                 onPress={() => {
                                     console.log('Pressed')
-                                    props.navigation.navigate('BusinessProfile')
+                                    props.navigation.navigate('BusinessProfile',{ data: queryResult[index]})
                                 }} />
                     ))}
 

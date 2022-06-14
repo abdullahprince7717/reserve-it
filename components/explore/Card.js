@@ -41,7 +41,7 @@ const BusinessCard = (props) => {
 
 
                         />
-                        <Chip icon= {(props?.category == "salon") ? "suitcase":"stethoscope" } style={{ height: 28, width: 80, backgroundColor: (props.category === 'salon' ) ? '#57B9BB': '#ff7cb5'  , }}
+                        <Chip icon= {(props?.category == "salon") ? "stethoscope":"stethoscope" } style={{ height: 28, width: 80, backgroundColor: (props.category === 'salon' ) ? '#57B9BB': '#ff7cb5'  , }}
                             onPress={() => console.log('Pressed')
                         }>
                             <Text style={{ color: 'white' }}>{props.category == "salon" ? "Salon" : "Doctor"}</Text>

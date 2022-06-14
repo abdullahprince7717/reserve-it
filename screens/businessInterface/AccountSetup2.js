@@ -266,9 +266,9 @@ const BusinessDetails = (props) => {
                         mode="outlined"
                         value={businessEmail}
                         onChangeText={text => setBusinessEmail(text)}
-                        error = {true}
-                        onFocus = {console.log("focused")}
-                        onBlur = {console.log("blurred")}
+                        // error = {true}
+                        // onFocus = {console.log("focused")}
+                        // onBlur = {console.log("blurred")}
                     />
                     {/* <HelperText type="error" visible={hasErrors()}>
                         Email address is invalid!
