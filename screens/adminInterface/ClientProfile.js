@@ -46,8 +46,6 @@ const CustomerProfile = (props) => {
                     props.navigation.pop()
                 } 
             }
-
-        
         ]
     );
 
@@ -58,7 +56,7 @@ const CustomerProfile = (props) => {
                 Personal Details
             </Text>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                <FontAwesome color="#57B9BB" name="user-o" size={25} style ={{margin:10, marginTop: 25, }} /> 
+                <FontAwesome color="#000" name="user-o" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Full Name"
                     placeholderTextColor= {"#000"}
@@ -66,7 +64,7 @@ const CustomerProfile = (props) => {
                 />
             </View>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={25} style ={{margin:10, marginTop: 25, }} /> 
+                <MaterialCommunityIcons color="#000" name="email-outline" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Email"
                     placeholderTextColor= {"#000"}
@@ -74,7 +72,7 @@ const CustomerProfile = (props) => {
                 />
             </View>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                <Feather color="#57B9BB" name="phone" size={25} style ={{margin:10, marginTop: 25, }} /> 
+                <Feather color="#000" name="phone" size={25} style ={{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Phone Number"
                     placeholderTextColor= {"#000"}
@@ -82,7 +80,7 @@ const CustomerProfile = (props) => {
                 />
             </View>
             <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                <Feather color="#57B9BB" name="phone" size={25} style ={{margin:10, marginTop: 25, }} /> 
+            <MaterialCommunityIcons color="#000" name="map-marker-outline" size={23} style = {{margin:10, marginTop: 25, }} /> 
                 <TextInput
                     placeholder="Address"
                     placeholderTextColor= {"#000"}
@@ -156,7 +154,7 @@ const styles = StyleSheet.create({
     
     },
     button: {
-        backgroundColor: '#57B9BB',
+        backgroundColor: '#000',
         width: '70%',
         height: 40,
         borderRadius: 10,
@@ -167,7 +165,7 @@ const styles = StyleSheet.create({
 
     },
     delButton: {
-        backgroundColor: '#57B9BB',
+        backgroundColor: '#000',
         width: '15%',
         height: 40,
         borderRadius: 10,
@@ -177,7 +175,7 @@ const styles = StyleSheet.create({
 
     },
     blockButton: {
-        backgroundColor: '#57B9BB',
+        backgroundColor: '#000',
         width: '15%',
         height: 40,
         borderRadius: 10,

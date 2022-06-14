@@ -15,7 +15,7 @@ const signIn = ({navigation}) => {
 
     const subscribe = auth.onAuthStateChanged(user => {
       if(user){
-        navigation.navigate('Home')
+        navigation.replace('Home')
       }
     })
     return subscribe;

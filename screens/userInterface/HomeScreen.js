@@ -20,12 +20,10 @@ function homeScreen(props) {
     const collectionRef = collection(db, "business_users")
 
     const getQueryResult = async () => {
-        let q
-        let q1
-
-            q = query(collectionRef, where("name", "==", "salon"))
         
-            q1 = query(collectionRef, where("category", "==", "doctor"))
+            let q = query(collectionRef, where("name", "==", "salon"))
+        
+            let q1 = query(collectionRef, where("category", "==", "doctor"))
         
         await getDocs(q)
             .then((res) => {

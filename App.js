@@ -9,24 +9,27 @@ import ContextProvider from './global/CartContext.js';
 import AppointmentContext from './global/AppointmentContext.js';
 import BusinessHoursContext from './global/BusinessHoursContext.js';
 import TimeSlotContext from './global/TimeSlotContext.js';
+import CredentialsContext from './global/CredentialsContext.js';
 
 
 export default function App() {
 
   return (
-    <TimeSlotContext>
-      <BusinessHoursContext>
-        <AppointmentContext>
-          <ContextProvider>
-            <NavigationContainer>
-              {/* <StackNavigator /> */}
-              <BusinessStack/>
-              {/* <AdminStack/> */}
-            </NavigationContainer>
-          </ContextProvider>
-        </AppointmentContext>
-      </BusinessHoursContext>
-    </TimeSlotContext>
+    <CredentialsContext>
+      <TimeSlotContext>
+        <BusinessHoursContext>
+          <AppointmentContext>
+            <ContextProvider>
+              <NavigationContainer>
+                {/* <StackNavigator /> */}
+                {/* <BusinessStack /> */}
+                <AdminStack/>
+              </NavigationContainer>
+            </ContextProvider>
+          </AppointmentContext>
+        </BusinessHoursContext>
+      </TimeSlotContext>
+    </CredentialsContext>
   );
 }
 

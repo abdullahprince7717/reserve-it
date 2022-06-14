@@ -21,7 +21,7 @@ function MyStack() {
             initialRouteName="Home"
             screenOptions={{
                 headerTintColor: 'white',
-                headerStyle: { backgroundColor: '#57B9BB' },
+                headerStyle: { backgroundColor: '#000' },
                 // headerShown: false,
             }}
         >

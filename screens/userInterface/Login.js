@@ -2,11 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
 import React, {useState,useEffect,useContext} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
-
-
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// import { CredentialsContext } from '../../components/CredentialsContext.js';
+import { CredentialsContext } from '../../components/CredentialsContext.js';
+// import MyStack from '../../Navigation/AdminUIStack.js';
 
 
 
@@ -15,16 +12,21 @@ const signIn = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
-
+  const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
 
   // const [IsSignedIn, setIsSignedIn] = useState(false);
 
   useEffect(() => {
-
+    // console.log("storedCredentials" + JSON.stringify(storedCredentials))
     const subscribe = auth.onAuthStateChanged(user => {
+    
         if(user){
-        navigation.replace('Home')
+          // if(email ==='admin@reserveit.com' && password === '12345678'){
+          //   navigation.navigate("AdminStack", { screen: 'Home' });
+            
+          //   // navigation.replace('Home')
+          // }
+          navigation.replace('Home')
         }
     })
     return subscribe;
@@ -36,10 +38,12 @@ const signIn = ({navigation}) => {
     .then((credentials) => {
 
       const user = credentials.user;
-      console.log('loggedIn as' + user?.email);
-      console.log("Pressed")
-      // persistLogin(user);
-      
+      console.log('loggedIn as email = ' + user?.email);
+
+      // if(email ==='admin@reserveit.com' && password === '12345678'){
+      //   navigation.navigate("AdminStack", { screen: 'Home' });
+      // }
+
 
       // setIsSignedIn(true);
 

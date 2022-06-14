@@ -26,6 +26,8 @@ import AccountSetup4b from '../screens/businessInterface/AccountSetup4b.js';
 import AccountSetup5 from '../screens/businessInterface/AccountSetup5.js';
 import AccountSetup6 from '../screens/businessInterface/AccountSetup6.js';
 import AddImages from '../screens/businessInterface/AddImages.js';
+import AdminStack from '../Navigation/AdminUIStack.js';
+
 
 
 
@@ -178,6 +180,10 @@ function MyStack() {
                 name="AddImages"
                 component={AddImages}
                 options={{headerShown: true}}
+            />
+            <Stack.Screen
+                name="AdminStack"
+                component={AdminStack}
             />
             
 

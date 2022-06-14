@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, Dimensions, TouchableOpacity, Image, Alert } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons, Feather, Ionicons } from "@expo/vector-icons/"
-import { TextInput, Button } from 'react-native-paper';
+import { HelperText, TextInput, Button } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useState, useEffect } from 'react';
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
 import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
+// import google from 'googleapis'
+
+// const CLIENT_ID = '116657316456-l4smh6jsae66ntdvu7afdnfgqcmp8sec.apps.googleusercontent.com'
+// const CLIENT_SECRET = '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'
+// const redirect
 
 
 
@@ -23,6 +28,7 @@ const BusinessDetails = (props) => {
         { label: 'Salon', value: 'salon' },
         { label: 'Doctor', value: 'doctor' }
     ]);
+
 
     useEffect(() => {
         console.log(auth.currentUser.uid);
@@ -46,6 +52,12 @@ const BusinessDetails = (props) => {
     const [uploading, setUploading] = useState(false);
     const [transferred, setTransferred] = useState(0);
 
+    const [text, setText] = useState('');
+    const onChangeText = text => setText(text);
+    const hasErrors = () => {
+        return !businessEmail.includes('@');
+    };
+
 
     const addBusinessInfo = async () => {
 
@@ -59,7 +71,7 @@ const BusinessDetails = (props) => {
             instagram: instagram,
             facebook: facebook,
             image: "https://source.unsplash.com/user/c_v_r/1900x800"
-            
+
         }
         console.log(auth.currentUser.uid)
 
@@ -90,7 +102,7 @@ const BusinessDetails = (props) => {
 
         console.log("result: " + result);
         console.log(JSON.stringify(result));
-        console.log("result.uri: " + result.uri );
+        console.log("result.uri: " + result.uri);
 
         if (!result.cancelled) {
             setImage(result.uri);
@@ -132,7 +144,7 @@ const BusinessDetails = (props) => {
 
         try {
             const uri = image;
-            let filename =  uri.substring(uri.lastIndexOf('/') + 1);
+            let filename = uri.substring(uri.lastIndexOf('/') + 1);
 
             if (!image) return;
             const storageRef = ref(storage, `products/${filename}`);
@@ -158,42 +170,42 @@ const BusinessDetails = (props) => {
             );
         }
         catch (err) {
-            Alert.alert(
-                "Error uploading image!"
-            )
+            // Alert.alert(
+            //     "Error uploading image!"
+            // )
             console.log(err)
         }
-    
-    // const getPictureBlob = (uri) => {
-    //     // https://github.com/expo/expo/issues/2402#issuecomment-443726662
-    //     return new Promise((resolve, reject) => {
-    //         const xhr = new XMLHttpRequest();
-    //         xhr.onload = function () {
-    //             resolve(xhr.response);
-    //         };
-    //         xhr.onerror = function (e) {
-    //             console.log(e);
-    //             reject(new TypeError("Network request failed"));
-    //         };
-    //         xhr.responseType = "blob";
-    //         xhr.open("GET", image, true);
-    //         xhr.send(null);
-    //     });
-    // };
 
-    // const uploadImage = async () => {
+        // const getPictureBlob = (uri) => {
+        //     // https://github.com/expo/expo/issues/2402#issuecomment-443726662
+        //     return new Promise((resolve, reject) => {
+        //         const xhr = new XMLHttpRequest();
+        //         xhr.onload = function () {
+        //             resolve(xhr.response);
+        //         };
+        //         xhr.onerror = function (e) {
+        //             console.log(e);
+        //             reject(new TypeError("Network request failed"));
+        //         };
+        //         xhr.responseType = "blob";
+        //         xhr.open("GET", image, true);
+        //         xhr.send(null);
+        //     });
+        // };
+
+        // const uploadImage = async () => {
         // const storage = getStorage();
-    //     const refer = ref(storage,"image.jpg")
-    //     const img  = fetch(image)
-    //     const bytes = img.Blob();
+        //     const refer = ref(storage,"image.jpg")
+        //     const img  = fetch(image)
+        //     const bytes = img.Blob();
 
-    //      uploadBytes(refer,bytes)
-    //     .then((res)=>{
-    //         console.log(res)
-    //     })
-    //     .catch((err)=>{
-    //         console.log(err)
-    //     })
+        //      uploadBytes(refer,bytes)
+        //     .then((res)=>{
+        //         console.log(res)
+        //     })
+        //     .catch((err)=>{
+        //         console.log(err)
+        //     })
     };
 
     // const uploadImage = () => {
@@ -254,7 +266,13 @@ const BusinessDetails = (props) => {
                         mode="outlined"
                         value={businessEmail}
                         onChangeText={text => setBusinessEmail(text)}
+                        error = {true}
+                        onFocus = {console.log("focused")}
+                        onBlur = {console.log("blurred")}
                     />
+                    {/* <HelperText type="error" visible={hasErrors()}>
+                        Email address is invalid!
+                    </HelperText> */}
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
                     {/* <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} />  */}

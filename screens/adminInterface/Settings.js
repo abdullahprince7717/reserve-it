@@ -27,7 +27,7 @@ function settings(props) {
                         <Ionicons 
                             name = "business"
                             size = {25}
-                            color= '#57B9BB'
+                            color= '#000'
                             />
                         <Text style={styles.menuItemText}>Add a Business</Text>
                     </View>
@@ -43,7 +43,7 @@ function settings(props) {
                         <Icon 
                             name = "timetable"
                             size = {25}
-                            color= '#57B9BB'
+                            color= '#000'
                             />
                         <Text style={styles.menuItemText}>Add a Client</Text>
                     </View>
@@ -60,7 +60,7 @@ function settings(props) {
                         <MaterialIcons 
                             name = "block"
                             size = {25}
-                            color= '#57B9BB'
+                            color= '#000'
                         />
                         <Text style={styles.menuItemText}>Blocked Businesses</Text>
                     </View>
@@ -76,7 +76,7 @@ function settings(props) {
                         <MaterialIcons 
                             name = "block"
                             size = {25}
-                            color= '#57B9BB'
+                            color= '#000'
                             />
                         <Text style={styles.menuItemText}>Blocked Clients</Text>
                     </View>
@@ -93,7 +93,7 @@ function settings(props) {
                         <MaterialIcons 
                             name = "logout"
                             size = {25}
-                            color= '#57B9BB'
+                            color= '#000'
                             />
                         <Text style={styles.menuItemText}>Logout</Text>
                     </View>

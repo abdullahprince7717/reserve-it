@@ -20,7 +20,7 @@ const signUp = ({navigation}) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        
+       
     },[])
 
 
@@ -147,14 +147,19 @@ const signUp = ({navigation}) => {
         createUserWithEmailAndPassword(auth, email.trim(), password)
         .then((credentials) => {
 
-            console.log(credentials);
-
+            if((name || phone) != ''){
+                console.log(credentials);
             const userDoc = doc(db,"business_users",credentials.user.uid);
             // const userDoc = doc(db,"business_users","test");
             const servicesDoc = doc(db,"services",credentials.user.uid);
-
             storeData(userDoc, servicesDoc,credentials.user.email);
+
             navigation.replace("AccountSetup1")
+            }
+
+            else{
+                alert("Any Field cant be empty!")
+            }
         })
         .catch((error) => {
             console.log("Error Message :" + error.message);
@@ -164,6 +169,8 @@ const signUp = ({navigation}) => {
 
             // {loading == true ? <MaterialIndicator color='black' />: navigation.navigate("AccountSetup1")}
     }
+
+    
 
     return (
         <>
@@ -196,6 +203,7 @@ const signUp = ({navigation}) => {
                         style={styles.textInput}
                         value={phone}
                         onChangeText={(text) => setPhone(text)}
+                        keyboardType = "phone-pad"
                     />
                     <TextInput
                         placeholder="Password"
@@ -204,6 +212,7 @@ const signUp = ({navigation}) => {
                         onChangeText ={text=>setPassword(text)}
                         placeholderTextColor= {"#fff"}
                         style={styles.textInput}
+
                     />
                     {/* <TextInput
                         placeholder="Confirm Password"

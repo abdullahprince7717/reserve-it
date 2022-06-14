@@ -20,6 +20,7 @@ import EditProfile from '../screens/userInterface/EditProfile.js';
 import Payment from '../screens/userInterface/Payment.js';
 import PaymentCardForm from '../screens/userInterface/PaymentCardForm.js';
 import Feedback from '../screens/userInterface/Feedback.js';
+import AdminStack from '../Navigation/AdminUIStack.js';
 
 // import TimeSlot from '../components/appointments/TimeSlotCreator.js';
 
@@ -106,6 +107,10 @@ function MyStack() {
             <Stack.Screen
                 name="Feedback"
                 component={Feedback}
+            />
+            <Stack.Screen
+                name="AdminStack"
+                component={AdminStack}
             />
             {/* <Stack.Screen
                 name="TimeSlot"

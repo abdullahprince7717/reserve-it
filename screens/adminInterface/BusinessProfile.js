@@ -1,3 +1,4 @@
+import React , {useState,useEffect} from 'react'
 import { StyleSheet, Text, View, TextInput,Dimensions,TouchableOpacity,StatusBar,ScrollView,Alert } from 'react-native';
 import { FontAwesome,MaterialCommunityIcons,Feather,Ionicons,MaterialIcons,AntDesign } from "@expo/vector-icons/"
 
@@ -6,6 +7,18 @@ const BusinessProfile = (props) => {
     // useEffect(() => {
     //     console.log(props.route?.params?.data)
     // },[])
+    const [userData,setUserData] = useState()
+    const [name,setName] = useState('');
+    const [email,setEmail] = useState('');
+    const [phone,setPhone] = useState('');
+    const [businessName, setBusinessName] = useState('');
+    const [businessAddress, setBusinessAddress] = useState('');
+    const [businessEmail, setBusinessEmail] = useState('');
+    const [category, setCategory] = useState('');
+    const [businessPhone, setBusinessPhone] = useState('');
+    const [businessDescription, setBusinessDescription] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [facebook, setFacebook] = useState('');
 
     const deleteAlert = () =>
     Alert.alert(
@@ -57,85 +70,113 @@ const BusinessProfile = (props) => {
     return (
         <View style = {styles.container}>
             <ScrollView>
-                <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,}}>
-                    Personal Details
-                </Text>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginTop: -15}}>
-                    <FontAwesome color="#57B9BB" name="user-o" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Full Name"
-                        placeholderTextColor= {"grey"}
-                        style={styles.textInput}
-                    />
-                </View>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                    <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Email"
-                        placeholderTextColor= {"grey"}
-                        style={styles.textInput}
-                    />
-                </View>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                    <Feather color="#57B9BB" name="phone" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Phone Number"
-                        placeholderTextColor= {"grey"}
-                        style={styles.textInput}
-                    />
-                </View>
+            <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,}}>
+                Personal Details
+            </Text>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginTop: -15}}>
+                <FontAwesome color="#000" name="user-o" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Full Name"
+                    value= {name}
+                    onChangeText={(value) =>setName(value)} 
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <MaterialCommunityIcons color="#000" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Email"
+                    value= {email}
+                    onChangeText={(value) =>setEmail(value)}
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <Feather color="#000" name="phone" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Phone Number"
+                    value= {phone}
+                    onChangeText={(value) =>setPhone(value)}
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+        
 
-                <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>
-                    Business Details
-                </Text>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginTop: -15}}>
-                    <Ionicons color="#57B9BB" name="business" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Business Name"
-                        placeholderTextColor= {"grey"}
-                        style={styles.textInput}
-                    />
-                </View>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                    <MaterialCommunityIcons color="#57B9BB" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Email"
-                        placeholderTextColor= {"grey"}
-                        style={styles.textInput}
-                    />
-                </View>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                    <MaterialIcons color="#57B9BB" name="description" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Business Description "
-                        placeholderTextColor= {"grey"}
-                        multiline={true}
-                        underlineColorAndroid='transparent'
-                        style={styles.description}
+            <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>
+                Business Details
+            </Text>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginTop: -15}}>
+                <Ionicons color="#000" name="business" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Business Name"
+                    value= {businessName}
+                    onChangeText={(value) =>setBusinessName(value)}
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <MaterialCommunityIcons color="#000" name="email-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Business Email"
+                    value= {businessEmail}
+                    onChangeText={(value) =>setBusinessEmail(value)}
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <MaterialCommunityIcons color="#000" name="map-marker-outline" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Business Address"
+                    value= {businessAddress}
+                    onChangeText={(value) =>setBusinessAddress(value)}
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <Feather color="#000" name="phone" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Business Description "
+                    value= {businessDescription}
+                    onChangeText={(value) =>setBusinessDescription(value)}
+                    placeholderTextColor= {"grey"}
+                    multiline={true}
+                    underlineColorAndroid='transparent'
+                    style={styles.description}
 
-                    />
-                </View>
+                />
+            </View>
 
 
-                <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>
-                    Social Media
-                </Text>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginTop: -15}}>
-                    <Feather color="red" name="instagram" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Instagram"
-                        placeholderTextColor= {"grey"}
-                        style={styles.textInput}
-                    />
-                </View>
-                <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
-                    <Feather color="blue" name="facebook" size={23} style ={{margin:10, marginTop: 25, }} /> 
-                    <TextInput
-                        placeholder="Facebook"
-                        placeholderTextColor= {"grey"}
-                        style={styles.textInput}
-                    />
-                </View>                
+
+            <Text style = {{fontSize: 20, fontWeight:'bold', margin: 10,marginTop: 20}}>
+                Social Media
+            </Text>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginTop: -15}}>
+                <Feather color="red" name="instagram" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Instagram"
+                    value= {instagram}
+                    onChangeText={(value) =>setInstagram(value)}
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>
+            <View style = {{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',}}>
+                <Feather color="blue" name="facebook" size={23} style ={{margin:10, marginTop: 25, }} /> 
+                <TextInput
+                    placeholder="Facebook"
+                    value= {facebook}
+                    onChangeText={(value) =>setFacebook(value)}
+                    placeholderTextColor= {"grey"}
+                    style={styles.textInput}
+                />
+            </View>      
             </ScrollView>
             
             <View style = {{flexDirection: 'row',justifyContent: 'space-evenly',marginVertical : 20,marginHorizontal : 10}}>
@@ -216,7 +257,7 @@ const styles = StyleSheet.create({
     
     },
     button: {
-        backgroundColor: '#57B9BB',
+        backgroundColor: '#000',
         width: '70%',
         height: 40,
         borderRadius: 10,
@@ -227,7 +268,7 @@ const styles = StyleSheet.create({
 
     },
     delButton: {
-        backgroundColor: '#57B9BB',
+        backgroundColor: '#000',
         width: '15%',
         height: 40,
         borderRadius: 10,
@@ -237,7 +278,7 @@ const styles = StyleSheet.create({
 
     },
     blockButton: {
-        backgroundColor: '#57B9BB',
+        backgroundColor: '#000',
         width: '15%',
         height: 40,
         borderRadius: 10,

@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
 import React, {useState,useEffect} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
+import {MyStack} from '../../Navigation/AdminUIStack.js';
 
 
 
@@ -16,6 +17,8 @@ const signIn = ({navigation}) => {
     const subscribe = auth.onAuthStateChanged(user => {
         if(user){
         navigation.replace('Home')
+        // navigation.navigate("AdminStack", { screen: 'Home' });
+
         }
     })
     return subscribe;
@@ -29,6 +32,9 @@ const signIn = ({navigation}) => {
         const user = credentials.user;
         console.log('loggedIn as' + user?.email);
         console.log("Pressed")
+
+        // navigation.navigate("AdminStack", { screen: 'Home' });
+
         // setIsSignedIn(true);
 
         })
