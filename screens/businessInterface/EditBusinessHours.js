@@ -12,8 +12,8 @@ import {BusinessHoursContext} from '../../global/BusinessHoursContext.js'
 const EditBusinessHours = (props) => {
     
     const [isOpen, setIsOpen] = useState(true);
-    const [startTime, setStartTime] = useState();
-    const [endTime, setEndTime] = useState();
+    const [startTime, setStartTime] = useState(new Date().getTime());
+    const [endTime, setEndTime] = useState(new Date("2023-01-01T12:00:00").getTime());
     const [monday,setMonday,tuesday,setTuesday,wednesday,setWednesday,thursday,setThursday,friday,setFriday,saturday,setSaturday,sunday,setSunday] = useContext(BusinessHoursContext);
     
     
@@ -107,8 +107,10 @@ const EditBusinessHours = (props) => {
                 
                 <HourComponent
                     day = {props.route?.params?.day}
-                    startTime = {moment(startTime).format('LT')}
-                    endTime = {moment(endTime).format('LT')} 
+                    // startTime = {moment(startTime).format('LT')}
+                    startTime = {startTime}
+                    // endTime = {moment(endTime).format('LT')} 
+                    endTime = {endTime}
                     status = {isOpen == true ? 'open' : 'closed'}
                     
                 />

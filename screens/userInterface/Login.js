@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-native';
 import React, {useState,useEffect,useContext} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
-import { CredentialsContext } from '../../components/CredentialsContext.js';
+import { CredentialsContext } from '../../global/CredentialsContext';
+
 // import MyStack from '../../Navigation/AdminUIStack.js';
 
 
@@ -12,7 +13,7 @@ const signIn = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+  const [storedCredentials, setStoredCredentials] = useContext(CredentialsContext);
 
   // const [IsSignedIn, setIsSignedIn] = useState(false);
 
@@ -21,12 +22,15 @@ const signIn = ({navigation}) => {
     const subscribe = auth.onAuthStateChanged(user => {
     
         if(user){
-          // if(email ==='admin@reserveit.com' && password === '12345678'){
-          //   navigation.navigate("AdminStack", { screen: 'Home' });
-            
-          //   // navigation.replace('Home')
-          // }
-          navigation.replace('Home')
+          if(storedCredentials.email === "admin123@gmail.com"){
+            navigation.navigate("AdminStack", { screen: 'Home' });
+            console.log("admin")
+          }
+          else{
+            navigation.replace('Home')
+            console.log("user")
+          }
+
         }
     })
     return subscribe;
@@ -39,6 +43,8 @@ const signIn = ({navigation}) => {
 
       const user = credentials.user;
       console.log('loggedIn as email = ' + user?.email);
+      setStoredCredentials({email: email.trim(), password: password})
+
 
       // if(email ==='admin@reserveit.com' && password === '12345678'){
       //   navigation.navigate("AdminStack", { screen: 'Home' });

@@ -21,8 +21,8 @@ const BusinessDays = (props) => {
                     </Text>
 
                     <Text style = {{fontSize:16, fontWeight: 'bold'}}>
-                    {/* { (props.status === 'open'  || props.status === true )? props.startTime  + " - "  + props.endTime : "CLOSED"} */}
-                    10:00 AM - 10:00 PM
+                    { (props.status === 'open'  || props.status === true )? props.startTime  + " - "  + props.endTime : "CLOSED"}
+                    {/* 10:00 AM - 10:00 PM */}
                     </Text>
                 </View>
 

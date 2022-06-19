@@ -16,6 +16,8 @@ import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Fontisto from "react-native-vector-icons/Fontisto";
+import { db, auth, } from "../../firebase/FirebaseConfig.js";
+import { doc, getDoc, setDoc, collection, getDocs, where, query,limit } from "firebase/firestore";
 
 
 const { width, height } = Dimensions.get("window");
@@ -24,8 +26,11 @@ const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
 
+
+
 const MapScreen = (props) => {
     // const theme = useTheme();
+    const [data, setData] = useState([]);
     const [businesses,setBusiness] = useState([])
     const Images = [
         { image: require("../../assets/map-marker.png") },
@@ -33,6 +38,36 @@ const MapScreen = (props) => {
         { image: require("../../assets/icon.png") },
         { image: require("../../assets/doc-logo.jpg") },
     ];
+
+    useEffect(() => {
+        if(!props?.route?.params?.data) return;
+        // {
+        //     coordinate: {
+        //         latitude: 22.6293867,
+        //         longitude: 88.4354486,
+        //     },
+        //     title: "WA Restaurant",
+        //     description: "This is the best food place",
+        //     image: Images[0].image,
+        //     rating: 4,
+        //     reviews: 99,
+        // },
+        let temp = []
+        props.route.params.data.map(item => {
+            let av = {
+                coordinate: {
+                    latitude: item.latitude,
+                    longitude: item.longitude
+                },
+                title: item.business_name,
+                description: item.business_description,
+                rating: item.rating,
+                image: "https://source.unsplash.com/user/c_v_r/1900x800"
+            }
+            temp.push(av);
+        })
+        setData(temp)
+    },[])
     
 
     const markers = [
@@ -96,7 +131,7 @@ const MapScreen = (props) => {
 
     const initialMapState = {
         businesses,
-        markers,
+        data,
         categories: [
             {
                 name: "Doctor",
@@ -150,8 +185,9 @@ const MapScreen = (props) => {
 
         mapAnimation.addListener(({ value }) => {
             let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
-            if (index >= state.markers.length) {
-                index = state.markers.length - 1;
+            //state.markers with data
+            if (index >= data.length) {
+                index = data.length - 1;
             }
             if (index <= 0) {
                 index = 0;
@@ -162,7 +198,8 @@ const MapScreen = (props) => {
             const regionTimeout = setTimeout(() => {
                 if (mapIndex !== index) {
                     mapIndex = index;
-                    const { coordinate } = state.markers[index];
+                    //state.market with data
+                    const { coordinate } = data[index];
                     _map.current.animateToRegion(
                         {
                             ...coordinate,
@@ -176,7 +213,8 @@ const MapScreen = (props) => {
         });
     });
 
-    const interpolations = state.markers.map((marker, index) => {
+    //state.markers with data
+    const interpolations = data.map((marker, index) => {
         const inputRange = [
             (index - 1) * CARD_WIDTH,
             index * CARD_WIDTH,
@@ -215,7 +253,7 @@ const MapScreen = (props) => {
                 provider={PROVIDER_GOOGLE}
                 // customMapStyle={theme.dark ? mapDarkStyle : mapStandardStyle}
             >
-                {state.markers.map((marker, index) => {
+                {data.map((marker, index) => {
                     const scaleStyle = {
                         transform: [
                             {
@@ -305,7 +343,7 @@ const MapScreen = (props) => {
                     { useNativeDriver: true }
                 )}
             >
-                {state.markers.map((marker, index) => (
+                {data.map((marker, index) => (
                     <View style={styles.card} key={index}>
                         <Image
                             source={marker.image}

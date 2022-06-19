@@ -218,14 +218,15 @@ const signUp = ({navigation}) => {
               <Text>Sign Up </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
               style = {styles.fbButton} 
               onPress = { () => {
+                
                 signUpWithFacebook();
               }}
               >
               <Text style = {styles.fbText}>Continue with Facebook </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <Text style = {styles.text}> Already have an account?
             <TouchableOpacity

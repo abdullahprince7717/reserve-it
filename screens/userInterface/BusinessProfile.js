@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView, useWindowDimensions, TouchableOpacity, Alert } from 'react-native';
 import { ImageSlider } from "react-native-image-slider-banner";
 import { Caption, Title, Divider, TextInput, Paragraph, ProgressBar, Subheading,Button } from 'react-native-paper';
@@ -10,10 +10,10 @@ import ServiceCard from '../../components/businessProfile/ServiceCard.js';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { collection, getDocs, doc, setDoc, query, where } from "firebase/firestore";
 import * as Linking from 'expo-linking';
-
+import { UserContext } from "../../global/UserContext";
 
 const BusinessProfile = (props) => {
-
+    const [user, setUser] = useContext(UserContext);
     const layout = useWindowDimensions();
     const [isFilled, setIsFilled] = useState(false)
 
@@ -534,6 +534,8 @@ const BusinessProfile = (props) => {
         { key: 'third', title: 'Details' },
     ]);
 
+    const handleFav = () => {}
+
     // const renderScene = ({ route }) => {
     //     switch (route.key) {
     //         case 'first':
@@ -547,7 +549,7 @@ const BusinessProfile = (props) => {
 
 
     return (
-        <View style={styles.container}>
+        <View style={{height: '100%'}}>
             <View style={styles.imageSlider}>
                 <ImageSlider
                     data={[                                 //{props.images}
@@ -572,9 +574,7 @@ const BusinessProfile = (props) => {
                     </Caption>
                 </View>
                 <View style={{ flex: 0.1 }}>
-                    <TouchableOpacity style={{ marginTop: 10 }} onPress={() => {
-                        setIsFilled(!isFilled)
-                    }}>
+                    <TouchableOpacity style={{ marginTop: 10 }} onPress={handleFav}>
                         <Ionicons name={isFilled ? "heart" : "heart-outline"} size={28} color="red" />
 
                     </TouchableOpacity>
@@ -600,7 +600,7 @@ styles = StyleSheet.create({
 
     container: {
 
-        flex: 2,
+        height: '100%'
         // backgroundColor: 'grey',
     },
     services: {
@@ -643,7 +643,7 @@ styles = StyleSheet.create({
 
     },
     imageSlider: {
-        flex: 0.45,
+        
     },
     details: {
         flex: 1,

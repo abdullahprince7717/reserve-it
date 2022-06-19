@@ -10,7 +10,7 @@ import AppointmentContext from './global/AppointmentContext.js';
 import BusinessHoursContext from './global/BusinessHoursContext.js';
 import TimeSlotContext from './global/TimeSlotContext.js';
 import CredentialsContext from './global/CredentialsContext.js';
-
+import FavProvider from './global/FavouriteContext';
 
 export default function App() {
 
@@ -20,11 +20,13 @@ export default function App() {
         <BusinessHoursContext>
           <AppointmentContext>
             <ContextProvider>
+              <FavProvider>
               <NavigationContainer>
-                {/* <StackNavigator /> */}
-                <BusinessStack />
+                <StackNavigator />
+                {/* <BusinessStack /> */}
                 {/* <AdminStack/> */}
               </NavigationContainer>
+              </FavProvider>
             </ContextProvider>
           </AppointmentContext>
         </BusinessHoursContext>

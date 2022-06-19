@@ -5,6 +5,8 @@ import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
+import {MaterialIcons} from '@expo/vector-icons'
+
 
 function appointments({navigation}) {
 
@@ -56,17 +58,17 @@ const FirstRoute = () => (
                     && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
                             title={item.service_name}
-                            businessName="LaLa Salon"
-                            address="Machi Mandi near Niagra Falls, Kenya"
+                            CustomerName="Arslan"
                             date="March 12"
                             time="10:00 AM"
                             onPress={() => {
                                 console.log("Pressed");
                                 props.navigation.navigate("BusinessProfile");
                             }}
-                            buttonText1="Edit"
-                            buttonText2="Cancel"
-                        />) : null
+
+                        />) 
+                        : null
+                        
                 ))}
 
 

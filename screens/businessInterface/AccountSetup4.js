@@ -62,7 +62,7 @@ const BusinessHours = (props) => {
                 status={monday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    // { props.navigation.navigate('AccountSetup4b', { day: 'Monday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Monday' }) }
                 }}
             />
             <HourComponent
@@ -72,7 +72,7 @@ const BusinessHours = (props) => {
                 status={tuesday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    // { props.navigation.navigate('AccountSetup4b', { day: 'Tuesday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Tuesday' }) }
                 }}
             />
             <HourComponent
@@ -82,7 +82,7 @@ const BusinessHours = (props) => {
                 status={wednesday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    // { props.navigation.navigate('AccountSetup4b', { day: 'Wednesday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Wednesday' }) }
                 }}
             />
             <HourComponent
@@ -92,7 +92,7 @@ const BusinessHours = (props) => {
                 status={thursday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    // { props.navigation.navigate('AccountSetup4b', { day: 'Thursday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Thursday' }) }
                 }}
             />
             <HourComponent
@@ -102,7 +102,7 @@ const BusinessHours = (props) => {
                 status={friday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    // { props.navigation.navigate('AccountSetup4b', { day: 'Friday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Friday' }) }
                 }}
             />
             <HourComponent
@@ -112,7 +112,7 @@ const BusinessHours = (props) => {
                 status={saturday?.isOpen === true ? 'open' :'closed'}
                 onPress={() => {
                     console.log("Pressed")
-                    // { props.navigation.navigate('AccountSetup4b', { day: 'Saturday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Saturday' }) }
                 }}
             />
             <HourComponent
@@ -122,7 +122,7 @@ const BusinessHours = (props) => {
                 status={sunday?.isOpen === true ? 'open' :'closed' }
                 onPress={() => {
                     console.log("Pressed")
-                    // { props.navigation.navigate('AccountSetup4b', { day: 'Sunday' }) }
+                    { props.navigation.navigate('AccountSetup4b', { day: 'Sunday' }) }
                 }}
             />
 

@@ -5,7 +5,8 @@ import PopularHorizontalScrollView from '../../components/home/PopularCardHorizo
 import { FAB } from 'react-native-paper';
 import { db, auth, } from "../../firebase/FirebaseConfig.js";
 import { doc, getDoc, setDoc, collection, getDocs, where, query } from "firebase/firestore";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
+import { CredentialsContext } from '../../global/CredentialsContext';
 
 
 
@@ -15,13 +16,14 @@ function homeScreen(props) {
     const [queryResult, setQueryResult] = useState([]);
     const [queryResult1, setQueryResult1] = useState([]);
     const [checked, setChecked] = useState('first');
+    const [storedCredentials, setStoredCredentials] = useContext(CredentialsContext);
 
 
     const collectionRef = collection(db, "business_users")
 
     const getQueryResult = async () => {
 
-        let q = query(collectionRef, where("name", "==", "salon"))
+        let q = query(collectionRef, where("category", "==", "salon"))
 
         let q1 = query(collectionRef, where("category", "==", "doctor"))
 
@@ -58,14 +60,17 @@ function homeScreen(props) {
     };
 
     useEffect(() => {
+        console.log(storedCredentials)
+    })
+
+    useEffect(() => {
         // props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
         getQueryResult();
         console.log(auth.currentUser.email)
-        console.log(queryResult)
-        console.log(queryResult1)
-
-
+        // console.log(queryResult)
+        // console.log(queryResult1)
     }, [searchQuery]);
+
     return (
         <View style={styles.container}>
             <View style={styles.logo}>

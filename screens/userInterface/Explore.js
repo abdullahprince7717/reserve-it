@@ -317,7 +317,7 @@ function explore(props) {
     const [selectedCity,setSelectedCity] = useState(); 
 
 
-    const [searchQuery, setSearchQuery] = useState();
+    const [searchQuery, setSearchQuery] = useState("");
     const onChangeSearch = query => setSearchQuery(query);
     const [queryResult, setQueryResult] = useState([]);
     const [checked, setChecked] = useState('first');
@@ -351,11 +351,13 @@ function explore(props) {
 
     useEffect(() => {
         props?.route?.params?.query ? setSearchQuery(props?.route?.params?.query) : null;
+    },[])
+
+
+    useEffect(() => {
         getQueryResult();
         console.log(auth.currentUser.email)
         console.log(searchQuery)
-
-
     }, [searchQuery]);
 
     return (
@@ -437,7 +439,7 @@ function explore(props) {
                     </View>
                 </ScrollView>
 
-                {/* <FAB
+                <FAB
                     style={styles.fab}
                     label="Maps"
                     large
@@ -447,7 +449,7 @@ function explore(props) {
                         props.navigation.navigate('Map', { data: queryResult })
                     }}
                     color='#fff'
-                /> */}
+                />
             </View>
         </View>
     );
