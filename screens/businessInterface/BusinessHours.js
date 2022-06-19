@@ -3,22 +3,47 @@ import { TouchableRipple, } from 'react-native-paper'
 import React, { useState, useEffect, useContext } from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 import { BusinessHoursContext } from '../../global/BusinessHoursContext.js';
+import {doc,setDoc} from 'firebase/firestore';
+import {db,auth} from  '../../firebase/FirebaseConfig.js'
 
 const BusinessHours = (props) => {
 
     const [monday,setMonday,tuesday,setTuesday,wednesday,setWednesday,thursday,setThursday,friday,setFriday,saturday,setSaturday,sunday,setSunday] = useContext(BusinessHoursContext);
+
+    const businessDoc = doc(db, "business_users", auth.currentUser.uid);
+    // const businessDoc = doc(db, "business_users", "auth.uid");
+
+    const addWorkingDays = async () => {
+
+        const workingDaysInfo = {
+            monday,
+            tuesday,
+            wednesday,
+            thursday,
+            friday,
+            saturday,
+            sunday,
+        }
+        console.log(auth.currentUser.uid)
+
+        await setDoc(businessDoc, workingDaysInfo, { merge: true })
+            .then(
+                (res) => {
+                    console.log("response" + res)
+                    props.navigation.navigate('Settings');
+                })
+            .catch(
+                (err) => {
+                    console.log("error" + err)
+                });
+    };
 
     useEffect(() => {
         // console.log(props?.route?.params?.data)
         // setDays(props?.route?.params?.data)
         // console.log(days[0])
         console.log(monday)
-        console.log(tuesday)
-        console.log(wednesday)
-        console.log(thursday)
-        console.log(friday)
-        console.log(saturday)
-        console.log(sunday)
+
 
     }, [])
     return (
@@ -98,6 +123,7 @@ const BusinessHours = (props) => {
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
+                    addWorkingDays();
                     props.navigation.navigate('Settings');
                 }}
             >

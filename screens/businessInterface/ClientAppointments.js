@@ -42,6 +42,7 @@ function appointments({navigation}) {
 
     useEffect(() => {
         getAppointments();
+        console.log(auth.currentUser.uid)
     }, []);
 
 
