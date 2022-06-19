@@ -6,7 +6,10 @@ import React, { useState, useEffect } from 'react';
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, doc, addDoc, getDocs, setDoc } from "firebase/firestore";
-import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
+import { db, auth, storage } from '../../firebase/FirebaseConfig.js';
+import axios from "axios"
+
+import getFileExtension from '../../utils/getFileExtension.js';
 // import google from 'googleapis'
 
 // const CLIENT_ID = '116657316456-l4smh6jsae66ntdvu7afdnfgqcmp8sec.apps.googleusercontent.com'
@@ -48,7 +51,7 @@ const BusinessDetails = (props) => {
     const businessDoc = doc(db, "business_users", auth.currentUser.uid);
     // const businessDoc = doc(db, "business_users", "auth.uid");
 
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState({ uri: 'hahahahahahah' });
     const [uploading, setUploading] = useState(false);
     const [transferred, setTransferred] = useState(0);
 
@@ -105,14 +108,7 @@ const BusinessDetails = (props) => {
         console.log("result.uri: " + result.uri);
 
         if (!result.cancelled) {
-            setImage(result.uri);
-
-            //         // const storage = getStorage();
-            //         // const refer = ref(storage, "image.jpg")
-            //         // const img = await fetch(image)
-            //         // const bytes = await img.Blob();
-
-            //         // await uploadBytes(refer, bytes)
+            setImage(result);
         }
     };
 
@@ -122,118 +118,33 @@ const BusinessDetails = (props) => {
         setImage(null);
     }
 
-    // const uploadImage =  () => {
-    //     // const storage = getStorage();
-    //     const refer = ref(storage,"image.jpg")
-    //     const img  = fetch(image)
-    //     const bytes = img.Blob();
-
-    //      uploadBytes(refer,bytes)
-    //     .then((res)=>{
-    //         console.log(res)
-    //     })
-    //     .catch((err)=>{
-    //         console.log(err)
-    //     })
-
-    // }
-
 
     const uploadImage = async () => {
-        setUploading(true);
+        let extension = getFileExtension(image.uri);
+        let base64 = `data:image/${extension};base64,${image.base64}`;
 
-        try {
-            const uri = image;
-            let filename = uri.substring(uri.lastIndexOf('/') + 1);
+        let apiUrl = 'https://api.cloudinary.com/v1_1/reserve-it-fyp/image/upload';
 
-            if (!image) return;
-            const storageRef = ref(storage, `products/${filename}`);
-            const uploadTask = uploadBytesResumable(storageRef, uri);
-
-            console.log(filename)
-            console.log(`products/${filename}`)
-
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {
-                    // const prog = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log(snapshot.bytesTransferred)
-
-                    // setProgress(prog);
-                },
-                (error) => console.log(error),
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                        console.log(url);
-                    });
-                }
-            );
-        }
-        catch (err) {
-            // Alert.alert(
-            //     "Error uploading image!"
-            // )
-            console.log(err)
+        let data = {
+            "file": base64,
+            "upload_preset": "q4x11otx",
         }
 
-        // const getPictureBlob = (uri) => {
-        //     // https://github.com/expo/expo/issues/2402#issuecomment-443726662
-        //     return new Promise((resolve, reject) => {
-        //         const xhr = new XMLHttpRequest();
-        //         xhr.onload = function () {
-        //             resolve(xhr.response);
-        //         };
-        //         xhr.onerror = function (e) {
-        //             console.log(e);
-        //             reject(new TypeError("Network request failed"));
-        //         };
-        //         xhr.responseType = "blob";
-        //         xhr.open("GET", image, true);
-        //         xhr.send(null);
-        //     });
-        // };
+        const { data: hello } = await axios.post(apiUrl, data).catch(err => {
+            console.log("error: " + err)
+        });
 
-        // const uploadImage = async () => {
-        // const storage = getStorage();
-        //     const refer = ref(storage,"image.jpg")
-        //     const img  = fetch(image)
-        //     const bytes = img.Blob();
+        console.log(hello)
 
-        //      uploadBytes(refer,bytes)
-        //     .then((res)=>{
-        //         console.log(res)
-        //     })
-        //     .catch((err)=>{
-        //         console.log(err)
-        //     })
-    };
+        // const { url, public_id } = await cloudinary.uploader.upload(base64, {
+        //     upload_preset: 'dev_setups'
+        // });
 
-    // const uploadImage = () => {
-    //     if (!image[0]) return;
-    //     const arr = [];
+        // console.log("This is url");
+        // console.log(url);
 
-    //     for (let i = 0; i < image.length; i++) {
-    //         const storageRef = ref(storage, `products/${image[i].name}`);
-    //         const uploadTask = uploadBytesResumable(storageRef, image[i]);
+    }
 
-    //         uploadTask.on(
-    //             "state_changed",
-    //             (snapshot) => {
-    //                 const prog = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-
-    //                 setProgress(prog);
-    //             },
-    //             (error) => console.log(error),
-    //             () => {
-    //                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-    //                     console.log(url);
-    //                     arr.push(url);
-    //                     setUrls(arr);
-    //                 });
-    //             }
-    //         );
-    //     }
-    // };
 
 
     return (
@@ -266,9 +177,9 @@ const BusinessDetails = (props) => {
                         mode="outlined"
                         value={businessEmail}
                         onChangeText={text => setBusinessEmail(text)}
-                        // error = {true}
-                        // onFocus = {console.log("focused")}
-                        // onBlur = {console.log("blurred")}
+                    // error = {true}
+                    // onFocus = {console.log("focused")}
+                    // onBlur = {console.log("blurred")}
                     />
                     {/* <HelperText type="error" visible={hasErrors()}>
                         Email address is invalid!
@@ -371,7 +282,7 @@ const BusinessDetails = (props) => {
                 <View style={{ flex: 1, flexDirection: "column", alignItems: 'center', justifyContent: 'center', }}>
 
                     <View style={{ flexDirection: "row", margin: 10 }}>
-                        {image && <Image source={{ uri: image }} style={{ width: 100, height: 100, borderRadius: 13 }} />}
+                        {image && <Image source={{ uri: image.uri }} style={{ width: 100, height: 100, borderRadius: 13 }} />}
 
                         <View style={{ justifyContent: 'center', margin: 10 }}>
                             {image &&
@@ -397,7 +308,7 @@ const BusinessDetails = (props) => {
                         addBusinessInfo();
                         uploadImage();
                         // props.navigation.navigate('AccountSetup3')
-                        props.navigation.navigate('AccountSetup3test')
+                        // props.navigation.navigate('AccountSetup3test')
                     }}
                 >
 
