@@ -10,10 +10,8 @@ import ServiceCard from '../../components/businessProfile/ServiceCard.js';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { collection, getDocs, doc, setDoc, query, where } from "firebase/firestore";
 import * as Linking from 'expo-linking';
-import { UserContext } from "../../global/UserContext";
 
 const BusinessProfile = (props) => {
-    const [user, setUser] = useContext(UserContext);
     const layout = useWindowDimensions();
     const [isFilled, setIsFilled] = useState(false)
 
@@ -56,7 +54,7 @@ const BusinessProfile = (props) => {
 
     useEffect(() => {
         getServices();
-        console.log(props.route.params.data)
+        console.log(props?.route?.params?.data)
         // console.log(services)
         // console.log(data.name)
     }, [])
@@ -363,7 +361,7 @@ const BusinessProfile = (props) => {
                     </Text>
 
                     <Paragraph style={{ color: 'black', fontSize: 15, marginTop: 10 }}>
-                        {props.route.params.data.business_description}
+                        {props?.route?.params?.data?.business_description}
                     </Paragraph>
 
                     <Divider style={{ height: 1, color: '#000', marginTop: 10, marginBottom: 10, }} />
@@ -377,10 +375,10 @@ const BusinessProfile = (props) => {
                     <View style={{ flexDirection: 'row' }}>
                         <AntDesign color="black" name="mobile1" size={20} />
                         <TouchableOpacity onPress={() => {
-                             Linking.openURL(`tel:${props.route.params.data.business_phone}`);
+                            Linking.openURL(`tel:${props?.route?.params?.data?.business_phone}`);
                         }}>
                         <Text style={{ marginLeft: 10, color: "black", fontSize: 17, color: 'grey' }}>
-                            {props.route.params.data.business_phone}
+                            {props?.route?.params?.data?.business_phone}
                         </Text>
                         </TouchableOpacity>
                     </View>
@@ -461,19 +459,19 @@ const BusinessProfile = (props) => {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 360, marginTop: 20, marginBottom: 20 }}>
 
                         <TouchableOpacity onPress={() =>{
-                            Linking.openURL(`https://www.instagram.com/sharer/sharer.php?u=${props.route.params.data.business_url}`);
+                            Linking.openURL(`https://www.instagram.com/sharer/sharer.php?u=${props?.route?.params?.data?.business_url}`);
                         }}>
                             <AntDesign color="red" name="instagram" size={40} />
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL(`whatsapp://send?text=${props.route.params.data.business_name}`);
+                            Linking.openURL(`whatsapp://send?text=${props?.route?.params?.data?.business_name}`);
                         }}>
                             <AntDesign color="green" name="sharealt" size={40} />
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL(`https://www.facebook.com/sharer/sharer.php?u=${props.route.params.data.business_url}`);
+                            Linking.openURL(`https://www.facebook.com/sharer/sharer.php?u=${props?.route?.params?.data?.business_url}`);
                         }}>
                             <AntDesign color="blue" name="facebook-square" size={40} />
                         </TouchableOpacity>
@@ -552,10 +550,10 @@ const BusinessProfile = (props) => {
         <View style={{height: '100%'}}>
             <View style={styles.imageSlider}>
                 <ImageSlider
-                    data={[                                 //{props.images}
-                        { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5a5uCP-n4teeW2SApcIqUrcQApev8ZVCJkA&usqp=CAU' },
-                        { img: 'https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
-                        { img: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg' }
+                    data={[                                
+                        { img: props?.route?.params?.data?.image },
+                        // { img: 'https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
+                        // { img: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg' }
                     ]}
                     autoPlay={false}
                     // onItemChanged={(item) => console.log("item", item)}

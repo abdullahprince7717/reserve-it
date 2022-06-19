@@ -62,7 +62,7 @@ const BusinessDetails = (props) => {
     };
 
 
-    const addBusinessInfo = async () => {
+    const addBusinessInfo = async (image_url) => {
 
         const business = {
             business_name: businessName,
@@ -73,7 +73,7 @@ const BusinessDetails = (props) => {
             business_description: businessDescription,
             instagram: instagram,
             facebook: facebook,
-            image: "https://source.unsplash.com/user/c_v_r/1900x800"
+            image: image_url
 
         }
         console.log(auth.currentUser.uid)
@@ -134,7 +134,8 @@ const BusinessDetails = (props) => {
             console.log("error: " + err)
         });
 
-        console.log(hello)
+        console.log(hello.url)
+        addBusinessInfo(hello.url);
 
         // const { url, public_id } = await cloudinary.uploader.upload(base64, {
         //     upload_preset: 'dev_setups'
@@ -305,10 +306,10 @@ const BusinessDetails = (props) => {
                     style={styles.button}
                     onPress={() => {
                         console.log("Pressed SAVE")
-                        addBusinessInfo();
+                        // addBusinessInfo();
                         uploadImage();
                         // props.navigation.navigate('AccountSetup3')
-                        // props.navigation.navigate('AccountSetup3test')
+                        props.navigation.navigate('AccountSetup3test')
                     }}
                 >
 

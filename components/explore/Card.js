@@ -26,7 +26,7 @@ const BusinessCard = (props) => {
             <Card style={styles.card}>
 
                 <Card.Cover
-                    source={{ uri: 'https://picsum.photos/700' }}
+                    source={{ uri: props.image }}
                     style={{ height: 150, resizeMode: 'contain' }}
                 />
                 <Card.Content >

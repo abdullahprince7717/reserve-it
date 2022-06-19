@@ -56,13 +56,68 @@ const MapScreen = (props) => {
         props.route.params.data.map(item => {
             let av = {
                 coordinate: {
-                    latitude: item.latitude,
-                    longitude: item.longitude
+                    latitude: item.latitude?item.latitude:0,
+                    longitude: item.longitude?item.longitude:0,
                 },
                 title: item.business_name,
                 description: item.business_description,
                 rating: item.rating,
-                image: "https://source.unsplash.com/user/c_v_r/1900x800"
+                image: item.image,
+                address: item.address,
+                reviews: item?.reviews,
+                id: item?.id,
+                category: item?.category,
+                business_name: item?.business_name,
+                business_description: item?.business_description,
+                business_phone: item?.business_phone,
+                business_email: item?.business_email,
+                instagram: item?.instagram,
+                facebook: item?.facebook,
+                monday:{
+                    day: item?.monday?.day,
+                    isOpen: item?.monday?.isOpen,
+                    startTime: item?.monday?.startTime,
+                    endTime: item?.monday?.endTime,
+                },
+                tuesday:{
+                    day: item?.tuesday?.day,
+                    isOpen: item?.tuesday?.isOpen,
+                    startTime: item?.tuesday?.startTime,
+                    endTime: item?.tuesday?.endTime,
+                },
+                wednesday:{
+                    day: item?.wednesday?.day,
+                    isOpen: item?.wednesday?.isOpen,
+                    startTime: item?.wednesday?.startTime,
+                    endTime: item?.wednesday?.endTime,
+                },
+                thursday:{
+                    day: item?.thursday?.day,
+                    isOpen: item?.thursday?.isOpen,
+                    startTime: item?.thursday?.startTime,
+                    endTime: item?.thursday?.endTime,
+                },
+                friday:{
+                    day: item?.friday?.day,
+                    isOpen: item?.friday?.isOpen,
+                    startTime: item?.friday?.startTime,
+                    endTime: item?.friday?.endTime,
+                },
+                saturday:{
+                    day: item?.saturday?.day,
+                    isOpen: item?.saturday?.isOpen,
+                    startTime: item?.saturday?.startTime,
+                    endTime: item?.saturday?.endTime,
+                },
+                sunday:{
+                    day: item?.sunday?.day,
+                    isOpen: item?.sunday?.isOpen,
+                    startTime: item?.sunday?.startTime,
+                    endTime: item?.sunday?.endTime,
+                }
+                    
+
+
             }
             temp.push(av);
         })
@@ -278,7 +333,7 @@ const MapScreen = (props) => {
                     );
                 })}
             </MapView>
-            <View style={styles.searchBox}>
+            {/* <View style={styles.searchBox}>
                 <TextInput
                     placeholder="Search here"
                     placeholderTextColor="#000"
@@ -286,8 +341,8 @@ const MapScreen = (props) => {
                     style={{ flex: 1, padding: 0 }}
                 />
                 <Ionicons name="ios-search" size={20} />
-            </View>
-            <ScrollView
+            </View> */}
+            {/* <ScrollView
                 horizontal
                 scrollEventThrottle={1}
                 showsHorizontalScrollIndicator={false}
@@ -310,7 +365,7 @@ const MapScreen = (props) => {
                         <Text>{category.name}</Text>
                     </TouchableOpacity>
                 ))}
-            </ScrollView>
+            </ScrollView> */}
             <Animated.ScrollView
                 ref={_scrollView}
                 horizontal
@@ -350,6 +405,7 @@ const MapScreen = (props) => {
                             style={styles.cardImage}
                             resizeMode="cover"
                         />
+                        {console.log(marker.image)}
                         <View style={styles.textContent}>
                             <Text numberOfLines={1} style={styles.cardtitle}>
                                 {marker.title}
@@ -363,7 +419,9 @@ const MapScreen = (props) => {
 
                             <View style={styles.button}>
                                 <TouchableOpacity
-                                    onPress={() => { props.navigation.navigate("BusinessProfile",marker[index]) }}
+                                    onPress={() => { props.navigation.navigate("BusinessProfile",{data: data[index]}) 
+                                                    console.log(data[index])
+                                }}
                                     style={[
                                         styles.signIn,
                                         {

@@ -59,60 +59,60 @@ const signUp = ({navigation}) => {
             rating: 0,
             startTime:"",
             endTime:"",
-            workingDays: {
-                monday: {
-                    isOpen:true,
-                    startTime:"",
-                    endTime:"",
-                    breakTimeStart:"",
-                    breakTimeEnd:""
-                },
-                tuesday: {
-                    isOpen:true,
-                    startTime:"",
-                    endTime:"",
-                    breakTimeStart:"",
-                    breakTimeEnd:""
-                },
-                wednesday: {
-                    isOpen:true,
-                    startTime:"",
-                    endTime:"",
-                    breakTimeStart:"",
-                    breakTimeEnd:""
+            // workingDays: {
+            //     monday: {
+            //         isOpen:true,
+            //         startTime:"",
+            //         endTime:"",
+            //         breakTimeStart:"",
+            //         breakTimeEnd:""
+            //     },
+            //     tuesday: {
+            //         isOpen:true,
+            //         startTime:"",
+            //         endTime:"",
+            //         breakTimeStart:"",
+            //         breakTimeEnd:""
+            //     },
+            //     wednesday: {
+            //         isOpen:true,
+            //         startTime:"",
+            //         endTime:"",
+            //         breakTimeStart:"",
+            //         breakTimeEnd:""
 
-                },
-                thursday: {
-                    isOpen:true,
-                    startTime:"",
-                    endTime:"",
-                    breakTimeStart:"",
-                    breakTimeEnd:""
+            //     },
+            //     thursday: {
+            //         isOpen:true,
+            //         startTime:"",
+            //         endTime:"",
+            //         breakTimeStart:"",
+            //         breakTimeEnd:""
 
-                },
-                friday: {
-                    isOpen:true,
-                    startTime:"",
-                    endTime:"",
-                    breakTimeStart:"",
-                    breakTimeEnd:""
-                },
-                saturday: {
-                    isOpen:true,
-                    startTime:"",
-                    endTime:"",
-                    breakTimeStart:"",
-                    breakTimeEnd:""
-                },
-                sunday: {
-                    isOpen:true,
-                    startTime:"",
-                    endTime:"",
-                    breakTimeStart:"",
-                    breakTimeEnd:""
-                }
+            //     },
+            //     friday: {
+            //         isOpen:true,
+            //         startTime:"",
+            //         endTime:"",
+            //         breakTimeStart:"",
+            //         breakTimeEnd:""
+            //     },
+            //     saturday: {
+            //         isOpen:true,
+            //         startTime:"",
+            //         endTime:"",
+            //         breakTimeStart:"",
+            //         breakTimeEnd:""
+            //     },
+            //     sunday: {
+            //         isOpen:true,
+            //         startTime:"",
+            //         endTime:"",
+            //         breakTimeStart:"",
+            //         breakTimeEnd:""
+            //     }
                 
-            },
+            // },
         }
         const services = {
             name: '',
