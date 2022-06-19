@@ -130,7 +130,6 @@ const BusinessHours = (props) => {
                 style={styles.button}
                 onPress={() => {
                     addWorkingDays()
-                    
                 }}
             >
                 <Text style={{ color: '#fff' }}>NEXT</Text>
