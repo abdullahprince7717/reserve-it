@@ -5,7 +5,8 @@ import TabNavigation from '../components/adminUIComponents/BottomTabNavigator.js
 import Home from '../screens/adminInterface/Home.js';
 import Complaints from '../screens/adminInterface/Complaints.js';
 import Settings from '../screens/adminInterface/Settings.js';
-import Login from '../screens/adminInterface/Login.js';
+// import Login from '../screens/adminInterface/Login.js';
+import Login from '../screens/userInterface/Login.js';
 import AddBusiness from '../screens/adminInterface/AddBusiness.js';
 import AddClient from '../screens/adminInterface/AddClient.js';
 import BusinessProfile from '../screens/adminInterface/BusinessProfile.js';

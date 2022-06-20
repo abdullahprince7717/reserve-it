@@ -7,6 +7,7 @@ import {
     ScrollView,
     useWindowDimensions,
     Alert,
+    TouchableOpacity,
 } from "react-native";
 import Card from "../../components/appointments/AppointmentCard.js";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
@@ -14,6 +15,7 @@ import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { Button, Dialog, Portal, Provider,Paragraph, } from "react-native-paper";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 
 
@@ -137,9 +139,19 @@ function appointments(props) {
 
     }, []);
 
+    const handleReload = () =>{
+        getAppointments();
+    }
+
 
     const FirstRoute = () => (
         <ScrollView style={styles.container}>
+            <TouchableOpacity onPress={()=>{
+                handleReload();
+            }}>
+                <MaterialCommunityIcons name="reload" size={30} color="black" style={{ marginLeft: 10, }} />
+            </TouchableOpacity>
+            
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
@@ -238,6 +250,10 @@ function appointments(props) {
                             }}
                             onCancelPress={() => {
                                 cancelAppointment(appointments[index].id);
+                            }}
+                            onReportPress={() => {
+                                showDialog();
+                                
                             }}
                             data={appointments[index]}
                             buttonText1="Book Again"

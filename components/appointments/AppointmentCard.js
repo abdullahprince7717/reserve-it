@@ -59,7 +59,7 @@ const AppointmentCard = (props) => {
                     <Button mode="outlined" 
                         style = {{marginRight:25,marginLeft:25,borderColor: 'green',borderWidth:1}}
                         color = 'green' 
-                        onPress={props.buttonText1 == "Edit" || props.buttonText2 == "Book Again" ? props.onEditPress : props.onRatePress}
+                        onPress={props.buttonText1 == "Edit" || props.buttonText1 == "Book Again" ? props.onEditPress : props.onRatePress}
                         >
                             
                         {props.buttonText1}
