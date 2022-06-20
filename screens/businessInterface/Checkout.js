@@ -8,6 +8,8 @@ import Appointment from '../../components/businessUIComponents/checkout/Appointm
 import { CartContext } from '../../global/CartContext.js';
 import { AppointmentContext } from '../../global/AppointmentContext.js';
 import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
+import {doc,setDoc,addDoc} from 'firebase/firestore';
+
 
 
 export default function Checkout(props) {
@@ -17,12 +19,33 @@ export default function Checkout(props) {
     const [appointmentCart, setAppointmentCart] = useContext(AppointmentContext);
     var counter = serviceCart.length + appointmentCart.length;
 
+    const uploadData = () => {
+        const checkoutDoc = doc(db,"checkout_history",auth.currentUser.uid);
+        setDoc(checkoutDoc, {
+            total: serviceCart.map((item, index) => (parseInt(item.price))).reduce((a, b) => a + b, 0) + (appointmentCart.map((item, index) => (parseInt(item.service_price))).reduce((a, b) => a + b, 0)) + " Rs",
+            services: serviceCart,
+            appointments: appointmentCart,
+            date: new Date().toLocaleDateString(),
+            email: auth.currentUser.email,
+        })
+        .then(() =>{
+            alert("Uploaded")
+            setServiceCart([]);
+            setAppointmentCart([]);
+
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
+    }
+
 
 
     useEffect(() => {
 
         console.log(serviceCart)
         console.log(auth.currentUser.uid)
+        console.log(new Date().toLocaleDateString())
 
     }, []);
 
@@ -81,7 +104,9 @@ export default function Checkout(props) {
                                     <Appointment
                                         customer="Abdullah Ali"
                                         service={item.service_name}
-                                        price={item.price}
+                                        price={item.service_price}
+                                        date={item.date}
+                                        time={item.time}
                                         duration="45 mins"
                                         onPress={() => {
                                             console.log('Pressed')
@@ -111,7 +136,7 @@ export default function Checkout(props) {
             <View style={styles.inputField}>
                 <TextInput
                     label="Total"
-                    value={serviceCart.map((item, index) => (parseInt(item.price))).reduce((a, b) => a + b, 0) + (appointmentCart.map((item, index) => (parseInt(item.price))).reduce((a, b) => a + b, 0)) + " Rs"}
+                    value={serviceCart.map((item, index) => (parseInt(item.price))).reduce((a, b) => a + b, 0) + (appointmentCart.map((item, index) => (parseInt(item.service_price))).reduce((a, b) => a + b, 0)) + " Rs"}
                     onChangeText={x => setTotal(x)}
                     activeOutlineColor='#57B9BB'
                     activeUnderlineColor='#57B9BB'
@@ -123,7 +148,10 @@ export default function Checkout(props) {
             <View style={styles.button} >
                 <Button mode="contained"
                     color='#57B9BB'
-                    onPress={() => console.log('Pressed')}
+                    onPress={() => {
+                        console.log('Pressed')
+                        uploadData();
+                    }}
                     style={{ height: 50, justifyContent: 'center', borderRadius: 20, color: '#fff', width: '100%' }}>
 
                     Checkout

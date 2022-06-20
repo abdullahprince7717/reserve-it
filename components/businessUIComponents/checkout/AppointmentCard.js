@@ -1,17 +1,18 @@
 import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import React from 'react'
+import moment from 'moment'
 
 const AppointmentCard = (props) => {
     return (
         <View style = {styles.container}>
             <View style = {styles.leftCol}>
                 
-                <Text style = {{fontSize: 15}}>
+                {/* <Text style = {{fontSize: 15}}>
                     March
-                </Text>
+                </Text> */}
                 
                 <Text style = {{fontSize: 19, fontWeight:'bold'}}>
-                    24
+                    {moment(props.date).format('ll')}
                 </Text>
                 <Text style = {{fontSize: 15}}>
                     12:00 PM

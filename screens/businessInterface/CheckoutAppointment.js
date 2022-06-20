@@ -50,19 +50,28 @@ function appointments(props) {
         <ScrollView style={styles.container}>
         <View>
 
-        {appointments?.map((item,index) => (
-            <Card
-                customerName="Arslan Saleem"
-                serviceName={item.service_name}
-                servicePrice={item.price} 
-                date="March 12"
-                time="10:00 AM"
-                onPress = {() => {
-                    console.log('Pressed')
-                    handlePress(appointments[index])
-                }}
-            />))}
+        {appointments?.map((item, index) => (
+                    // <Text>{item.id}</Text>
+                    appointments[index].status.is_completed === true 
+                    && appointments[index].business_email == auth.currentUser.email ? (
+                        <Card
+                        title={item.service_name}
+                        customerName={item.customer_name}
+                        serviceName ={item.service_name}
+                        customerEmail = {item.customer_email}
+                        customerPhone = {item.customer_phone}
+                        price={item.service_price}
+                        date={item.date}
+                        time={item.time}
+                        onPress={() => {
+                            console.log("Pressed");
+                            handlePress(appointments[index])
 
+                        }}
+                        buttonText1="Edit"
+                        buttonText2="Cancel"
+                    />) : null
+                ))}
         </View>
     </ScrollView>
     );

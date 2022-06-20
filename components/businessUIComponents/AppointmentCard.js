@@ -1,6 +1,7 @@
 import { View, Text,StyleSheet,Dimensions,TouchableWithoutFeedback } from 'react-native';
 import {Divider} from 'react-native-paper';
 import React from 'react';
+import moment from 'moment';
 
 const AppointmentCard = (props) => {
     return (
@@ -15,12 +16,16 @@ const AppointmentCard = (props) => {
                     <Text style={{color:'black', fontSize:20, fontWeight:'bold',}}>
                         {props.customerName}
                     </Text>
-                    <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :20}}>
-                        {props.serviceName}
-                    </Text>
                     <Text style={{color:'black', fontSize:14, fontWeight:'100', marginTop :4}}>
-                        {props.servicePrice}
+                        {props.customerEmail}
                     </Text>
+                    <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :20}}>
+                        Service: <Text style ={{fontWeight:'bold'}}>{props.serviceName}</Text>
+                    </Text>
+                    <Text style={{color:'black', fontSize:18, fontWeight:'200', marginTop :4}}>
+                        Bill: <Text style ={{fontWeight:'bold'}}>{props.price} Pkr</Text>
+                    </Text>
+                    
                 </View>
             </View>
 
@@ -32,9 +37,9 @@ const AppointmentCard = (props) => {
                 }}>
 
                     <Text style={{color:'black', fontSize:19, fontWeight:'bold',}}>
-                        {props.date}
+                    {moment(props.date).format('ll')}
                     </Text>
-                    <Text style={{color:'black', fontSize:17, fontWeight:'200',margin:10}}>
+                    <Text style={{color:'black', fontSize:17, fontWeight:'bold',margin:10}}>
                         {props.time}
                     </Text>
 
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection:'row',
         flexWrap:'wrap',
-        height: 140,
+        height: 160,
         width: deviceWidth-40,
         margin:20,
         marginBottom : 0,

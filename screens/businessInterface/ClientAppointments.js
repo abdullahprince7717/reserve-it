@@ -6,6 +6,8 @@ import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import {MaterialIcons} from '@expo/vector-icons'
+import { Ionicons } from "@expo/vector-icons/"
+
 
 
 function appointments({navigation}) {
@@ -53,24 +55,31 @@ const FirstRoute = () => (
 
         <ScrollView style={styles.container}>
             <View >
-            {appointments?.map((item, index) => (
+            {appointments?appointments.map((item, index) => (
                     // <Text>{item.id}</Text>
                     appointments[index].status.is_pending === true 
                     && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
                             title={item.service_name}
-                            CustomerName="Arslan"
-                            date="March 12"
-                            time="10:00 AM"
+                            customerName={item.customer_name}
+                            serviceName ={item.service_name}
+                            customerEmail = {item.customer_email}
+                            customerPhone = {item.customer_phone}
+                            price={item.price}
+                            date={item.date}
+                            time={item.time}
                             onPress={() => {
                                 console.log("Pressed");
-                                props.navigation.navigate("BusinessProfile");
                             }}
-
-                        />) 
-                        : null
-                        
-                ))}
+                            buttonText1="Edit"
+                            buttonText2="Cancel"
+                        />) : null
+                )):
+                <View style  = {styles.iconArea}>
+                <Ionicons color="grey" name="card-outline" size={250} />
+            </View>
+                
+                }
 
 
             </View>
@@ -85,17 +94,20 @@ const SecondRoute = () => (
                     appointments[index].status.is_completed === true 
                     && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
-                            title={item.service_name}
-                            customerName={item.business_name}
-                            price={item.price}
-                            date={item.date}
-                            time={item.time}
-                            onPress={() => {
-                                console.log("Pressed");
-                            }}
-                            buttonText1="Edit"
-                            buttonText2="Cancel"
-                        />) : null
+                        title={item.service_name}
+                        customerName={item.customer_name}
+                        serviceName ={item.service_name}
+                        customerEmail = {item.customer_email}
+                        customerPhone = {item.customer_phone}
+                        price={item.service_price}
+                        date={item.date}
+                        time={item.time}
+                        onPress={() => {
+                            console.log("Pressed");
+                        }}
+                        buttonText1="Edit"
+                        buttonText2="Cancel"
+                    />) : null
                 ))}
 
             </View>
@@ -112,13 +124,14 @@ const ThirdRoute = () => (
                     && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
                             title={item.service_name}
-                            businessName="LaLa Salon"
-                            address="Machi Mandi near Niagra Falls, Kenya"
-                            date="March 12"
-                            time="10:00 AM"
+                            customerName={item.customer_name}
+                            serviceName ={item.service_name}
+                            customerPhone = {item.customer_phone}
+                            price={item.price}
+                            date={item.date}
+                            time={item.time}
                             onPress={() => {
                                 console.log("Pressed");
-                                props.navigation.navigate("BusinessProfile");
                             }}
                             buttonText1="Edit"
                             buttonText2="Cancel"

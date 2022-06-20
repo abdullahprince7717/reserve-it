@@ -138,7 +138,7 @@ function settings(props) {
                 <View style={{ borderBottomColor: 'grey', borderBottomWidth: 0.5 }} />
 
                 <View style={styles.menuWrapper}>
-                    <TouchableRipple
+                    {/* <TouchableRipple
                         onPress={() => console.log('pressed')}
                     >
                         <View style={styles.menuItem}>
@@ -149,7 +149,7 @@ function settings(props) {
                             />
                             <Text style={styles.menuItemText}>Your Favourites</Text>
                         </View>
-                    </TouchableRipple>
+                    </TouchableRipple> */}
 
 
                     <TouchableRipple
@@ -183,7 +183,7 @@ function settings(props) {
                 </TouchableRipple> */}
 
 
-                    {/* <TouchableRipple
+                    <TouchableRipple
                     onPress = {() => console.log('pressed')}
                 >
                     <View style = {styles.menuItem}>
@@ -194,10 +194,10 @@ function settings(props) {
                             />
                         <Text style={styles.menuItemText}>Reviews</Text>
                     </View>
-                </TouchableRipple> */}
+                </TouchableRipple>
 
 
-                    <TouchableRipple
+                    {/* <TouchableRipple
                         onPress={() => console.log('pressed')}
                     >
                         <View style={styles.menuItem}>
@@ -208,7 +208,7 @@ function settings(props) {
                             />
                             <Text style={styles.menuItemText}>Feedback</Text>
                         </View>
-                    </TouchableRipple>
+                    </TouchableRipple> */}
 
                     <TouchableRipple
                         onPress={() => console.log('pressed')}

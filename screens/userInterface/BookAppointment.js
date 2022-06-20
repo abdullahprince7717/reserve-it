@@ -9,7 +9,8 @@ import {
     collection,
     addDoc,
     setDoc,
-    doc
+    doc,
+    getDoc
 } from "firebase/firestore";
 import { TimeSlotContext } from '../../global/TimeSlotContext.js'
 
@@ -24,6 +25,7 @@ function bookAppointment(props) {
     const [value, setValue] = useState("");
     const [service, setService] = useState([])
     const [data, setData] = useState([])
+    const [userData, setUserData] = useState(null)
 
     useEffect(() => {
         console.log(props?.route?.params?.service)
@@ -33,18 +35,39 @@ function bookAppointment(props) {
         console.log(props?.route?.params?.data)
         setData(props?.route?.params?.data)
         console.log(JSON.stringify(timeSlot))
-        // console.log(data?.business_email)
 
         props?.route?.params?.service ? setService(props?.route?.params?.service) : setService(props?.route?.params?.appointment)
-        // props?.route?.params?.appointment ? setService(props?.route?.params?.appointment) : null 
 
-        // console.log(props?.route?.params?.appointment.service_name)
         console.log(JSON.stringify(service))
 
-
+        getUser()
 
 
     }, [])
+
+
+
+    const getUser = ()=> {
+        const myDoc = doc(db, "users", auth.currentUser.uid)
+        
+        getDoc(myDoc)
+            .then((snapshot) => {
+
+                if (snapshot.exists) {
+                    setUserData(snapshot.data())
+                    // console.log(storedCredentials);
+
+                    console.log(JSON.stringify(userData))
+                }
+                else {
+                    console.log("No User Data")
+                }
+            })
+            .catch((error) => {
+                console.log(error.message)
+
+            })
+    }
 
     const appointmentCollection = collection(db, "appointments");
     const appointmentDoc = doc(db, "appointments", service?.id ? service?.id : "test");
@@ -56,7 +79,10 @@ function bookAppointment(props) {
             service_duration: service?.duration ? service?.duration : service?.service_duration,
             service_price: service?.price ? service?.price : service?.service_price,
             business_email: service?.business_email ? service?.business_email : service?.business_email,
+            customer_phone: service?.customer_phone ? service?.customer_phone : service?.customer_phone,
             customer_email: auth.currentUser.email,
+            customer_name: userData.name,
+            customer_phone: userData.phone,
             business_name: service?.business_name ? service?.business_name : data?.business_name ? data?.business_name : "no name",
             business_address: service?.business_address ? service?.business_address : data?.business_address ? data?.business_address : "no address",
             date: selectedDate,
