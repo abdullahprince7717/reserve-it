@@ -571,12 +571,12 @@ const BusinessProfile = (props) => {
                         {props.route?.params?.data?.business_address}                        {/* {props.address} */}
                     </Caption>
                 </View>
-                <View style={{ flex: 0.1 }}>
+                {/* <View style={{ flex: 0.1 }}>
                     <TouchableOpacity style={{ marginTop: 10 }} onPress={handleFav}>
                         <Ionicons name={isFilled ? "heart" : "heart-outline"} size={28} color="red" />
 
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
             </View>
             <TabView
