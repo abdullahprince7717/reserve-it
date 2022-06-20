@@ -23,7 +23,7 @@ const signIn = ({navigation}) => {
     
         if(user){
           if(storedCredentials.email === "admin123@gmail.com"){
-            navigation.navigate("AdminStack", { screen: 'Home' });
+            navigation.replace("AdminStack", { screen: 'Home' });
             console.log("admin")
           }
           else{

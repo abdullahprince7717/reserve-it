@@ -40,6 +40,7 @@ const MapScreen = (props) => {
     ];
 
     useEffect(() => {
+        console.log(props?.route?.params?.data)
         if(!props?.route?.params?.data) return;
         // {
         //     coordinate: {
@@ -60,10 +61,10 @@ const MapScreen = (props) => {
                     longitude: item.longitude?item.longitude:0,
                 },
                 title: item.business_name,
-                description: item.business_description,
+                business_description: item.business_description,
                 rating: item.rating,
                 image: item.image,
-                address: item.address,
+                business_address: item.business_address,
                 reviews: item?.reviews,
                 id: item?.id,
                 category: item?.category,
@@ -71,6 +72,7 @@ const MapScreen = (props) => {
                 business_description: item?.business_description,
                 business_phone: item?.business_phone,
                 business_email: item?.business_email,
+                email: item?.email,
                 instagram: item?.instagram,
                 facebook: item?.facebook,
                 monday:{
@@ -401,7 +403,7 @@ const MapScreen = (props) => {
                 {data.map((marker, index) => (
                     <View style={styles.card} key={index}>
                         <Image
-                            source={marker.image}
+                            source={{uri: marker.image}}
                             style={styles.cardImage}
                             resizeMode="cover"
                         />
@@ -414,7 +416,7 @@ const MapScreen = (props) => {
                             {/* <StarRating ratings={marker.rating} reviews={marker.reviews} /> */}
 
                             <Text numberOfLines={1} style={styles.cardDescription}>
-                                {marker.description}
+                                {marker.business_address}
                             </Text>
 
                             <View style={styles.button}>

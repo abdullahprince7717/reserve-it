@@ -22,7 +22,7 @@ function MyStack() {
             screenOptions={{
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: '#000' },
-                // headerShown: false,
+                headerShown: false,
             }}
         >
 
