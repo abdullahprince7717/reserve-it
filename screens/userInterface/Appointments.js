@@ -216,6 +216,11 @@ function appointments(props) {
 
     const SecondRoute = () => (
         <ScrollView style={styles.container}>
+             <TouchableOpacity onPress={() => {
+                handleReload();
+            }}>
+                <MaterialCommunityIcons name="reload" size={30} color="black" style={{ marginLeft: 10, }} />
+            </TouchableOpacity>
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
@@ -256,6 +261,11 @@ function appointments(props) {
 
     const ThirdRoute = () => (
         <ScrollView style={styles.container}>
+             <TouchableOpacity onPress={() => {
+                handleReload();
+            }}>
+                <MaterialCommunityIcons name="reload" size={30} color="black" style={{ marginLeft: 10, }} />
+            </TouchableOpacity>
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
