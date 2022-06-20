@@ -68,7 +68,7 @@ const AppointmentCard = (props) => {
                     <Button mode="outlined" 
                         style = {{marginRight:25,marginLeft:25,borderColor: 'red',borderWidth:1}}
                         color = 'red' 
-                        onPress={props.buttonText2 == "Cancel" ? props.onCancelPress : props.onRepoAGrtPress}>
+                        onPress={props.buttonText2 == "Cancel" ? props.onCancelPress : props.onReportPress}>
                             
                             
                         {props.buttonText2}

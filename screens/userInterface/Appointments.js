@@ -8,15 +8,16 @@ import {
     useWindowDimensions,
     Alert,
     TouchableOpacity,
+    TextInput,
 } from "react-native";
 import Card from "../../components/appointments/AppointmentCard.js";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import { Button, Dialog, Portal, Provider,Paragraph, } from "react-native-paper";
+import { Button, Paragraph, } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import Dialog from "react-native-dialog";
 
 
 function appointments(props) {
@@ -26,11 +27,6 @@ function appointments(props) {
     const [appointments, setAppointments] = useState([]);
     const [index, setIndex] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [visible, setVisible] = React.useState(false);
-
-    const showDialog = () => setVisible(true);
-
-    const hideDialog = () => setVisible(false);
 
     const [routes] = useState([
         { key: "first", title: "Current" },
@@ -38,24 +34,54 @@ function appointments(props) {
         { key: "third", title: "Cancelled" },
     ]);
 
-    const showReportDialog = () => {
-        <Provider>
-            <View>
-                <Button onPress={showDialog}>Show Dialog</Button>
-                <Portal>
-                    <Dialog visible={visible} onDismiss={hideDialog}>
-                        <Dialog.Title>Alert</Dialog.Title>
-                        <Dialog.Content>
-                            <Paragraph>This is simple dialog</Paragraph>
-                        </Dialog.Content>
-                        <Dialog.Actions>
-                            <Button onPress={hideDialog}>Done</Button>
-                        </Dialog.Actions>
-                    </Dialog>
-                </Portal>
-            </View>
-        </Provider>
-    }
+    // const showReportDialog = () => {
+    //     <Provider>
+    //         <View>
+    //             <Button onPress={showDialog}>Show Dialog</Button>
+    //             <Portal>
+    //                 <Dialog visible={visible} onDismiss={hideDialog}>
+    //                     <Dialog.Title>Alert</Dialog.Title>
+    //                     <Dialog.Content>
+    //                         <Paragraph>This is simple dialog</Paragraph>
+    //                     </Dialog.Content>
+    //                     <Dialog.Actions>
+    //                         <Button onPress={hideDialog}>Done</Button>
+    //                     </Dialog.Actions>
+    //                 </Dialog>
+    //             </Portal>
+    //         </View>
+    //     </Provider>
+    // }
+
+    const [visible, setVisible] = useState(false);
+    const [reportDescription, setReportDescription] = useState("");
+
+    const showDialog = () => {
+        setVisible(true);
+        console.log("Pressed Report");
+
+
+    };
+
+    const handleCancel = () => {
+        setVisible(false);
+    };
+
+    const handleReport = (appointment) => {
+        setVisible(false);
+        const reportDoc = doc(db, "complaints", appointment.id);
+                        setDoc(reportDoc, {
+                            appointment,
+                            description: reportDescription,
+                            user_email: auth.currentUser.email,
+                        }, { merge: true })
+    };
+
+    // const handleReportButton = () => {
+    //     console.log("Pressed Report");
+    //     showDialog();
+
+    // }
 
 
     const getAppointments = async () => {
@@ -139,19 +165,19 @@ function appointments(props) {
 
     }, []);
 
-    const handleReload = () =>{
+    const handleReload = () => {
         getAppointments();
     }
 
 
     const FirstRoute = () => (
         <ScrollView style={styles.container}>
-            <TouchableOpacity onPress={()=>{
+            <TouchableOpacity onPress={() => {
                 handleReload();
             }}>
                 <MaterialCommunityIcons name="reload" size={30} color="black" style={{ marginLeft: 10, }} />
             </TouchableOpacity>
-            
+
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
@@ -216,15 +242,15 @@ function appointments(props) {
                             data={appointments[index]}
                             buttonText1="Rate"
                             buttonText2="Report"
-                            onRatePress={() => {}}
+                            onRatePress={() => { }}
                             onReportPress={() => {
                                 // showDialog();
-                                
+
                             }}
                         />) : null
                 ))}
             </View>
-            
+
         </ScrollView>
     );
 
@@ -233,7 +259,7 @@ function appointments(props) {
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_cancelled === true ? (
+                    appointments[index].status.is_cancelled === true ? (<>
                         <Card
                             title={item.service_name}
                             businessName={item.business_name}
@@ -253,14 +279,36 @@ function appointments(props) {
                             }}
                             onReportPress={() => {
                                 showDialog();
-                                
+
                             }}
                             data={appointments[index]}
                             buttonText1="Book Again"
                             buttonText2="Report"
-                        />) : null
+                        />
+                        <Dialog.Container visible={visible}>
+                            <Dialog.Title style = {{fontWeight: "bold"}}>Report Account</Dialog.Title>
+                            <Dialog.Description>
+                                Tell us about your experience with this business.
+                            </Dialog.Description>
+                            <TextInput
+                                    style={{
+                                        height: 40,
+                                        borderColor: 'gray',
+                                        borderWidth: 1,
+                                        placeholderTextColor: 'gray',
+                                    }}
+                                    onChangeText={text => setReportDescription(text)}
+                                    value={reportDescription}
+                                    placeholder="Why are You Reporting"
+                                />
+                            <Dialog.Button label="Cancel" onPress={handleCancel} />
+                            <Dialog.Button label="Report" onPress={()=>{handleReport(appointments[index])}} />
+                        </Dialog.Container>
+                    </>) : null
                 ))}
             </View>
+
+
         </ScrollView>
     );
 
