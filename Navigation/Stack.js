@@ -111,6 +111,9 @@ function MyStack() {
             <Stack.Screen
                 name="AdminStack"
                 component={AdminStack}
+                screenOptions={{
+                    headerShown: false,
+                }}
             />
             {/* <Stack.Screen
                 name="TimeSlot"
