@@ -23,6 +23,7 @@ import Feedback from '../screens/userInterface/Feedback.js';
 import AdminStack from '../Navigation/AdminUIStack.js';
 import BusinessStack from '../Navigation/BusinessUIStack.js';
 import MainScreen from  '../screens/userInterface/MainScreen.js'
+import OnBoardingScreen from '../screens/userInterface/OnBoardingScreen.js'
 
 // import TimeSlot from '../components/appointments/TimeSlotCreator.js';
 
@@ -33,7 +34,7 @@ function MyStack() {
     return (
         
         <Stack.Navigator
-            initialRouteName="MainScreen"
+            initialRouteName="OnBoardingScreen"
             screenOptions={{
                 headerTintColor: '#000',
                 headerStyle: { backgroundColor: '#fff' },
@@ -136,10 +137,15 @@ function MyStack() {
                     headerShown: false,
                 }}
             />
-            {/* <Stack.Screen
-                name="TimeSlot"
-                component={TimeSlot}
-            /> */}
+            <Stack.Screen
+                name="OnBoardingScreen"
+                component={OnBoardingScreen}
+                screenOptions={{
+                    headerShown: false,
+                }}
+            />
+            
+        
 
         </Stack.Navigator>
     );
