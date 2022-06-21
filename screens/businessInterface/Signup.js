@@ -20,7 +20,7 @@ const signUp = ({navigation}) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-       
+
     },[])
 
 
@@ -37,7 +37,7 @@ const signUp = ({navigation}) => {
     //         })
     // }
 
-    const storeData = (userDoc,servicesDoc,email) => {
+    const storeData = (userDoc,servicesDoc,roleDoc,email,) => {
         // const userDoc = doc(db,"business_users",credentials.user.uid);
 
         // const userDoc = doc(db,"business_users","test");
@@ -122,6 +122,12 @@ const signUp = ({navigation}) => {
 
         }
 
+        const role = {
+            user_email: email,
+            user_id: auth.currentUser.uid,
+            role: 'business',
+        }
+
         console.log(userDoc)
 
         setDoc(userDoc, userData)
@@ -140,6 +146,13 @@ const signUp = ({navigation}) => {
         .catch((error) => {
             alert(error.message)
         })
+        setDoc(roleDoc, role)
+        .then(() =>{
+            console.log("role Created Successfully")
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
     }
 
     const signUp = () => {
@@ -150,9 +163,10 @@ const signUp = ({navigation}) => {
             if((name || phone) != ''){
                 console.log(credentials);
             const userDoc = doc(db,"business_users",credentials.user.uid);
-            // const userDoc = doc(db,"business_users","test");
             const servicesDoc = doc(db,"services",credentials.user.uid);
-            storeData(userDoc, servicesDoc,credentials.user.email);
+            const roleDoc = doc(db,"roles",credentials.user.uid);
+
+            storeData(userDoc, servicesDoc,roleDoc,credentials.user.email);
 
             navigation.replace("AccountSetup1")
             }
@@ -244,7 +258,7 @@ const signUp = ({navigation}) => {
                     navigation.navigate('Login')    
                 }}
                 >
-                    <Text style = {{color: '#4267B2',fontSize: 15, }}>SignIn</Text> 
+                    <Text style = {{color: '#4267B2',fontSize: 15,fontWeight: 'bold' }}>SignIn</Text> 
                 </TouchableOpacity>
                 
             </View>

@@ -93,7 +93,7 @@ const signIn = ({navigation}) => {
                         navigation.navigate('Signup')    
                     }}
                     >
-                        <Text style = {{color: '#4267B2',fontSize: 15, }}>SignUp</Text> 
+                        <Text style = {{color: '#4267B2',fontSize: 15,fontWeight: 'bold' }}>SignUp</Text> 
                     </TouchableOpacity>
 
                 </View>

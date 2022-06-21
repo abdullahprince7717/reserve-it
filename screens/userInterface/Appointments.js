@@ -181,7 +181,8 @@ function appointments(props) {
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_pending === true ? (<>
+                    appointments[index].status.is_pending === true 
+                    && appointments[index].customer_email == auth.currentUser.email ? (<>
                         <Card
                             title={item.service_name}
                             businessName={item.business_name}
@@ -224,7 +225,8 @@ function appointments(props) {
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_completed === true ? (
+                    appointments[index].status.is_completed === true 
+                    && appointments[index].customer_email == auth.currentUser.email ? (
                         <Card
                             title={item.service_name}
                             businessName={item.business_name}
@@ -269,7 +271,8 @@ function appointments(props) {
             <View>
                 {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_cancelled === true ? (<>
+                    appointments[index].status.is_cancelled === true
+                    && appointments[index].customer_email == auth.currentUser.email ? (<>
                         <Card
                             title={item.service_name}
                             businessName={item.business_name}

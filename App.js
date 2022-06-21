@@ -11,6 +11,7 @@ import BusinessHoursContext from './global/BusinessHoursContext.js';
 import TimeSlotContext from './global/TimeSlotContext.js';
 import CredentialsContext from './global/CredentialsContext.js';
 import FavProvider from './global/FavouriteContext';
+import MainScreen from './screens/userInterface/MainScreen.js';
 
 export default function App() {
 
@@ -22,6 +23,7 @@ export default function App() {
             <ContextProvider>
               <FavProvider>
               <NavigationContainer>
+                {/* <MainScreen /> */}
                 <StackNavigator />
                 {/* <BusinessStack /> */}
                 {/* <AdminStack/> */}
