@@ -21,6 +21,8 @@ import Payment from '../screens/userInterface/Payment.js';
 import PaymentCardForm from '../screens/userInterface/PaymentCardForm.js';
 import Feedback from '../screens/userInterface/Feedback.js';
 import AdminStack from '../Navigation/AdminUIStack.js';
+import BusinessStack from '../Navigation/BusinessUIStack.js';
+import MainScreen from  '../screens/userInterface/MainScreen.js'
 
 // import TimeSlot from '../components/appointments/TimeSlotCreator.js';
 
@@ -31,11 +33,11 @@ function MyStack() {
     return (
         
         <Stack.Navigator
-            initialRouteName="Signup"
+            initialRouteName="MainScreen"
             screenOptions={{
                 headerTintColor: '#000',
                 headerStyle: { backgroundColor: '#fff' },
-                // headerShown: false,
+                headerShown: false,
             }}
         >
             <Stack.Screen
@@ -95,22 +97,41 @@ function MyStack() {
             <Stack.Screen
                 name="EditProfile"
                 component={EditProfile}
+                options={{headerShown:true}}
+
             />
             <Stack.Screen
                 name="Payment"
                 component={Payment}
+                options={{headerShown:true}}
             />
             <Stack.Screen
                 name="PaymentCardForm"
                 component={PaymentCardForm}
+                options={{headerShown:true}}
             />
             <Stack.Screen
                 name="Feedback"
                 component={Feedback}
+                options={{headerShown:true}}
             />
             <Stack.Screen
                 name="AdminStack"
                 component={AdminStack}
+                screenOptions={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="BusinessStack"
+                component={BusinessStack}
+                screenOptions={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="MainScreen"
+                component={MainScreen}
                 screenOptions={{
                     headerShown: false,
                 }}
