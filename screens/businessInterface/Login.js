@@ -40,8 +40,8 @@ const signIn = ({navigation}) => {
         })
     .catch((error) => {
         console.log("Error Message :" + error.message);
-
         console.log("Error Code :" + error.code);
+        alert(error.message);
     })
     }
 

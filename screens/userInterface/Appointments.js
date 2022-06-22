@@ -118,7 +118,7 @@ function appointments(props) {
         // }
 
         Alert.alert(
-            "Do you want to Cancel this Business?",
+            "Do you want to Cancel this Appointment?",
             "",
             [
                 {

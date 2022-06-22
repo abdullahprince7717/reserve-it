@@ -3,15 +3,44 @@ import { TouchableRipple, } from 'react-native-paper'
 import React, { useState, useEffect, useContext } from 'react'
 import HourComponent from '../../components/businessUIComponents/BusinessDay&Hour.js'
 import { BusinessHoursContext } from '../../global/BusinessHoursContext.js';
-import {doc,setDoc} from 'firebase/firestore';
+import {doc,setDoc,getDoc,collection} from 'firebase/firestore';
 import {db,auth} from  '../../firebase/FirebaseConfig.js'
 
 const BusinessHours = (props) => {
 
     const [monday,setMonday,tuesday,setTuesday,wednesday,setWednesday,thursday,setThursday,friday,setFriday,saturday,setSaturday,sunday,setSunday] = useContext(BusinessHoursContext);
+    const[businessHours,setBusinessHours] = useState(null)
+    const[userData,setUserData] = useState(null) 
 
     const businessDoc = doc(db, "business_users", auth.currentUser.uid);
+    // const businessRef = collection(db, "business_users")
     // const businessDoc = doc(db, "business_users", "auth.uid");
+
+    const getUser = async() => {
+        getDoc(businessDoc)
+            .then((snapshot) => {
+
+                if (snapshot.exists) {
+                    setUserData(snapshot.data())
+                    setMonday(snapshot.data().monday)
+                    setTuesday(snapshot.data().tuesday)
+                    setWednesday(snapshot.data().wednesday)
+                    setThursday(snapshot.data().thursday)
+                    setFriday(snapshot.data().friday)
+                    setSaturday(snapshot.data().saturday)
+                    setSunday(snapshot.data().sunday)
+
+                    console.log(userData)
+                }
+                else {
+                    console.log("No User Data")
+                }
+            })
+            .catch((error) => {
+                console.log(error.message)
+
+            })
+    }
 
     const addWorkingDays = async () => {
 
@@ -30,7 +59,8 @@ const BusinessHours = (props) => {
             .then(
                 (res) => {
                     console.log("response" + res)
-                    props.navigation.navigate('Settings');
+                    // {props.navigation.navigate('BusinessStack',{screen:'Home'})} 
+                    // props.navigation.goBack()
                 })
             .catch(
                 (err) => {
@@ -42,7 +72,9 @@ const BusinessHours = (props) => {
         // console.log(props?.route?.params?.data)
         // setDays(props?.route?.params?.data)
         // console.log(days[0])
-        console.log(monday)
+
+        getUser();
+        // console.log(monday)
 
 
     }, [])
@@ -124,7 +156,7 @@ const BusinessHours = (props) => {
                 style={styles.button}
                 onPress={() => {
                     addWorkingDays();
-                    props.navigation.navigate('Settings');
+                    {props.navigation.goBack()}                
                 }}
             >
                 <Text style={{ color: '#fff' }}>Save</Text>

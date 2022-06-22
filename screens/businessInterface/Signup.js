@@ -242,9 +242,9 @@ const signUp = ({navigation}) => {
                 <Text>Sign Up </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style = {styles.fbButton} >
+            {/* <TouchableOpacity style = {styles.fbButton} >
                 <Text style = {styles.fbText}>Continue with Facebook </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             
             <View style = {{flexDirection:'row', justifyContent: 'center',marginTop:5}}>
                 <TouchableOpacity disabled ={true}>

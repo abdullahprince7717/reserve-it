@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
 
     buttonArea: {
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 15,
         // backgroundColor: '#000',
-        position: 'absolute', top: 700, left: 10, right: 10, bottom: 10, justifyContent: 'center', alignItems: 'center'
+        position: 'absolute', top: 700, left: 10, right: 10, bottom: 40, justifyContent: 'center', alignItems: 'center'
 
     },
 })
