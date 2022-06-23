@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { StyleSheet, Text, View, StatusBar, ScrollView, TouchableOpacity } from 'react-native'
-import { Button, TextInput } from 'react-native-paper';
+import { Button, TextInput, Snackbar, } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Service from '../../components/businessUIComponents/checkout/ServiceCard.js'
@@ -8,7 +8,8 @@ import Appointment from '../../components/businessUIComponents/checkout/Appointm
 import { CartContext } from '../../global/CartContext.js';
 import { AppointmentContext } from '../../global/AppointmentContext.js';
 import { db, auth, storage } from '../../firebase/FirebaseConfig.js'
-import {doc,setDoc,addDoc} from 'firebase/firestore';
+import { doc, setDoc, addDoc } from 'firebase/firestore';
+
 
 
 
@@ -19,8 +20,14 @@ export default function Checkout(props) {
     const [appointmentCart, setAppointmentCart] = useContext(AppointmentContext);
     var counter = serviceCart.length + appointmentCart.length;
 
+    const [visible, setVisible] = React.useState(false);
+
+    const onToggleSnackBar = () => setVisible(!visible);
+
+    const onDismissSnackBar = () => setVisible(false);
+
     const uploadData = () => {
-        const checkoutDoc = doc(db,"checkout_history",auth.currentUser.uid);
+        const checkoutDoc = doc(db, "checkout_history", auth.currentUser.uid);
         setDoc(checkoutDoc, {
             total: serviceCart.map((item, index) => (parseInt(item.price))).reduce((a, b) => a + b, 0) + (appointmentCart.map((item, index) => (parseInt(item.service_price))).reduce((a, b) => a + b, 0)) + " Rs",
             services: serviceCart,
@@ -28,15 +35,15 @@ export default function Checkout(props) {
             date: new Date().toLocaleDateString(),
             email: auth.currentUser.email,
         })
-        .then(() =>{
-            alert("Uploaded")
-            setServiceCart([]);
-            setAppointmentCart([]);
+            .then(() => {
+                // onToggleSnackBar();
+                setServiceCart([]);
+                setAppointmentCart([]);
 
-        })
-        .catch((error) => {
-            alert(error.message)
-        })
+            })
+            .catch((error) => {
+                alert(error.message)
+            })
     }
 
 
@@ -129,6 +136,13 @@ export default function Checkout(props) {
                             </View>
                         </>))}
                     </ScrollView>
+                    <Snackbar
+                        visible={visible}
+                        onDismiss={onDismissSnackBar}
+                        duration={2000}
+                    >
+                        Checkout Done!
+                    </Snackbar>
                 </View>
                 : null}
 
@@ -149,15 +163,14 @@ export default function Checkout(props) {
                 <Button mode="contained"
                     color='#57B9BB'
                     onPress={() => {
-                        console.log('Pressed')
-                        uploadData();
+                        (serviceCart.length > 0 || appointmentCart.length > 0) ? uploadData()  : alert("Please add items to cart");
                     }}
                     style={{ height: 50, justifyContent: 'center', borderRadius: 20, color: '#fff', width: '100%' }}>
 
                     Checkout
                 </Button>
             </View>
-            <Text>{serviceCart.length}</Text>
+            {/* <Text>{serviceCart.length}</Text> */}
         </View>
     )
 }
