@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet,StatusBar } from 'react-native';
 
 import Onboarding from 'react-native-onboarding-swiper';
 import { LogBox } from 'react-native';
@@ -91,6 +91,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+
     },
 });

@@ -4,12 +4,24 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import { Ionicons } from "@expo/vector-icons/"
 import {auth} from  '../../firebase/FirebaseConfig.js'
+import { BusinessHoursContext } from '../../global/BusinessHoursContext.js'
+import React,{useContext} from 'react'
 
 function settings(props) {
+    const [monday, setMonday, tuesday, setTuesday, wednesday, setWednesday, thursday, setThursday, friday, setFriday, saturday, setSaturday, sunday, setSunday] = useContext(BusinessHoursContext);
+
 
     const handleSignOut = () => {
         auth.signOut()
         .then(()=>{
+            setMonday([])
+            setTuesday([])
+            setWednesday([])
+            setThursday([])
+            setFriday([])
+            setSaturday([])
+            setSunday([])
+
             props.navigation.replace('Login')
         })
     }

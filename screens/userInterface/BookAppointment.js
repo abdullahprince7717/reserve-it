@@ -171,7 +171,10 @@ function bookAppointment(props) {
             </View>
             <View style={styles.servicesList}>
                 <Text style={{ fontSize: 16, marginTop: 0, fontWeight: 'normal', marginLeft: 310, marginRight: 10, }}>
-                    {service?.time ? service?.time : service?.service_time ? service?.service_time : timeSlot}</Text>
+                    {/* {service?.time ? service?.time : service?.service_time ? service?.service_time : timeSlot} */}
+                    { service?.service_time ? service?.service_time : timeSlot}
+
+                    </Text>
             </View>
 
             <View style={{ borderWidth: 0.2, width: deviceWidth, marginTop: 10 }} />

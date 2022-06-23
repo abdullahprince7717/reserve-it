@@ -1,16 +1,16 @@
-import React, {useState,useEffect} from 'react';
-import { View,StyleSheet,StatusBar,Text,ScrollView,useWindowDimensions } from "react-native";
-import Card from  '../../components/businessUIComponents/AppointmentCard.js';
-import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, StatusBar, Text, ScrollView, useWindowDimensions } from "react-native";
+import Card from '../../components/businessUIComponents/AppointmentCard.js';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import {MaterialIcons} from '@expo/vector-icons'
+import { MaterialIcons } from '@expo/vector-icons'
 import { Ionicons } from "@expo/vector-icons/"
 
 
 
-function appointments({navigation}) {
+function appointments({ navigation }) {
 
     const appointmentsRef = collection(db, "appointments");
 
@@ -51,20 +51,20 @@ function appointments({navigation}) {
 
 
 
-const FirstRoute = () => (
+    const FirstRoute = () => (
 
         <ScrollView style={styles.container}>
             <View >
-            {appointments?appointments.map((item, index) => (
+                {appointments ? appointments.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_pending === true 
-                    && appointments[index].business_email == auth.currentUser.email ? (
+                    appointments[index].status.is_pending === true
+                        && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
                             title={item.service_name}
                             customerName={item.customer_name}
-                            serviceName ={item.service_name}
-                            customerEmail = {item.customer_email}
-                            customerPhone = {item.customer_phone}
+                            serviceName={item.service_name}
+                            customerEmail={item.customer_email}
+                            customerPhone={item.customer_phone}
                             price={item.price}
                             date={item.date}
                             time={item.time}
@@ -74,60 +74,61 @@ const FirstRoute = () => (
                             buttonText1="Edit"
                             buttonText2="Cancel"
                         />) : null
-                )):
-                <View style  = {styles.iconArea}>
-                <Ionicons color="grey" name="card-outline" size={250} />
-            </View>
-                
+                )) :
+                    <View style={styles.iconArea}>
+                        <Ionicons color="grey" name="card-outline" size={250} />
+                    </View>
+
                 }
 
 
             </View>
         </ScrollView>
-);
+    );
 
-const SecondRoute = () => (
-    <ScrollView style={styles.container}>
+    const SecondRoute = () => (
+        <ScrollView style={styles.container}>
             <View >
-            {appointments?.map((item, index) => (
+                {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_completed === true 
-                    && appointments[index].business_email == auth.currentUser.email ? (
+                    appointments[index].status.is_completed === true
+                        && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
-                        title={item.service_name}
-                        customerName={item.customer_name}
-                        serviceName ={item.service_name}
-                        customerEmail = {item.customer_email}
-                        customerPhone = {item.customer_phone}
-                        price={item.service_price}
-                        date={item.date}
-                        time={item.time}
-                        onPress={() => {
-                            console.log("Pressed");
-                        }}
-                        buttonText1="Edit"
-                        buttonText2="Cancel"
-                    />) : null
+                            title={item.service_name}
+                            customerName={item.customer_name}
+                            serviceName={item.service_name}
+                            customerEmail={item.customer_email}
+                            customerPhone={item.customer_phone}
+                            price={item.service_price}
+                            date={item.date}
+                            time={item.time}
+                            onPress={() => {
+                                console.log("Pressed");
+                            }}
+                            buttonText1="Edit"
+                            buttonText2="Cancel"
+                        />) : null
                 ))}
 
             </View>
         </ScrollView>
-);
+    );
 
-const ThirdRoute = () => (
+    const ThirdRoute = () => (
 
-    <ScrollView style={styles.container}>
+        <ScrollView style={styles.container}>
             <View >
-            {appointments?.map((item, index) => (
+                {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_cancelled === true 
-                    && appointments[index].business_email == auth.currentUser.email ? (
+                    appointments[index].status.is_cancelled === true
+                        && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
                             title={item.service_name}
                             customerName={item.customer_name}
-                            serviceName ={item.service_name}
-                            customerPhone = {item.customer_phone}
-                            price={item.price}
+                            serviceName={item.service_name}
+                            customerEmail={item.customer_email}
+                            customerPhone={item.customer_phone}
+                            price={item.service_price}
                             date={item.date}
                             time={item.time}
                             onPress={() => {
@@ -142,7 +143,7 @@ const ThirdRoute = () => (
             </View>
         </ScrollView>
     );
-    
+
 
 
 
@@ -161,17 +162,17 @@ const ThirdRoute = () => (
     );
 
 
-    return(
+    return (
 
         <TabView
             navigationState={{ index, routes }}
             renderScene={renderScene}
             onIndexChange={setIndex}
             initialLayout={{ width: layout.width }}
-            style = {styles.container}
+            style={styles.container}
             renderTabBar={renderTabBar}
         />
-        
+
     );
 }
 
