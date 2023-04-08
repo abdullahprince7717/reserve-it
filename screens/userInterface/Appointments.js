@@ -217,7 +217,7 @@ function appointments(props) {
 
     const SecondRoute = () => (
         <ScrollView style={styles.container}>
-             <TouchableOpacity onPress={() => {
+            <TouchableOpacity onPress={() => {
                 handleReload();
             }}>
                 <MaterialCommunityIcons name="reload" size={30} color="black" style={{ marginLeft: 10, }} />

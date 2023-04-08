@@ -5,15 +5,9 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AntDesign, Ionicons } from "@expo/vector-icons/"
 import { LogBox } from 'react-native';
 
-
-
-
 // import MyStack from '../../Navigation/AdminUIStack.js';
 
-
-
 const mainScreen = ({ navigation }) => {
-
 
     return (
         <>

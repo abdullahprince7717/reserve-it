@@ -24,6 +24,7 @@ export default function App() {
               <FavProvider>
               <NavigationContainer>
                 {/* <MainScreen /> */}
+                {console. disableYellowBox = true}                
                 <StackNavigator />
                 {/* <BusinessStack /> */}
                 {/* <AdminStack/> */}

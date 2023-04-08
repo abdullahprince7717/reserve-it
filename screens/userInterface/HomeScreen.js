@@ -119,11 +119,11 @@ function homeScreen(props) {
 
                 >
                     <View style={{ flex: 1, flexDirection: 'column' }}>
-                        <View style={{ flexDirection: 'row', }}>
+                        {/* <View style={{ flexDirection: 'row', }}>
                             <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Salons</Text>
-                        </View>
+                        </View> */}
 
-                        <View style={{ backgroundColor: "#fff" }}>
+                        {/* <View style={{ backgroundColor: "#fff" }}>
                             <ScrollView
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
@@ -149,9 +149,9 @@ function homeScreen(props) {
                                 </TouchableOpacity>
 
                             </ScrollView>
-                        </View>
+                        </View> */}
                         <View style={{ flexDirection: 'row', marginTop: 20 }}>
-                            <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Doctors</Text>
+                            <Text style={{ fontSize: 25, color: 'black', margin: 10 }}>Here are some popular Clinics </Text>
                         </View>
                         <View style={{ backgroundColor: "#fff", marginTop: 10, flexDirection: "column", }}>
 

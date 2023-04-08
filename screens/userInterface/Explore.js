@@ -439,17 +439,17 @@ function explore(props) {
                     </View>
                 </ScrollView>
 
-                <FAB
+                {/* <FAB
                     style={styles.fab}
                     label="Maps"
                     large
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        props.navigation.navigate('Map', { data: queryResult })
+                        props.navigation.navigate('MapsTest', { data: queryResult })
                     }}
                     color='#fff'
-                />
+                /> */}
             </View>
         </View>
     );
@@ -479,6 +479,7 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         backgroundColor: '#000',
         flexDirection: 'column',
+        zIndex: 9999,
     },
     searchBar: {
         width: '90%',
