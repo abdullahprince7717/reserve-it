@@ -439,17 +439,17 @@ function explore(props) {
                     </View>
                 </ScrollView>
 
-                {/* <FAB
+                <FAB
                     style={styles.fab}
                     label="Maps"
                     large
                     icon="map-marker-outline"
                     onPress={() => {
                         console.log('Pressed')
-                        props.navigation.navigate('MapsTest', { data: queryResult })
+                        props.navigation.navigate('Map', { data: queryResult })
                     }}
                     color='#fff'
-                /> */}
+                />
             </View>
         </View>
     );

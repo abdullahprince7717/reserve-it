@@ -46,9 +46,9 @@ const signIn = ({navigation}) => {
       setStoredCredentials({email: email.trim(), password: password})
 
 
-      // if(email ==='admin@reserveit.com' && password === '12345678'){
-      //   navigation.navigate("AdminStack", { screen: 'Home' });
-      // }
+      if(email ==='admin@reserveit.com' && password === '12345678'){
+        navigation.navigate("AdminStack", { screen: 'Home' });
+      }
 
 
       // setIsSignedIn(true);
