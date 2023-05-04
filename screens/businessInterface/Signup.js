@@ -59,6 +59,7 @@ const SignUp = ({navigation}) => {
             rating: 0,
             startTime:"",
             endTime:"",
+            isAccountSetupCompleted: false,
             // workingDays: {
             //     monday: {
             //         isOpen:true,

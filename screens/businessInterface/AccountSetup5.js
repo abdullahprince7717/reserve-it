@@ -88,8 +88,6 @@ const AccountSetup5 = (props) => {
                 color = '#fff'
             />
 
-
-
         </View>
     )
 }

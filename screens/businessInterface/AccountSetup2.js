@@ -10,6 +10,7 @@ import { db, auth, storage } from '../../firebase/FirebaseConfig.js';
 import axios from "axios"
 
 import getFileExtension from '../../utils/getFileExtension.js';
+import zIndex from '@mui/material/styles/zIndex.js';
 // import google from 'googleapis'
 
 // const CLIENT_ID = '116657316456-l4smh6jsae66ntdvu7afdnfgqcmp8sec.apps.googleusercontent.com'
@@ -220,12 +221,14 @@ const BusinessDetails = (props) => {
                             backgroundColor: "#E7E7E7",
                             borderRadius: 5,
                             height: 55,
+                            zIndex: 99
                         }}
                         containerStyle={{
                             width: '85%',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            marginTop: 30
+                            marginTop: 30,
+                            zIndex: 99
                         }}
                         textStyle={{
                             fontSize: 15
@@ -340,11 +343,10 @@ const styles = StyleSheet.create({
         // borderWidth:1,
         // borderColor: '#000',
         height: 50,
-        borderRadius: 10,
         paddingLeft: 10,
         marginTop: 20,
         color: '#000',
-        // padding:10,
+
 
     },
     description: {
@@ -357,6 +359,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         color: '#000',
         padding: 10,
+        zIndex: -9
 
     },
     button: {

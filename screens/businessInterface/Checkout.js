@@ -46,8 +46,6 @@ export default function Checkout(props) {
             })
     }
 
-
-
     useEffect(() => {
 
         console.log(serviceCart)
