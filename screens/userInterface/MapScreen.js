@@ -13,11 +13,11 @@ import {
 } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
-import Ionicons from "react-native-vector-icons/Ionicons";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Fontisto from "react-native-vector-icons/Fontisto";
-import { db, auth, } from "../../firebase/FirebaseConfig.js";
-import { doc, getDoc, setDoc, collection, getDocs, where, query,limit } from "firebase/firestore";
+import {Ionicons} from "react-native-vector-icons/Ionicons";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// import Fontisto from "react-native-vector-icons/Fontisto";
+// import { db, auth, } from "../../firebase/FirebaseConfig.js";
+// import { doc, getDoc, setDoc, collection, getDocs, where, query,limit } from "firebase/firestore";
 
 
 const { width, height } = Dimensions.get("window");
@@ -28,7 +28,7 @@ const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
 
 
-const MapScreen = (props) => {
+export default function MapScreen(props){
     // const theme = useTheme();
     const [data, setData] = useState([]);
     const [businesses,setBusiness] = useState([])
@@ -451,8 +451,6 @@ const MapScreen = (props) => {
         </View>
     );
 };
-
-export default MapScreen;
 
 const styles = StyleSheet.create({
     container: {

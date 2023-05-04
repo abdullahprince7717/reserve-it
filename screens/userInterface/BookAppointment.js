@@ -15,7 +15,7 @@ import {
 import { TimeSlotContext } from '../../global/TimeSlotContext.js'
 
 
-function bookAppointment(props) {
+function BookAppointment(props) {
 
     let now = new Date();
     var currentDate = moment(now).format('YYYY-MM-DD');
@@ -196,7 +196,7 @@ function bookAppointment(props) {
 
 }
 
-export default bookAppointment;
+export default BookAppointment;
 
 const deviceWidth = Math.round(Dimensions.get('window').width);
 

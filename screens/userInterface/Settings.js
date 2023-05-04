@@ -5,13 +5,13 @@ import Icons from 'react-native-vector-icons/MaterialIcons'
 import { FontAwesome, EvilIcons } from "@expo/vector-icons/"
 import { db, auth } from '../../firebase/FirebaseConfig.js'
 import { doc, getDoc } from 'firebase/firestore';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import {MaterialIndicator,} from 'react-native-indicators';
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { CredentialsContext } from '../../components/CredentialsContext.js';
 
-function settings(props) {
+function Settings(props) {
 
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -250,7 +250,7 @@ function settings(props) {
     );
 }
 
-export default settings;
+export default Settings;
 
 const styles = StyleSheet.create({
     container: {

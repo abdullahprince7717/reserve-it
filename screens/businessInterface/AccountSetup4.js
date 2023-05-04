@@ -45,7 +45,7 @@ const BusinessHours = (props) => {
             .then(
                 (res) => {
                     console.log("response" + res)
-                    props.navigation.navigate('AccountSetup5');
+                    props.navigation.navigate('Home');
                 })
             .catch(
                 (err) => {

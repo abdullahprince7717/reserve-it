@@ -309,7 +309,7 @@ const BusinessDetails = (props) => {
                         // addBusinessInfo();
                         uploadImage();
                         // props.navigation.navigate('AccountSetup3')
-                        props.navigation.navigate('AccountSetup3test')
+                        props.navigation.navigate('AccountSetup4')
                     }}
                 >
 

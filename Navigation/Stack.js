@@ -41,14 +41,15 @@ function MyStack() {
                 headerShown: false,
             }}
         >
-            <Stack.Screen
-                name="Signup"
-                component={Signup}
-                options={{headerShown: false}}
-            />
+            
             <Stack.Screen
                 name="Home"
                 component={TabNavigation}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Signup"
+                component={Signup}
                 options={{headerShown: false}}
             />
             <Stack.Screen

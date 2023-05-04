@@ -20,7 +20,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Dialog from "react-native-dialog";
 
 
-function appointments(props) {
+function Appointments(props) {
     const appointmentsRef = collection(db, "appointments");
 
     const layout = useWindowDimensions();
@@ -59,8 +59,6 @@ function appointments(props) {
     const showDialog = () => {
         setVisible(true);
         console.log("Pressed Report");
-
-
     };
 
     const handleCancel = () => {
@@ -144,7 +142,6 @@ function appointments(props) {
                     }
                 }
 
-
             ]
         );
 
@@ -217,7 +214,7 @@ function appointments(props) {
 
     const SecondRoute = () => (
         <ScrollView style={styles.container}>
-             <TouchableOpacity onPress={() => {
+            <TouchableOpacity onPress={() => {
                 handleReload();
             }}>
                 <MaterialCommunityIcons name="reload" size={30} color="black" style={{ marginLeft: 10, }} />
@@ -351,7 +348,7 @@ function appointments(props) {
     );
 }
 
-export default appointments;
+export default Appointments;
 
 const styles = StyleSheet.create({
     container: {

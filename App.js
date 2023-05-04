@@ -12,9 +12,10 @@ import TimeSlotContext from './global/TimeSlotContext.js';
 import CredentialsContext from './global/CredentialsContext.js';
 import FavProvider from './global/FavouriteContext';
 import MainScreen from './screens/userInterface/MainScreen.js';
+import OneSignal from 'react-native-onesignal';
 
 export default function App() {
-
+  OneSignal.setAppId("5dd07db9-fd2e-496a-a8fc-933bf66a1977");
   return (
     <CredentialsContext>
       <TimeSlotContext>
@@ -24,6 +25,7 @@ export default function App() {
               <FavProvider>
               <NavigationContainer>
                 {/* <MainScreen /> */}
+                {console. disableYellowBox = true}                
                 <StackNavigator />
                 {/* <BusinessStack /> */}
                 {/* <AdminStack/> */}

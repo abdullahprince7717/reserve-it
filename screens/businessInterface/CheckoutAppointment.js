@@ -7,7 +7,7 @@ import { collection, getDocs,doc, setDoc,query,where } from "firebase/firestore"
 import { AppointmentContext } from '../../global/AppointmentContext.js';
 
 
-function appointments(props) {
+function Appointments(props) {
 
     const [appointments, setAppointments] = useState([]);
     const [queryResult,setQueryResult] = useState([]);
@@ -77,7 +77,7 @@ function appointments(props) {
     );
 }
 
-export default appointments;
+export default Appointments;
 
 
 const styles = StyleSheet.create({

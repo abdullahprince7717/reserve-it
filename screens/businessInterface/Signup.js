@@ -10,7 +10,7 @@ import {MaterialIndicator} from 'react-native-indicators';
 
 
 
-const signUp = ({navigation}) => {
+const SignUp = ({navigation}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -277,7 +277,7 @@ const signUp = ({navigation}) => {
     )
 }
 
-export default signUp
+export default SignUp
 
 const styles = StyleSheet.create({
 mainView: {

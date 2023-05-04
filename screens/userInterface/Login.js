@@ -3,12 +3,13 @@ import { StyleSheet, View,Text,TextInput, Image, TouchableOpacity } from 'react-
 import React, {useState,useEffect,useContext} from 'react'
 import {auth} from  '../../firebase/FirebaseConfig.js'
 import { CredentialsContext } from '../../global/CredentialsContext';
+// import {Spinner} from 'react-native-loading-spinner-overlay';
 
 // import MyStack from '../../Navigation/AdminUIStack.js';
 
 
 
-const signIn = ({navigation}) => {
+const SignIn = ({navigation}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,9 +47,9 @@ const signIn = ({navigation}) => {
       setStoredCredentials({email: email.trim(), password: password})
 
 
-      // if(email ==='admin@reserveit.com' && password === '12345678'){
-      //   navigation.navigate("AdminStack", { screen: 'Home' });
-      // }
+      if(email ==='admin@reserveit.com' && password === '12345678'){
+        navigation.navigate("AdminStack", { screen: 'Home' });
+      }
 
 
       // setIsSignedIn(true);
@@ -136,7 +137,7 @@ const signIn = ({navigation}) => {
   )
 }
 
-export default signIn
+export default SignIn
 
 const styles = StyleSheet.create({
   mainView: {

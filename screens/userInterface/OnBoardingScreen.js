@@ -61,22 +61,16 @@ const OnboardingScreen = ({ navigation }) => {
             pages={[
                 {
                     backgroundColor: '#a6e4d0',
-                    image: <Image source={require('../../assets/logo.png')} />,
-                    title: 'Connect to the World',
+                    image: <Image style={styles.image}  source={require('../../assets/new-logo1.png')}  />,
+                    title: 'Reservation Made Easy',
                     subtitle: 'A New Way To Connect With The World',
                 },
                 {
                     backgroundColor: '#fdeb93',
-                    image: <Image source={require('../../assets/logo.png')} />,
-                    title: 'Share Your Favorites',
+                    image: <Image style={styles.image} source={require('../../assets/new-logo1.png')} />,
+                    title: 'Save and Share Your Favorites',
                     subtitle: 'Share Your Thoughts With Similar Kind of People',
-                },
-                {
-                    backgroundColor: '#e9bcbe',
-                    image: <Image source={require('../../assets/logo.png')} />,
-                    title: 'Become The Star',
-                    subtitle: "Let The Spot Light Capture You",
-                },
+                }
             ]}
         />
 
@@ -93,6 +87,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-
     },
+    image: {
+        height: 300,
+        width: 200,
+        resizeMode: 'contain'
+    }
 });

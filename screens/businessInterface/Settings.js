@@ -7,7 +7,7 @@ import {auth} from  '../../firebase/FirebaseConfig.js'
 import { BusinessHoursContext } from '../../global/BusinessHoursContext.js'
 import React,{useContext} from 'react'
 
-function settings(props) {
+function Settings(props) {
     const [monday, setMonday, tuesday, setTuesday, wednesday, setWednesday, thursday, setThursday, friday, setFriday, saturday, setSaturday, sunday, setSunday] = useContext(BusinessHoursContext);
 
 
@@ -118,7 +118,7 @@ function settings(props) {
     );
 }
 
-export default settings;
+export default Settings;
 
 const styles = StyleSheet.create({
 container: {
