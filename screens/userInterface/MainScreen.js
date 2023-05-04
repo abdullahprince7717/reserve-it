@@ -7,7 +7,7 @@ import { LogBox } from 'react-native';
 
 // import MyStack from '../../Navigation/AdminUIStack.js';
 
-const mainScreen = ({ navigation }) => {
+const MainScreen = ({ navigation }) => {
 
     return (
         <>
@@ -49,7 +49,7 @@ const mainScreen = ({ navigation }) => {
     )
 }
 
-export default mainScreen
+export default MainScreen
 
 const styles = StyleSheet.create({
     mainView: {

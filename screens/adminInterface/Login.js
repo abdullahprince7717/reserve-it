@@ -5,7 +5,7 @@ import {auth} from  '../../firebase/FirebaseConfig.js'
 import {signInWithEmailAndPassword} from "firebase/auth";
 
 
-const signIn = ({navigation}) => {
+const SignIn = ({navigation}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -77,7 +77,7 @@ const signIn = ({navigation}) => {
   )
 }
 
-export default signIn
+export default SignIn
 
 const styles = StyleSheet.create({
   mainView: {

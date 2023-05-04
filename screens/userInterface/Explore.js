@@ -14,7 +14,7 @@ import { RadioButton } from 'react-native-paper';
 // import {GOOGLE_MAPS_APIKEY} from "@env";
 
 
-function explore(props) {
+function Explore(props) {
 
     const cities = [
         "Abbottabad",
@@ -457,7 +457,7 @@ function explore(props) {
 
 }
 
-export default explore;
+export default Explore;
 
 const deviceWidth = Math.round(Dimensions.get('window').width);
 

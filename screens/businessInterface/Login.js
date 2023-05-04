@@ -6,7 +6,7 @@ import {MyStack} from '../../Navigation/AdminUIStack.js';
 
 
 
-const signIn = ({navigation}) => {
+const SignIn = ({navigation}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -103,7 +103,7 @@ const signIn = ({navigation}) => {
     )
 }
 
-export default signIn
+export default SignIn
 
 const styles = StyleSheet.create({
 mainView: {

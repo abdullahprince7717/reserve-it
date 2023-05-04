@@ -3,6 +3,8 @@ import { StyleSheet, View, Text, TextInput, ScrollView, Image, TouchableOpacity,
 import { db, auth } from '../../firebase/FirebaseConfig.js'
 import { doc, setDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithRedirect, FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
+// import {Spinner} from 'react-native-loading-spinner-overlay';
+
 // import { getNotificationInbox } from 'native-notify';
 
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,7 +13,7 @@ import { createUserWithEmailAndPassword, signInWithRedirect, FacebookAuthProvide
 
 
 
-const signUp = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
 
   // registerNNPushToken(2874, '8RGIzG08cvN06b2755Iopz');
 
@@ -20,7 +22,9 @@ const signUp = ({ navigation }) => {
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
   const [data, setData] = useState([]);
-  // const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
     // let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
@@ -49,10 +53,10 @@ const signUp = ({ navigation }) => {
   }
 
   const signUp = () => {
-
+    setLoading = true;
     createUserWithEmailAndPassword(auth, email.trim(), password)
       .then((credentials) => {
-
+        setLoading = true;
         // let userCredentials = credentials;
         // console.log(userCredentials);
         navigation.replace("Home")
@@ -184,7 +188,7 @@ const signUp = ({ navigation }) => {
           <Image style={{ resizeMode: 'contain', height: '60%' }} source={require('../../assets/logo.png')} />
         </View>
         <ScrollView style={styles.downView}>
-          <Text style={styles.heading}> Sign Up </Text>
+          <Text style={styles.heading}> sdSign Up </Text>
 
           <View style={styles.form}>
             <TextInput
@@ -201,6 +205,12 @@ const signUp = ({ navigation }) => {
               onChangeText={text => setEmail(text)}
               style={styles.textInput}
             />
+            {/* <Spinner
+
+              visible={loading}
+              textContent={'Loading...'}
+              textStyle={styles.spinnerTextStyle}
+            /> */}
             <TextInput
               placeholder="Phone number"
               value={phone}
@@ -216,14 +226,14 @@ const signUp = ({ navigation }) => {
               placeholderTextColor={"#fff"}
               style={styles.textInput}
             />
-            {/* <TextInput
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                secureTextEntry = {true}
-                onChangeText ={text=>setConfirmPassword(text)}
-                placeholderTextColor= {"#fff"}
-                style={confirmPassword===password?styles.textInput:styles.textInputError}
-              /> */}
+            <TextInput
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              secureTextEntry={true}
+              onChangeText={text => setConfirmPassword(text)}
+              placeholderTextColor={"#fff"}
+              style={confirmPassword === password ? styles.textInput : styles.textInputError}
+            />
           </View>
 
           <TouchableOpacity style={styles.button}
@@ -255,7 +265,7 @@ const signUp = ({ navigation }) => {
                 navigation.navigate('Login')
               }}
             >
-              <Text style={{ color: '#4267B2', fontSize: 15,fontWeight: 'bold' }}>SignIn</Text>
+              <Text style={{ color: '#4267B2', fontSize: 15, fontWeight: 'bold' }}>SignIn</Text>
             </TouchableOpacity>
 
           </View>
@@ -268,7 +278,7 @@ const signUp = ({ navigation }) => {
   )
 }
 
-export default signUp
+export default SignUp
 
 const styles = StyleSheet.create({
   mainView: {
