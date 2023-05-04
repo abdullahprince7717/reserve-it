@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons/"
 
 
 
-function appointments({ navigation }) {
+function Appointments({ navigation }) {
 
     const appointmentsRef = collection(db, "appointments");
 
@@ -176,7 +176,7 @@ function appointments({ navigation }) {
     );
 }
 
-export default appointments;
+export default Appointments;
 
 
 const styles = StyleSheet.create({

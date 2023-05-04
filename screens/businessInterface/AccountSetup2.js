@@ -240,7 +240,6 @@ const BusinessDetails = (props) => {
                     />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
-                    {/* <Feather color="#57B9BB" name="phone" size={23} style ={{margin:10, marginTop: 25, }} />  */}
                     <TextInput
                         label="Business Description"
                         placeholderTextColor={"grey"}
