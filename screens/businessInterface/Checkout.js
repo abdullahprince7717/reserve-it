@@ -20,9 +20,11 @@ export default function Checkout(props) {
     const [appointmentCart, setAppointmentCart] = useContext(AppointmentContext);
     var counter = serviceCart.length + appointmentCart.length;
 
-    const [visible, setVisible] = React.useState(false);
+    const [visible, setVisible] = useState(false);
 
-    const onToggleSnackBar = () => setVisible(!visible);
+
+
+    // const onToggleSnackBar = () => setVisible(!visible);
 
     const onDismissSnackBar = () => setVisible(false);
 
@@ -37,6 +39,21 @@ export default function Checkout(props) {
         })
             .then(() => {
                 // onToggleSnackBar();
+                appointmentCart.length > 0 ? 
+                appointmentCart.map((item, index) => {
+                    const appointmentDoc = doc(db, "appointments", item.id );
+                    console.log('item', item)
+                    setDoc(appointmentDoc, {
+                            status: {
+                                is_cancelled: false,
+                                is_completed: true,
+                                is_pending: false,
+                            },
+                        }, { merge: true })
+                })
+    
+                : 
+
                 setServiceCart([]);
                 setAppointmentCart([]);
 
@@ -46,15 +63,26 @@ export default function Checkout(props) {
             })
     }
 
+    // function Update(value, merge) {
+    //     const myDoc = doc(db, "appointments", auth.currentUser.uid)
+
+    //     setDoc(myDoc, value, { merge: merge })
+    //         .then(() => {
+    //             console.log("Updated")
+    //             props.navigation.goBack()
+    //         })
+    //         .catch((error) => {
+    //             console.log(error.message)
+    //         })
+    // }
+
 
 
     useEffect(() => {
+        console.log(appointmentCart)
+        // 
 
-        console.log(serviceCart)
-        console.log(auth.currentUser.uid)
-        console.log(new Date().toLocaleDateString())
-
-    }, []);
+    }, [appointmentCart]);
 
     return (
         <View style={styles.container}>
@@ -163,7 +191,7 @@ export default function Checkout(props) {
                 <Button mode="contained"
                     color='#57B9BB'
                     onPress={() => {
-                        (serviceCart.length > 0 || appointmentCart.length > 0) ? uploadData()  : alert("Please add items to cart");
+                        (serviceCart.length > 0 || appointmentCart.length > 0) ? uploadData() : alert("Please add items to cart");
                     }}
                     style={{ height: 50, justifyContent: 'center', borderRadius: 20, color: '#fff', width: '100%' }}>
 
