@@ -41,6 +41,7 @@
     "expo-notifications": "~0.18.1",
     "expo-status-bar": "~1.4.4",
     "firebase": "^9.6.3",
+    "formik": "^2.2.9",
     "googleapis": "^101.0.0",
     "moment": "^2.29.1",
     "native-notify": "^2.2.3",
@@ -94,7 +95,8 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3",
-    "toggle-switch-react-native": "^3.3.0"
+    "toggle-switch-react-native": "^3.3.0",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
