@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\abdul\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add eas-cli
+  C:\Program Files\nodejs\node.exe C:\Users\abdul\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
 
 PATH: 
   C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\AOMEI\AOMEI Backupper\6.9.2;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\nodejs\;C:\Users\abdul\AppData\Local\Microsoft\WindowsApps;;C:\Users\abdul\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\abdul\AppData\Roaming\npm
@@ -14,17 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Invariant Violation: expected hoisted manifest for "babel-preset-expo#metro-react-native-babel-preset#@babel/core#@babel/helper-compilation-targets#browserslist"
-      at invariant (/home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:2318:15)
-      at _loop2 (/home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:91029:9)
-      at PackageHoister.init (/home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:91099:19)
-      at PackageLinker.getFlatHoistedTree (/home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:48549:20)
-      at PackageLinker.<anonymous> (/home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:48560:27)
-      at Generator.next (<anonymous>)
-      at step (/home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:328:14
-      at new Promise (<anonymous>)
-      at new F (/home/dev/.nvm/versions/node/v14.20.0/lib/node_modules/yarn/lib/cli.js:5305:28)
+  Error: EPERM: operation not permitted, unlink 'C:\Users\abdul\Downloads\reserve-it\reserve-it\node_modules\bufferutil\prebuilds\win32-x64\node.napi.node'
 
 npm manifest: 
   {
@@ -70,6 +60,7 @@ npm manifest:
       "expo-notifications": "~0.18.1",
       "expo-status-bar": "~1.4.4",
       "firebase": "^9.6.3",
+      "formik": "^2.2.9",
       "googleapis": "^101.0.0",
       "moment": "^2.29.1",
       "native-notify": "^2.2.3",
@@ -123,7 +114,8 @@ npm manifest:
       "redux": "^4.1.2",
       "redux-thunk": "^2.4.1",
       "styled-components": "^5.3.3",
-      "toggle-switch-react-native": "^3.3.0"
+      "toggle-switch-react-native": "^3.3.0",
+      "yup": "^1.1.1"
     },
     "devDependencies": {
       "@babel/core": "^7.20.0"

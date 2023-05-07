@@ -52,7 +52,7 @@ function Appointments(props) {
 
         {appointments?.map((item, index) => (
                     // <Text>{item.id}</Text>
-                    appointments[index].status.is_completed === true 
+                    appointments[index].status.is_pending === true 
                     && appointments[index].business_email == auth.currentUser.email ? (
                         <Card
                         title={item.service_name}
