@@ -3,6 +3,8 @@ import { StyleSheet, View, Text, TextInput, ScrollView, Image, TouchableOpacity,
 import { db, auth } from '../../firebase/FirebaseConfig.js'
 import { doc, setDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithRedirect, FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 // import {Spinner} from 'react-native-loading-spinner-overlay';
 
 // import { getNotificationInbox } from 'native-notify';
@@ -26,11 +28,11 @@ const SignUp = ({ navigation }) => {
 
   const [loading, setLoading] = useState(false);
 
-  useEffect(async () => {
-    // let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
-    // console.log("notifications: ", notifications);
-    // setData(notifications);
-  }, []);
+  // useEffect(async () => {
+  //   // let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
+  //   // console.log("notifications: ", notifications);
+  //   // setData(notifications);
+  // }, []);
 
 
   const storeData = (userDoc, appointmentsDoc, reviewsDoc, complaintsDoc,) => {
@@ -53,10 +55,10 @@ const SignUp = ({ navigation }) => {
   }
 
   const signUp = () => {
-    setLoading = true;
+    // setLoading = true;
     createUserWithEmailAndPassword(auth, email.trim(), password)
       .then((credentials) => {
-        setLoading = true;
+        // setLoading = true;
         // let userCredentials = credentials;
         // console.log(userCredentials);
         navigation.replace("Home")
