@@ -6,6 +6,8 @@ import { doc, setDoc } from 'firebase/firestore';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { createUserWithEmailAndPassword, signInWithRedirect, FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 // import {Spinner} from 'react-native-loading-spinner-overlay';
 
 // import { getNotificationInbox } from 'native-notify';

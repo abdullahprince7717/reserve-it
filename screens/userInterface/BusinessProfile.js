@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView, useWindowDimensions, TouchableOpacity, Alert } from 'react-native';
 import { ImageSlider } from "react-native-image-slider-banner";
-import { Caption, Title, Divider, TextInput, Paragraph, ProgressBar, Subheading,Button } from 'react-native-paper';
+import { Caption, Title, Divider, TextInput, Paragraph, ProgressBar, Subheading, Button } from 'react-native-paper';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { AntDesign, Ionicons } from "@expo/vector-icons/"
 import StarRating from 'react-native-star-rating-widget';
 import moment from 'moment';
 import ServiceCard from '../../components/businessProfile/ServiceCard.js';
+import ReviewCard from '../../components/businessProfile/ReviewCard.js';
 import { db, auth } from "../../firebase/FirebaseConfig.js";
 import { collection, getDocs, doc, setDoc, query, where } from "firebase/firestore";
 import * as Linking from 'expo-linking';
@@ -15,19 +16,20 @@ const BusinessProfile = (props) => {
     const layout = useWindowDimensions();
     const [isFilled, setIsFilled] = useState(false)
 
-    const[showReview,setShowReview] = useState(true)
-    const[reviewText,setReviewText] = useState('');
-    const[reviewRating,setReviewRating] = useState(0);
-    const[reviews,setReviews] = useState([]);
-    const[reviewsCount,setReviewsCount] = useState(0);
-    const[reviewsAverage,setReviewsAverage] = useState(0);
-    
+    const [showReview, setShowReview] = useState(true)
+    const [reviewText, setReviewText] = useState('');
+    const [reviewRating, setReviewRating] = useState(0);
+    const [reviews, setReviews] = useState([]);
+    const [reviewsCount, setReviewsCount] = useState(0);
+    const [reviewsAverage, setReviewsAverage] = useState(0);
+
     const [index, setIndex] = useState(0);
     const [rating, setRating] = useState(0);
     const [data, setData] = useState([props.route?.params?.data]);
     const [services, setServices] = useState([]);
     const [queryResult, setQueryResult] = useState([]);
     const servicesRef = collection(db, "services");
+    const reviewsRef = collection(db, "reviews");
 
     const time = moment().format('MMMM Do YYYY');
 
@@ -36,7 +38,6 @@ const BusinessProfile = (props) => {
         setQueryResult(q);
         await getDocs(q)
             .then((res) => {
-
                 setServices(res.docs.map((doc) => ({
                     ...doc.data(),
                     id: doc.id
@@ -51,9 +52,29 @@ const BusinessProfile = (props) => {
             });
     };
 
+    const getReviews = async () => {
+        const q = query(reviewsRef, where("business_email", "==", props?.route?.params?.data?.email));
+        setQueryResult(q);
+        await getDocs(q)
+            .then((res) => {
+                setReviews(res.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
+
+                // console.log(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+
+                console.log(reviews);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
 
     useEffect(() => {
         getServices();
+        getReviews();
         console.log(props?.route?.params?.data)
         // console.log(services)
         // console.log(data.name)
@@ -186,82 +207,59 @@ const BusinessProfile = (props) => {
                 {/* END of Overall rating card */}
 
                 {showReview === true ? (
-                <View style={{ height: "15%", width: '90%', borderColor: 'black', borderWidth: 0.5, borderRadius: 10, padding: 10 }} >
-                    <View style={{}}>
-                        <StarRating
-                            rating={rating}
-                            onChange={setRating}
-                            maxStars={5}
-                            starSize={20}
-                            color="orange"
-                            style={{ margin: 5 }}
-                        />
-                        <TextInput
-                            // label="Review"
-                            activeUnderlineColor='orange'
-                            style={{ height: 40 }}
-                            multiline={true}
-                            value={reviewText}
-                            onChangeText={text => setReviewText(text)}
-                        />
-                        <Button  mode="outlined" style ={{marginTop:10}} labelStyle = {{color:'black'}} onPress={() => 
-                            {
+                    <View style={{ height: "15%", width: '90%', borderColor: 'black', borderWidth: 0.5, borderRadius: 10, padding: 10 }} >
+                        <View style={{}}>
+                            <StarRating
+                                rating={rating}
+                                onChange={setRating}
+                                maxStars={5}
+                                starSize={20}
+                                color="orange"
+                                style={{ margin: 5 }}
+                            />
+                            <TextInput
+                                // label="Review"
+                                activeUnderlineColor='orange'
+                                style={{ height: 40 }}
+                                multiline={true}
+                                value={reviewText}
+                                onChangeText={text => setReviewText(text)}
+                            />
+                            <Button mode="outlined" style={{ marginTop: 10 }} labelStyle={{ color: 'black' }} onPress={() => {
                                 console.log('Pressed')
-                                if(reviewText == ''){
+                                if (reviewText == '') {
                                     Alert.alert('Please enter your review');
                                 }
-                                else{
+                                else {
                                     setShowReview(!showReview)
                                 }
                             }}>
-                            Submit
-                        </Button>
-                    </View>
-                </View>) : null}
+                                Submit
+                            </Button>
+                        </View>
+                    </View>) : null}
 
+                {reviews ?<View style={{ flex: 1, backgroundColor: '#fff', margin: 10, }}>
+                    <ScrollView>
+                        {reviews.map((item, index) => (
+                            <ReviewCard
+                                customerEmail={item.name}
+                                customerName = {item.name}
+                                customerReview = {item.name}
+                                businessTitle = {item.name}
+                                rating = {item.rating}
+                                time={item.time}
+                                onPress={() => {
+                                    console.log('Pressed')
+                                    props.navigation.navigate('Booking', { service: services[index], data: props?.route?.params?.data })
+                                }}
+                            />))}
 
-                <View style={{ width: '90%', flex: 1, flexDirection: 'column', borderRadius: 5 }}>
-                    <View style={{
-                        flexDirection: 'row', justifyContent: 'space-between',
-                        alignItems: 'center',
-                    }}>
-                        <Text style={{ marginLeft: 10, fontSize: 19, fontWeight: 'bold', }}>
-                            Abdullah Ali
-                        </Text>
-                        <Text style={{ marginRight: 10 }}>
-                            {time}
-                        </Text>
-                    </View>
-
-
-                    <StarRating
-                        rating={rating}
-                        onChange={setRating}
-                        maxStars={5}
-                        starSize={20}
-                        color="orange"
-                        style={{ margin: 5 }}
-                    />
-
-                    <Subheading style={{ marginLeft: 10 }}>
-                        Service name
-                    </Subheading>
-
-                    <Caption style={{ marginLeft: 15, }} >
-                        By Business Name
-                    </Caption>
-
-                    <Paragraph style={{ marginLeft: 10, backgroundColor: 'white', borderRadius: 10, paddingLeft: 5 }} >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Donec eget ex vitae nunc tincidunt egestas.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Donec eget ex vitae nunc tincidunt egestas.
-                    </Paragraph>
-
+                    </ScrollView>
                 </View>
-
-                <Divider style={{ height: 2, width: '75%', color: '#000', marginTop: 15, marginBottom: 20, }} />
-
+                : 
+                <View style =  {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> No Reviews to show </View>}
+                
                 <View style={{ width: '90%', flex: 1, flexDirection: 'column', borderRadius: 5 }}>
                     <View style={{
                         flexDirection: 'row', justifyContent: 'space-between',
@@ -377,9 +375,9 @@ const BusinessProfile = (props) => {
                         <TouchableOpacity onPress={() => {
                             Linking.openURL(`tel:${props?.route?.params?.data?.business_phone}`);
                         }}>
-                        <Text style={{ marginLeft: 10, color: "black", fontSize: 17, color: 'grey' }}>
-                            {props?.route?.params?.data?.business_phone}
-                        </Text>
+                            <Text style={{ marginLeft: 10, color: "black", fontSize: 17, color: 'grey' }}>
+                                {props?.route?.params?.data?.business_phone}
+                            </Text>
                         </TouchableOpacity>
                     </View>
 
@@ -390,10 +388,10 @@ const BusinessProfile = (props) => {
                             Monday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            
-                            {props?.route?.params?.data?.monday?.isOpen === true ? (props?.route?.params?.data?.monday?.startTime) + " - " + (props?.route?.params?.data?.monday?.endTime):"CLOSED"}
+
+                            {props?.route?.params?.data?.monday?.isOpen === true ? (props?.route?.params?.data?.monday?.startTime) + " - " + (props?.route?.params?.data?.monday?.endTime) : "CLOSED"}
                             {/* <Text>10:00 AM - 10:00 PM</Text> */}
-                            
+
                         </Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -401,7 +399,7 @@ const BusinessProfile = (props) => {
                             Tuesday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.tuesday?.isOpen === true ? (props?.route?.params?.data?.tuesday?.startTime) + " - " + (props?.route?.params?.data?.tuesday?.endTime):"CLOSED"}
+                            {props?.route?.params?.data?.tuesday?.isOpen === true ? (props?.route?.params?.data?.tuesday?.startTime) + " - " + (props?.route?.params?.data?.tuesday?.endTime) : "CLOSED"}
                             {/* <Text>10:00 AM - 10:00 PM</Text> */}
                         </Text>
                     </View>
@@ -410,7 +408,7 @@ const BusinessProfile = (props) => {
                             Wednesday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.wednesday?.isOpen === true ? (props?.route?.params?.data?.wednesday?.startTime) + " - " + (props?.route?.params?.data?.wednesday?.endTime):"CLOSED"}
+                            {props?.route?.params?.data?.wednesday?.isOpen === true ? (props?.route?.params?.data?.wednesday?.startTime) + " - " + (props?.route?.params?.data?.wednesday?.endTime) : "CLOSED"}
                             {/* <Text>10:00 AM - 10:00 PM</Text> */}
                         </Text>
                     </View>
@@ -419,7 +417,7 @@ const BusinessProfile = (props) => {
                             Thursday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.thursday?.isOpen === true ? (props?.route?.params?.data?.thursday?.startTime) + " - " + (props?.route?.params?.data?.thursday?.endTime):"CLOSED"}
+                            {props?.route?.params?.data?.thursday?.isOpen === true ? (props?.route?.params?.data?.thursday?.startTime) + " - " + (props?.route?.params?.data?.thursday?.endTime) : "CLOSED"}
                             {/* <Text>10:00 AM - 10:00 PM</Text> */}
                         </Text>
                     </View><View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 20, marginRight: 20, marginBottom: 15, }} >
@@ -427,7 +425,7 @@ const BusinessProfile = (props) => {
                             Friday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.friday?.isOpen === true ? (props?.route?.params?.data?.friday?.startTime) + " - " + (props?.route?.params?.data?.friday?.endTime):"CLOSED"}
+                            {props?.route?.params?.data?.friday?.isOpen === true ? (props?.route?.params?.data?.friday?.startTime) + " - " + (props?.route?.params?.data?.friday?.endTime) : "CLOSED"}
                             {/* <Text>10:00 AM - 10:00 PM</Text> */}
                         </Text>
                     </View>
@@ -436,7 +434,7 @@ const BusinessProfile = (props) => {
                             Saturday
                         </Text>
                         <Text style={{ fontWeight: 'bold' }}>
-                            {props?.route?.params?.data?.saturday?.isOpen === true ?  (props?.route?.params?.data?.saturday?.startTime) + " - " + (props?.route?.params?.data?.saturday?.endTime):"CLOSED"}
+                            {props?.route?.params?.data?.saturday?.isOpen === true ? (props?.route?.params?.data?.saturday?.startTime) + " - " + (props?.route?.params?.data?.saturday?.endTime) : "CLOSED"}
                             {/* <Text>10:00 AM - 10:00 PM</Text> */}
                         </Text>
                     </View>
@@ -445,9 +443,9 @@ const BusinessProfile = (props) => {
                             Sunday
                         </Text>
                         <Text style={{ fontWeight: 'bold', }}>
-                            {props?.route?.params?.data?.sunday?.isOpen === true ? (props?.route?.params?.data?.sunday?.startTime) + " - " + (props?.route?.params?.data?.sunday?.endTime):"CLOSED"}
+                            {props?.route?.params?.data?.sunday?.isOpen === true ? (props?.route?.params?.data?.sunday?.startTime) + " - " + (props?.route?.params?.data?.sunday?.endTime) : "CLOSED"}
                             {/* <Text>CLOSED</Text> */}
-                        </Text> 
+                        </Text>
                     </View>
 
                     <Text style={{ color: 'black', fontSize: 17, fontWeight: 'bold' }}>
@@ -458,7 +456,7 @@ const BusinessProfile = (props) => {
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: 360, marginTop: 20, marginBottom: 20 }}>
 
-                        <TouchableOpacity onPress={() =>{
+                        <TouchableOpacity onPress={() => {
                             Linking.openURL(`https://www.instagram.com/sharer/sharer.php?u=${props?.route?.params?.data?.business_url}`);
                         }}>
                             <AntDesign color="red" name="instagram" size={40} />
@@ -532,7 +530,7 @@ const BusinessProfile = (props) => {
         { key: 'third', title: 'Details' },
     ]);
 
-    const handleFav = () => {}
+    const handleFav = () => { }
 
     // const renderScene = ({ route }) => {
     //     switch (route.key) {
@@ -547,10 +545,10 @@ const BusinessProfile = (props) => {
 
 
     return (
-        <View style={{height: '100%'}}>
+        <View style={{ height: '100%' }}>
             <View style={styles.imageSlider}>
                 <ImageSlider
-                    data={[                                
+                    data={[
                         { img: props?.route?.params?.data?.image },
                         // { img: 'https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
                         // { img: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg' }
@@ -641,7 +639,7 @@ styles = StyleSheet.create({
 
     },
     imageSlider: {
-        
+
     },
     details: {
         flex: 1,

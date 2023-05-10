@@ -37,11 +37,7 @@ function Appointments(props) {
         { key: "second", title: "Completed" },
         { key: "third", title: "Cancelled" },
     ]);
-    
 
-    // useFocusEffect(() => {
-    //     getAppointments();    
-    // },)
     // const showReportDialog = () => {
     //     <Provider>
     //         <View>
