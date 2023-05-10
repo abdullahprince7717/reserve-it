@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { StyleSheet, View, Text, TextInput, ScrollView, Image, TouchableOpacity, StatusBar } from 'react-native';
+
 import { db, auth } from '../../firebase/FirebaseConfig.js'
 import { doc, setDoc } from 'firebase/firestore';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 import { createUserWithEmailAndPassword, signInWithRedirect, FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -28,11 +31,30 @@ const SignUp = ({ navigation }) => {
 
   const [loading, setLoading] = useState(false);
 
-  // useEffect(async () => {
-  //   // let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
-  //   // console.log("notifications: ", notifications);
-  //   // setData(notifications);
-  // }, []);
+  const SignupSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(5, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    phone: Yup.number()
+      .max(11, 'Write Valid Phone Number')
+      .required('Required'),
+    password: Yup.string()
+      .min(8, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    confirmPassword: Yup.string()
+      .min(8, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+  });
+
+  useEffect(() => {
+    // let notifications = await getNotificationInbox(2874, '8RGIzG08cvN06b2755Iopz');
+    // console.log("notifications: ", notifications);
+    // setData(notifications);
+  }, []);
 
 
   const storeData = (userDoc, appointmentsDoc, reviewsDoc, complaintsDoc,) => {
@@ -193,59 +215,74 @@ const SignUp = ({ navigation }) => {
           <Text style={styles.heading}> sdSign Up </Text>
 
           <View style={styles.form}>
-            <TextInput
-              placeholder="Full name"
-              value={name}
-              placeholderTextColor={"#fff"}
-              onChangeText={text => setName(text)}
-              style={styles.textInput}
-            />
-            <TextInput
-              placeholder="Email"
-              value={email}
-              placeholderTextColor={"#fff"}
-              onChangeText={text => setEmail(text)}
-              style={styles.textInput}
-            />
-            {/* <Spinner
+            <Formik
+              initialValues={{ name: '', email: '', phone, password: '', confirmPassword: '', }}
+              onSubmit={values => console.log(values)}
+              validationSchema={SignupSchema}
+            >
+              {({errors, touched }) => (
+                <View>
+                  <TextInput
+                    placeholder="Full name"
+                    value={name}
+                    placeholderTextColor={"#fff"}
+                    onChangeText={text => setName(text)}
+                    style={styles.textInput}
+                  />
+                  {errors.name && touched.name ? (
+             <div>{errors.name}</div>
+           ) : null}
+                  <TextInput
+                    placeholder="Email"
+                    value={email}
+                    placeholderTextColor={"#fff"}
+                    onChangeText={text => setEmail(text)}
+                    style={styles.textInput}
+                  />
+                  {/* <Spinner
 
               visible={loading}
               textContent={'Loading...'}
               textStyle={styles.spinnerTextStyle}
             /> */}
-            <TextInput
-              placeholder="Phone number"
-              value={phone}
-              placeholderTextColor={"#fff"}
-              onChangeText={text => setPhone(text)}
-              style={styles.textInput}
-            />
-            <TextInput
-              placeholder="Password"
-              value={password}
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
-              placeholderTextColor={"#fff"}
-              style={styles.textInput}
-            />
-            <TextInput
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              secureTextEntry={true}
-              onChangeText={text => setConfirmPassword(text)}
-              placeholderTextColor={"#fff"}
-              style={confirmPassword === password ? styles.textInput : styles.textInputError}
-            />
-          </View>
+                  <TextInput
+                    placeholder="Phone number"
+                    value={phone}
+                    placeholderTextColor={"#fff"}
+                    onChangeText={text => setPhone(text)}
+                    style={styles.textInput}
+                  />
+                  <TextInput
+                    placeholder="Password"
+                    value={password}
+                    secureTextEntry={true}
+                    onChangeText={text => setPassword(text)}
+                    placeholderTextColor={"#fff"}
+                    style={styles.textInput}
+                  />
+                  <TextInput
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    secureTextEntry={true}
+                    onChangeText={text => setConfirmPassword(text)}
+                    placeholderTextColor={"#fff"}
+                    style={confirmPassword === password ? styles.textInput : styles.textInputError}
+                  />
 
-          <TouchableOpacity style={styles.button}
-            onPress={() => {
-              signUp();
-            }} >
-            <Text>Sign Up </Text>
-          </TouchableOpacity>
+                  
+                </View>
+              )}
+            </Formik>
+            <TouchableOpacity style={styles.button}
+                    onPress={() => {
+                      signUp();
+                    }} >
+                    <Text>Sign Up </Text>
+                  </TouchableOpacity>
+            </View>
 
-          {/* <TouchableOpacity 
+
+            {/* <TouchableOpacity 
               style = {styles.fbButton} 
               onPress = { () => {
                 
@@ -255,22 +292,22 @@ const SignUp = ({ navigation }) => {
               <Text style = {styles.fbText}>Continue with Facebook </Text>
             </TouchableOpacity> */}
 
-          <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
-            <TouchableOpacity disabled={true}>
-              <Text style={{ color: '#fff', fontSize: 15, textDecorationLine: 'underline' }}> Already have an account? </Text>
-            </TouchableOpacity>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
+              <TouchableOpacity disabled={true}>
+                <Text style={{ color: '#fff', fontSize: 15, textDecorationLine: 'underline' }}> Already have an account? </Text>
+              </TouchableOpacity>
 
 
-            <TouchableOpacity
-              onPress={() => {
-                console.log('Pressed')
-                navigation.navigate('Login')
-              }}
-            >
-              <Text style={{ color: '#4267B2', fontSize: 15, fontWeight: 'bold' }}>SignIn</Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  console.log('Pressed')
+                  navigation.navigate('Login')
+                }}
+              >
+                <Text style={{ color: '#4267B2', fontSize: 15, fontWeight: 'bold' }}>SignIn</Text>
+              </TouchableOpacity>
 
-          </View>
+            </View>
 
 
         </ScrollView>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useFocusEffect } from "react";
+import { useIsFocused } from '@react-navigation/native'
 import {
     View,
     StyleSheet,
@@ -20,7 +21,10 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Dialog from "react-native-dialog";
 
 
+
+
 function Appointments(props) {
+    const isFocused = useIsFocused()
     const appointmentsRef = collection(db, "appointments");
 
     const layout = useWindowDimensions();
@@ -33,7 +37,11 @@ function Appointments(props) {
         { key: "second", title: "Completed" },
         { key: "third", title: "Cancelled" },
     ]);
+    
 
+    useFocusEffect(() => {
+        getAppointments();    
+    },)
     // const showReportDialog = () => {
     //     <Provider>
     //         <View>
@@ -161,6 +169,11 @@ function Appointments(props) {
         console.log(JSON.stringify(appointments[0]))
 
     }, []);
+    useEffect(() => {
+        if(isFocused){
+            getAppointments();
+        }
+    }, [isFocused])
 
     const handleReload = () => {
         getAppointments();
